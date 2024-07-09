@@ -1,0 +1,2258 @@
+2024-07-02T20:47:08.175Z [[31merror[39m]: Failed to login: Error: Invalid password
+2024-07-02T20:56:12.001Z [[31merror[39m]: Failed to login: Error: User not found
+2024-07-02T20:56:37.360Z [[32minfo[39m]: User with email cip@gmail.com logged in
+2024-07-02T20:56:46.937Z [[32minfo[39m]: User with email cip@gmail.com logged in
+2024-07-02T21:13:33.621Z [[32minfo[39m]: Users retrieved
+2024-07-02T21:13:37.046Z [[32minfo[39m]: Users retrieved
+2024-07-02T21:13:44.454Z [[32minfo[39m]: Orders retrieved
+2024-07-02T21:13:48.935Z [[32minfo[39m]: OrderItems retrieved
+2024-07-02T21:14:14.988Z [[32minfo[39m]: OrderItems retrieved
+2024-07-02T21:14:54.938Z [[32minfo[39m]: Products retrieved
+2024-07-02T21:15:01.373Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-02T21:16:04.431Z [[32minfo[39m]: Category with name Football created
+2024-07-02T21:16:31.403Z [[32minfo[39m]: Product with name Sample Product created
+2024-07-02T21:18:16.525Z [[31merror[39m]: Failed to create order: PrismaClientValidationError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:23:31
+
+  20     ...order,        
+  21     id: cuid()
+  22 }
+→ 23 return await prisma.order.create({
+       data: {
+         userId: "cly4w25gn00009okxhpf53y0s",
+         status: "pending",
+         id: "cly4wuu2s000208kxar8oc4z6",
+     +   totalPrice: Float
+       }
+     })
+
+Argument `totalPrice` is missing.
+2024-07-02T21:18:28.607Z [[31merror[39m]: Failed to create order: PrismaClientValidationError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:23:31
+
+  20     ...order,        
+  21     id: cuid()
+  22 }
+→ 23 return await prisma.order.create({
+       data: {
+         userId: "cly4w25gn00009okxhpf53y0s",
+         status: "pending",
+         totalPrice: "10",
+                     ~~~~
+         id: "cly4wv3el000308kxg3bp809v"
+       }
+     })
+
+Argument `totalPrice`: Invalid value provided. Expected Float, provided String.
+2024-07-02T21:18:34.882Z [[32minfo[39m]: Order with id cly4wv88r000408kx6nuo7hh4 created
+2024-07-02T22:05:36.819Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:37:29
+
+  34   totalPrice,
+  35   id: cuid(),
+  36 };
+→ 37 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-02T22:05:50.121Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:37:29
+
+  34   totalPrice,
+  35   id: cuid(),
+  36 };
+→ 37 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-02T22:06:00.635Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:37:29
+
+  34   totalPrice,
+  35   id: cuid(),
+  36 };
+→ 37 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-02T22:06:08.212Z [[32minfo[39m]: Order with id cly4ykdvz0003rgkxcqqfcy96 created
+2024-07-02T22:08:25.785Z [[32minfo[39m]: OrderItem with id cly4ync170000gskx9a50de3p created
+2024-07-02T22:08:36.413Z [[32minfo[39m]: OrderItem with id cly4ynk8j0001gskx3tpi9p8t created
+2024-07-02T22:33:27.502Z [[32minfo[39m]: OrderItem with id cly4zjiqy0000kgkxe9c9glop created
+2024-07-02T22:34:20.185Z [[32minfo[39m]: OrderItem with id cly4zjiqy0000kgkxe9c9glop deleted
+2024-07-02T22:35:41.074Z [[32minfo[39m]: OrderItem with id cly4zmdt700008skx84z9e5wn created
+2024-07-02T22:37:53.513Z [[32minfo[39m]: OrderItem with id cly4zp8100000wkkxcew8hsqn created
+2024-07-02T22:42:36.522Z [[32minfo[39m]: OrderItem with id cly4zp8100000wkkxcew8hsqn deleted
+2024-07-02T22:47:34.977Z [[32minfo[39m]: Order with id cly4ykdvz0003rgkxcqqfcy96 status updated
+2024-07-02T22:51:15.383Z [[32minfo[39m]: OrderItem with id cly4zmdt700008skx84z9e5wn updated
+2024-07-02T23:30:41.337Z [[32minfo[39m]: Carts retrieved
+2024-07-02T23:32:03.294Z [[32minfo[39m]: Cart with id cly51mvjc00005skxctic4c4v created
+2024-07-02T23:45:00.575Z [[32minfo[39m]: Cart item with id cly523jbk0000wckxcp8vdom9 created
+2024-07-02T23:47:04.902Z [[32minfo[39m]: Cart item with id cly5267900000f4kx642oclqb created
+2024-07-02T23:51:53.102Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:57:49
+
+  54   price: price,
+  55   id: cuid(),
+  56 };
+→ 57 const createdCartItem = await prisma.cartItem.create(
+Unique constraint failed on the fields: (`productId`)
+2024-07-02T23:52:48.786Z [[32minfo[39m]: Cart item with id cly52dkle00015gkxafh0g7z3 created
+2024-07-03T00:02:57.367Z [[32minfo[39m]: OrderItem with id cly4zmdt700008skx84z9e5wn updated
+2024-07-03T00:04:04.854Z [[32minfo[39m]: Cart item with id cly523jbk0000wckxcp8vdom9 updated
+2024-07-03T11:51:33.667Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:53:33
+
+  50     ...product,
+  51     updatedAt: new Date()
+  52 }
+→ 53 return await prisma.product.update(
+Foreign key constraint failed on the field: `Product_categoryId_fkey (index)`
+2024-07-03T11:51:55.062Z [[32minfo[39m]: Product with id cly4yhqs30002w6s1hr0p9hky updated
+2024-07-03T11:57:30.217Z [[32minfo[39m]: Product with id cly4yhqs30002w6s1hr0p9hky updated
+2024-07-03T12:01:17.699Z [[32minfo[39m]: Product with id cly4yhqs30002w6s1hr0p9hky updated
+2024-07-04T21:21:50.858Z [[32minfo[39m]: Category with name Musica created
+2024-07-04T21:22:04.979Z [[32minfo[39m]: Category with name CategoryTest-0.22871172966787667 created
+2024-07-04T21:22:35.383Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T21:23:03.417Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T21:23:03.438Z [[32minfo[39m]: Categories retrieved
+2024-07-04T21:23:37.372Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T21:23:37.394Z [[32minfo[39m]: Categories retrieved
+2024-07-04T21:23:37.403Z [[32minfo[39m]: Category with id cly7rxf08000254u1kykn5g6t retrieved
+2024-07-04T21:23:37.423Z [[32minfo[39m]: Category with id cly7rxf0r000354u1f4zwfpj8 updated
+2024-07-04T21:23:37.433Z [[32minfo[39m]: Category with id cly7rxf12000454u12lxjlbwu deleted
+2024-07-04T21:23:48.858Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T21:23:48.878Z [[32minfo[39m]: Categories retrieved
+2024-07-04T21:23:48.887Z [[32minfo[39m]: Category with id cly7rxnv70002gbd8b7rzhom1 retrieved
+2024-07-04T21:23:48.901Z [[32minfo[39m]: Category with id cly7rxnvi0003gbd8b0evvfsg updated
+2024-07-04T21:23:48.910Z [[32minfo[39m]: Category with id cly7rxnvu0004gbd82dn856ok deleted
+2024-07-04T21:24:24.994Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T21:24:25.017Z [[32minfo[39m]: Categories retrieved
+2024-07-04T21:24:25.028Z [[32minfo[39m]: Category with id cly7ryfr30002rwlzyx9c136q retrieved
+2024-07-04T21:24:25.040Z [[32minfo[39m]: Category with id cly7ryfrf0003rwlzctyh10tw updated
+2024-07-04T21:24:25.052Z [[32minfo[39m]: Category with id cly7ryfrr0004rwlz0be10jx4 deleted
+2024-07-04T21:24:30.552Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T21:24:30.572Z [[32minfo[39m]: Categories retrieved
+2024-07-04T21:24:30.581Z [[32minfo[39m]: Category with id cly7ryk1d0002b8a0rtwyuugd retrieved
+2024-07-04T21:24:30.594Z [[32minfo[39m]: Category with id cly7ryk1r0003b8a0c09bpfhb updated
+2024-07-04T21:24:30.604Z [[32minfo[39m]: Category with id cly7ryk210004b8a01mxpzlla deleted
+2024-07-04T21:26:31.651Z [[31merror[39m]: Failed to create cart: PrismaClientKnownRequestError: 
+Invalid `prisma.cart.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartService.ts:41:41
+
+  38   ...cart,
+  39   id: cuid(),
+  40 };
+→ 41 const createdCart = await prisma.cart.create(
+Foreign key constraint failed on the field: `Cart_userId_fkey (index)`
+2024-07-04T21:26:59.847Z [[32minfo[39m]: Cart with id cly7s1r7300026ckx6w49hw8d created
+2024-07-04T21:30:56.811Z [[32minfo[39m]: Cart with id cly7s6u1w0000lkkxckdo8m5l created
+2024-07-04T21:31:28.627Z [[32minfo[39m]: Carts retrieved
+2024-07-04T21:31:34.669Z [[32minfo[39m]: Cart with id cly7s7n9i00005wkxfyh1acry created
+2024-07-04T21:31:34.699Z [[32minfo[39m]: Carts retrieved
+2024-07-04T21:32:22.611Z [[32minfo[39m]: Cart with id cly7s8o960000vgkxblaz2mvq created
+2024-07-04T21:32:22.637Z [[32minfo[39m]: Carts retrieved
+2024-07-04T21:32:28.220Z [[32minfo[39m]: Cart with id cly7s8sky0000ackx7pwkfy3o created
+2024-07-04T21:32:28.252Z [[32minfo[39m]: Carts retrieved
+2024-07-04T21:33:06.734Z [[32minfo[39m]: Cart with id cly7s9mat0000b0kx8dpa8t5b created
+2024-07-04T21:33:06.759Z [[32minfo[39m]: Carts retrieved
+2024-07-04T21:33:13.534Z [[32minfo[39m]: Cart with id cly7s9rjp0000wskx89o6f33c created
+2024-07-04T21:33:13.556Z [[32minfo[39m]: Carts retrieved
+2024-07-04T21:33:38.803Z [[32minfo[39m]: Cart with id cly7sab1k0000q8kx5h61gv4i created
+2024-07-04T21:33:38.830Z [[32minfo[39m]: Carts retrieved
+2024-07-04T21:33:38.844Z [[32minfo[39m]: Cart with id cly7sab2u00077gh606xah3t2 retrieved
+2024-07-04T21:33:38.860Z [[32minfo[39m]: Cart with id cly7sab39000a7gh68p9cork2 updated
+2024-07-04T21:33:38.871Z [[32minfo[39m]: Cart with id cly7sab3n000d7gh62zp1cdn4 deleted
+2024-07-04T21:33:45.957Z [[32minfo[39m]: Cart with id cly7sagkb0000tokx6oav4s4x created
+2024-07-04T21:33:45.976Z [[32minfo[39m]: Carts retrieved
+2024-07-04T21:33:45.991Z [[32minfo[39m]: Cart with id cly7sagle0007km6shyj4jhou retrieved
+2024-07-04T21:33:46.004Z [[32minfo[39m]: Cart with id cly7saglp000akm6stakzfgaw updated
+2024-07-04T21:33:46.015Z [[32minfo[39m]: Cart with id cly7sagm4000dkm6s3or0wkeg deleted
+2024-07-04T21:36:59.187Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T21:36:59.207Z [[32minfo[39m]: Cart item with id cly7selok000ldqq1lsdnnsyg retrieved
+2024-07-04T21:36:59.241Z [[32minfo[39m]: Cart item with id cly7selpd0011dqq1syo2dzy7 deleted
+2024-07-04T21:36:59.327Z [[32minfo[39m]: Cart item with id cly7selrv002fdqq1etzw19mo deleted
+2024-07-04T21:36:59.343Z [[32minfo[39m]: Cart item with id cly7selsa002ndqq1rg0xycpi deleted
+2024-07-04T21:36:59.358Z [[32minfo[39m]: Cart item with id cly7selsq002vdqq1tinrrwaq deleted
+2024-07-04T21:37:26.388Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T21:37:26.411Z [[32minfo[39m]: Cart item with id cly7sf6o6000lm0ul4zcam3p1 retrieved
+2024-07-04T21:37:26.445Z [[32minfo[39m]: Cart item with id cly7sf6p10011m0ulv86yvoke deleted
+2024-07-04T21:38:27.600Z [[32minfo[39m]: Cart item with id cly7sghvs0000jgkx62f0fl88 created
+2024-07-04T21:38:27.632Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T21:38:27.650Z [[32minfo[39m]: Cart item with id cly7sghxb000ly0t6a7tyoixf retrieved
+2024-07-04T21:38:27.694Z [[32minfo[39m]: Cart item with id cly7sghyf0011y0t66av4fty6 deleted
+2024-07-04T21:39:23.741Z [[32minfo[39m]: Cart item with id cly7shp760000y4kx73rhd4pr created
+2024-07-04T21:39:23.767Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T21:39:23.785Z [[32minfo[39m]: Cart item with id cly7shp8m000lca5qwgxk2px4 retrieved
+2024-07-04T21:39:23.807Z [[32minfo[39m]: Cart item with id cly7shp94000tca5qkikvlbvs updated
+2024-07-04T21:39:23.822Z [[32minfo[39m]: Cart item with id cly7shp9l0011ca5q765v1eaa deleted
+2024-07-04T21:39:29.951Z [[32minfo[39m]: Cart item with id cly7shtzo00005ckx1y8ggmp3 created
+2024-07-04T21:39:29.996Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T21:39:30.021Z [[32minfo[39m]: Cart item with id cly7shu1r000l292c74msva7l retrieved
+2024-07-04T21:39:30.049Z [[32minfo[39m]: Cart item with id cly7shu2g000t292cm9cr2fa3 updated
+2024-07-04T21:39:30.074Z [[32minfo[39m]: Cart item with id cly7shu370011292cgid12scp deleted
+2024-07-04T21:41:06.211Z [[32minfo[39m]: Products retrieved
+2024-07-04T21:41:06.229Z [[32minfo[39m]: Product with id cly7sjwa900069hl0d496pe9j retrieved
+2024-07-04T21:41:06.255Z [[32minfo[39m]: Product with id cly7sjwaw000c9hl0jezsvwu9 deleted
+2024-07-04T21:41:06.322Z [[32minfo[39m]: Product with id cly7sjwcv000r9hl0tn01bp2y deleted
+2024-07-04T21:41:06.331Z [[32minfo[39m]: Product with id cly7sjwd4000u9hl09oncfbzq deleted
+2024-07-04T21:41:06.342Z [[32minfo[39m]: Product with id cly7sjwdf000x9hl0zhkw15rv deleted
+2024-07-04T21:42:06.498Z [[32minfo[39m]: Products retrieved
+2024-07-04T21:42:06.512Z [[32minfo[39m]: Product with id cly7sl6st000613wka6s57zsi retrieved
+2024-07-04T21:42:06.538Z [[32minfo[39m]: Product with id cly7sl6tg000c13wk4n19r5w7 deleted
+2024-07-04T21:42:40.119Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T21:42:57.878Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T21:43:23.108Z [[32minfo[39m]: Products retrieved
+2024-07-04T21:43:23.130Z [[32minfo[39m]: Product with id cly7smtx00006l26f86yupbcr retrieved
+2024-07-04T21:43:23.160Z [[32minfo[39m]: Product with id cly7smtxs000cl26fqb2dsgi9 deleted
+2024-07-04T21:44:00.198Z [[32minfo[39m]: Product with name Sample product-1720129440128 created
+2024-07-04T21:44:00.237Z [[32minfo[39m]: Products retrieved
+2024-07-04T21:44:00.252Z [[32minfo[39m]: Product with id cly7snmk8000612nizvsb3l5q retrieved
+2024-07-04T21:44:00.283Z [[32minfo[39m]: Product with id cly7snml2000c12nif8vswyai deleted
+2024-07-04T21:44:00.301Z [[32minfo[39m]: Product with name Sample product-1720129440297 created
+2024-07-04T21:44:00.314Z [[32minfo[39m]: Product with name Sample product-1720129440309 created
+2024-07-04T21:44:00.327Z [[32minfo[39m]: Product with name Sample product-1720129440323 created
+2024-07-04T21:44:29.478Z [[32minfo[39m]: Product with name Sample product-1720129469424 created
+2024-07-04T21:44:29.508Z [[32minfo[39m]: Products retrieved
+2024-07-04T21:44:29.517Z [[32minfo[39m]: Product with id cly7so9560006b1o8jpxk46lk retrieved
+2024-07-04T21:44:29.553Z [[32minfo[39m]: Product with id cly7so963000cb1o8w8tpjcih deleted
+2024-07-04T21:44:53.555Z [[32minfo[39m]: Product with name Sample product-1720129493498 created
+2024-07-04T21:44:53.583Z [[32minfo[39m]: Products retrieved
+2024-07-04T21:44:53.596Z [[32minfo[39m]: Product with id cly7sorpz0006gwif9ki84pws retrieved
+2024-07-04T21:44:53.616Z [[32minfo[39m]: Product with id cly7sorqd0009gwifeebixzoy updated
+2024-07-04T21:44:53.688Z [[32minfo[39m]: Product with id cly7sorqw000cgwiflgzwoqr5 deleted
+2024-07-04T21:44:58.891Z [[32minfo[39m]: Product with name Sample product-1720129498836 created
+2024-07-04T21:44:58.922Z [[32minfo[39m]: Products retrieved
+2024-07-04T21:44:58.941Z [[32minfo[39m]: Product with id cly7sovug0006hevd26aylyr7 retrieved
+2024-07-04T21:44:58.959Z [[32minfo[39m]: Product with id cly7sovuu0009hevdzkja48ui updated
+2024-07-04T21:44:58.972Z [[32minfo[39m]: Product with id cly7sovvc000chevd25nv9jaf deleted
+2024-07-04T21:49:55.221Z [[32minfo[39m]: Order with id cly7sv8fp0000t0kxhdln7ub8 created
+2024-07-04T21:49:55.247Z [[32minfo[39m]: Orders retrieved
+2024-07-04T21:49:55.262Z [[32minfo[39m]: Order with id cly7sv8hk000610ek7k0sfnov retrieved
+2024-07-04T21:49:55.281Z [[32minfo[39m]: Order with id cly7sv8i4000910ekymilsuaf updated
+2024-07-04T21:49:55.293Z [[32minfo[39m]: Order with id cly7sv8ih000c10ek76l4dalp deleted
+2024-07-04T21:50:06.923Z [[32minfo[39m]: Order with id cly7svhgm0000kkkx8fcvc69f created
+2024-07-04T21:50:06.952Z [[32minfo[39m]: Orders retrieved
+2024-07-04T21:50:06.967Z [[32minfo[39m]: Order with id cly7svhip0006ea52aul3c9ly retrieved
+2024-07-04T21:50:06.982Z [[32minfo[39m]: Order with id cly7svhj40009ea52xouepaxe updated
+2024-07-04T21:50:06.996Z [[32minfo[39m]: Order with id cly7svhjh000cea52ubq8r780 deleted
+2024-07-04T21:52:02.670Z [[32minfo[39m]: OrderItem with id cly7sxyso00005wkx8monfgto created
+2024-07-04T21:52:02.704Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T21:52:02.722Z [[32minfo[39m]: OrderItem with id cly7sxyu5000lo1cxabte7fvc retrieved
+2024-07-04T21:52:02.779Z [[32minfo[39m]: OrderItem with id cly7sxyvn0011o1cx7hj7mq74 deleted
+2024-07-04T21:52:58.687Z [[32minfo[39m]: OrderItem with id cly7sz60p000010kx98twhynh created
+2024-07-04T21:52:58.717Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T21:52:58.736Z [[32minfo[39m]: OrderItem with id cly7sz625000lxm6eiz3dztor retrieved
+2024-07-04T21:52:58.782Z [[32minfo[39m]: OrderItem with id cly7sz63e0011xm6el3jn0g9o deleted
+2024-07-04T21:53:20.420Z [[32minfo[39m]: OrderItem with id cly7szmse0000gokxbiuo5g59 created
+2024-07-04T21:53:20.451Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T21:53:20.475Z [[32minfo[39m]: OrderItem with id cly7szmu0000luvokmx4x7s8e retrieved
+2024-07-04T21:53:20.499Z [[32minfo[39m]: OrderItem with id cly7szmuk000tuvok1nbxecl2 updated
+2024-07-04T21:53:20.522Z [[32minfo[39m]: OrderItem with id cly7szmv70011uvok9pvtl64e deleted
+2024-07-04T21:53:26.048Z [[32minfo[39m]: OrderItem with id cly7szr4r0000rkkx88l8da33 created
+2024-07-04T21:53:26.079Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T21:53:26.169Z [[32minfo[39m]: OrderItem with id cly7szr7r000lpxreeuzpr0xr retrieved
+2024-07-04T21:53:26.187Z [[32minfo[39m]: OrderItem with id cly7szr8j000tpxredsjgw05x updated
+2024-07-04T21:53:26.205Z [[32minfo[39m]: OrderItem with id cly7szr900011pxrez4ing9da deleted
+2024-07-04T21:55:13.955Z [[32minfo[39m]: Users retrieved
+2024-07-04T21:55:13.969Z [[32minfo[39m]: User with id cly7t22el0001stf91f20wnhb retrieved
+2024-07-04T21:55:14.002Z [[32minfo[39m]: User with id cly7t22fd0003stf9abalqx46 deleted
+2024-07-04T21:55:14.087Z [[32minfo[39m]: User with id cly7t22hw0007stf97aw1dmmr deleted
+2024-07-04T21:55:14.097Z [[32minfo[39m]: User with id cly7t22i60008stf9qh95k5x7 deleted
+2024-07-04T21:55:14.106Z [[32minfo[39m]: User with id cly7t22ig0009stf9pf9bi8hu deleted
+2024-07-04T21:55:38.885Z [[32minfo[39m]: Users retrieved
+2024-07-04T21:55:38.901Z [[32minfo[39m]: User with id cly7t2ln40001c062n8ctg342 retrieved
+2024-07-04T21:55:38.923Z [[32minfo[39m]: User with id cly7t2lnq0003c0627zjfqfz5 deleted
+2024-07-04T21:56:19.608Z [[32minfo[39m]: Users retrieved
+2024-07-04T21:56:19.626Z [[32minfo[39m]: User with id cly7t3h2b0001w6is7bk92ok8 retrieved
+2024-07-04T21:56:19.655Z [[32minfo[39m]: User with id cly7t3h340003w6isulek5ivq deleted
+2024-07-04T21:56:38.089Z [[32minfo[39m]: User with email testuser-1720130197973@gmail.com created
+2024-07-04T21:56:38.118Z [[32minfo[39m]: Users retrieved
+2024-07-04T21:56:38.136Z [[32minfo[39m]: User with id cly7t3vck0001umn0k9bkin4x retrieved
+2024-07-04T21:56:38.170Z [[32minfo[39m]: User with id cly7t3vdg0003umn0a1a8o7zx deleted
+2024-07-04T21:56:49.727Z [[32minfo[39m]: User with email testuser-1720130209603@gmail.com created
+2024-07-04T21:56:49.786Z [[32minfo[39m]: User with id cly7t44c10002yv32agqqolaq retrieved
+2024-07-04T21:56:49.820Z [[32minfo[39m]: User with id cly7t44d10004yv32nxpl3vlc deleted
+2024-07-04T21:57:34.490Z [[32minfo[39m]: User with email testuser-1720130254359@gmail.com created
+2024-07-04T21:57:34.530Z [[32minfo[39m]: Users retrieved
+2024-07-04T21:57:34.543Z [[32minfo[39m]: User with id cly7t52vd0001o3w7wv1ehgt1 retrieved
+2024-07-04T21:57:34.584Z [[32minfo[39m]: User with id cly7t52wh0003o3w7ahf3e2cx deleted
+2024-07-04T21:57:57.848Z [[32minfo[39m]: User with email cip@gmail.com created
+2024-07-04T22:03:36.184Z [[32minfo[39m]: User with email testuser-1720130616058@gmail.com created
+2024-07-04T22:03:36.216Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:03:36.234Z [[32minfo[39m]: User with id cly7tctye0001dqctzxfzydwn retrieved
+2024-07-04T22:03:36.248Z [[32minfo[39m]: User with id cly7tctyr0002dqctbe9hlwyu updated
+2024-07-04T22:03:36.264Z [[32minfo[39m]: User with id cly7tctz40003dqctsfqsnawq deleted
+2024-07-04T22:03:41.846Z [[32minfo[39m]: User with email testuser-1720130621723@gmail.com created
+2024-07-04T22:03:41.880Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:03:41.899Z [[32minfo[39m]: User with id cly7tcybn00014p7xcvi91v5h retrieved
+2024-07-04T22:03:41.913Z [[32minfo[39m]: User with id cly7tcyc400024p7xut5t0hsv updated
+2024-07-04T22:03:41.926Z [[32minfo[39m]: User with id cly7tcycg00034p7x0o91v8yr deleted
+2024-07-04T22:03:47.716Z [[32minfo[39m]: Order with id cly7td2sk0000w8kx3pi5bigp created
+2024-07-04T22:03:47.754Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:03:47.764Z [[32minfo[39m]: Order with id cly7td2up0006milauc7stcmx retrieved
+2024-07-04T22:03:47.777Z [[32minfo[39m]: Order with id cly7td2v00009mila4o5trslw updated
+2024-07-04T22:03:47.788Z [[32minfo[39m]: Order with id cly7td2vb000cmila4bthfq30 deleted
+2024-07-04T22:03:48.380Z [[32minfo[39m]: Cart item with id cly7td3br0000w8kx5u546tgs created
+2024-07-04T22:03:48.398Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:03:48.411Z [[32minfo[39m]: Cart item with id cly7td3co000ymiladv575qw0 retrieved
+2024-07-04T22:03:48.426Z [[32minfo[39m]: Cart item with id cly7td3d00016milar2qazevr updated
+2024-07-04T22:03:48.448Z [[32minfo[39m]: Cart item with id cly7td3dm001emilaqxb1h0fd deleted
+2024-07-04T22:03:49.005Z [[32minfo[39m]: OrderItem with id cly7td3t60000w8kx3pmwe11c created
+2024-07-04T22:03:49.022Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:03:49.033Z [[32minfo[39m]: OrderItem with id cly7td3tz0020mila24dwmbgo retrieved
+2024-07-04T22:03:49.046Z [[32minfo[39m]: OrderItem with id cly7td3u90028milafvcj7wqr updated
+2024-07-04T22:03:49.064Z [[32minfo[39m]: OrderItem with id cly7td3ur002gmilachksf351 deleted
+2024-07-04T22:03:49.684Z [[32minfo[39m]: User with email testuser-1720130629580@gmail.com created
+2024-07-04T22:03:49.705Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:03:49.714Z [[32minfo[39m]: User with id cly7td4cv002imila4ybizgo8 retrieved
+2024-07-04T22:03:49.724Z [[32minfo[39m]: User with id cly7td4d5002jmila22pbhuat updated
+2024-07-04T22:03:49.739Z [[32minfo[39m]: User with id cly7td4df002kmila6d2sym8v deleted
+2024-07-04T22:03:50.280Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:03:50.298Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:03:50.308Z [[32minfo[39m]: Category with id cly7td4tc002nmilacezf3z78 retrieved
+2024-07-04T22:03:50.316Z [[32minfo[39m]: Category with id cly7td4tl002omilaxqqjjgfi updated
+2024-07-04T22:03:50.325Z [[32minfo[39m]: Category with id cly7td4tt002pmila3vo7xmav deleted
+2024-07-04T22:03:50.954Z [[32minfo[39m]: Product with name Sample product-1720130630911 created
+2024-07-04T22:03:50.974Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:03:50.985Z [[32minfo[39m]: Product with id cly7td5c5002wmila4dw63wub retrieved
+2024-07-04T22:03:51.004Z [[32minfo[39m]: Product with id cly7td5cg002zmilaqbwy8zh0 updated
+2024-07-04T22:03:51.017Z [[32minfo[39m]: Product with id cly7td5d10032mila6q5dmn7d deleted
+2024-07-04T22:03:51.560Z [[32minfo[39m]: Cart with id cly7td5s10000w8kx8t75hukm created
+2024-07-04T22:03:51.572Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:03:51.581Z [[32minfo[39m]: Cart with id cly7td5sq003amilavpjiefei retrieved
+2024-07-04T22:03:51.592Z [[32minfo[39m]: Cart with id cly7td5sz003dmilahyl8hias updated
+2024-07-04T22:03:51.600Z [[32minfo[39m]: Cart with id cly7td5t9003gmilaiir5larr deleted
+2024-07-04T22:28:22.643Z [[32minfo[39m]: Cart with id cly7u8ouh0000lokx6u2dbwiw created
+2024-07-04T22:28:22.694Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:28:22.841Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:28:22.873Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:28:22.900Z [[32minfo[39m]: Cart with id cly7u8p2c0007akz83dk3f7py retrieved
+2024-07-04T22:28:22.930Z [[32minfo[39m]: Category with id cly7u8p2u0002xv93vmq9bhl7 retrieved
+2024-07-04T22:28:22.892Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:22.963Z [[32minfo[39m]: Cart with id cly7u8p3w000aakz8t6n4fe4g updated
+2024-07-04T22:28:22.967Z [[32minfo[39m]: Category with id cly7u8p480003xv93vboirwzf updated
+2024-07-04T22:28:23.003Z [[32minfo[39m]: Category with id cly7u8p560004xv93656va781 deleted
+2024-07-04T22:28:22.960Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:28:23.019Z [[32minfo[39m]: Cart with id cly7u8p5d000dakz8dixfh2fn deleted
+2024-07-04T22:28:22.981Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:22:29
+
+  19   ...order,
+  20   id: cuid(),
+  21 };
+→ 22 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-04T22:28:23.012Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:28:23.096Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:28:23.150Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:28:23.197Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:28:23.164Z [[32minfo[39m]: User with email testuser-1720132102512@gmail.com created
+2024-07-04T22:28:23.290Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.339Z [[31merror[39m]: Failed to update order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:39:29
+
+  36   id: string,
+  37   order: IOrder
+  38 ): Promise<IOrder | null> => {
+→ 39   return await prisma.order.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.412Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.448Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:28:23.465Z [[31merror[39m]: Failed to delete order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:28:35
+
+  25 };
+  26 
+  27 export const deleteOrder = async (id: string): Promise<IOrder | null> => {
+→ 28   return await prisma.order.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.512Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:23.564Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:23.554Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:28:23.615Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:23.630Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:28:23.662Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:28:23.675Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.698Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:28:23.702Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:28:23.741Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.744Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:28:23.758Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:28:23.759Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:28:23.769Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:28:23.798Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:28:23.844Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:28:23.857Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.887Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.923Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.962Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.967Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.995Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.002Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:24.057Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:24.115Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.152Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.156Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.174Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.203Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.212Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.213Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:58.214Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:28:58.245Z [[32minfo[39m]: User with email testuser-1720132137705@gmail.com created
+2024-07-04T22:28:58.461Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:28:58.475Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:28:58.553Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:58.618Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:22:29
+
+  19   ...order,
+  20   id: cuid(),
+  21 };
+→ 22 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-04T22:28:58.667Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:58.669Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:58.731Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:58.765Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:28:58.720Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:28:58.781Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:28:58.812Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:28:58.821Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:28:58.831Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:28:58.874Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:28:58.890Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:58.945Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:58.982Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:59.024Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:59.045Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.071Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:59.096Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.143Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.159Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:28:59.170Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:28:59.194Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.205Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:28:59.235Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.275Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.300Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.312Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.321Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:28:59.335Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.371Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.419Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.465Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.500Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.737Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.792Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.851Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:29:00.880Z [[32minfo[39m]: Cart with id cly7u9id80000dkkx5jo4f5yo created
+2024-07-04T22:29:00.912Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:29:00.944Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:29:00.967Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:29:00.967Z [[32minfo[39m]: Cart with id cly7u9ig0000rpughd4kvpuqy retrieved
+2024-07-04T22:29:00.989Z [[32minfo[39m]: Category with id cly7u9igj0032vkyvj3nqsl87 retrieved
+2024-07-04T22:29:00.997Z [[32minfo[39m]: Cart with id cly7u9ign000upughbaiaeyt7 updated
+2024-07-04T22:29:01.009Z [[32minfo[39m]: Category with id cly7u9ih40033vkyvsvx8jzf9 updated
+2024-07-04T22:29:01.024Z [[32minfo[39m]: Cart with id cly7u9ihj000xpughu7rqyoic deleted
+2024-07-04T22:29:01.031Z [[32minfo[39m]: Category with id cly7u9ihp0034vkyvl4sf06ye deleted
+2024-07-04T22:30:13.412Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:13.918Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:22:29
+
+  19   ...order,
+  20   id: cuid(),
+  21 };
+→ 22 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-04T22:30:13.972Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:14.111Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:14.229Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:14.173Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:14.253Z [[31merror[39m]: Failed to update order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:39:29
+
+  36   id: string,
+  37   order: IOrder
+  38 ): Promise<IOrder | null> => {
+→ 39   return await prisma.order.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:14.213Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:14.349Z [[31merror[39m]: Failed to delete order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:28:35
+
+  25 };
+  26 
+  27 export const deleteOrder = async (id: string): Promise<IOrder | null> => {
+→ 28   return await prisma.order.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:14.620Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:30:14.643Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:30:14.660Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:30:14.658Z [[32minfo[39m]: User with email testuser-1720132213867@gmail.com created
+2024-07-04T22:30:14.779Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:14.782Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:30:14.864Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:30:14.869Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:14.921Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:14.930Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:14.990Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:15.047Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:15.122Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:30:15.142Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:15.147Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.201Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:30:15.221Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:30:15.229Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.288Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:30:15.348Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:30:15.413Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:30:15.464Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.509Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.547Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.590Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.603Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.627Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.652Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.666Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.690Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.738Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.752Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.774Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.808Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:16.882Z [[32minfo[39m]: Cart with id cly7ub50900002gkxctqw0rnl created
+2024-07-04T22:30:16.916Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:30:16.963Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:30:16.985Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:30:16.989Z [[32minfo[39m]: Cart with id cly7ub53o000n2nqojujokx5j retrieved
+2024-07-04T22:30:17.007Z [[32minfo[39m]: Category with id cly7ub546000m440qp2q6zxqk retrieved
+2024-07-04T22:30:17.018Z [[32minfo[39m]: Cart with id cly7ub54c000q2nqo9ncgds74 updated
+2024-07-04T22:30:17.030Z [[32minfo[39m]: Category with id cly7ub54t000n440qhd6xpnj5 updated
+2024-07-04T22:30:17.041Z [[32minfo[39m]: Cart with id cly7ub556000t2nqobx9ulqms deleted
+2024-07-04T22:30:17.049Z [[32minfo[39m]: Category with id cly7ub55f000o440qgpjdhyhq deleted
+2024-07-04T22:30:34.182Z [[32minfo[39m]: User with email testuser-1720132234044@gmail.com created
+2024-07-04T22:30:34.221Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:30:34.261Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:34.276Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:34.288Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:30:34.300Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:30:34.310Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:30:34.356Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:34.369Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:34.384Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:34.398Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:34.414Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:34.427Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:35.148Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:35.184Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:30:35.270Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:35.300Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:35.319Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:35.338Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:35.357Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:30:35.379Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:30:35.399Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:30:35.529Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:35.552Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:35.572Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:36.306Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:36.336Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:30:36.374Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:36.394Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:36.405Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:36.418Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:36.433Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:36.445Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:30:36.463Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:30:36.475Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:30:36.528Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:36.543Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:36.560Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:36.574Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:36.589Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:36.604Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:37.329Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:37.365Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:30:37.429Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:37.451Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:37.475Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:37.497Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:37.516Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:30:37.535Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:30:37.554Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:30:37.687Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:37.707Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:37.728Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:38.480Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:22:29
+
+  19   ...order,
+  20   id: cuid(),
+  21 };
+→ 22 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-04T22:30:38.506Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:30:38.536Z [[31merror[39m]: Failed to update order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:39:29
+
+  36   id: string,
+  37   order: IOrder
+  38 ): Promise<IOrder | null> => {
+→ 39   return await prisma.order.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:38.558Z [[31merror[39m]: Failed to delete order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:28:35
+
+  25 };
+  26 
+  27 export const deleteOrder = async (id: string): Promise<IOrder | null> => {
+→ 28   return await prisma.order.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:45.528Z [[32minfo[39m]: Cart with id cly7ubr4e0000yskxfr148cb9 created
+2024-07-04T22:30:45.545Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:30:45.557Z [[32minfo[39m]: Cart with id cly7ubr5d00jadenh0ejcv98d retrieved
+2024-07-04T22:30:45.575Z [[32minfo[39m]: Cart with id cly7ubr5p00jddenhn001dhlu updated
+2024-07-04T22:30:45.590Z [[32minfo[39m]: Cart with id cly7ubr6900jgdenhquqyfoe2 deleted
+2024-07-04T22:30:46.332Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:30:46.347Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:30:46.357Z [[32minfo[39m]: Category with id cly7ubrrm00jjdenhcv83yny4 retrieved
+2024-07-04T22:30:46.368Z [[32minfo[39m]: Category with id cly7ubrrv00jkdenhk72nyjc1 updated
+2024-07-04T22:30:46.378Z [[32minfo[39m]: Category with id cly7ubrs600jldenh53t8tik6 deleted
+2024-07-04T22:36:21.981Z [[32minfo[39m]: User with email testuser-1720132581887@gmail.com created
+2024-07-04T22:36:22.020Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:36:22.031Z [[32minfo[39m]: User with id cly7uiyrv0001wzkglno06it8 retrieved
+2024-07-04T22:36:22.043Z [[32minfo[39m]: User with id cly7uiys60002wzkgaewlhggz updated
+2024-07-04T22:36:22.052Z [[32minfo[39m]: User with id cly7uiysh0003wzkguuht9tyt deleted
+2024-07-04T22:36:24.106Z [[32minfo[39m]: OrderItem with id cly7uj0di0000skkx008q8baj created
+2024-07-04T22:36:24.141Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:36:24.163Z [[32minfo[39m]: OrderItem with id cly7uj0f0000pwzkgsdt7qkza retrieved
+2024-07-04T22:36:24.206Z [[32minfo[39m]: OrderItem with id cly7uj0g5000xwzkgxo2uz5qe updated
+2024-07-04T22:36:24.229Z [[32minfo[39m]: OrderItem with id cly7uj0gt0015wzkgfml0xgkh deleted
+2024-07-04T22:36:24.266Z [[32minfo[39m]: OrderItem with id cly7uj0hv001dwzkgaiq53e73 retrieved
+2024-07-04T22:36:25.317Z [[32minfo[39m]: Cart item with id cly7uj1az0000skkxhyvabzw2 created
+2024-07-04T22:36:25.349Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:36:25.382Z [[32minfo[39m]: Cart item with id cly7uj1cu001zwzkgh592hp67 retrieved
+2024-07-04T22:36:25.415Z [[32minfo[39m]: Cart item with id cly7uj1dn0027wzkgex94tvvd updated
+2024-07-04T22:36:25.444Z [[32minfo[39m]: Cart item with id cly7uj1ei002fwzkg6ifmvbvt deleted
+2024-07-04T22:36:26.450Z [[32minfo[39m]: Product with name Sample product-1720132586433 created
+2024-07-04T22:36:26.477Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:36:26.495Z [[32minfo[39m]: Product with id cly7uj27t002mwzkgpeecorv6 retrieved
+2024-07-04T22:36:26.519Z [[32minfo[39m]: Product with id cly7uj28b002pwzkgy1y7csos updated
+2024-07-04T22:36:26.536Z [[32minfo[39m]: Product with id cly7uj28y002swzkgbilvf00l deleted
+2024-07-04T22:37:27.033Z [[32minfo[39m]: OrderItem with id cly7ukcx50000dkkx8veb71im created
+2024-07-04T22:37:27.203Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:37:27.187Z [[32minfo[39m]: Product with name Sample product-1720132647048 created
+2024-07-04T22:37:27.329Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:37:27.337Z [[32minfo[39m]: OrderItem with id cly7ukd5h000l14a00r14pim5 retrieved
+2024-07-04T22:37:27.362Z [[32minfo[39m]: Product with id cly7ukd6e00069qhmz1kbxai9 retrieved
+2024-07-04T22:37:27.409Z [[32minfo[39m]: Product with id cly7ukd7c00099qhm24dqom73 updated
+2024-07-04T22:37:27.412Z [[32minfo[39m]: OrderItem with id cly7ukd7c000t14a014sb9ea9 updated
+2024-07-04T22:37:27.444Z [[32minfo[39m]: Product with id cly7ukd8n000c9qhmqde46gje deleted
+2024-07-04T22:37:27.468Z [[32minfo[39m]: OrderItem with id cly7ukd96001114a0m7ghx05z deleted
+2024-07-04T22:37:27.569Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:37:27.793Z [[32minfo[39m]: User with email testuser-1720132647369@gmail.com created
+2024-07-04T22:37:27.984Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:37:28.158Z [[32minfo[39m]: User with id cly7ukdqy0001ycvqz9znqphn retrieved
+2024-07-04T22:37:28.282Z [[32minfo[39m]: User with id cly7ukdvb0002ycvql5eogcc6 updated
+2024-07-04T22:37:28.362Z [[32minfo[39m]: User with id cly7ukdxv0003ycvqiazyneml deleted
+2024-07-04T22:37:28.397Z [[32minfo[39m]: Cart item with id cly7ukdyl0000ugkx7fp675kl created
+2024-07-04T22:37:28.545Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:37:28.592Z [[32minfo[39m]: Cart item with id cly7uke4k000l13xiqag5uuq8 retrieved
+2024-07-04T22:37:28.649Z [[32minfo[39m]: Cart item with id cly7uke5w000t13xi12l9sofr updated
+2024-07-04T22:37:28.691Z [[32minfo[39m]: Cart item with id cly7uke78001113xik6qd18gh deleted
+2024-07-04T22:37:29.077Z [[32minfo[39m]: Order with id cly7ukehw0000igkx9bzo8b9l created
+2024-07-04T22:37:29.153Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:37:29.176Z [[32minfo[39m]: Order with id cly7ukekw000613rib0mh1vhd retrieved
+2024-07-04T22:37:29.211Z [[32minfo[39m]: Order with id cly7ukelr000913ritzaiy6zr updated
+2024-07-04T22:37:29.236Z [[32minfo[39m]: Order with id cly7ukemk000c13rik67yo2zp deleted
+2024-07-04T22:37:29.715Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:37:29.785Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:37:29.808Z [[32minfo[39m]: Category with id cly7ukf2e00144ke84mlvcgic retrieved
+2024-07-04T22:37:29.826Z [[32minfo[39m]: Category with id cly7ukf2y00154ke8qdp9f5e8 updated
+2024-07-04T22:37:29.842Z [[32minfo[39m]: Category with id cly7ukf3g00164ke8yxgzfb87 deleted
+2024-07-04T22:37:30.107Z [[32minfo[39m]: Cart with id cly7ukfah0000mkkxfgfsdpah created
+2024-07-04T22:37:30.158Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:37:30.175Z [[32minfo[39m]: Cart with id cly7ukfcq000dz3fhimww135n retrieved
+2024-07-04T22:37:30.199Z [[32minfo[39m]: Cart with id cly7ukfd9000gz3fhoz90bfo3 updated
+2024-07-04T22:37:30.213Z [[32minfo[39m]: Cart with id cly7ukfds000jz3fh60zr6vhr deleted
+2024-07-04T22:38:49.585Z [[32minfo[39m]: Order with id cly7um4mg0000jokx3nvbaq2x created
+2024-07-04T22:38:49.616Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:38:49.625Z [[32minfo[39m]: Order with id cly7um4nr000tmippsp5rod5p retrieved
+2024-07-04T22:38:49.637Z [[32minfo[39m]: Order with id cly7um4o1000wmippvkonsdk3 updated
+2024-07-04T22:38:49.648Z [[32minfo[39m]: Order with id cly7um4oc000zmippiga77x7c deleted
+2024-07-04T22:38:50.344Z [[32minfo[39m]: Cart item with id cly7um57k0000jokx5to82mul created
+2024-07-04T22:38:50.365Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:38:50.379Z [[32minfo[39m]: Cart item with id cly7um58p001lmipp5fhvdbn3 retrieved
+2024-07-04T22:38:50.400Z [[32minfo[39m]: Cart item with id cly7um595001tmippxjnn3ll7 updated
+2024-07-04T22:38:50.418Z [[32minfo[39m]: Cart item with id cly7um59p0021mippzh9io7y6 deleted
+2024-07-04T22:38:51.110Z [[32minfo[39m]: User with email testuser-1720132731047@gmail.com created
+2024-07-04T22:38:51.129Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:38:51.140Z [[32minfo[39m]: User with id cly7um5tt0023mipp5frfqdeu retrieved
+2024-07-04T22:38:51.151Z [[32minfo[39m]: User with id cly7um5u30024mippgp923tfz updated
+2024-07-04T22:38:51.167Z [[32minfo[39m]: User with id cly7um5ue0025mipphb59ynxn deleted
+2024-07-04T22:38:51.877Z [[32minfo[39m]: OrderItem with id cly7um6eb0000jokxd4g98sk7 created
+2024-07-04T22:38:51.928Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:38:51.944Z [[32minfo[39m]: OrderItem with id cly7um6g5002rmippqruuca4a retrieved
+2024-07-04T22:38:51.960Z [[32minfo[39m]: OrderItem with id cly7um6gh002zmipp05a05eee updated
+2024-07-04T22:38:51.977Z [[32minfo[39m]: OrderItem with id cly7um6h00037mipp9jsmwxur deleted
+2024-07-04T22:38:52.784Z [[32minfo[39m]: Product with name Sample product-1720132732770 created
+2024-07-04T22:38:52.809Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:38:52.824Z [[32minfo[39m]: Product with id cly7um74j003emippocg6prfo retrieved
+2024-07-04T22:38:52.857Z [[32minfo[39m]: Product with id cly7um74y003hmippwl5mmk3e updated
+2024-07-04T22:38:52.885Z [[32minfo[39m]: Product with id cly7um766003kmipppom2omkv deleted
+2024-07-04T22:38:57.470Z [[32minfo[39m]: Cart with id cly7umapf0000jokxd0o571t1 created
+2024-07-04T22:38:57.498Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:38:57.509Z [[32minfo[39m]: Cart with id cly7umaqq0055mippg64wm1nx retrieved
+2024-07-04T22:38:57.528Z [[32minfo[39m]: Cart with id cly7umar40058mippqfzjp7ve updated
+2024-07-04T22:38:57.542Z [[32minfo[39m]: Cart with id cly7umarm005bmippplbuveps deleted
+2024-07-04T22:38:58.215Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:38:58.243Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:38:58.254Z [[32minfo[39m]: Category with id cly7umbbe005emipp6wbyt0zv retrieved
+2024-07-04T22:38:58.266Z [[32minfo[39m]: Category with id cly7umbbp005fmippm2jfy0nk updated
+2024-07-04T22:38:58.278Z [[32minfo[39m]: Category with id cly7umbc2005gmipp6ggwt40i deleted
+2024-07-04T22:41:35.106Z [[32minfo[39m]: Product with name Sample product-1720132894934 created
+2024-07-04T22:41:35.250Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:41:35.298Z [[32minfo[39m]: Product with id cly7upohc0006fj2mx70boos2 retrieved
+2024-07-04T22:41:35.373Z [[32minfo[39m]: Product with id cly7upoip0009fj2mz3syzj2q updated
+2024-07-04T22:41:35.422Z [[32minfo[39m]: Product with id cly7upokx000cfj2mdk257dxm deleted
+2024-07-04T22:41:35.725Z [[32minfo[39m]: OrderItem with id cly7upota0000ackxgxox7w6e created
+2024-07-04T22:41:35.882Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:41:35.877Z [[32minfo[39m]: Cart with id cly7upox000006kkx1ofs61ca created
+2024-07-04T22:41:35.940Z [[32minfo[39m]: Cart item with id cly7upoz00000vokx8ski1t7p created
+2024-07-04T22:41:36.003Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:41:36.046Z [[32minfo[39m]: Cart with id cly7upp290007crgtnng92ge1 retrieved
+2024-07-04T22:41:36.052Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:41:36.101Z [[32minfo[39m]: Cart with id cly7upp3e000acrgtvmmm3xn6 updated
+2024-07-04T22:41:36.108Z [[32minfo[39m]: OrderItem with id cly7upp3c000trap18csah3ow updated
+2024-07-04T22:41:36.121Z [[32minfo[39m]: Cart item with id cly7upp46000lcq0crsh6he9s retrieved
+2024-07-04T22:41:36.146Z [[32minfo[39m]: Cart with id cly7upp51000dcrgtnuwtxgqh deleted
+2024-07-04T22:41:36.187Z [[32minfo[39m]: OrderItem with id cly7upp630011rap18nbtjzaa deleted
+2024-07-04T22:41:36.203Z [[32minfo[39m]: Cart item with id cly7upp6b000tcq0czerd3d7u updated
+2024-07-04T22:41:36.252Z [[32minfo[39m]: Cart item with id cly7upp7v0011cq0ct08ojiog deleted
+2024-07-04T22:41:36.528Z [[32minfo[39m]: Order with id cly7uppfl0000bckx9qph02y3 created
+2024-07-04T22:41:36.653Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:41:36.703Z [[32minfo[39m]: Order with id cly7uppkg00065aj9vi6ukkuj retrieved
+2024-07-04T22:41:36.783Z [[32minfo[39m]: Order with id cly7uppm600095aj95nc7ze87 updated
+2024-07-04T22:41:36.824Z [[32minfo[39m]: Order with id cly7uppnv000c5aj9rud6mbee deleted
+2024-07-04T22:41:37.150Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:41:37.215Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:41:37.197Z [[32minfo[39m]: User with email testuser-1720132896894@gmail.com created
+2024-07-04T22:41:37.238Z [[32minfo[39m]: Category with id cly7uppzh0007nligtvdulbxv retrieved
+2024-07-04T22:41:37.259Z [[32minfo[39m]: Category with id cly7upq010008nlige3zc78if updated
+2024-07-04T22:41:37.279Z [[32minfo[39m]: Category with id cly7upq0l0009nligqjzpyx3w deleted
+2024-07-04T22:41:37.279Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:41:37.301Z [[32minfo[39m]: User with id cly7upq1a00071d49qokyi112 retrieved
+2024-07-04T22:41:37.332Z [[32minfo[39m]: User with id cly7upq2200081d49ed6rahu8 updated
+2024-07-04T22:41:37.363Z [[32minfo[39m]: User with id cly7upq2w00091d497o1n1lqw deleted
+2024-07-04T22:42:36.313Z [[32minfo[39m]: OrderItem with id cly7uqzkm0000bokxd4hef3vx created
+2024-07-04T22:42:36.391Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:42:36.408Z [[32minfo[39m]: OrderItem with id cly7uqzn90018aq8nlm2dgph9 retrieved
+2024-07-04T22:42:36.428Z [[32minfo[39m]: OrderItem with id cly7uqzno001gaq8nk522y9a4 updated
+2024-07-04T22:42:36.445Z [[32minfo[39m]: OrderItem with id cly7uqzo7001oaq8ne5kpshub deleted
+2024-07-04T22:42:36.933Z [[32minfo[39m]: Order with id cly7ur01s0000bokx69dghv4p created
+2024-07-04T22:42:36.957Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:42:36.968Z [[32minfo[39m]: Order with id cly7ur02s001vaq8novxot14x retrieved
+2024-07-04T22:42:36.978Z [[32minfo[39m]: Order with id cly7ur032001yaq8nfhh2u5qb updated
+2024-07-04T22:42:36.987Z [[32minfo[39m]: Order with id cly7ur03c0021aq8nr9dn7cdf deleted
+2024-07-04T22:42:37.462Z [[32minfo[39m]: Cart item with id cly7ur0gf0000bokx6ceqaw7s created
+2024-07-04T22:42:37.485Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:42:37.503Z [[32minfo[39m]: Cart item with id cly7ur0hn002naq8nxqwdosy8 retrieved
+2024-07-04T22:42:37.529Z [[32minfo[39m]: Cart item with id cly7ur0i7002vaq8n03ilnnr6 updated
+2024-07-04T22:42:37.549Z [[32minfo[39m]: Cart item with id cly7ur0iu0033aq8nq9fbwxn2 deleted
+2024-07-04T22:42:38.032Z [[32minfo[39m]: Cart with id cly7ur0w50000bokx8c7ifs54 created
+2024-07-04T22:42:38.060Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:42:38.072Z [[32minfo[39m]: Cart with id cly7ur0xh003baq8nv0d7yuah retrieved
+2024-07-04T22:42:38.086Z [[32minfo[39m]: Cart with id cly7ur0xr003eaq8nmwkqfpj2 updated
+2024-07-04T22:42:38.098Z [[32minfo[39m]: Cart with id cly7ur0y7003haq8nyc30tbzf deleted
+2024-07-04T22:42:38.574Z [[32minfo[39m]: Product with name Sample product-1720132958563 created
+2024-07-04T22:42:38.597Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:42:38.612Z [[32minfo[39m]: Product with id cly7ur1cd003oaq8nk4nyq9iz retrieved
+2024-07-04T22:42:38.629Z [[32minfo[39m]: Product with id cly7ur1ct003raq8n5zwgwssj updated
+2024-07-04T22:42:38.640Z [[32minfo[39m]: Product with id cly7ur1d9003uaq8nezz2uzfo deleted
+2024-07-04T22:42:41.426Z [[32minfo[39m]: User with email testuser-1720132961362@gmail.com created
+2024-07-04T22:42:41.448Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:42:41.458Z [[32minfo[39m]: User with id cly7ur3jj0059aq8njx0f38ai retrieved
+2024-07-04T22:42:41.471Z [[32minfo[39m]: User with id cly7ur3jw005aaq8np92hhney updated
+2024-07-04T22:42:41.484Z [[32minfo[39m]: User with id cly7ur3k9005baq8nw01e94bh deleted
+2024-07-04T22:42:41.981Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:42:42.006Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:42:42.017Z [[32minfo[39m]: Category with id cly7ur3z2005eaq8n2rnicb2x retrieved
+2024-07-04T22:42:42.026Z [[32minfo[39m]: Category with id cly7ur3za005faq8nnig6xnip updated
+2024-07-04T22:42:42.036Z [[32minfo[39m]: Category with id cly7ur3zl005gaq8n35z3lqo7 deleted
+2024-07-04T22:44:19.313Z [[32minfo[39m]: OrderItem with id cly7ut71a0000ackxctpxb5ad created
+2024-07-04T22:44:19.527Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:44:19.741Z [[32minfo[39m]: OrderItem with id cly7ut7cn000r73x97avaze2w updated
+2024-07-04T22:44:19.829Z [[32minfo[39m]: OrderItem with id cly7ut7f9000z73x9cihnowvm deleted
+2024-07-04T22:44:19.853Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:44:20.010Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:44:20.044Z [[32minfo[39m]: Category with id cly7ut7lq0002ovq5p9vl5mza retrieved
+2024-07-04T22:44:20.077Z [[32minfo[39m]: Category with id cly7ut7ml0003ovq5jwca87w0 updated
+2024-07-04T22:44:20.106Z [[32minfo[39m]: Category with id cly7ut7ni0004ovq5gyyg0914 deleted
+2024-07-04T22:44:20.255Z [[32minfo[39m]: Order with id cly7ut7rj000084kxbbsdcm8s created
+2024-07-04T22:44:20.387Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:44:20.423Z [[32minfo[39m]: Order with id cly7ut7wa00069xo0zgnrc1j6 retrieved
+2024-07-04T22:44:20.404Z [[32minfo[39m]: User with email testuser-1720133060032@gmail.com created
+2024-07-04T22:44:20.469Z [[32minfo[39m]: Order with id cly7ut7xj00099xo0wsek38pb updated
+2024-07-04T22:44:20.502Z [[32minfo[39m]: Order with id cly7ut7yj000c9xo0oh48eblm deleted
+2024-07-04T22:44:20.467Z [[32minfo[39m]: Product with name Sample product-1720133060333 created
+2024-07-04T22:44:20.553Z [[32minfo[39m]: Users retrieved
+2024-07-04T22:44:20.612Z [[32minfo[39m]: User with id cly7ut81e0001q0iwl0mxhs2n retrieved
+2024-07-04T22:44:20.618Z [[32minfo[39m]: Products retrieved
+2024-07-04T22:44:20.665Z [[32minfo[39m]: User with id cly7ut82u0002q0iw836wr8lh updated
+2024-07-04T22:44:20.666Z [[32minfo[39m]: Product with id cly7ut82y0006fs1evyddr5tl retrieved
+2024-07-04T22:44:20.737Z [[32minfo[39m]: User with id cly7ut84q0003q0iwcaq3lige deleted
+2024-07-04T22:44:20.743Z [[32minfo[39m]: Product with id cly7ut84d0009fs1eyr6g1zf5 updated
+2024-07-04T22:44:20.798Z [[32minfo[39m]: Product with id cly7ut86l000cfs1em5is5y4r deleted
+2024-07-04T22:44:20.740Z [[32minfo[39m]: Cart item with id cly7ut84k0000rgkx11j772mr created
+2024-07-04T22:44:20.932Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:44:20.942Z [[32minfo[39m]: Cart with id cly7ut8a60000mkkxfcs93ya8 created
+2024-07-04T22:44:20.980Z [[32minfo[39m]: Cart item with id cly7ut8br000ldaecf3sj8zmq retrieved
+2024-07-04T22:44:21.048Z [[32minfo[39m]: Cart item with id cly7ut8d7000tdaecttug492i updated
+2024-07-04T22:44:21.068Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:44:21.093Z [[32minfo[39m]: Cart item with id cly7ut8ew0011daecn4vqjw0i deleted
+2024-07-04T22:44:21.101Z [[32minfo[39m]: Cart with id cly7ut8f70007j0a8nxky9z5x retrieved
+2024-07-04T22:44:21.139Z [[32minfo[39m]: Cart with id cly7ut8g3000aj0a8rq6b4ecu updated
+2024-07-04T22:44:21.168Z [[32minfo[39m]: Cart with id cly7ut8h3000dj0a85h4652li deleted
+2024-07-04T22:45:14.823Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:45:14.849Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:45:14.863Z [[32minfo[39m]: Category with id cly7uudwq00022uknzbfk7190 retrieved
+2024-07-04T22:45:14.878Z [[32minfo[39m]: Category with id cly7uudx400032ukncphpjddu updated
+2024-07-04T22:45:14.889Z [[32minfo[39m]: Category with id cly7uudxg00042uknoap6qn3e deleted
+2024-07-04T22:45:25.942Z [[32minfo[39m]: OrderItem with id cly7uumgi00009skxa58x3j9j created
+2024-07-04T22:45:25.980Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:45:26.028Z [[32minfo[39m]: OrderItem with id cly7uumir000rgd1c3g5j0phx updated
+2024-07-04T22:45:26.051Z [[32minfo[39m]: OrderItem with id cly7uumji000zgd1cb28bzz27 deleted
+2024-07-04T22:45:32.160Z [[32minfo[39m]: OrderItem with id cly7uur9800005ckxgykpdy8e created
+2024-07-04T22:45:32.239Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:45:32.260Z [[32minfo[39m]: OrderItem with id cly7uurc0000leqyh88bqxmii retrieved
+2024-07-04T22:45:32.282Z [[32minfo[39m]: OrderItem with id cly7uurcj000teqyhc6jjj01x updated
+2024-07-04T22:45:32.308Z [[32minfo[39m]: OrderItem with id cly7uurd80011eqyh5k7h5sz8 deleted
+2024-07-04T22:45:54.172Z [[32minfo[39m]: OrderItem with id cly7uv88o00008skx2viidp6t created
+2024-07-04T22:45:54.247Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:45:54.277Z [[32minfo[39m]: OrderItem with id cly7uv8bk000l2g7fy5z5sets retrieved
+2024-07-04T22:45:54.304Z [[32minfo[39m]: OrderItem with id cly7uv8c7000t2g7fwy287vr2 updated
+2024-07-04T22:45:54.322Z [[32minfo[39m]: OrderItem with id cly7uv8cs00112g7fquecexib deleted
+2024-07-04T22:45:59.141Z [[32minfo[39m]: OrderItem with id cly7uvc2p000064kx50f21tb0 created
+2024-07-04T22:45:59.177Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T22:45:59.197Z [[32minfo[39m]: OrderItem with id cly7uvc49000lbxzro9d5ar0u retrieved
+2024-07-04T22:45:59.221Z [[32minfo[39m]: OrderItem with id cly7uvc4s000tbxzryb2q05l0 updated
+2024-07-04T22:45:59.242Z [[32minfo[39m]: OrderItem with id cly7uvc5f0011bxzr9uk35b3w deleted
+2024-07-04T22:46:07.490Z [[32minfo[39m]: Cart item with id cly7uviii0000mckx2pta2o1d created
+2024-07-04T22:46:07.525Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T22:46:07.547Z [[32minfo[39m]: Cart item with id cly7uvik7000l2gr4fqyeifg1 retrieved
+2024-07-04T22:46:07.571Z [[32minfo[39m]: Cart item with id cly7uvikq000t2gr4vv8l4fna updated
+2024-07-04T22:46:07.592Z [[32minfo[39m]: Cart item with id cly7uvild00112gr48ba72yf5 deleted
+2024-07-04T22:46:17.786Z [[32minfo[39m]: Cart with id cly7uvqgf0000mskx1ojpgh0p created
+2024-07-04T22:46:17.825Z [[32minfo[39m]: Carts retrieved
+2024-07-04T22:46:17.841Z [[32minfo[39m]: Cart with id cly7uvqi50007qhwcx9xckmn9 retrieved
+2024-07-04T22:46:17.858Z [[32minfo[39m]: Cart with id cly7uvqij000aqhwcx37kum12 updated
+2024-07-04T22:46:17.871Z [[32minfo[39m]: Cart with id cly7uvqiy000dqhwc1z97wjuy deleted
+2024-07-04T22:46:27.933Z [[32minfo[39m]: Order with id cly7uvyad000008kxc2ev6cre created
+2024-07-04T22:46:27.969Z [[32minfo[39m]: Orders retrieved
+2024-07-04T22:46:27.987Z [[32minfo[39m]: Order with id cly7uvybx0006ivcopoueobkc retrieved
+2024-07-04T22:46:28.005Z [[32minfo[39m]: Order with id cly7uvycd0009ivco5qxlrihq updated
+2024-07-04T22:46:28.020Z [[32minfo[39m]: Order with id cly7uvycu000civcos15jf3gk deleted
+2024-07-04T22:46:46.499Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T22:46:46.539Z [[32minfo[39m]: Categories retrieved
+2024-07-04T22:46:46.552Z [[32minfo[39m]: Category with id cly7uwcno0002jpmqxg46432d retrieved
+2024-07-04T22:46:46.567Z [[32minfo[39m]: Category with id cly7uwco10003jpmqwb0qst59 updated
+2024-07-04T22:46:46.579Z [[32minfo[39m]: Category with id cly7uwcof0004jpmqy0a57xdt deleted
+2024-07-04T23:02:44.136Z [[32minfo[39m]: Product with name Sample product-1720134163986 created
+2024-07-04T23:02:44.190Z [[32minfo[39m]: Cart with id cly7vgvju0000lokxa2czccl7 created
+2024-07-04T23:02:44.274Z [[32minfo[39m]: Products retrieved
+2024-07-04T23:02:44.315Z [[32minfo[39m]: Product with id cly7vgvnw000612s9loh0s13a retrieved
+2024-07-04T23:02:44.318Z [[32minfo[39m]: Carts retrieved
+2024-07-04T23:02:44.355Z [[32minfo[39m]: Cart with id cly7vgvp30007giwio31bx6ns retrieved
+2024-07-04T23:02:44.364Z [[32minfo[39m]: Product with id cly7vgvp0000912s9pllmqo5v updated
+2024-07-04T23:02:44.398Z [[32minfo[39m]: Product with id cly7vgvqa000c12s90k4cwgly deleted
+2024-07-04T23:02:44.397Z [[32minfo[39m]: Cart with id cly7vgvq3000agiwii81hjua5 updated
+2024-07-04T23:02:44.430Z [[32minfo[39m]: Cart with id cly7vgvr8000dgiwi4lpa670c deleted
+2024-07-04T23:02:44.397Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T23:02:44.515Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:02:44.490Z [[32minfo[39m]: OrderItem with id cly7vgvsn0000ewkxaj2n4lx9 created
+2024-07-04T23:02:44.546Z [[32minfo[39m]: Category with id cly7vgvuc0002ypffavt2svle retrieved
+2024-07-04T23:02:44.572Z [[32minfo[39m]: Category with id cly7vgvv40003ypffj9st29nt updated
+2024-07-04T23:02:44.609Z [[32minfo[39m]: Category with id cly7vgvw10004ypffc3lsa5pe deleted
+2024-07-04T23:02:44.641Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T23:02:44.629Z [[32minfo[39m]: User with email testuser-1720134164299@gmail.com created
+2024-07-04T23:02:44.779Z [[32minfo[39m]: Users retrieved
+2024-07-04T23:02:44.832Z [[32minfo[39m]: User with id cly7vgw230001ohmd1muz5wlf retrieved
+2024-07-04T23:02:44.848Z [[32minfo[39m]: OrderItem with id cly7vgw25000r48v7q3oap1od updated
+2024-07-04T23:02:44.878Z [[32minfo[39m]: User with id cly7vgw3i0002ohmdf0e2lk78 updated
+2024-07-04T23:02:44.910Z [[32minfo[39m]: OrderItem with id cly7vgw47000z48v7cqma4crj deleted
+2024-07-04T23:02:44.917Z [[32minfo[39m]: User with id cly7vgw4o0003ohmdgbhkqh2w deleted
+2024-07-04T23:02:45.075Z [[32minfo[39m]: Cart item with id cly7vgw890000n0kxhrxwbi6y created
+2024-07-04T23:02:45.111Z [[32minfo[39m]: Order with id cly7vgw9y0000mwkxgbga5ky5 created
+2024-07-04T23:02:45.267Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T23:02:45.281Z [[32minfo[39m]: Orders retrieved
+2024-07-04T23:02:45.316Z [[32minfo[39m]: Order with id cly7vgwfr0006pdrkk355el05 retrieved
+2024-07-04T23:02:45.314Z [[32minfo[39m]: Cart item with id cly7vgwfr000lf0zhtxkiku1t retrieved
+2024-07-04T23:02:45.362Z [[32minfo[39m]: Order with id cly7vgwh00009pdrk2j4pubbw updated
+2024-07-04T23:02:45.389Z [[32minfo[39m]: Cart item with id cly7vgwhj000tf0zhxyj1d1y2 updated
+2024-07-04T23:02:45.393Z [[32minfo[39m]: Order with id cly7vgwhy000cpdrk7qfniv9a deleted
+2024-07-04T23:02:45.438Z [[32minfo[39m]: Cart item with id cly7vgwj10011f0zhauw76qci deleted
+2024-07-04T23:07:18.236Z [[32minfo[39m]: OrderItem with id cly7vmr10000034kx2nyq5avw created
+2024-07-04T23:07:18.372Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T23:07:18.407Z [[32minfo[39m]: OrderItem with id cly7vmr5s000l9mmupa3x5t8i retrieved
+2024-07-04T23:07:18.453Z [[32minfo[39m]: OrderItem with id cly7vmr6s000t9mmutcqy5cum updated
+2024-07-04T23:07:18.489Z [[32minfo[39m]: OrderItem with id cly7vmr7x00119mmuz1wzzwx9 deleted
+2024-07-04T23:07:19.512Z [[32minfo[39m]: Order with id cly7vms0g000034kx1jly3o4v created
+2024-07-04T23:07:19.547Z [[32minfo[39m]: Orders retrieved
+2024-07-04T23:07:19.577Z [[32minfo[39m]: Order with id cly7vms2300189mmunzl26nko retrieved
+2024-07-04T23:07:19.599Z [[32minfo[39m]: Order with id cly7vms2v001b9mmutkuxbmg7 updated
+2024-07-04T23:07:19.619Z [[32minfo[39m]: Order with id cly7vms3h001e9mmu1aqx1xjt deleted
+2024-07-04T23:07:20.548Z [[32minfo[39m]: Cart item with id cly7vmst5000034kxc6osa6r3 created
+2024-07-04T23:07:20.586Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T23:07:20.621Z [[32minfo[39m]: Cart item with id cly7vmsv600209mmu8s212ypf retrieved
+2024-07-04T23:07:20.660Z [[32minfo[39m]: Cart item with id cly7vmsw600289mmubsev0upo updated
+2024-07-04T23:07:20.695Z [[32minfo[39m]: Cart item with id cly7vmsx8002g9mmu3ugnedds deleted
+2024-07-04T23:07:21.760Z [[32minfo[39m]: User with email testuser-1720134441612@gmail.com created
+2024-07-04T23:07:21.794Z [[32minfo[39m]: Users retrieved
+2024-07-04T23:07:21.816Z [[32minfo[39m]: User with id cly7vmtsi002i9mmuo5k9zsj8 retrieved
+2024-07-04T23:07:21.836Z [[32minfo[39m]: User with id cly7vmtt1002j9mmubjbg65if updated
+2024-07-04T23:07:21.865Z [[32minfo[39m]: User with id cly7vmttu002k9mmui4eoz4l9 deleted
+2024-07-04T23:07:22.837Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T23:07:22.872Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:07:22.892Z [[32minfo[39m]: Category with id cly7vmumc002n9mmugg9p1r7m retrieved
+2024-07-04T23:07:22.912Z [[32minfo[39m]: Category with id cly7vmumv002o9mmuqagtz13c updated
+2024-07-04T23:07:22.934Z [[32minfo[39m]: Category with id cly7vmunj002p9mmu60pn1twi deleted
+2024-07-04T23:07:23.967Z [[32minfo[39m]: Cart with id cly7vmvg0000034kxfkf4e6h7 created
+2024-07-04T23:07:24.009Z [[32minfo[39m]: Carts retrieved
+2024-07-04T23:07:24.034Z [[32minfo[39m]: Cart with id cly7vmvi4002x9mmuzxeahkwq retrieved
+2024-07-04T23:07:24.057Z [[32minfo[39m]: Cart with id cly7vmvio00309mmuuwv3aptf updated
+2024-07-04T23:07:24.079Z [[32minfo[39m]: Cart with id cly7vmvjc00339mmumx9pcmqt deleted
+2024-07-04T23:07:24.964Z [[32minfo[39m]: Product with name Sample product-1720134444946 created
+2024-07-04T23:07:24.994Z [[32minfo[39m]: Products retrieved
+2024-07-04T23:07:25.018Z [[32minfo[39m]: Product with id cly7vmw9f003a9mmuzawxsrhy retrieved
+2024-07-04T23:07:25.053Z [[32minfo[39m]: Product with id cly7vmwa4003d9mmux2lb7a9t updated
+2024-07-04T23:07:25.076Z [[32minfo[39m]: Product with id cly7vmwb1003g9mmukzm2u2cx deleted
+2024-07-04T23:33:03.576Z [[32minfo[39m]: Cart item with id cly7wjvee0000bkkx7oc578hd created
+2024-07-04T23:33:03.721Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T23:33:03.772Z [[32minfo[39m]: Cart item with id cly7wjvkg000lu16f4pvhnc6k retrieved
+2024-07-04T23:33:03.843Z [[32minfo[39m]: Cart item with id cly7wjvm2000tu16fwwfh8fw2 updated
+2024-07-04T23:33:03.905Z [[32minfo[39m]: Cart item with id cly7wjvny0011u16fbh2cvdlp deleted
+2024-07-04T23:33:03.900Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T23:33:04.021Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:33:04.057Z [[32minfo[39m]: Category with id cly7wjvsc0002lzchr86fqwrh retrieved
+2024-07-04T23:33:04.093Z [[32minfo[39m]: Category with id cly7wjvta0003lzch719ut8r7 updated
+2024-07-04T23:33:04.120Z [[32minfo[39m]: Category with id cly7wjvu40004lzchjxgwzdvq deleted
+2024-07-04T23:33:04.076Z [[32minfo[39m]: Order with id cly7wjvsp0000y8kxe4s33bag created
+2024-07-04T23:33:04.214Z [[32minfo[39m]: Orders retrieved
+2024-07-04T23:33:04.180Z [[32minfo[39m]: Cart with id cly7wjvv700005ckxf3lje6l0 created
+2024-07-04T23:33:04.253Z [[32minfo[39m]: Order with id cly7wjvxs0006y5sofdfb0bc0 retrieved
+2024-07-04T23:33:04.293Z [[32minfo[39m]: Order with id cly7wjvyx0009y5so6aqeu8h3 updated
+2024-07-04T23:33:04.300Z [[32minfo[39m]: Carts retrieved
+2024-07-04T23:33:04.337Z [[32minfo[39m]: Cart with id cly7wjw030007majli1ed1dch retrieved
+2024-07-04T23:33:04.372Z [[32minfo[39m]: Order with id cly7wjw16000cy5soq035aepu deleted
+2024-07-04T23:33:04.383Z [[32minfo[39m]: Cart with id cly7wjw16000amajla802chqm updated
+2024-07-04T23:33:04.414Z [[32minfo[39m]: Cart with id cly7wjw2d000dmajl2jdkofe2 deleted
+2024-07-04T23:33:04.499Z [[32minfo[39m]: User with email testuser-1720135984195@gmail.com created
+2024-07-04T23:33:04.625Z [[32minfo[39m]: Users retrieved
+2024-07-04T23:33:04.596Z [[32minfo[39m]: Product with name Sample product-1720135984464 created
+2024-07-04T23:33:04.661Z [[32minfo[39m]: User with id cly7wjw940001wj4m7629i87s retrieved
+2024-07-04T23:33:04.708Z [[32minfo[39m]: Products retrieved
+2024-07-04T23:33:04.709Z [[32minfo[39m]: User with id cly7wjwaa0002wj4m9pe78c27 updated
+2024-07-04T23:33:04.694Z [[32minfo[39m]: OrderItem with id cly7wjwa10000p4kxfcl1glh0 created
+2024-07-04T23:33:04.748Z [[32minfo[39m]: Product with id cly7wjwbj0006pcz91ab9s3t5 retrieved
+2024-07-04T23:33:04.752Z [[32minfo[39m]: User with id cly7wjwbm0003wj4mgmah2zzx deleted
+2024-07-04T23:33:04.808Z [[32minfo[39m]: Product with id cly7wjwcs0009pcz932hqwvlj updated
+2024-07-04T23:33:04.842Z [[32minfo[39m]: Product with id cly7wjwe7000cpcz9nj77gbnj deleted
+2024-07-04T23:33:04.981Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T23:33:05.043Z [[32minfo[39m]: OrderItem with id cly7wjwjq000lk4be3gdiaahg retrieved
+2024-07-04T23:33:05.099Z [[32minfo[39m]: OrderItem with id cly7wjwkz000tk4beb9olxv9l updated
+2024-07-04T23:33:05.144Z [[32minfo[39m]: OrderItem with id cly7wjwmj0011k4beb0wofg7r deleted
+2024-07-04T23:38:03.731Z [[32minfo[39m]: OrderItem with id cly7wqb0n00007okxfqft59o5 created
+2024-07-04T23:38:03.889Z [[32minfo[39m]: OrderItems retrieved
+2024-07-04T23:38:03.954Z [[32minfo[39m]: OrderItem with id cly7wqb6p000lq7nia20y5jop retrieved
+2024-07-04T23:38:04.009Z [[32minfo[39m]: OrderItem with id cly7wqb7z000tq7nim843qjiq updated
+2024-07-04T23:38:04.068Z [[32minfo[39m]: OrderItem with id cly7wqb9w0011q7niwd1ocq57 deleted
+2024-07-04T23:38:04.194Z [[32minfo[39m]: Cart with id cly7wqbcx0000pskx3cvcffyn created
+2024-07-04T23:38:04.219Z [[32minfo[39m]: Product with name Sample product-1720136284068 created
+2024-07-04T23:38:04.288Z [[32minfo[39m]: Carts retrieved
+2024-07-04T23:38:04.262Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T23:38:04.315Z [[32minfo[39m]: Products retrieved
+2024-07-04T23:38:04.345Z [[32minfo[39m]: Product with id cly7wqbhs0006yih02dtxp517 retrieved
+2024-07-04T23:38:04.359Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:38:04.392Z [[32minfo[39m]: Product with id cly7wqbim0009yih0w1h1i2vh updated
+2024-07-04T23:38:04.371Z [[32minfo[39m]: Order with id cly7wqbib0000okkx1ul576sm created
+2024-07-04T23:38:04.423Z [[32minfo[39m]: Product with id cly7wqbjx000cyih0pshupotg deleted
+2024-07-04T23:38:04.397Z [[32minfo[39m]: User with email testuser-1720136284078@gmail.com created
+2024-07-04T23:38:04.416Z [[32minfo[39m]: Cart item with id cly7wqbjd0000sgkx1gqtfwpk created
+2024-07-04T23:38:04.477Z [[32minfo[39m]: Orders retrieved
+2024-07-04T23:38:04.503Z [[32minfo[39m]: Users retrieved
+2024-07-04T23:38:04.514Z [[32minfo[39m]: Order with id cly7wqbmd0006z5lhjnpea9y8 retrieved
+2024-07-04T23:38:04.523Z [[32minfo[39m]: Cart items retrieved
+2024-07-04T23:38:04.537Z [[32minfo[39m]: User with id cly7wqbn00001144ych1dt0ut retrieved
+2024-07-04T23:38:04.552Z [[32minfo[39m]: Order with id cly7wqbnd0009z5lhihlr5e9w updated
+2024-07-04T23:38:04.569Z [[32minfo[39m]: Cart item with id cly7wqbnv000l5xktg2ybg8mr retrieved
+2024-07-04T23:38:04.573Z [[32minfo[39m]: User with id cly7wqbnw0002144ytn2u10fk updated
+2024-07-04T23:38:04.588Z [[32minfo[39m]: Order with id cly7wqboc000cz5lhvtmm94rv deleted
+2024-07-04T23:38:04.606Z [[32minfo[39m]: User with id cly7wqbot0003144yijc88yq6 deleted
+2024-07-04T23:38:04.623Z [[32minfo[39m]: Cart item with id cly7wqbp4000t5xktirr0lh7r updated
+2024-07-04T23:38:04.666Z [[32minfo[39m]: Cart item with id cly7wqbqi00115xkt5behwlmg deleted
+2024-07-04T23:38:42.966Z [[31merror[39m]: Failed to create category: PrismaClientKnownRequestError: 
+Invalid `prisma.category.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\categoryService.ts:26:32
+
+  23   ...category,
+  24   id: cuid(),
+  25 };
+→ 26 return await prisma.category.create(
+Unique constraint failed on the fields: (`name`)
+2024-07-04T23:39:08.773Z [[32minfo[39m]: Order with id cly7wrp7i0000ewkx9r990tf0 created
+2024-07-04T23:39:08.797Z [[32minfo[39m]: Orders retrieved
+2024-07-04T23:39:08.816Z [[32minfo[39m]: Order with id cly7wrp8r0006fe4xxg35op2n retrieved
+2024-07-04T23:39:08.831Z [[32minfo[39m]: Order with id cly7wrp950009fe4xdspabmxo updated
+2024-07-04T23:39:08.848Z [[32minfo[39m]: Order with id cly7wrp9m000cfe4x2tufofqs deleted
+2024-07-04T23:39:44.550Z [[32minfo[39m]: Product with name Sample product-1720136384507 created
+2024-07-04T23:39:44.580Z [[32minfo[39m]: Products retrieved
+2024-07-04T23:39:44.595Z [[32minfo[39m]: Product with id cly7wsgum0006o64wbenqjb5z retrieved
+2024-07-04T23:39:44.617Z [[32minfo[39m]: Product with id cly7wsgv10009o64wfxxzorth updated
+2024-07-04T23:39:44.630Z [[32minfo[39m]: Product with id cly7wsgvm000co64w2vli62ve deleted
+2024-07-04T23:39:55.882Z [[32minfo[39m]: User with email testuser-1720136395752@gmail.com created
+2024-07-04T23:39:55.910Z [[32minfo[39m]: Users retrieved
+2024-07-04T23:39:55.924Z [[32minfo[39m]: User with id cly7wsplb0001qyrx520fzt1m retrieved
+2024-07-04T23:39:55.944Z [[32minfo[39m]: User with id cly7wsplr0002qyrxtup6ienv updated
+2024-07-04T23:39:55.961Z [[32minfo[39m]: User with id cly7wspma0003qyrx58ldy4vg deleted
+2024-07-04T23:40:06.502Z [[31merror[39m]: Failed to create category: PrismaClientKnownRequestError: 
+Invalid `prisma.category.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\categoryService.ts:26:32
+
+  23   ...category,
+  24   id: cuid(),
+  25 };
+→ 26 return await prisma.category.create(
+Unique constraint failed on the fields: (`name`)
+2024-07-04T23:40:46.210Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T23:40:46.242Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:41:59.628Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T23:41:59.662Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:42:23.941Z [[32minfo[39m]: Order with id cly7wvvss0000gwkx5spgby95 created
+2024-07-04T23:42:23.974Z [[32minfo[39m]: Orders retrieved
+2024-07-04T23:42:23.991Z [[32minfo[39m]: Order with id cly7wvvua0006sm4byejn8ax6 retrieved
+2024-07-04T23:42:24.011Z [[32minfo[39m]: Order with id cly7wvvus0009sm4bpm66xed2 updated
+2024-07-04T23:42:24.031Z [[32minfo[39m]: Order with id cly7wvvva000csm4b8qklow6q deleted
+2024-07-04T23:42:33.497Z [[32minfo[39m]: Order with id cly7ww3680000xckx7srh6d5w created
+2024-07-04T23:42:33.529Z [[32minfo[39m]: Orders retrieved
+2024-07-04T23:42:33.547Z [[32minfo[39m]: Order with id cly7ww37q0006dzk131puic0a retrieved
+2024-07-04T23:42:33.567Z [[32minfo[39m]: Order with id cly7ww3880009dzk1l7ppxozl updated
+2024-07-04T23:42:33.585Z [[32minfo[39m]: Order with id cly7ww38q000cdzk1pkbo07e2 deleted
+2024-07-04T23:43:47.495Z [[32minfo[39m]: Category with name Category 1 created
+2024-07-04T23:43:47.532Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:44:29.170Z [[32minfo[39m]: Order with id cly7wykf4000018kxgs243bs9 created
+2024-07-04T23:44:29.220Z [[32minfo[39m]: Orders retrieved
+2024-07-04T23:44:29.252Z [[32minfo[39m]: Order with id cly7wykhl000611o0iijo6y3n retrieved
+2024-07-04T23:44:29.300Z [[32minfo[39m]: Order with id cly7wykit000911o0l83cn7g5 updated
+2024-07-04T23:44:29.333Z [[32minfo[39m]: Order with id cly7wykjq000c11o0dl7wxv3d deleted
+2024-07-04T23:44:45.128Z [[31merror[39m]: Failed to create category: PrismaClientKnownRequestError: 
+Invalid `prisma.category.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\categoryService.ts:26:32
+
+  23   ...category,
+  24   id: cuid(),
+  25 };
+→ 26 return await prisma.category.create(
+Unique constraint failed on the fields: (`name`)
+2024-07-04T23:46:41.970Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-04T23:46:42.012Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:46:42.035Z [[32minfo[39m]: Category with id cly7x1ey200028ksbvixn7ad7 retrieved
+2024-07-04T23:46:42.053Z [[32minfo[39m]: Category with id cly7x1eyl00038ksbn72kzxyx updated
+2024-07-04T23:46:42.078Z [[32minfo[39m]: Category with id cly7x1ez500048ksbplvm45ko deleted
+2024-07-04T23:46:52.926Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-04T23:46:52.988Z [[32minfo[39m]: Category with id cly7x1nea0002ahiqn7f7oxij retrieved
+2024-07-04T23:46:53.008Z [[32minfo[39m]: Category with id cly7x1ney0003ahiqg411aynd updated
+2024-07-04T23:46:53.025Z [[32minfo[39m]: Category with id cly7x1nfd0004ahiqslc8p1q4 deleted
+2024-07-04T23:47:37.778Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-04T23:47:37.820Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:47:37.841Z [[32minfo[39m]: Category with id cly7x2m090002w8tx9db5z2q5 retrieved
+2024-07-04T23:47:37.866Z [[32minfo[39m]: Category with id cly7x2m0y0003w8txl2avx3pw updated
+2024-07-04T23:47:37.890Z [[32minfo[39m]: Category with id cly7x2m1i0004w8txnedar4ka deleted
+2024-07-04T23:49:32.410Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-04T23:49:32.460Z [[32minfo[39m]: Categories retrieved
+2024-07-04T23:49:32.480Z [[32minfo[39m]: Category with id cly7x52go00021465r28vys3e retrieved
+2024-07-04T23:49:32.501Z [[32minfo[39m]: Category with id cly7x52h700031465e1cshzeb updated
+2024-07-04T23:49:32.523Z [[32minfo[39m]: Category with id cly7x52ht000414653c1tld3y deleted
+2024-07-08T11:52:59.437Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T11:52:59.465Z [[32minfo[39m]: Categories retrieved
+2024-07-08T11:52:59.478Z [[32minfo[39m]: Category with id clycxazio0002jie3kzm4hjq3 retrieved
+2024-07-08T11:52:59.497Z [[32minfo[39m]: Category with id clycxazj60003jie3hl363p84 updated
+2024-07-08T11:52:59.509Z [[32minfo[39m]: Category with id clycxazjj0004jie3lba1rho8 deleted
+2024-07-08T11:54:02.355Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T11:54:02.373Z [[32minfo[39m]: Categories retrieved
+2024-07-08T11:54:02.385Z [[32minfo[39m]: Category with id clycxcc250002ss3ikoqer9sa retrieved
+2024-07-08T11:54:02.404Z [[32minfo[39m]: Category with id clycxcc2o0003ss3i2kocazcb updated
+2024-07-08T11:54:02.418Z [[32minfo[39m]: Category with id clycxcc310004ss3iqpoq4rho deleted
+2024-07-08T12:00:09.636Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T12:00:09.655Z [[32minfo[39m]: Categories retrieved
+2024-07-08T12:00:09.665Z [[32minfo[39m]: Category with id clycxk7gd0002uksfl8yogh9c retrieved
+2024-07-08T12:00:09.678Z [[32minfo[39m]: Category with id clycxk7gn0003uksf7dkdvkoh updated
+2024-07-08T12:00:09.688Z [[32minfo[39m]: Category with id clycxk7gz0004uksf203hk0ik deleted
+2024-07-08T12:01:02.507Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T12:01:02.527Z [[32minfo[39m]: Categories retrieved
+2024-07-08T12:01:02.538Z [[32minfo[39m]: Category with id clycxlc920002tsqxba3liomo retrieved
+2024-07-08T12:01:02.548Z [[32minfo[39m]: Category with id clycxlc9d0003tsqxqlbxpgva updated
+2024-07-08T12:01:02.564Z [[32minfo[39m]: Category with id clycxlc9s0004tsqxf8d3alnc deleted
+2024-07-08T12:01:57.060Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T12:01:57.079Z [[32minfo[39m]: Category with id clycxmic20000951vrc15p5as retrieved
+2024-07-08T12:01:57.090Z [[32minfo[39m]: Category with id clycxmice0001951veyhpj16k updated
+2024-07-08T12:01:57.106Z [[32minfo[39m]: Category with id clycxmicr0002951v2farmgz0 deleted
+2024-07-08T12:02:07.579Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T12:02:07.597Z [[32minfo[39m]: Category with id clycxmqg80000pf1rikxoluzj retrieved
+2024-07-08T12:02:07.606Z [[32minfo[39m]: Category with id clycxmqgj0001pf1rt3zpo3z8 updated
+2024-07-08T12:02:07.620Z [[32minfo[39m]: Category with id clycxmqgv0002pf1rwq31jtvm deleted
+2024-07-08T12:09:15.984Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T12:09:16.008Z [[32minfo[39m]: Categories retrieved
+2024-07-08T12:09:16.021Z [[32minfo[39m]: Category with id clycxvx0y0001t2rxm58hmmcq retrieved
+2024-07-08T12:09:16.033Z [[32minfo[39m]: Category with id clycxvx180002t2rxamc7e0fx updated
+2024-07-08T12:09:16.044Z [[32minfo[39m]: Category with id clycxvx1k0003t2rxncgj7844 deleted
+2024-07-08T12:09:29.822Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T12:09:29.841Z [[32minfo[39m]: Categories retrieved
+2024-07-08T12:09:29.851Z [[32minfo[39m]: Category with id clycxw7p4000116ae8ygrvttz retrieved
+2024-07-08T12:09:29.864Z [[32minfo[39m]: Category with id clycxw7pc000216aet94g61fs updated
+2024-07-08T12:09:29.875Z [[32minfo[39m]: Category with id clycxw7pr000316aeffb57x06 deleted
+2024-07-08T12:09:34.947Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T12:09:34.965Z [[32minfo[39m]: Categories retrieved
+2024-07-08T12:09:34.973Z [[32minfo[39m]: Category with id clycxwbnf0001ymxlnizrxekz retrieved
+2024-07-08T12:09:34.984Z [[32minfo[39m]: Category with id clycxwbnn0002ymxldhtf8osp updated
+2024-07-08T12:09:34.994Z [[32minfo[39m]: Category with id clycxwbny0003ymxlzyjgbuf6 deleted
+2024-07-08T12:10:07.158Z [[32minfo[39m]: Order with id clycxx0h90000o0kx1q952jgt created
+2024-07-08T12:10:07.202Z [[32minfo[39m]: Orders retrieved
+2024-07-08T12:10:07.192Z [[32minfo[39m]: OrderItem with id clycxx0ia0000j8kx28dk8fdm created
+2024-07-08T12:10:07.220Z [[32minfo[39m]: Order with id clycxx0j30006uyyu236du6wp retrieved
+2024-07-08T12:10:07.241Z [[32minfo[39m]: Order with id clycxx0jn0009uyyui5j4rhau updated
+2024-07-08T12:10:07.257Z [[32minfo[39m]: Order with id clycxx0k3000cuyyuen6b904s deleted
+2024-07-08T12:10:07.264Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T12:10:07.285Z [[32minfo[39m]: OrderItem with id clycxx0kw000ltycnoyr9l6cq retrieved
+2024-07-08T12:10:07.309Z [[32minfo[39m]: OrderItem with id clycxx0ld000ttycngxi88hgx updated
+2024-07-08T12:10:07.305Z [[32minfo[39m]: Cart with id clycxx0l800006ckxcmyeedxy created
+2024-07-08T12:10:07.327Z [[32minfo[39m]: OrderItem with id clycxx0m10011tycnascpckuz deleted
+2024-07-08T12:10:07.347Z [[32minfo[39m]: Carts retrieved
+2024-07-08T12:10:07.340Z [[32minfo[39m]: Product with name Sample product-1720440607287 created
+2024-07-08T12:10:07.382Z [[32minfo[39m]: Products retrieved
+2024-07-08T12:10:07.397Z [[32minfo[39m]: Product with id clycxx0nz000668qtpksz5re4 retrieved
+2024-07-08T12:10:07.418Z [[32minfo[39m]: Product with id clycxx0of000968qt20nildp7 updated
+2024-07-08T12:10:07.433Z [[32minfo[39m]: Product with id clycxx0p0000c68qtx6ymvxk0 deleted
+2024-07-08T12:10:07.421Z [[32minfo[39m]: Cart item with id clycxx0oh0000l0kx5ew58g4y created
+2024-07-08T12:10:07.445Z [[32minfo[39m]: User with email testuser-1720440607321@gmail.com created
+2024-07-08T12:10:07.475Z [[32minfo[39m]: Cart items retrieved
+2024-07-08T12:10:07.496Z [[32minfo[39m]: Users retrieved
+2024-07-08T12:10:07.496Z [[32minfo[39m]: Cart item with id clycxx0qq000lm1q221v09cij retrieved
+2024-07-08T12:10:07.511Z [[32minfo[39m]: User with id clycxx0r50001myn7ubm07yau retrieved
+2024-07-08T12:10:07.521Z [[32minfo[39m]: Cart item with id clycxx0rb000tm1q28zv789ia updated
+2024-07-08T12:10:07.526Z [[32minfo[39m]: User with id clycxx0rk0002myn7s9gu91ka updated
+2024-07-08T12:10:07.540Z [[32minfo[39m]: Cart item with id clycxx0rw0011m1q2u0y4wh7l deleted
+2024-07-08T12:10:07.542Z [[32minfo[39m]: User with id clycxx0rw0003myn7exf18ylm deleted
+2024-07-08T12:10:07.684Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T12:10:07.725Z [[32minfo[39m]: Categories retrieved
+2024-07-08T12:10:07.736Z [[32minfo[39m]: Category with id clycxx0xg00012kyufsjeox49 retrieved
+2024-07-08T12:10:07.748Z [[32minfo[39m]: Category with id clycxx0xq00022kyuuevmyp3z updated
+2024-07-08T12:10:07.760Z [[32minfo[39m]: Category with id clycxx0y200032kyubbwz5d26 deleted
+2024-07-08T12:11:41.949Z [[32minfo[39m]: Cart with id clycxz1md000038kx7emo44vs created
+2024-07-08T12:11:41.974Z [[32minfo[39m]: Carts retrieved
+2024-07-08T12:11:42.483Z [[32minfo[39m]: OrderItem with id clycxz21c000038kx2pi4cb0p created
+2024-07-08T12:11:42.551Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T12:11:42.566Z [[32minfo[39m]: OrderItem with id clycxz23l000trn5i4w4c9tsu retrieved
+2024-07-08T12:11:42.584Z [[32minfo[39m]: OrderItem with id clycxz2410011rn5i1amd940v updated
+2024-07-08T12:11:42.600Z [[32minfo[39m]: OrderItem with id clycxz24j0019rn5io5eegb1s deleted
+2024-07-08T12:11:43.057Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T12:11:43.068Z [[32minfo[39m]: Categories retrieved
+2024-07-08T12:11:43.075Z [[32minfo[39m]: Category with id clycxz2ht001brn5i5lzwqagn retrieved
+2024-07-08T12:11:43.082Z [[32minfo[39m]: Category with id clycxz2i0001crn5ih0akyk0k updated
+2024-07-08T12:11:43.089Z [[32minfo[39m]: Category with id clycxz2i7001drn5iay03339p deleted
+2024-07-08T12:11:43.578Z [[32minfo[39m]: Cart item with id clycxz2vp000038kx07eo7rs4 created
+2024-07-08T12:11:43.591Z [[32minfo[39m]: Cart items retrieved
+2024-07-08T12:11:43.601Z [[32minfo[39m]: Cart item with id clycxz2wf001zrn5io5xqx4gc retrieved
+2024-07-08T12:11:43.612Z [[32minfo[39m]: Cart item with id clycxz2wo0027rn5ijv8hdgf2 updated
+2024-07-08T12:11:43.624Z [[32minfo[39m]: Cart item with id clycxz2wz002frn5ilrt58bcz deleted
+2024-07-08T12:11:44.166Z [[32minfo[39m]: User with email testuser-1720440704098@gmail.com created
+2024-07-08T12:11:44.178Z [[32minfo[39m]: Users retrieved
+2024-07-08T12:11:44.187Z [[32minfo[39m]: User with id clycxz3co002hrn5iq83n4yan retrieved
+2024-07-08T12:11:44.195Z [[32minfo[39m]: User with id clycxz3cw002irn5iqeixfh15 updated
+2024-07-08T12:11:44.203Z [[32minfo[39m]: User with id clycxz3d4002jrn5i11za1ucd deleted
+2024-07-08T12:11:44.713Z [[32minfo[39m]: Product with name Sample product-1720440704701 created
+2024-07-08T12:11:44.726Z [[32minfo[39m]: Products retrieved
+2024-07-08T12:11:44.735Z [[32minfo[39m]: Product with id clycxz3rx002qrn5iglzx7yjp retrieved
+2024-07-08T12:11:44.747Z [[32minfo[39m]: Product with id clycxz3s5002trn5i6elgknvw updated
+2024-07-08T12:11:44.757Z [[32minfo[39m]: Product with id clycxz3si002wrn5ipk8mt3ik deleted
+2024-07-08T12:11:45.256Z [[32minfo[39m]: Order with id clycxz46b000038kx9b6hf1lk created
+2024-07-08T12:11:45.268Z [[32minfo[39m]: Orders retrieved
+2024-07-08T12:11:45.277Z [[32minfo[39m]: Order with id clycxz46z0033rn5ik10sljn9 retrieved
+2024-07-08T12:11:45.285Z [[32minfo[39m]: Order with id clycxz4760036rn5igkds5f83 updated
+2024-07-08T12:11:45.293Z [[32minfo[39m]: Order with id clycxz47f0039rn5i52lbqdx6 deleted
+2024-07-08T13:18:48.959Z [[32minfo[39m]: Cart with id clyd0dcvo0000h0kx16lka712 created
+2024-07-08T13:18:48.991Z [[32minfo[39m]: Carts retrieved
+2024-07-08T13:18:49.614Z [[32minfo[39m]: OrderItem with id clyd0dde30000h0kx13fj3aw3 created
+2024-07-08T13:18:49.678Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T13:18:49.692Z [[32minfo[39m]: OrderItem with id clyd0ddg9000tciael936xntr retrieved
+2024-07-08T13:18:49.713Z [[32minfo[39m]: OrderItem with id clyd0ddgo0011ciae5u033bhl updated
+2024-07-08T13:18:49.741Z [[32minfo[39m]: OrderItem with id clyd0ddhk0019ciaewvrazvvn deleted
+2024-07-08T13:18:50.398Z [[32minfo[39m]: User with email testuser-1720444730324@gmail.com created
+2024-07-08T13:18:50.411Z [[32minfo[39m]: Users retrieved
+2024-07-08T13:18:50.420Z [[32minfo[39m]: User with id clyd0de0h001bciae2yx1ighz retrieved
+2024-07-08T13:18:50.429Z [[32minfo[39m]: User with id clyd0de0q001cciaepg8lx4iu updated
+2024-07-08T13:18:50.454Z [[32minfo[39m]: User with id clyd0de1b001dciaes5ff72dw deleted
+2024-07-08T13:18:50.979Z [[32minfo[39m]: Product with name Sample product-1720444730968 created
+2024-07-08T13:18:50.994Z [[32minfo[39m]: Products retrieved
+2024-07-08T13:18:51.004Z [[32minfo[39m]: Product with id clyd0dego001kciaegxke8icv retrieved
+2024-07-08T13:18:51.019Z [[32minfo[39m]: Product with id clyd0degz001nciaet4308vxi updated
+2024-07-08T13:18:51.034Z [[32minfo[39m]: Product with id clyd0dehi001qciaekhha7f41 deleted
+2024-07-08T13:18:51.608Z [[32minfo[39m]: Cart item with id clyd0dexd0000h0kxh0fx0zko created
+2024-07-08T13:18:51.622Z [[32minfo[39m]: Cart items retrieved
+2024-07-08T13:18:51.634Z [[32minfo[39m]: Cart item with id clyd0dey7002cciae8x7gpn8f retrieved
+2024-07-08T13:18:51.650Z [[32minfo[39m]: Cart item with id clyd0deyi002kciaebxntgaha updated
+2024-07-08T13:18:51.665Z [[32minfo[39m]: Cart item with id clyd0dez1002sciaewds5tssg deleted
+2024-07-08T13:18:52.317Z [[32minfo[39m]: Order with id clyd0dfh30000h0kxdslz30u1 created
+2024-07-08T13:18:52.334Z [[32minfo[39m]: Orders retrieved
+2024-07-08T13:18:52.345Z [[32minfo[39m]: Order with id clyd0dfhx002zciaev2i4ne4i retrieved
+2024-07-08T13:18:52.356Z [[32minfo[39m]: Order with id clyd0dfi80032ciaephp2o8aj updated
+2024-07-08T13:18:52.370Z [[32minfo[39m]: Order with id clyd0dfil0035ciaenfcus7xn deleted
+2024-07-08T13:18:52.942Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T13:18:52.953Z [[32minfo[39m]: Categories retrieved
+2024-07-08T13:18:52.961Z [[32minfo[39m]: Category with id clyd0dfz10037ciaej8z1fx18 retrieved
+2024-07-08T13:18:52.970Z [[32minfo[39m]: Category with id clyd0dfzb0038ciae7a5r2p2l updated
+2024-07-08T13:18:52.980Z [[32minfo[39m]: Category with id clyd0dfzk0039ciaejtjotcwa deleted
+2024-07-08T13:20:03.154Z [[32minfo[39m]: Cart with id clyd0ey4m0000f4kxajmfewik created
+2024-07-08T13:20:03.178Z [[32minfo[39m]: Carts retrieved
+2024-07-08T13:22:01.196Z [[32minfo[39m]: Cart with id clyd0hh7o0000lkkx8pvn46tg created
+2024-07-08T13:22:01.213Z [[32minfo[39m]: Carts retrieved
+2024-07-08T13:22:01.222Z [[32minfo[39m]: Cart with id clyd0hh8j0006f5zr9wu6gtai retrieved
+2024-07-08T13:22:01.233Z [[32minfo[39m]: Cart with id clyd0hh8r0009f5zrmbyfvxgx updated
+2024-07-08T13:22:01.241Z [[32minfo[39m]: Cart with id clyd0hh92000cf5zr9pqjvbmp deleted
+2024-07-08T13:22:07.168Z [[32minfo[39m]: Cart with id clyd0hltk0000j4kx4b6kc73x created
+2024-07-08T13:22:07.188Z [[32minfo[39m]: Carts retrieved
+2024-07-08T13:22:07.203Z [[32minfo[39m]: Cart with id clyd0hlun00061055a4ult7gc retrieved
+2024-07-08T13:22:07.216Z [[32minfo[39m]: Cart with id clyd0hluy00091055541msete updated
+2024-07-08T13:22:07.229Z [[32minfo[39m]: Cart with id clyd0hlva000c1055cf4ago1f deleted
+2024-07-08T13:22:57.683Z [[32minfo[39m]: OrderItem with id clyd0iosw0000y4kxajs211vp created
+2024-07-08T13:22:57.751Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T13:22:57.762Z [[32minfo[39m]: OrderItem with id clyd0iov3000ltbzrkbi2zigj retrieved
+2024-07-08T13:22:57.775Z [[32minfo[39m]: OrderItem with id clyd0iovc000ttbzrv3a66zre updated
+2024-07-08T13:22:57.784Z [[32minfo[39m]: OrderItem with id clyd0iovp0011tbzrww7q1vgo deleted
+2024-07-08T13:22:58.313Z [[32minfo[39m]: Cart with id clyd0ipa90000y4kx0svtazcd created
+2024-07-08T13:22:58.324Z [[32minfo[39m]: Carts retrieved
+2024-07-08T13:22:58.330Z [[32minfo[39m]: Cart with id clyd0ipaw0018tbzr99xfdhfn retrieved
+2024-07-08T13:22:58.339Z [[32minfo[39m]: Cart with id clyd0ipb2001btbzrcczfdqaq updated
+2024-07-08T13:22:58.345Z [[32minfo[39m]: Cart with id clyd0ipbb001etbzr2s6j30rz deleted
+2024-07-08T13:22:58.789Z [[32minfo[39m]: Order with id clyd0ipnk0000y4kx4m455uow created
+2024-07-08T13:22:58.800Z [[32minfo[39m]: Orders retrieved
+2024-07-08T13:22:58.808Z [[32minfo[39m]: Order with id clyd0ipo5001ltbzr3io9ob8a retrieved
+2024-07-08T13:22:58.815Z [[32minfo[39m]: Order with id clyd0ipoc001otbzr0u2yp4nf updated
+2024-07-08T13:22:58.823Z [[32minfo[39m]: Order with id clyd0ipoj001rtbzreiy4l8zq deleted
+2024-07-08T13:22:59.343Z [[32minfo[39m]: User with email testuser-1720444979278@gmail.com created
+2024-07-08T13:22:59.358Z [[32minfo[39m]: Users retrieved
+2024-07-08T13:22:59.366Z [[32minfo[39m]: User with id clyd0iq3m001ttbzrwt7y6hiz retrieved
+2024-07-08T13:22:59.374Z [[32minfo[39m]: User with id clyd0iq3v001utbzr0pd6wbbx updated
+2024-07-08T13:22:59.383Z [[32minfo[39m]: User with id clyd0iq42001vtbzrba3xm4w7 deleted
+2024-07-08T13:22:59.893Z [[32minfo[39m]: Cart item with id clyd0iqi80000y4kxh1b75kgh created
+2024-07-08T13:22:59.904Z [[32minfo[39m]: Cart items retrieved
+2024-07-08T13:22:59.913Z [[32minfo[39m]: Cart item with id clyd0iqiv002htbzrc63aa7ue retrieved
+2024-07-08T13:22:59.923Z [[32minfo[39m]: Cart item with id clyd0iqj3002ptbzr5cdkcvcr updated
+2024-07-08T13:22:59.935Z [[32minfo[39m]: Cart item with id clyd0iqjd002xtbzr15vkd18m deleted
+2024-07-08T13:23:00.454Z [[32minfo[39m]: Product with name Sample product-1720444980444 created
+2024-07-08T13:23:00.466Z [[32minfo[39m]: Products retrieved
+2024-07-08T13:23:00.475Z [[32minfo[39m]: Product with id clyd0iqyg0034tbzrrpc578x6 retrieved
+2024-07-08T13:23:00.486Z [[32minfo[39m]: Product with id clyd0iqyn0037tbzrcss6xvqi updated
+2024-07-08T13:23:00.495Z [[32minfo[39m]: Product with id clyd0iqz0003atbzrp1xlat5g deleted
+2024-07-08T13:23:00.987Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T13:23:00.998Z [[32minfo[39m]: Categories retrieved
+2024-07-08T13:23:01.008Z [[32minfo[39m]: Category with id clyd0ird7003ctbzr3ju1hkeh retrieved
+2024-07-08T13:23:01.016Z [[32minfo[39m]: Category with id clyd0irdg003dtbzrj9t96w03 updated
+2024-07-08T13:23:01.025Z [[32minfo[39m]: Category with id clyd0irdo003etbzr4lbzd8hx deleted
+2024-07-08T13:24:11.194Z [[32minfo[39m]: OrderItem with id clyd0k9iu0000vwkx2jznbuz5 created
+2024-07-08T13:24:11.257Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T13:24:11.267Z [[32minfo[39m]: OrderItem with id clyd0k9kx000l10ttvp9axu4w retrieved
+2024-07-08T13:24:11.281Z [[32minfo[39m]: OrderItem with id clyd0k9l8000t10tt6iguozm8 updated
+2024-07-08T13:24:11.300Z [[32minfo[39m]: OrderItem with id clyd0k9lo001110ttscvsv3by deleted
+2024-07-08T13:27:10.253Z [[32minfo[39m]: OrderItem with id clyd0o3op000074kx0oibajex created
+2024-07-08T13:27:10.319Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T13:27:10.332Z [[32minfo[39m]: OrderItem with id clyd0o3qw000l8g10nl59noa0 retrieved
+2024-07-08T13:27:10.347Z [[32minfo[39m]: OrderItem with id clyd0o3r8000t8g10rh86an7y updated
+2024-07-08T13:27:10.359Z [[32minfo[39m]: OrderItem with id clyd0o3rn00118g101q2hyb6d deleted
+2024-07-08T13:30:39.585Z [[32minfo[39m]: OrderItem with id clyd0sl7d00001wkxeqw92r9n created
+2024-07-08T13:30:39.607Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T13:30:39.617Z [[32minfo[39m]: OrderItem with id clyd0sl8f000l9ar0iy9bpyb0 retrieved
+2024-07-08T13:30:39.633Z [[32minfo[39m]: OrderItem with id clyd0sl8s000t9ar026ftpe72 updated
+2024-07-08T13:30:39.646Z [[32minfo[39m]: OrderItem with id clyd0sl9600119ar0kow8cwpj deleted
+2024-07-08T13:30:55.361Z [[32minfo[39m]: Product with name Sample product-1720445455318 created
+2024-07-08T13:30:55.397Z [[32minfo[39m]: Products retrieved
+2024-07-08T13:30:55.389Z [[32minfo[39m]: Order with id clyd0sxed0000rwkx2g7vfbxw created
+2024-07-08T13:30:55.393Z [[32minfo[39m]: Cart item with id clyd0sxee00003okxbhhuf6em created
+2024-07-08T13:30:55.411Z [[32minfo[39m]: Product with id clyd0sxf20006wez60fmw4uj0 retrieved
+2024-07-08T13:30:55.403Z [[32minfo[39m]: OrderItem with id clyd0sxen0000lwkxbgrb6cs4 created
+2024-07-08T13:30:55.427Z [[32minfo[39m]: Orders retrieved
+2024-07-08T13:30:55.434Z [[32minfo[39m]: Product with id clyd0sxfi0009wez642qa2ghi updated
+2024-07-08T13:30:55.418Z [[32minfo[39m]: Cart with id clyd0sxf00000yokxgsma907j created
+2024-07-08T13:30:55.435Z [[32minfo[39m]: Cart items retrieved
+2024-07-08T13:30:55.440Z [[32minfo[39m]: Order with id clyd0sxfv00062pmzjdq66xjl retrieved
+2024-07-08T13:30:55.446Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T13:30:55.447Z [[32minfo[39m]: Product with id clyd0sxg3000cwez625zqt4nh deleted
+2024-07-08T13:30:55.451Z [[32minfo[39m]: Cart item with id clyd0sxg7000l11lonp7g7edu retrieved
+2024-07-08T13:30:55.456Z [[32minfo[39m]: Order with id clyd0sxgb00092pmzbqv25ql8 updated
+2024-07-08T13:30:55.458Z [[32minfo[39m]: Carts retrieved
+2024-07-08T13:30:55.463Z [[32minfo[39m]: OrderItem with id clyd0sxgi000lcndwy0067nti retrieved
+2024-07-08T13:30:55.470Z [[32minfo[39m]: Order with id clyd0sxgn000c2pmzl0sycez8 deleted
+2024-07-08T13:30:55.471Z [[32minfo[39m]: Cart with id clyd0sxgr00062ewvr9rkz68h retrieved
+2024-07-08T13:30:55.472Z [[32minfo[39m]: Cart item with id clyd0sxgo000t11loa94msukm updated
+2024-07-08T13:30:55.463Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T13:30:55.461Z [[32minfo[39m]: User with email testuser-1720445455339@gmail.com created
+2024-07-08T13:30:55.484Z [[32minfo[39m]: OrderItem with id clyd0sxgz000tcndwoj7xi27f updated
+2024-07-08T13:30:55.487Z [[32minfo[39m]: Cart with id clyd0sxh400092ewve2eslwrn updated
+2024-07-08T13:30:55.488Z [[32minfo[39m]: Cart item with id clyd0sxh6001111lo7mhe0wfq deleted
+2024-07-08T13:30:55.499Z [[32minfo[39m]: Cart with id clyd0sxhj000c2ewvwwuixnxw deleted
+2024-07-08T13:30:55.501Z [[32minfo[39m]: OrderItem with id clyd0sxhk0011cndwpw9qzw3u deleted
+2024-07-08T13:30:55.502Z [[32minfo[39m]: Categories retrieved
+2024-07-08T13:30:55.504Z [[32minfo[39m]: Users retrieved
+2024-07-08T13:30:55.514Z [[32minfo[39m]: Category with id clyd0sxhy0001iaf7nft0lber retrieved
+2024-07-08T13:30:55.517Z [[32minfo[39m]: User with id clyd0sxi00001mr67nvd1f45b retrieved
+2024-07-08T13:30:55.529Z [[32minfo[39m]: Category with id clyd0sxib0002iaf70n2tqkd1 updated
+2024-07-08T13:30:55.534Z [[32minfo[39m]: User with id clyd0sxif0002mr67cm0k810r updated
+2024-07-08T13:30:55.543Z [[32minfo[39m]: Category with id clyd0sxin0003iaf7w77e1ucc deleted
+2024-07-08T13:30:55.551Z [[32minfo[39m]: User with id clyd0sxiv0003mr67j7qbvdif deleted
+2024-07-08T13:31:13.289Z [[32minfo[39m]: User with email testuser-1720445473014@gmail.com created
+2024-07-08T13:31:13.376Z [[32minfo[39m]: Users retrieved
+2024-07-08T13:31:13.402Z [[32minfo[39m]: User with id clyd0tban0001j76f9p4iw176 retrieved
+2024-07-08T13:31:13.394Z [[32minfo[39m]: Cart with id clyd0tba00000c8kxdn5j5skc created
+2024-07-08T13:31:13.433Z [[32minfo[39m]: User with id clyd0tbbg0002j76f8bs95bns updated
+2024-07-08T13:31:13.402Z [[32minfo[39m]: Cart item with id clyd0tbaf0000mwkx5o28cfi3 created
+2024-07-08T13:31:13.422Z [[32minfo[39m]: Product with name Sample product-1720445473337 created
+2024-07-08T13:31:13.416Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T13:31:13.464Z [[32minfo[39m]: User with id clyd0tbcb0003j76fwmwbrvw7 deleted
+2024-07-08T13:31:13.479Z [[32minfo[39m]: Carts retrieved
+2024-07-08T13:31:13.499Z [[32minfo[39m]: Categories retrieved
+2024-07-08T13:31:13.507Z [[32minfo[39m]: Cart items retrieved
+2024-07-08T13:31:13.510Z [[32minfo[39m]: Cart with id clyd0tbdn0006oi90e56k29qb retrieved
+2024-07-08T13:31:13.485Z [[32minfo[39m]: OrderItem with id clyd0tbco0000c4kx8t8a18lv created
+2024-07-08T13:31:13.528Z [[32minfo[39m]: Category with id clyd0tbe30001405l69ifxp17 retrieved
+2024-07-08T13:31:13.531Z [[32minfo[39m]: Products retrieved
+2024-07-08T13:31:13.544Z [[32minfo[39m]: Cart with id clyd0tbei0009oi90xts8bi1b updated
+2024-07-08T13:31:13.546Z [[32minfo[39m]: Cart item with id clyd0tben000lc413j9oxsf3h retrieved
+2024-07-08T13:31:13.555Z [[32minfo[39m]: Category with id clyd0tbev0002405laqmgjkyc updated
+2024-07-08T13:31:13.558Z [[32minfo[39m]: Product with id clyd0tbf20006ljcrnx5yzl6r retrieved
+2024-07-08T13:31:13.567Z [[32minfo[39m]: Cart with id clyd0tbfc000coi90ypv1sbhn deleted
+2024-07-08T13:31:13.580Z [[32minfo[39m]: Category with id clyd0tbfk0003405ly3e5yt6g deleted
+2024-07-08T13:31:13.590Z [[32minfo[39m]: Cart item with id clyd0tbfn000tc413l8kz576a updated
+2024-07-08T13:31:13.601Z [[32minfo[39m]: Product with id clyd0tbfu0009ljcr3kaksx8u updated
+2024-07-08T13:31:13.610Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T13:31:13.624Z [[32minfo[39m]: Cart item with id clyd0tbgq0011c4130pu1o5xf deleted
+2024-07-08T13:31:13.626Z [[32minfo[39m]: Product with id clyd0tbgx000cljcr66vp5vv5 deleted
+2024-07-08T13:31:13.655Z [[32minfo[39m]: OrderItem with id clyd0tbhl000l60ai2z8beayz retrieved
+2024-07-08T13:31:13.708Z [[32minfo[39m]: OrderItem with id clyd0tbiw000t60ai7meaxe7c updated
+2024-07-08T13:31:13.746Z [[32minfo[39m]: OrderItem with id clyd0tbk3001160ai5bew84af deleted
+2024-07-08T13:31:13.858Z [[32minfo[39m]: Order with id clyd0tbn80000fckxdk227za7 created
+2024-07-08T13:31:13.957Z [[32minfo[39m]: Orders retrieved
+2024-07-08T13:31:13.990Z [[32minfo[39m]: Order with id clyd0tbqv0006689095bitm2x retrieved
+2024-07-08T13:31:14.038Z [[32minfo[39m]: Order with id clyd0tbs6000968904dewz7ae updated
+2024-07-08T13:31:14.076Z [[32minfo[39m]: Order with id clyd0tbt4000c6890gjj7cqy7 deleted
+2024-07-08T13:33:41.340Z [[32minfo[39m]: OrderItem with id clyd0whfa0000rkkx9lyj3hcd created
+2024-07-08T13:33:41.540Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T13:33:41.597Z [[32minfo[39m]: OrderItem with id clyd0whn2000l1jwfdbuo43ue retrieved
+2024-07-08T13:33:41.720Z [[32minfo[39m]: OrderItem with id clyd0whp8000t1jwfzvq8kek7 updated
+2024-07-08T13:33:41.775Z [[32minfo[39m]: OrderItem with id clyd0whrw00111jwftcu4d4cb deleted
+2024-07-08T13:33:41.989Z [[32minfo[39m]: Product with name Sample product-1720445621836 created
+2024-07-08T13:33:42.113Z [[32minfo[39m]: Products retrieved
+2024-07-08T13:33:42.149Z [[32minfo[39m]: Product with id clyd0wi2e0006ibv5tbh5dzw1 retrieved
+2024-07-08T13:33:42.127Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T13:33:42.209Z [[32minfo[39m]: Product with id clyd0wi3o0009ibv52il20jdv updated
+2024-07-08T13:33:42.239Z [[32minfo[39m]: Categories retrieved
+2024-07-08T13:33:42.241Z [[32minfo[39m]: Product with id clyd0wi51000cibv5ya7j0jjx deleted
+2024-07-08T13:33:42.228Z [[32minfo[39m]: Cart with id clyd0wi470000fwkx73pp52zw created
+2024-07-08T13:33:42.276Z [[32minfo[39m]: Category with id clyd0wi5z0001ffa3v0d6gx5p retrieved
+2024-07-08T13:33:42.268Z [[32minfo[39m]: Order with id clyd0wi5m0000pokxfb7tdh01 created
+2024-07-08T13:33:42.311Z [[32minfo[39m]: Category with id clyd0wi6x0002ffa32f8dke2h updated
+2024-07-08T13:33:42.341Z [[32minfo[39m]: Carts retrieved
+2024-07-08T13:33:42.343Z [[32minfo[39m]: Category with id clyd0wi7u0003ffa3d7rek81g deleted
+2024-07-08T13:33:42.377Z [[32minfo[39m]: Cart with id clyd0wi8t00065sinvfpwylah retrieved
+2024-07-08T13:33:42.385Z [[32minfo[39m]: Orders retrieved
+2024-07-08T13:33:42.421Z [[32minfo[39m]: Cart with id clyd0wi9q00095sin4cty15qg updated
+2024-07-08T13:33:42.421Z [[32minfo[39m]: Order with id clyd0wia000065e0h1qbfe9ar retrieved
+2024-07-08T13:33:42.447Z [[32minfo[39m]: Cart with id clyd0wiau000c5sin7snifatj deleted
+2024-07-08T13:33:42.413Z [[32minfo[39m]: User with email testuser-1720445622081@gmail.com created
+2024-07-08T13:33:42.456Z [[32minfo[39m]: Order with id clyd0wiaz00095e0hc9og4j06 updated
+2024-07-08T13:33:42.490Z [[32minfo[39m]: Order with id clyd0wibv000c5e0h6lbbspll deleted
+2024-07-08T13:33:42.529Z [[32minfo[39m]: Users retrieved
+2024-07-08T13:33:42.565Z [[32minfo[39m]: User with id clyd0wie00001vltmx54fvkz1 retrieved
+2024-07-08T13:33:42.599Z [[32minfo[39m]: User with id clyd0wiex0002vltmgawqw4th updated
+2024-07-08T13:33:42.627Z [[32minfo[39m]: User with id clyd0wifr0003vltmmhlwgten deleted
+2024-07-08T13:33:42.914Z [[32minfo[39m]: Cart item with id clyd0wine0000d8kxh1yd3pi9 created
+2024-07-08T13:33:43.000Z [[32minfo[39m]: Cart items retrieved
+2024-07-08T13:33:43.034Z [[32minfo[39m]: Cart item with id clyd0wir6000lnkfhipytkcjh retrieved
+2024-07-08T13:33:43.069Z [[32minfo[39m]: Cart item with id clyd0wirx000tnkfhxwh9fzkh updated
+2024-07-08T13:33:43.100Z [[32minfo[39m]: Cart item with id clyd0wisy0011nkfhrzsw59pv deleted
+2024-07-08T13:34:13.281Z [[32minfo[39m]: Order with id clyd0x62q00001skxgs2zep8i created
+2024-07-08T13:34:13.440Z [[32minfo[39m]: Orders retrieved
+2024-07-08T13:34:13.505Z [[32minfo[39m]: Order with id clyd0x6980006xl1jkhdmajg2 retrieved
+2024-07-08T13:34:13.546Z [[32minfo[39m]: Order with id clyd0x6aj0009xl1joux9qfc6 updated
+2024-07-08T13:34:13.581Z [[32minfo[39m]: Order with id clyd0x6bl000cxl1j8esqbnlt deleted
+2024-07-08T13:34:14.245Z [[32minfo[39m]: User with email testuser-1720445653903@gmail.com created
+2024-07-08T13:34:14.265Z [[32minfo[39m]: Cart with id clyd0x6u500000kkxctqs1i72 created
+2024-07-08T13:34:14.351Z [[32minfo[39m]: Users retrieved
+2024-07-08T13:34:14.358Z [[32minfo[39m]: Carts retrieved
+2024-07-08T13:34:14.325Z [[32minfo[39m]: Product with name Sample product-1720445654209 created
+2024-07-08T13:34:14.387Z [[32minfo[39m]: User with id clyd0x6xv00012xgwd9hvzm33 retrieved
+2024-07-08T13:34:14.344Z [[32minfo[39m]: Category with name Category 3 created
+2024-07-08T13:34:14.395Z [[32minfo[39m]: Cart with id clyd0x6y50006k1cyk9kf461h retrieved
+2024-07-08T13:34:14.420Z [[32minfo[39m]: User with id clyd0x6yv00022xgwmxrtzlmm updated
+2024-07-08T13:34:14.430Z [[32minfo[39m]: Cart with id clyd0x6z10009k1cya3e2b28q updated
+2024-07-08T13:34:14.407Z [[32minfo[39m]: OrderItem with id clyd0x6yb00000ckx49gh7kdu created
+2024-07-08T13:34:14.443Z [[32minfo[39m]: Products retrieved
+2024-07-08T13:34:14.445Z [[32minfo[39m]: Categories retrieved
+2024-07-08T13:34:14.452Z [[32minfo[39m]: User with id clyd0x6zp00032xgw0lm9539t deleted
+2024-07-08T13:34:14.460Z [[32minfo[39m]: Cart with id clyd0x701000ck1cyi980fqho deleted
+2024-07-08T13:34:14.472Z [[32minfo[39m]: Category with id clyd0x70d0001faox1pl1sapc retrieved
+2024-07-08T13:34:14.473Z [[32minfo[39m]: Product with id clyd0x70f0006uruo1can65cn retrieved
+2024-07-08T13:34:14.500Z [[32minfo[39m]: Category with id clyd0x7140002faox04ms045v updated
+2024-07-08T13:34:14.518Z [[32minfo[39m]: OrderItems retrieved
+2024-07-08T13:34:14.519Z [[32minfo[39m]: Product with id clyd0x71b0009uruoriyp58xe updated
+2024-07-08T13:34:14.523Z [[32minfo[39m]: Category with id clyd0x71s0003faoxxxsaiks2 deleted
+2024-07-08T13:34:14.502Z [[32minfo[39m]: Cart item with id clyd0x70y0000vgkx5tw5277l created
+2024-07-08T13:34:14.547Z [[32minfo[39m]: Product with id clyd0x72g000curuoo0m07zus deleted
+2024-07-08T13:34:14.553Z [[32minfo[39m]: OrderItem with id clyd0x72n000lwcssvdfgghwd retrieved
+2024-07-08T13:34:14.593Z [[32minfo[39m]: Cart items retrieved
+2024-07-08T13:34:14.601Z [[32minfo[39m]: OrderItem with id clyd0x73q000twcss205ogoqn updated
+2024-07-08T13:34:14.625Z [[32minfo[39m]: Cart item with id clyd0x74o000lgva8f28x5vnz retrieved
+2024-07-08T13:34:14.634Z [[32minfo[39m]: OrderItem with id clyd0x74s0011wcss64lhgyyn deleted
+2024-07-08T13:34:14.669Z [[32minfo[39m]: Cart item with id clyd0x75m000tgva8ipvuglqv updated
+2024-07-08T13:34:14.711Z [[32minfo[39m]: Cart item with id clyd0x76w0011gva8xla40wn0 deleted

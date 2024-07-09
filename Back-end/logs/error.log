@@ -1,0 +1,1163 @@
+2024-07-02T20:47:08.175Z [[31merror[39m]: Failed to login: Error: Invalid password
+2024-07-02T20:56:12.001Z [[31merror[39m]: Failed to login: Error: User not found
+2024-07-02T21:15:01.373Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-02T21:18:16.525Z [[31merror[39m]: Failed to create order: PrismaClientValidationError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:23:31
+
+  20     ...order,        
+  21     id: cuid()
+  22 }
+→ 23 return await prisma.order.create({
+       data: {
+         userId: "cly4w25gn00009okxhpf53y0s",
+         status: "pending",
+         id: "cly4wuu2s000208kxar8oc4z6",
+     +   totalPrice: Float
+       }
+     })
+
+Argument `totalPrice` is missing.
+2024-07-02T21:18:28.607Z [[31merror[39m]: Failed to create order: PrismaClientValidationError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:23:31
+
+  20     ...order,        
+  21     id: cuid()
+  22 }
+→ 23 return await prisma.order.create({
+       data: {
+         userId: "cly4w25gn00009okxhpf53y0s",
+         status: "pending",
+         totalPrice: "10",
+                     ~~~~
+         id: "cly4wv3el000308kxg3bp809v"
+       }
+     })
+
+Argument `totalPrice`: Invalid value provided. Expected Float, provided String.
+2024-07-02T22:05:36.819Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:37:29
+
+  34   totalPrice,
+  35   id: cuid(),
+  36 };
+→ 37 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-02T22:05:50.121Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:37:29
+
+  34   totalPrice,
+  35   id: cuid(),
+  36 };
+→ 37 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-02T22:06:00.635Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:37:29
+
+  34   totalPrice,
+  35   id: cuid(),
+  36 };
+→ 37 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-02T23:51:53.102Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:57:49
+
+  54   price: price,
+  55   id: cuid(),
+  56 };
+→ 57 const createdCartItem = await prisma.cartItem.create(
+Unique constraint failed on the fields: (`productId`)
+2024-07-03T11:51:33.667Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:53:33
+
+  50     ...product,
+  51     updatedAt: new Date()
+  52 }
+→ 53 return await prisma.product.update(
+Foreign key constraint failed on the field: `Product_categoryId_fkey (index)`
+2024-07-04T21:26:31.651Z [[31merror[39m]: Failed to create cart: PrismaClientKnownRequestError: 
+Invalid `prisma.cart.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartService.ts:41:41
+
+  38   ...cart,
+  39   id: cuid(),
+  40 };
+→ 41 const createdCart = await prisma.cart.create(
+Foreign key constraint failed on the field: `Cart_userId_fkey (index)`
+2024-07-04T21:42:40.119Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T21:42:57.878Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:22.892Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:22.981Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:22:29
+
+  19   ...order,
+  20   id: cuid(),
+  21 };
+→ 22 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-04T22:28:23.012Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:28:23.290Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.339Z [[31merror[39m]: Failed to update order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:39:29
+
+  36   id: string,
+  37   order: IOrder
+  38 ): Promise<IOrder | null> => {
+→ 39   return await prisma.order.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.412Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.465Z [[31merror[39m]: Failed to delete order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:28:35
+
+  25 };
+  26 
+  27 export const deleteOrder = async (id: string): Promise<IOrder | null> => {
+→ 28   return await prisma.order.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.512Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:23.564Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:23.554Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:28:23.615Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:23.630Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:28:23.675Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.702Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:28:23.741Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.857Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.887Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.923Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.962Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:23.967Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:23.995Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.002Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:24.057Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:24.115Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.152Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.156Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.174Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.203Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.212Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:24.213Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:58.214Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:28:58.553Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:58.618Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:22:29
+
+  19   ...order,
+  20   id: cuid(),
+  21 };
+→ 22 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-04T22:28:58.667Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:58.669Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:58.731Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:58.720Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:28:58.821Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:28:58.890Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:58.945Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:58.982Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:59.024Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:59.045Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.071Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:28:59.096Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.143Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.159Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:28:59.194Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.235Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.275Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.300Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.312Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.335Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.371Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:28:59.419Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.465Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.500Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.737Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.792Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:28:59.851Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:13.412Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:13.918Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:22:29
+
+  19   ...order,
+  20   id: cuid(),
+  21 };
+→ 22 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-04T22:30:13.972Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:14.111Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:14.229Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:14.173Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:14.253Z [[31merror[39m]: Failed to update order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:39:29
+
+  36   id: string,
+  37   order: IOrder
+  38 ): Promise<IOrder | null> => {
+→ 39   return await prisma.order.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:14.213Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:14.349Z [[31merror[39m]: Failed to delete order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:28:35
+
+  25 };
+  26 
+  27 export const deleteOrder = async (id: string): Promise<IOrder | null> => {
+→ 28   return await prisma.order.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:14.779Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:14.869Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:14.921Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:14.930Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:14.990Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:15.047Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:15.142Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:15.147Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.229Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.464Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.509Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.547Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.590Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.603Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.627Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.652Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.666Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.690Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:15.738Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.752Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.774Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:15.808Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:34.261Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:34.276Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:34.356Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:34.369Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:34.384Z [[31merror[39m]: Failed to update user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:31:34
+
+  28     }
+  29 
+  30 export const updateUser = async (id: string, user: IUser): Promise<IUser | null> => {    
+→ 31         return await prisma.user.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:34.398Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:34.414Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:34.427Z [[31merror[39m]: Failed to delete user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:40:36
+
+  37     }
+  38 
+  39 export const deleteUser = async (id: string): Promise<IUser | null> => {
+→ 40     return await prisma.user.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:35.148Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:35.270Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:35.300Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:35.319Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:35.338Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Foreign key constraint failed on the field: `CartItem_cartId_fkey (index)`
+2024-07-04T22:30:35.529Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:35.552Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:35.572Z [[31merror[39m]: Failed to delete cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartItemService.ts:66:55
+
+  63 };
+  64 
+  65 export const deleteCartItem = async (id: string): Promise<ICartItem | null> => {
+→ 66   const deletedCartItem = await prisma.cartItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:36.306Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:36.374Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:36.394Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:36.405Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:36.418Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:36.433Z [[31merror[39m]: Failed to create product: Error: Category not found
+2024-07-04T22:30:36.528Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:36.543Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:36.560Z [[31merror[39m]: Failed to update product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:91:49
+
+  88     ...product,
+  89     updatedAt: new Date()
+  90 }
+→ 91 const updatedProduct = await prisma.product.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:36.574Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:36.589Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:36.604Z [[31merror[39m]: Failed to delete product: PrismaClientKnownRequestError: 
+Invalid `prisma.product.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\productService.ts:78:39
+
+  75 }
+  76 
+  77 export const deleteProduct = async (id: string): Promise<IProduct | null> => {
+→ 78     return await prisma.product.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:37.329Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:37.429Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:37.451Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:37.475Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:37.497Z [[31merror[39m]: Failed to create orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:62:51
+
+  59   id: cuid(),
+  60 };
+  61 
+→ 62 const createdOrderItem = await prisma.orderItem.create(
+Foreign key constraint failed on the field: `OrderItem_orderId_fkey (index)`
+2024-07-04T22:30:37.687Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:37.707Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:37.728Z [[31merror[39m]: Failed to delete orderItem: PrismaClientKnownRequestError: 
+Invalid `prisma.orderItem.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderItemService.ts:108:57
+
+  105 export const deleteOrderItem = async (
+  106   id: string
+  107 ): Promise<IOrderItem | null> => {    
+→ 108   const deletedOrderItem = await prisma.orderItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T22:30:38.480Z [[31merror[39m]: Failed to create order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:22:29
+
+  19   ...order,
+  20   id: cuid(),
+  21 };
+→ 22 return await prisma.order.create(
+Foreign key constraint failed on the field: `Order_userId_fkey (index)`
+2024-07-04T22:30:38.536Z [[31merror[39m]: Failed to update order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.update()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:39:29
+
+  36   id: string,
+  37   order: IOrder
+  38 ): Promise<IOrder | null> => {
+→ 39   return await prisma.order.update(
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+2024-07-04T22:30:38.558Z [[31merror[39m]: Failed to delete order: PrismaClientKnownRequestError: 
+Invalid `prisma.order.delete()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\orderService.ts:28:35
+
+  25 };
+  26 
+  27 export const deleteOrder = async (id: string): Promise<IOrder | null> => {
+→ 28   return await prisma.order.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2024-07-04T23:38:42.966Z [[31merror[39m]: Failed to create category: PrismaClientKnownRequestError: 
+Invalid `prisma.category.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\categoryService.ts:26:32
+
+  23   ...category,
+  24   id: cuid(),
+  25 };
+→ 26 return await prisma.category.create(
+Unique constraint failed on the fields: (`name`)
+2024-07-04T23:40:06.502Z [[31merror[39m]: Failed to create category: PrismaClientKnownRequestError: 
+Invalid `prisma.category.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\categoryService.ts:26:32
+
+  23   ...category,
+  24   id: cuid(),
+  25 };
+→ 26 return await prisma.category.create(
+Unique constraint failed on the fields: (`name`)
+2024-07-04T23:44:45.128Z [[31merror[39m]: Failed to create category: PrismaClientKnownRequestError: 
+Invalid `prisma.category.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\categoryService.ts:26:32
+
+  23   ...category,
+  24   id: cuid(),
+  25 };
+→ 26 return await prisma.category.create(
+Unique constraint failed on the fields: (`name`)
