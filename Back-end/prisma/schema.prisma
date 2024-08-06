@@ -21,7 +21,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   Order     Order[]
-  Cart      Cart[]
+  cart      Cart?
 }
 
 model Category {
@@ -33,16 +33,21 @@ model Category {
 }
 
 model Product {
-  id         String      @id @default(cuid())
-  name       String      @unique
-  price      Float
-  image      String
-  category   Category    @relation(fields: [categoryId], references: [id])
-  categoryId String
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
-  cartItems  CartItem[]
-  orderItems OrderItem[]
+  id           String      @id @default(cuid())
+  name         String      @unique
+  price        Float
+  image        String
+  category     Category    @relation(fields: [categoryId], references: [id])
+  categoryId   String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  rating       Float?
+  manufacturer String
+  description  String?
+  onSale       Boolean
+  salePrice    Float?
+  cartItems    CartItem[]
+  orderItems   OrderItem[]
 }
 
 model Order {
@@ -54,6 +59,11 @@ model Order {
   orderItems OrderItem[]
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
+  phone      String
+  address    String
+  city       String
+  postalCode String
+  state      String
 }
 
 model OrderItem {
@@ -61,7 +71,7 @@ model OrderItem {
   order     Order    @relation(fields: [orderId], references: [id])
   orderId   String
   product   Product  @relation(fields: [productId], references: [id])
-  productId String   @unique
+  productId String
   quantity  Int
   price     Float?
   createdAt DateTime @default(now())
@@ -73,17 +83,19 @@ model CartItem {
   cart      Cart     @relation(fields: [cartId], references: [id])
   cartId    String
   product   Product  @relation(fields: [productId], references: [id])
-  productId String   @unique
+  productId String
   quantity  Int
   price     Float?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([cartId, productId])
 }
 
 model Cart {
   id         String     @id @default(cuid())
+  userId     String     @unique
   user       User       @relation(fields: [userId], references: [id])
-  userId     String
   totalPrice Float?
   cartItems  CartItem[]
   createdAt  DateTime   @default(now())

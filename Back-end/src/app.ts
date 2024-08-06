@@ -8,8 +8,15 @@ import orderRouter from "./routes/orderRoutes";
 import orderItemRouter from "./routes/orderItemRoutes";
 import cartRouter from "./routes/cartRoutes";
 import cartItemRouter from "./routes/cartItemRoutes";
+const cors = require("cors");
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use(express.json());
 app.use("/api/categories", categoryRouter);
@@ -18,8 +25,8 @@ app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/orderItems", orderItemRouter);
-app.use("/api/carts",cartRouter)
-app.use("/api/cartItems",cartItemRouter)
+app.use("/api/carts", cartRouter);
+app.use("/api/cartItems", cartItemRouter);
 
 app.use(errorHandler);
 

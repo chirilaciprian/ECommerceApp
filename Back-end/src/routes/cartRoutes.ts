@@ -10,5 +10,6 @@ cartRouter.get("/:id", cartController.getCartById);
 cartRouter.post("/", validate(cartValidator), cartController.createCart);
 cartRouter.delete("/:id", cartController.deleteCart);
 cartRouter.put("/:id", validate(cartValidator), cartController.updateCart);
+cartRouter.get("/user/:userId", cartController.getCartByUserId);
 
 export default cartRouter;

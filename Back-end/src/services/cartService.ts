@@ -67,3 +67,11 @@ export const updateCart = async (
   await updateCartPrice(updatedCart.id);
   return updatedCart;
 };
+
+export const getCartByUserId = async (userId: string): Promise<ICart | null> => {
+  return await prisma.cart.findFirst({
+    where: {
+      userId,
+    },
+  });
+}

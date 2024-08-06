@@ -29,6 +29,11 @@ CREATE TABLE "Product" (
     "categoryId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "rating" DOUBLE PRECISION,
+    "manufacturer" TEXT NOT NULL,
+    "description" TEXT,
+    "onSale" BOOLEAN NOT NULL,
+    "salePrice" DOUBLE PRECISION,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
@@ -75,6 +80,7 @@ CREATE TABLE "CartItem" (
 CREATE TABLE "Cart" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
+    "totalPrice" DOUBLE PRECISION,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -92,6 +98,12 @@ CREATE UNIQUE INDEX "Category_name_key" ON "Category"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Product_name_key" ON "Product"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "OrderItem_productId_key" ON "OrderItem"("productId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "CartItem_productId_key" ON "CartItem"("productId");
 
 -- AddForeignKey
 ALTER TABLE "Product" ADD CONSTRAINT "Product_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

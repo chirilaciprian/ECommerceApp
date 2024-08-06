@@ -1,6 +1,7 @@
 import { Request,Response,NextFunction } from "express";
 import * as authServices from "../services/authService";
 import logger from "../utils/logger";
+import { AuthRequest } from "../middlewares/authMiddleware";
 
 export const login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
@@ -13,3 +14,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
         next(error);
     }
 }
+
+export const me = async (req: AuthRequest, res: Response) => {
+    return res.json(req.user)
+} 
