@@ -33,8 +33,8 @@ Welcome to the Electronics C-Shop Website! This project is a fully functional on
   - PostgreSQL
   - Prisma ORM
 
-## Installation
--run npm install
--create a db and modify .env
--seed file is at src/utils/seed.ts 
+- ## Installation
+  -run npm install
+  -create a db and modify .env
+  -seed file is at src/utils/seed.ts 
 
