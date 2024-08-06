@@ -72,6 +72,10 @@ Follow these steps to set up and run the project locally:
 
 ![Order Page Screenshot](docs/images/order_page.png)
 
+### MyOrders Page
+
+![MyOrders Page Screenshot](docs/images/myorders_page.png)
+
 
 ### AboutUs Page
 
