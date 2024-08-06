@@ -50,12 +50,36 @@ Follow these steps to set up and run the project locally:
 
 ![Product Page Screenshot](docs/images/products_page.png)
 
-### Homepage
+### SignUp Page
 
 ![SignUp Page Screenshot](docs/images/signup_page.png)
 
-### Product Page
+### Login Page
 
 ![Login Page Screenshot](docs/images/login_page.png)
+
+### Profile Page
+
+![Profile Page Screenshot](docs/images/profile_page.png)
+
+
+### Cart Page
+
+![Cart Page Screenshot](docs/images/cart_page.png)
+
+
+### Order Page
+
+![Order Page Screenshot](docs/images/login_page.png)
+
+
+### AboutUs Page
+
+![AboutUs Page Screenshot](docs/images/login_page.png)
+
+
+### Using Searchbar Page
+
+![UsingSearchBar Page Screenshot](docs/images/login_page.png)
 
 
