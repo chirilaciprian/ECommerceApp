@@ -33,8 +33,11 @@ Welcome to the Electronics C-Shop Website! This project is a fully functional on
   - PostgreSQL
   - Prisma ORM
 ## Installation
-  -run npm install
-  -run npm install
-  -seed file is at src/utils/seed.ts
+
+Follow these steps to set up and run the project locally:
+
+- **Install Backend Dependencies**: Run `npm install` in the `backend` directory.
+- **Install Frontend Dependencies**: Run `npm install` in the `frontend` directory.
+- **Seed the Database**: The seed file is located at `src/utils/seed.ts`. Run `npx ts-node src/utils/seed.ts` to populate the database with initial data.
 
 
