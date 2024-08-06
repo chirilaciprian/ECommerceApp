@@ -70,16 +70,16 @@ Follow these steps to set up and run the project locally:
 
 ### Order Page
 
-![Order Page Screenshot](docs/images/login_page.png)
+![Order Page Screenshot](docs/images/order_page.png)
 
 
 ### AboutUs Page
 
-![AboutUs Page Screenshot](docs/images/login_page.png)
+![AboutUs Page Screenshot](docs/images/AboutUs_page.png)
 
 
 ### Using Searchbar Page
 
-![UsingSearchBar Page Screenshot](docs/images/login_page.png)
+![UsingSearchBar Page Screenshot](docs/images/usingsearchbar.png)
 
 
