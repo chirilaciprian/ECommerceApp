@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Navbar } from "../general/Navbar";
 import { Product } from "../general/Product";
-import axios from "axios";
 import { RiDiscountPercentFill } from "react-icons/ri";
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState, AppDispatch } from "../../state/store";
+import { getProducts } from "../../state/slices/productsSlice";
 
 export const HomePage = () => {
-  interface ProductType {
-    id: string;
-    name: string;
-    price: number;
-    description?: string;
-    category: string;
-    image: string;
-    rating: number;
-    manufacturer: string;
-    onSale: boolean;
-    salePrice?: number;
-  }
-
-  const [products, setProducts] = useState<ProductType[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { products } = useSelector(
+    (state: RootState) => state.products
+  );
+  const dispatch: AppDispatch = useDispatch();
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios.get<ProductType[]>(
-          "http://localhost:5000/api/products"
-        );
-        setProducts(result.data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-    fetchData();
-  }, []); // Run only once on component mount
+    dispatch(getProducts());
+  }, [dispatch]);
 
   const onSaleProducts = products.filter((product) => product.onSale === true);
 
@@ -43,15 +25,15 @@ export const HomePage = () => {
       </div>
       <div className="">
         <div className="flex flex-row items-center justify-center gap-2 mt-10">
-        <RiDiscountPercentFill  className="text-center text-2xl md:text-4xl lg:text-6xl"/>
-        <h1 className="playfair text-xl md:text-4xl lg:text-5xl text-center font-light uppercase ">
-          On sale right now 
-        </h1>
-        <RiDiscountPercentFill  className="text-center text-2xl md:text-4xl lg:text-6xl"/>
+          <RiDiscountPercentFill className="text-center text-2xl md:text-4xl lg:text-6xl" />
+          <h1 className="playfair text-xl md:text-4xl lg:text-5xl text-center font-light uppercase ">
+            On sale right now
+          </h1>
+          <RiDiscountPercentFill className="text-center text-2xl md:text-4xl lg:text-6xl" />
         </div>
         <div className=" mr-10 ml-10 lg:grid-cols-4 grid md:grid-cols-3 sm:grid-col-2">
           {onSaleProducts.map((product) => (
-            <Product
+            <Product              
               key={product.id}
               {...product}
               description={product.description || ""}

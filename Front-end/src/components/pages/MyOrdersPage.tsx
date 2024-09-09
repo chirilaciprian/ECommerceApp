@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
-import { getMyOrdersAndProducts } from "../../services/ProductService";
+import { useEffect, useState } from "react";
+import { getMyOrdersAndProducts } from "../../services/orderService";
 import { Link } from "react-router-dom";
 
 const MyOrdersPage = () => {

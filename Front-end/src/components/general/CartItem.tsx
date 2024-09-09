@@ -1,30 +1,46 @@
-import React, { ChangeEvent } from 'react';
-import { deleteCartItem } from '../../services/ProductService';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../state/store";
+import { decreaseQuantity, getCart, increaseQuantity, removeFromCart } from "../../state/slices/cartSlice";
+import { createSelector } from "@reduxjs/toolkit";
 
 interface CartItemProps {
-  cartItemId: string; // Add the 'cartItemId' property
+  cartItemId: string;
   quantity: number;
   image: string;
   name: string;
   description: string;
-  price: string;
-  onQuantityChange: (id: string, quantity: number) => void;
+  price: number;
 }
 
+const selectCart = createSelector(
+  [(state: RootState) => state.cart],
+  (cart) => ({
+    id: cart.id,
+    userId: cart.userId,
+    cartItems: cart.cartItems,
+    totalPrice: cart.totalPrice,
+    status: cart.status,
+  })
+);
 
-const CartItem: React.FC<CartItemProps> = ({ cartItemId, quantity, image, name, description , price, onQuantityChange }) => {
-  const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newQuantity = Math.max(Number(event.target.value), 1);
-    onQuantityChange(cartItemId, newQuantity);
-  };
+const CartItem: React.FC<CartItemProps> = ({
+  cartItemId,
+  quantity,
+  image,
+  name,
+  description,
+  price,
+}) => {
 
-  const handleIncrement = () => {
-    onQuantityChange(cartItemId, quantity + 1);
-  };
+  
+  const cart = useSelector(selectCart);
+  useSelector((state: RootState) => state.cart);
+  const dispatch: AppDispatch = useDispatch();
 
-  const handleDecrement = () => {
-    onQuantityChange(cartItemId, quantity - 1);
-  };
+  useEffect(() => {
+    dispatch(getCart());
+  }, [dispatch]);
 
   return (
     <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
@@ -42,7 +58,15 @@ const CartItem: React.FC<CartItemProps> = ({ cartItemId, quantity, image, name, 
           <div className="flex items-center border-gray-100">
             <span
               className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
-              onClick={handleDecrement}
+              onClick={() => {
+                dispatch(decreaseQuantity({
+                  id:cartItemId,
+                  cartId:cart.id,
+                  quantity:quantity,
+                  price:price,
+                  productId:""
+                }))
+              }}
             >
               -
             </span>
@@ -51,11 +75,19 @@ const CartItem: React.FC<CartItemProps> = ({ cartItemId, quantity, image, name, 
               type="number"
               value={quantity}
               min="1"
-              onChange={handleQuantityChange}
+              
             />
             <span
               className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
-              onClick={handleIncrement}
+              onClick={() => {
+                dispatch(increaseQuantity({
+                  id:cartItemId,
+                  cartId:cart.id,
+                  quantity:quantity,
+                  price:price,
+                  productId:""
+                }))
+              }}
             >
               +
             </span>
@@ -69,9 +101,14 @@ const CartItem: React.FC<CartItemProps> = ({ cartItemId, quantity, image, name, 
               strokeWidth="1.5"
               stroke="currentColor"
               className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-              onClick={() => deleteCartItem(cartItemId)}
+              onClick={() => {dispatch(removeFromCart(cartItemId))                
+              }}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </div>
         </div>

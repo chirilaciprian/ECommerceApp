@@ -1,39 +1,33 @@
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { FaCartPlus } from "react-icons/fa";
-import { AddCartItem } from "../../services/ProductService";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../../index.css";
 import { isAuthenticated } from "../../services/authService"
+import { ProductProps } from "../../services/productService";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState,AppDispatch } from "../../state/store";
+import { createSelector } from "@reduxjs/toolkit";
+import { addToCart, getCart } from "../../state/slices/cartSlice";
 
-interface ProductProps {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: number;
-  manufacturer: string;
-  onSale: boolean;
-  salePrice?: number;
-}
-interface ProductProps {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: number;
-  manufacturer: string;
-  onSale: boolean;
-  salePrice?: number;
-}
+const selectCart = createSelector(
+  [(state: RootState) => state.cart],
+  (cart) => ({
+    id: cart.id,
+    userId: cart.userId,
+    cartItems: cart.cartItems,
+    totalPrice: cart.totalPrice,
+    status: cart.status,
+  })
+);
+
+
 
 export const Product: React.FC<ProductProps> = (product) => {
   const navigate = useNavigate();
   const [authenticated, setAuthenticated] = useState<boolean>(false);
+  const cart = useSelector(selectCart);
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -41,7 +35,8 @@ export const Product: React.FC<ProductProps> = (product) => {
       setAuthenticated(!!authStatus); // Set authenticated to true if authStatus is not null
     };
     checkAuth();
-  }, []);
+    dispatch(getCart());    
+  }, [dispatch]);
 
   const stars = [];
   const fullStars = Math.floor(product.rating);
@@ -49,7 +44,13 @@ export const Product: React.FC<ProductProps> = (product) => {
 
   const handleAddToCart = async () => {
     if (authenticated) {
-      await AddCartItem(product.id, 1);
+      dispatch(addToCart({
+        productId: product.id,
+        cartId: cart.id,
+        quantity: 1,
+        price: 0,
+        id: ""
+      }))
     } else {
       navigate('/login');
     }

@@ -1,42 +1,67 @@
 // src/components/ProductPage.jsx
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getProductById, AddCartItem } from "../../services/ProductService";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { getProductById } from "../../services/productService";
+import { isAuthenticated } from "../../services/authService";
+import { createSelector } from "@reduxjs/toolkit";
+import { RootState,AppDispatch } from "../../state/store";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../state/slices/cartSlice";
+
+const selectCart = createSelector(
+  [(state: RootState) => state.cart],
+  (cart) => ({
+    id: cart.id,
+    userId: cart.userId,
+    cartItems: cart.cartItems,
+    totalPrice: cart.totalPrice,
+    status: cart.status,
+  })
+);
 
 const ProductPage = () => {
+  const navigate = useNavigate()
   const { productId } = useParams();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [product, setProduct] = useState<any>(null);
+  const [authenticated, setAuthenticated] = useState<boolean>(false);
   const [loading, setLoading] = useState(true);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [error, setError] = useState<any>(null);
+  const cart = useSelector(selectCart);
+  const dispatch: AppDispatch = useDispatch();
+
+  const fetchProduct = async () => {
+    const res = await getProductById(productId || "");
+    setProduct(res);
+    console.log("Response:",res);
+    
+  }
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const res = await getProductById(productId || "");
-        setProduct(res);
-        setLoading(false);
-        console.log(res);
-      } catch (err) {
-        setError(err);
-        setLoading(false);
-      }
+    const checkAuth = async () => {
+      const authStatus = await isAuthenticated();
+      setAuthenticated(!!authStatus); // Set authenticated to true if authStatus is not null
     };
-
+    checkAuth();
     fetchProduct();
-  }, [productId]);
+    setLoading(false);
+  }, [dispatch]);
+
+  const handleAddToCart = async () => {
+    if (authenticated) {
+      dispatch(addToCart({
+        productId: product.id,
+        cartId: cart.id,
+        quantity: 1,
+        price: 0,
+        id: ""
+      }))
+    } else {
+      navigate('/login');
+    }
+  };
 
   if (loading) {
     return <div className="text-center mt-20">Loading product...</div>;
-  }
-
-  if (error) {
-    return (
-      <div className="text-center mt-20">
-        Error loading product: {error.message}
-      </div>
-    );
   }
 
   if (!product) {
@@ -66,7 +91,7 @@ const ProductPage = () => {
             <p className="text-yellow-500 mb-4">Rating: {product.rating} / 5</p>
             <div className="flex flex-col gap-2">
             <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md"
-              onClick={() => AddCartItem(product.id,1)}>
+              onClick={() => {handleAddToCart()}}>
               Add to Cart
             </button>
             <Link to="/products" className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md flex flex-col justify-center items-center">              
