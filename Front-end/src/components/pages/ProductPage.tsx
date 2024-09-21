@@ -1,12 +1,14 @@
 // src/components/ProductPage.jsx
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getProductById } from "../../services/productService";
 import { isAuthenticated } from "../../services/authService";
 import { createSelector } from "@reduxjs/toolkit";
-import { RootState,AppDispatch } from "../../state/store";
+import { RootState, AppDispatch } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../state/slices/cartSlice";
+import { FaRegHeart, FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import Carousel from "../general/Carousel";
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -20,7 +22,7 @@ const selectCart = createSelector(
 );
 
 const ProductPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { productId } = useParams();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [product, setProduct] = useState<any>(null);
@@ -32,9 +34,8 @@ const ProductPage = () => {
   const fetchProduct = async () => {
     const res = await getProductById(productId || "");
     setProduct(res);
-    console.log("Response:",res);
-    
-  }
+    console.log("Response:", res);
+  };
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -48,15 +49,17 @@ const ProductPage = () => {
 
   const handleAddToCart = async () => {
     if (authenticated) {
-      dispatch(addToCart({
-        productId: product.id,
-        cartId: cart.id,
-        quantity: 1,
-        price: 0,
-        id: ""
-      }))
+      dispatch(
+        addToCart({
+          productId: product.id,
+          cartId: cart.id,
+          quantity: 1,
+          price: 0,
+          id: "",
+        })
+      );
     } else {
-      navigate('/login');
+      navigate("/login");
     }
   };
 
@@ -66,42 +69,58 @@ const ProductPage = () => {
 
   if (!product) {
     return <div className="text-center mt-20">Product not found.</div>;
+  } 
+
+  const stars = [];
+  const fullStars = Math.floor(product.rating);
+  const hasHalfStar = product.rating % 1 !== 0;
+  for (let i = 1; i <= 5; i++) {
+    if (i <= fullStars) {
+      stars.push(<FaStar key={i} className="text-yellow-300 text-xl" />);
+    } else if (i === fullStars + 1 && hasHalfStar) {
+      stars.push(<FaStarHalfAlt key={i} className="text-yellow-300 text-xl" />);
+    } else {
+      stars.push(<FaRegStar key={i} className="text-yellow-300 text-xl" />);
+    }
   }
 
   return (
-    <div className="h-screen w-full flex flex-col justify-center items-center">
-      <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg h-1/2">
-        <div className="flex flex-col md:flex-row">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full md:w-1/2 rounded-lg"
-            onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-              (e.target as HTMLImageElement).onerror = null;
-              (e.target as HTMLImageElement).src =
-                "https://via.placeholder.com/400"; // Fallback image URL
-            }}
-          />
-          <div className="md:ml-6 mt-6 md:mt-0">
-            <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-            <p className="text-gray-700 mb-4">{product.description}</p>
-            <p className="text-xl font-semibold text-gray-900 mb-4">
-              ${product.price}
-            </p>
-            <p className="text-yellow-500 mb-4">Rating: {product.rating} / 5</p>
-            <div className="flex flex-col gap-2">
-            <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md"
-              onClick={() => {handleAddToCart()}}>
-              Add to Cart
-            </button>
-            <Link to="/products" className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md flex flex-col justify-center items-center">              
-              Go back to shopping
-            </Link>
+    <>
+      <div className="grid grid:cols-1 lg:grid-cols-2 lg:p-10 sm:p-5 p-2 m-0 w-screen h-screen gap-5 overflow-x-hidden bg-base-200">
+        
+          <Carousel images={product.images} />
+        
+        <div className="roboto flex flex-col gap-5 lg:mt-24 lg:p-10  p-3">
+          <h1 className="md:text-4xl text-2xl font-bold playfair">{product.name}</h1>
+          <h2 className="md:text-3xl text-xl font-light">
+            ${product.price}
+          </h2>
+          <div className=" flex flex-row gap-10">
+            <div className="flex">{stars}</div>
+            <div>
+              <span className="text-xl text-primary cursor-pointer">
+                {" "}
+                {product.rating} (13 reviews)
+              </span>
             </div>
+          </div>
+          <span className="md:text-lg sm:text-md">{product.description}</span>
+          <div className="gap-5 flex flex-row w-full md:mt-5">
+            <button
+              className="btn btn-primary text-xl w-3/4 "
+              onClick={() => {
+                handleAddToCart();
+              }}
+            >
+              Add to cart
+            </button>
+            <button className="btn btn-square btn-ghost">
+              <FaRegHeart className="text-3xl" />
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

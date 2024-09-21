@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { FaShopify, FaUserCircle, FaShoppingCart } from "react-icons/fa";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthHook } from "../../hooks/authHooks";
 import { isAuthenticated, logout } from "../../services/authService";
@@ -20,7 +19,6 @@ const selectCart = createSelector(
 );
 
 export const Navbar = () => {
-  const [isOpenUser, setIsOpenUser] = useState(false);
   const authHook = AuthHook();
   const cart = useSelector(selectCart);
   const dispatch: AppDispatch = useDispatch();
@@ -48,86 +46,139 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="playfair flex justify-between items-center p-5 pl-16 pr-16 font-semibold text-lg shadow-sm">
-        <div className="flex gap-2">
-          <FaShopify className="text-4xl" />
-          <span className="merriweather text-3xl font-thin italic">C-Shop</span>
+      <div className="navbar text-neutral bg-base-200 merriweather ">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content glass rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <Link to='/'>Home</Link>
+              </li>
+              <li>
+                <Link to='/products'>Watches</Link>
+              </li>
+              <li>
+                <Link to='/about'>About Us</Link>
+              </li>
+            </ul>
+          </div>
+          <a className="btn btn-ghost text-xl md:text-2xl font-thin italic ">WatchStore</a>
         </div>
-        <div className="flex gap-14">
-          <Link
-            to="/"
-            className="cursor-pointer link link-underline link-underline-black"
-          >
-            Home
-          </Link>
-          <Link
-            to="/products"
-            className="cursor-pointer link link-underline link-underline-black"
-          >
-            Products
-          </Link>
-          <Link
-            to="/about"
-            className="cursor-pointer link link-underline link-underline-black"
-          >
-            About Us
-          </Link>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <Link to='/' className="btn btn-ghost">Home</Link>
+            </li>
+            <li>
+              <Link to='/products' className="btn btn-ghost">Watches</Link>
+            </li>
+            <li>
+              <Link to='/about' className="btn btn-ghost">About Us</Link>
+            </li>
+          </ul>
         </div>
 
         {authHook.isAuthenticated ? (
-          <div className="flex flex-row text-3xl gap-6 relative">
-            <div>
-              <button
-                className="cursor-pointer"
-                onClick={() => setIsOpenUser(!isOpenUser)}
+          <div className="navbar-end">
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle"
               >
-                <FaUserCircle />
-              </button>
-              {isOpenUser && (
-                <div className="absolute right-0 mt-2 w-48 py-2 bg-white shadow-xl">
-                  <Link
-                    to="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                <div className="indicator">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    Profile
-                  </Link>
-                  <Link
-                    to="/myorders"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    My orders
-                  </Link>
-                  <Link
-                    to=""
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </Link>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  {cart.cartItems.length > 0 && (
+                  <span className="badge badge-sm indicator-item bg-info text-neutral-content">
+                    {cart.cartItems.length}
+                  </span>)}
                 </div>
-              )}
+              </div>
+              <div
+                tabIndex={0}
+                className="card card-compact dropdown-content glass z-[1] mt-3 w-52 shadow"
+              >
+                <div className="card-body">
+                  <span className="text-lg font-bold">{cart.cartItems.length} Items</span>
+                  <span className="">Subtotal: ${cart.totalPrice}</span>
+                  <div className="card-actions">
+                    <Link to="/cart" className="btn btn-primary btn-block">
+                      View cart
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="relative flex">
-              <Link className="cursor-pointer relative" to="/cart">
-                <FaShoppingCart />
-              </Link>
-              <span>({cart.cartItems.length})</span>
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png"
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 glass "
+              >
+                <li>
+                  <Link to='profile'>Profile</Link>
+                </li>
+                <li>
+                  <Link to='myorders'>My Orders</Link>
+                </li>
+                <li>
+                  <a onClick={handleLogout}>Logout</a>
+                </li>
+              </ul>
             </div>
           </div>
         ) : (
-          <div className="flex gap-6">
-            <Link
-              to="/signup"
-              className="text-xl font-bold cursor-pointer link link-underline link-underline-black"
-            >
-              Sign Up
-            </Link>
-            <Link
-              to="/login"
-              className="text-xl font-bold cursor-pointer link link-underline link-underline-black"
-            >
-              Log In
-            </Link>
+          <div className="navbar-end">
+            <div className="join  glass bg-primary">
+              <Link to='/login' className="btn btn-ghost join-item text-neutral-content md:text-lg font-bold">
+                Log In
+              </Link>
+              <Link to='signup' className="btn btn-ghost join-item text-neutral-content md:text-lg font-bold">
+                Sign Up
+              </Link>
+            </div>
           </div>
         )}
       </div>

@@ -7,7 +7,7 @@ export interface ProductProps {
   name: string;
   price: number;
   description: string;
-  image: string;
+  images: string[];
   rating: number;
   manufacturer: string;
   onSale: boolean;

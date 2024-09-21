@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
         <div className="bg-authbg bg-cover bg-center w-screen h-screen absolute blur-none"></div>
 
         <div className="flex items-center justify-center w-screen h-screen z-20 m-0">
-          <div className="bg-gray-100 flex flex-col  items-center pt-10 pb-10  md:w-1/4 w-3/4 rounded-sm gap-10 shadow-sm opacity-90 ">
+          <div className="bg-gray-100 flex flex-col  items-center pt-10 pb-10  md:w-1/4 w-3/4 rounded-sm gap-10 shadow-sm opacity-90">
             <h1 className="merriweather lg:text-5xl md:text-4xl text-3xl font-bold text-gray-600">
               Login
             </h1>

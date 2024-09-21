@@ -37,7 +37,7 @@ const MyOrdersPage = () => {
               <div key={orderItem.id} className="mb-4 flex justify-between">
                 <div className="flex items-center">
                   <img
-                    src={product.image}
+                    src={product.images[0]}
                     alt={product.name}
                     className="w-16 h-16 rounded-lg"
                   />

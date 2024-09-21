@@ -18,16 +18,43 @@ export interface CartProps {
   totalPrice: number;
 }
 
+const checkIfCartExists = async (userId: string) => {
+  try {
+    // Fetch the cart using the provided cartId
+    const cart = await axios.get(`${API_BASE_URL}/api/carts/user/${userId}`);
+    
+    // Check if the cart exists
+    if (cart.data !== null) {
+      return cart.data;  // Cart exists
+    } else {
+      return null;  // Cart does not exist
+    }
+  } catch (err) {
+    // Log error and return false if any error occurs (e.g. network or API issue)
+    console.error("Error checking if cart exists: ", err);
+    return null;
+  }
+};
+
 export const fetchCart = async () => {
   const user = await isAuthenticated();
   const userId = user.id;
-  try {
-    const res = await axios.get(`${API_BASE_URL}/api/carts/user/${userId}`);
-    return res.data;
-  } catch (err) {
-    console.log(err);
-    return err;
+  const cart = await checkIfCartExists(userId);
+  if(cart != null){
+    return cart;    
   }
+  else{
+    try {
+      const res = await axios.post(`${API_BASE_URL}/api/carts`, {
+        userId: userId,
+        totalPrice: 0,
+      });
+      return res.data;
+    } catch (err) {
+      console.log(err);
+      return err;
+  }
+}
 };
 
 export const fetchCartItems = async () => {
@@ -43,6 +70,7 @@ export const fetchCartItems = async () => {
     return err;
   }
 };
+
 
 export const AddCartItem = async (productId: string, cartId: string) => {
   try {
@@ -107,3 +135,4 @@ export const ClearCart = async (cart: CartProps) => {
     return err;
   }
 }
+

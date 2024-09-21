@@ -6,12 +6,12 @@ import {
   increaseCartItemQuantity,
   decreaseCartItemQuantity,
   ClearCart,
-} from "../../services/CartService";
+} from "../../services/cartService";
 import {
   fetchCartItems,
   fetchCart,
   deleteCartItem,
-} from "../../services/CartService";
+} from "../../services/cartService";
 
 export interface CartState extends CartProps {
   status: "idle" | "loading" | "succeeded" | "failed";
@@ -119,7 +119,10 @@ export const cartSlice = createSlice({
           state.status = "succeeded";
           state.cartItems.push(action.payload);
           console.log("Payload:", action.payload);
-        }
+          state.totalPrice = state.cartItems.reduce((total, item) => {
+            return total + item.price;
+          }, 0);
+        }        
       )
       .addCase(addToCart.rejected, (state: CartState) => {
         state.status = "failed";

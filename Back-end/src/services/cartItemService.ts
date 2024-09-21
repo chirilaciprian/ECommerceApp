@@ -8,7 +8,7 @@ const getProductPrice = async (productId: string): Promise<number> => {
       id: productId,
     },
   });
-  return product?.price ?? 0;
+  return product?.salePrice ?? product?.price ?? 0;
 };
 
 const updateCartPrice = async (cartId: string) => {
@@ -17,7 +17,7 @@ const updateCartPrice = async (cartId: string) => {
       cartId,
     },
   });
-  const totalPrice = cartItems.reduce(
+  const totalPrice = cartItems.reduce(    
     (total, item) => total + (item.price ?? 0),
     0
 );

@@ -9,6 +9,7 @@
 * {
   margin: 0;
   /* font-family: "Playfair Display", serif; */
+  background-color: var(--b2);
 }
 
 .merriweather {

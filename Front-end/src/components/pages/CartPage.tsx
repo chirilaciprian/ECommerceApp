@@ -62,7 +62,7 @@ const CartPage: React.FC = () => {
                   key={cartItem.id}
                   cartItemId={cartItem.id}
                   quantity={cartItem.quantity}
-                  image={product.image}
+                  image={product.images[0]}
                   name={product.name}
                   description={product.description || ""}
                   price={parseFloat(cartItem.price)}

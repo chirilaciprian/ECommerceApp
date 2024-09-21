@@ -93,7 +93,7 @@ const CartItem: React.FC<CartItemProps> = ({
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <p className="text-sm">{price}</p>
+            <p className="text-sm">${price}</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
