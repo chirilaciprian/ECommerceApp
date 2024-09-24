@@ -1,4 +1,4 @@
-Welcome to the Electronics C-Shop Website! This project is a fully functional online store specializing in electronics. The backend is built with Node.js and Express, while the frontend utilizes React with Vite and Tailwind CSS. TypeScript is used for type safety across both frontend and backend. The project uses PostgreSQL for the database with Prisma ORM for data management.
+Welcome to the Electronics C-Shop Website! This project is a fully functional online store specializing in watches. The backend is built with Node.js and Express, while the frontend utilizes React with Vite and Tailwind CSS. TypeScript is used for type safety across both frontend and backend. The project uses PostgreSQL for the database with Prisma ORM for data management.
 
 ## Features
 - **Product Catalog**: Browse and search through various electronics categories including smart TVs, smartphones, smartwatches, laptops, and gaming consoles.
@@ -9,18 +9,17 @@ Welcome to the Electronics C-Shop Website! This project is a fully functional on
 
   
 ## Features I'm Working On
-- **Responsive Design**: Tailwind CSS ensures a responsive and modern design across different devices and screen sizes.
+- **New Design on some pages**: Tailwind CSS ensures a responsive and modern design across different devices and screen sizes.
 - **Email Service**: Integration with an email service provider to enable functionalities such as order confirmations, password resets, and promotional emails.
 - **Review System**: A feature that allows users to leave reviews and ratings for products, providing valuable feedback and insights for future customers.
 - **Wishlist System**: Users can create and manage a wishlist of their favorite products, making it easier to keep track of items they wish to purchase in the future.
-- **Better Design**: Ongoing improvements to the user interface and experience, including enhanced visual elements, better navigation, and more intuitive layouts to provide an optimal shopping experience.
-- **Tests are outdated**
+- **Back-end unit tests needs to be updated**
   
 ## Tech Stack
 - **Frontend**:
   - React
   - Vite
-  - Tailwind CSS
+  - Tailwind CSS + DaisyUi
   - TypeScript
 - **Backend**:
   - Node.js
