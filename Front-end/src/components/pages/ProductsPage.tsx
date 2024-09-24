@@ -57,16 +57,21 @@ const ProductsPage: React.FC = () => {
     const fetchFilters = async () => {
       try {
         const fetchedCategories = await getAllCategories();
-        await dispatch(getProducts());
-        const manufacturers = new Set(products.map((product: any) => product.manufacturer));
-        setBrands(Array.from(manufacturers));
+        await dispatch(getProducts());        
         setCategories(fetchedCategories);
       } catch (error) {
         console.error("Error fetching filters", error);
-      }
+      }           
     };
     fetchFilters();
   }, [dispatch]);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      const manufacturers = new Set(products.map((product: any) => product.manufacturer));
+      setBrands(Array.from(manufacturers)); // Only set brands when products are available
+    }
+  }, [products]);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -77,7 +82,7 @@ const ProductsPage: React.FC = () => {
     setSelectedCategories(categories);
     setSelectedGenres(genres);
     setSelectedBrands(brands);
-  }, []);
+  }, [location.search]);
 
   const handleSortChange = (option: { name: string, key: string }) => {
     setSelectedSortOption(option);
