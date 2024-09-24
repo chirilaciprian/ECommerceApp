@@ -175,7 +175,7 @@ export const Navbar = () => {
               <Link to='/login' className="btn btn-ghost join-item text-neutral-content md:text-lg font-bold">
                 Log In
               </Link>
-              <Link to='signup' className="btn btn-ghost join-item text-neutral-content md:text-lg font-bold">
+              <Link to='/signup' className="btn btn-ghost join-item text-neutral-content md:text-lg font-bold">
                 Sign Up
               </Link>
             </div>

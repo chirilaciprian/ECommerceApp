@@ -1,4 +1,3 @@
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { FaCartPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -35,24 +34,22 @@ export const Product: React.FC<ProductProps> = (product) => {
       setAuthenticated(!!authStatus); // Set authenticated to true if authStatus is not null
     };
     checkAuth();
-    dispatch(getCart());    
+    dispatch(getCart());
   }, [dispatch]);
-
-  const stars = [];
-  const fullStars = Math.floor(product.rating);
-  const hasHalfStar = product.rating % 1 !== 0;
 
   const handleAddToCart = async () => {
     if (authenticated) {
-      dispatch(addToCart({
-        productId: product.id,
-        cartId: cart.id,
-        quantity: 1,
-        price: 0,
-        id: ""
-      }))
+      dispatch(
+        addToCart({
+          productId: product.id,
+          cartId: cart.id,
+          quantity: 1,
+          price: 0,
+          id: "",
+        })
+      );
     } else {
-      navigate('/login');
+      navigate("/login");
     }
   };
 
@@ -60,68 +57,55 @@ export const Product: React.FC<ProductProps> = (product) => {
     navigate(`/product/${product.id}`);
   };
 
-  for (let i = 1; i <= 5; i++) {
-    if (i <= fullStars) {
-      stars.push(<FaStar key={i} className="text-yellow-300 text-xl" />);
-    } else if (i === fullStars + 1 && hasHalfStar) {
-      stars.push(<FaStarHalfAlt key={i} className="text-yellow-300 text-xl" />);
-    } else {
-      stars.push(<FaRegStar key={i} className="text-yellow-300 text-xl" />);
-    }
-  }
-
   return (
-    <div className="roboto relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-base-300 shadow-md glass">
-      <a
-        className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
-        href=""
-        onClick={handleClick}
-      >
-        <img className="object-cover w-full h-full" src={product.images[0]} alt={product.name} />
-        {product.onSale && (
-          <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-md font-medium text-white">
-            {Math.round(
-              ((product.price - (product.salePrice ?? 0)) / product.price) * 100
+    <div className="card glass w-auto cursor-pointer">      
+      <figure>
+        <img
+          src={product.images[0]}
+          alt="product"
+          className="w-auto h-auto object-cover"
+          onClick={handleClick}
+        />
+      </figure>
+      <div className="card-body p-2 lg:p-5 justify-end">
+        <h2 className="card-title text-sm md:text-lg" onClick={handleClick}>
+          {product.name}
+        </h2>
+        <div className="display flex flex-row justify-between">
+        <span className="md:text-xl roboto font-bold text-xs">
+            {product.onSale ? (
+              <>
+                {/* Original Price with strikethrough */}
+                <span className="md:mr-2 mr-1">${product.salePrice}</span>
+                {/* Sale Price */}
+                <span className="line-through text-gray-500">${product.price}</span>
+              </>
+            ) : (
+              `$${product.price}`
             )}
-            % OFF
           </span>
-        )}
-      </a>
-      <div className="mt-4 px-5 pb-5">
-        <a href="" onClick={handleClick}>
-          <h5 className="text-xl tracking-tight text-slate-900">
-            {product.name}
-          </h5>
-        </a>
-        <div className="mt-2 mb-5 flex items-center justify-between">
-          {(product.onSale && (
-            <div>
-              <span className="merriweather text-3xl font-bold text-slate-900">
-                ${product.salePrice}
-              </span>
-              <span className="merriweather text-sm text-slate-900 line-through">
-                ${product.price}
-              </span>
-            </div>
-          )) || (
-            <span className="merriweather text-3xl font-bold text-slate-900">
-              ${product.price}
-            </span>
-          )}
-          <div className="flex items-center">
-            {stars}
-            <span className="mr-2 ml-3 rounded bg-yellow-200 px-2.5 py-0.5 text-lg font-semibold">
-              {product.rating}
-            </span>
+          <div className="rating">
+            {[...Array(5)].map((_, i) => (
+              <input
+                key={i}
+                type="radio"
+                name={`rating-${product.id}`}
+                className={`mask mask-star w-4 h-4 md:w-6 md:h-6 bg-yellow-400`}
+                defaultChecked={i + 1 === Math.round(product.rating)}
+                disabled
+              />
+            ))}
           </div>
         </div>
-        <button
-          className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-md font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          onClick={handleAddToCart}
-        >
-          <FaCartPlus className="mr-5 h-6 w-6 text" />
-          Add to cart
-        </button>
+        <div className="card-actions justify-center">
+          <button
+            className="btn btn-block btn-neutral"
+            onClick={handleAddToCart}
+          >
+            Add To Cart
+            <FaCartPlus className="md:text-xl" />
+          </button>
+        </div>
       </div>
     </div>
   );

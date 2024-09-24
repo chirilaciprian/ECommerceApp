@@ -4,14 +4,13 @@ import LoginPage from "./components/authorization/loginPage";
 import SignUpPage from "./components/authorization/signUpPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./components/pages/HomePage";
-import { ProductsPage } from "./components/pages/ProductsPage";
 import ProfilePage from "./components/pages/ProfilePage";
 import CartPage from "./components/pages/CartPage";
 import OrderPage from "./components/pages/OrderPage";
-import ProductPage from "./components/pages/ProductPage";
+import ProductPage from "./components/pages/ProductOverview";
 import AboutPage from "./components/pages/AboutPage";
 import MyOrdersPage from "./components/pages/MyOrdersPage";
-import CategorySelectTest from "./components/general/Test";
+import ProductsPage from "./components/pages/ProductsPage";
 
 function App() {
   return (
@@ -28,8 +27,7 @@ function App() {
             <Route path="/order" element={<OrderPage/>}></Route>
             <Route path="/product/:productId" element={<ProductPage/>}></Route>
             <Route path="/about" element={<AboutPage/>}></Route>
-            <Route path="/myorders" element={<MyOrdersPage/>}></Route>
-            <Route path="/test"element={<CategorySelectTest/>}></Route>
+            <Route path="/myorders" element={<MyOrdersPage/>}></Route>            
           </Routes>
         </BrowserRouter>
       </div>

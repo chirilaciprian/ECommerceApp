@@ -12,6 +12,9 @@ export interface ProductProps {
   manufacturer: string;
   onSale: boolean;
   salePrice: number;
+  genre:string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export const fetchProducts = async () => {
