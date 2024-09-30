@@ -1,4 +1,5 @@
 import React from "react";
+import { UserProps } from "../services/authService";
 
 export const PasswordHook = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -29,13 +30,7 @@ export const ConfirmPasswordHook = () => {
 };
 
 export const UserValuesHook = () => {
-  const [userValues, setUserValues] = React.useState({
-    email: "",
-    confirm_password: "",
-    password: "",
-    username: "",
-  });
-
+  const [userValues, setUserValues] = React.useState<UserProps|null>(null);
   return { userValues, setUserValues };
 };
 
@@ -59,12 +54,6 @@ export const AuthHook = () => {
 };
 
 export const ProfileHook = () => {
-  const [user, setUser] = React.useState({
-    email: "",
-    username: "",
-    phone: "",
-    address: "",
-  });
-
+  const [user, setUser] = React.useState<UserProps | null>(null);
   return { user, setUser };
 };

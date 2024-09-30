@@ -1,27 +1,31 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
-import { isAuthenticated } from "../../services/authService";
+import { IoMdClose } from "react-icons/io";
 import { ProfileHook } from "../../hooks/authHooks";
-import { Link } from "react-router-dom";
+import {
+  isAuthenticated,
+  updateUser,
+  UserProps,
+} from "../../services/authService";
+import { useEffect, useState } from "react";
 
 const ProfilePage = () => {
   const { user, setUser } = ProfileHook();
-  const [showEmailInput, setShowEmailInput] = useState(false);
-  const [showPhoneInput, setShowPhoneInput] = useState(false);
-  const [showAddressInput, setShowAddressInput] = useState(false);
-  const [emailInput, setEmailInput] = useState("");
-  const [phoneInput, setPhoneInput] = useState("");
-  const [addressInput, setAddressInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+  const [newPasswordInput, setNewPasswordInput] = useState("");
+  const [confirmPasswordInput, setConfirmPasswordInput] = useState("");
 
   const handleGetUser = async () => {
     try {
       const data = await isAuthenticated();
       console.log("Authenticated data:", data);
       setUser({
+        id: data.id,
         email: data.email,
         username: data.username,
-        phone: "My Phone Number",
-        address: "Adresa mea",
+        phone: data.phone,
+        address: data.address,
+        password: data.password,
+        createdAt: data.createdAt,
+        updatedAt: data.updatedAt,
       });
       console.log("Updated user:", user);
     } catch (error) {
@@ -29,118 +33,158 @@ const ProfilePage = () => {
     }
   };
 
+  const handleChangePassword = async (user: UserProps) => {
+    if(passwordInput !== user.password) {
+      alert("Password is incorrect");
+      return;
+    }
+    if(passwordInput !== newPasswordInput) {
+      alert("Passwords do not match");
+      return;
+    }
+    setUser({...user, password: newPasswordInput});
+    const res = await updateUser(user);
+    console.log("Updated user:", res);
+  };
+
+  const handleSubmit = async (user: UserProps) => {
+    const res = await updateUser(user);
+    console.log("Updated user:", res);
+  };
+
   useEffect(() => {
     handleGetUser();
   }, []);
-
   return (
     <>
-      <div className="w-screen h-screen flex flex-col items-center justify-center bg-gradient-to-tr from-gray-100 via-slate-200 to-zinc-100 ">
-        {user.email !== "" ? (
-          <div className="bg-gradient-to-b from-slate-200 via-gray-300 to-stone-300 flex flex-col items-start p-16 rounded-lg shadow-md opacity-100 m-0 playfair font-thin gap-2">
-            <div>
-              <h1 className="text-2xl font-bold">Email:</h1>
-              <span className="text-md uppercase roboto font-light">
-                {user.email}
-              </span>
-            </div>
-
-            <div>
-              <h1 className="text-2xl font-bold">Username:</h1>
-              <span className="text-md uppercase roboto font-light">
-                {user.username}
-              </span>
-            </div>
-
-            <div>
-              <h1 className="text-2xl font-bold">Phone:</h1>
-              <span className="text-md uppercase roboto font-light">
-                {user.phone}
-              </span>
-            </div>
-
-            <div>
-              <h1 className="text-2xl font-bold">Address:</h1>
-              <span className="text-md uppercase roboto font-light">
-                {user.address}
-              </span>
-
-              <p className="text-gray-700 mt-8">
-              <Link to="/" className="text-blue-500 text-lg font-bold hover:underline">
-                Back to Homepage
-              </Link>
-            </p>
-            </div>
-
-            {/* <div className="flex lg:flex-row gap-5 flex-col mt-5">
-              <button
-                type="button"
-                className="inline-block rounded bg-neutral-800 px-5 pb-1.5 pt-2 text-sm font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]"
-                onClick={() => setShowEmailInput(!showEmailInput)}
-              >
-                Change
-                <span className="hidden lg:inline">
-                  <br />
+      {user !== null ? (
+        <div className="min-h-screen w-screen flex justify-center playfair p-4 md:p-8 bg-base-200">
+          <div className="flex flex-col items-center m-5 p-5 shadow-md border rounded-xl gap-4 w-full max-w-lg">
+            <h1 className="text-3xl">Account settings</h1>
+            <div className="flex flex-col gap-4 w-full">
+              {/* Username */}
+              <div className="flex w-full items-center">
+                <span className="btn btn-ghost font-bold merriweather w-32">
+                  USERNAME
                 </span>
-                Email
-              </button>
-              {showEmailInput && (
-                <input
-                  type="email"
-                  className="mt-2 p-2 border border-gray-300 rounded"
-                  placeholder="Enter new email"
-                  onChange={(e) => setEmailInput(e.target.value)}
-                />
-              )}
-              <button
-                type="button"
-                className="inline-block rounded bg-neutral-800 px-5 pb-1.5 pt-2 text-sm font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]"
-                onClick={() => setShowPhoneInput(!showPhoneInput)}
-              >
-                Change
-                <span className="hidden lg:inline">
-                  <br />
-                </span>
-                Phone
-              </button>
-              {showPhoneInput && (
-                <input
-                  type="tel"
-                  className="mt-2 p-2 border border-gray-300 rounded"
-                  placeholder="Enter new phone number"
-                  onChange={(e) => setPhoneInput(e.target.value)}
-                />
-              )}
-              <button
-                type="button"
-                className="inline-block rounded bg-neutral-800 px-5 pb-1.5 pt-2 text-sm font-medium uppercase leading-normal text-neutral-50 shadow-[0_4px_9px_-4px_rgba(51,45,45,0.7)] transition duration-150 ease-in-out hover:bg-neutral-800 hover:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:bg-neutral-800 focus:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-[0_8px_9px_-4px_rgba(51,45,45,0.2),0_4px_18px_0_rgba(51,45,45,0.1)] dark:bg-neutral-900 dark:shadow-[0_4px_9px_-4px_#030202] dark:hover:bg-neutral-900 dark:hover:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)] dark:focus:bg-neutral-900 dark:focus:shadow-[0_8px_9px_-4px_rgba(3,2,2,0.3),0_4px_18px_0_rgba(3,2,2,0.2)]"
-                onClick={() => setShowAddressInput(!showAddressInput)}
-              >
-                Change
-                <span className="hidden lg:inline">
-                  <br />
-                </span>
-                Address
-              </button>
-              {showAddressInput && (
                 <input
                   type="text"
-                  className="mt-2 p-2 border border-gray-300 rounded"
-                  placeholder="Enter new address"
-                  onChange={(e) => {
-                    setAddressInput(e.target.value);
-                  }}
+                  placeholder="Username"
+                  value={user.username}
+                  onChange={(e) =>
+                    setUser({ ...user, username: e.target.value })
+                  }
+                  className="input input-bordered w-full"
                 />
-              )}
-            </div> */}
-            
+              </div>
+              {/* Email */}
+              <div className="flex w-full items-center">
+                <span className="btn btn-ghost font-bold merriweather w-32">
+                  EMAIL
+                </span>
+                <input
+                  type="text"
+                  placeholder="Email"
+                  value={user.email}
+                  onChange={(e) => setUser({ ...user, email: e.target.value })}
+                  className="input input-bordered w-full"
+                />
+              </div>
+              {/* Address */}
+              <div className="flex w-full items-center">
+                <span className="btn btn-ghost font-bold merriweather w-32">
+                  ADDRESS
+                </span>
+                <input
+                  type="text"
+                  placeholder="Address"
+                  value={user.address}
+                  onChange={(e) =>
+                    setUser({ ...user, address: e.target.value })
+                  }
+                  className="input input-bordered w-full"
+                />
+              </div>
+              {/* Phone Number */}
+              <div className="flex w-full items-center">
+                <span className="btn btn-ghost font-bold merriweather w-32">
+                  NUMBER
+                </span>
+                <input
+                  type="text"
+                  placeholder="Phone number"
+                  value={user.phone}
+                  onChange={(e) => setUser({ ...user, phone: e.target.value })}
+                  className="input input-bordered w-full roboto font-light"
+                />
+              </div>
+            </div>
+            <button
+              className="btn btn-warning btn-block md:text-xl text-lg"
+              onClick={() => handleSubmit(user)}
+            >
+              Save
+            </button>
+
+            {/* Modal for changing password */}
+            <div>
+              <button
+                className="btn btn-ghost md:text-lg text-md"
+                onClick={() =>
+                  document.getElementById("my_modal_5").showModal()
+                }
+              >
+                Change Password
+              </button>
+              <dialog
+                id="my_modal_5"
+                className="modal modal-bottom sm:modal-middle"
+              >
+                <div className="modal-box p-6">
+                  <div className="modal-action m-0">
+                    <form method="dialog">
+                      <button className="btn btn-ghost p-1">
+                        <IoMdClose className="text-3xl" />
+                      </button>
+                    </form>
+                  </div>
+                  <div className="flex flex-col items-center gap-2 w-full py-10">
+                    <input
+                      type="text"
+                      placeholder="Current Password"
+                      className="input input-bordered w-full"
+                      value={passwordInput}
+                      onChange={(e) => setPasswordInput(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      placeholder="New Password"
+                      className="input input-bordered w-full"
+                      value={newPasswordInput}
+                      onChange={(e) => setNewPasswordInput(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Confirm Password"
+                      className="input input-bordered w-full"
+                      value={confirmPasswordInput}
+                      onChange={(e) => setConfirmPasswordInput(e.target.value)}
+                    />
+                  </div>
+                  <button
+                    className="btn btn-warning btn-block md:text-xl text-lg"
+                    onClick={() => handleChangePassword({...user, password: newPasswordInput})}
+                  >
+                    Save
+                  </button>
+                </div>
+              </dialog>
+            </div>
           </div>
-        ) : (
-          <div className="items-center flex justify-center playfair">
-            <h1 className="text-6xl">Fetching user data...</h1>
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <span>Loading</span>
+      )}
     </>
   );
 };

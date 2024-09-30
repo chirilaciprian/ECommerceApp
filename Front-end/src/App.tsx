@@ -11,7 +11,7 @@ import ProductPage from "./components/pages/ProductOverview";
 import AboutPage from "./components/pages/AboutPage";
 import MyOrdersPage from "./components/pages/MyOrdersPage";
 import ProductsPage from "./components/pages/ProductsPage";
-import Test from "./components/pages/Test";
+
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
             <Route path="/product/:productId" element={<ProductPage/>}></Route>
             <Route path="/about" element={<AboutPage/>}></Route>
             <Route path="/myorders" element={<MyOrdersPage/>}></Route>      
-            <Route path="/test" element={<Test/>}></Route>      
+               
           </Routes>
         </BrowserRouter>
       </div>

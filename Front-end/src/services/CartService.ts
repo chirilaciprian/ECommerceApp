@@ -20,17 +20,13 @@ export interface CartProps {
 
 const checkIfCartExists = async (userId: string) => {
   try {
-    // Fetch the cart using the provided cartId
     const cart = await axios.get(`${API_BASE_URL}/api/carts/user/${userId}`);
-    
-    // Check if the cart exists
     if (cart.data !== null) {
-      return cart.data;  // Cart exists
+      return cart.data;
     } else {
-      return null;  // Cart does not exist
+      return null;
     }
   } catch (err) {
-    // Log error and return false if any error occurs (e.g. network or API issue)
     console.error("Error checking if cart exists: ", err);
     return null;
   }
@@ -40,10 +36,9 @@ export const fetchCart = async () => {
   const user = await isAuthenticated();
   const userId = user.id;
   const cart = await checkIfCartExists(userId);
-  if(cart != null){
-    return cart;    
-  }
-  else{
+  if (cart != null) {
+    return cart;
+  } else {
     try {
       const res = await axios.post(`${API_BASE_URL}/api/carts`, {
         userId: userId,
@@ -53,8 +48,8 @@ export const fetchCart = async () => {
     } catch (err) {
       console.log(err);
       return err;
+    }
   }
-}
 };
 
 export const fetchCartItems = async () => {
@@ -71,22 +66,19 @@ export const fetchCartItems = async () => {
   }
 };
 
-
 export const AddCartItem = async (productId: string, cartId: string) => {
   try {
     const res = await axios.post(`${API_BASE_URL}/api/cartItems`, {
       productId: productId,
       cartId: cartId,
       quantity: 1,
-    });    
+    });
     return res.data;
-
   } catch (err) {
     console.log(err);
     return err;
   }
 };
-
 
 export const deleteCartItem = async (id: string) => {
   try {
@@ -115,7 +107,7 @@ export const decreaseCartItemQuantity = async (cartItem: CartItemProps) => {
   try {
     const res = await axios.put(
       `${API_BASE_URL}/api/cartItems/${cartItem.id}/quantity`,
-      {quantity: cartItem.quantity - 1}
+      { quantity: cartItem.quantity - 1 }
     );
     return res.data;
   } catch (err) {
@@ -125,7 +117,7 @@ export const decreaseCartItemQuantity = async (cartItem: CartItemProps) => {
 };
 
 export const ClearCart = async (cart: CartProps) => {
-  try{
+  try {
     const cartItems = await axios.get(`${API_BASE_URL}/api/cartItems`);
     cartItems.data.map(async (item: CartItemProps) => {
       if (item.cartId === cart.id) {
@@ -136,5 +128,4 @@ export const ClearCart = async (cart: CartProps) => {
     console.log(err);
     return err;
   }
-}
-
+};

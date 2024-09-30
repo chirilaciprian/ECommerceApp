@@ -11,6 +11,17 @@ interface registerValues {
   username: string;
 }
 
+export interface UserProps {
+  id: string;
+  username: string;
+  email: string;
+  password: string;
+  createdAt: Date;
+  updatedAt: Date;
+  phone: string;
+  address: string;
+}
+
 interface loginValues {
   email: string;
   password: string;
@@ -18,10 +29,7 @@ interface loginValues {
 
 export async function Register(userValues: registerValues): Promise<boolean> {
   try {
-    const response = await axios.post(
-      `${API_BASE_URL}/api/signup`,
-      userValues
-    );
+    const response = await axios.post(`${API_BASE_URL}/api/signup`, userValues);
     console.log(response);
     alert("User registered successfully");
     return true;
@@ -48,10 +56,7 @@ export const logout = () => {
 
 export async function Login(userValues: loginValues): Promise<boolean> {
   try {
-    const response = await axios.post(
-      `${API_BASE_URL}/api/login`,
-      userValues
-    );
+    const response = await axios.post(`${API_BASE_URL}/api/login`, userValues);
     console.log(response);
     tokenService(response.data.token);
     alert("User logged in successfully");
@@ -85,5 +90,17 @@ export const isAuthenticated = async () => {
       console.log(err);
       return null;
     }
+  }
+};
+
+export const updateUser = async (userValues: UserProps) => {
+  try {
+    const res = await axios.put(
+      `${API_BASE_URL}/api/users/${userValues.id}`,
+      userValues
+    );
+    console.log(res.data);
+  } catch (err) {
+    console.log(err);
   }
 };

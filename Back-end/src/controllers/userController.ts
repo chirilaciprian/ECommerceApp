@@ -61,8 +61,9 @@ export const createUser = async (
       username: username,
       email: email,
       password: password,
+      phone:"",
+      address:"",
     };
-
     const user = await userServices.createUser(newIUser);
     logger.info(`User with email ${email} created`);
     res.status(201).json(user);

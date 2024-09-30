@@ -158,7 +158,7 @@ export const Navbar = () => {
                 className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 glass "
               >
                 <li>
-                  <Link to='/profile'>Profile</Link>
+                  <Link to='/profile'>Account</Link>
                 </li>
                 <li>
                   <Link to='/myorders'>My Orders</Link>
