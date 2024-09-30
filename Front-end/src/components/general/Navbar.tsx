@@ -80,7 +80,7 @@ export const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl md:text-2xl font-thin italic ">WatchStore</a>
+          <Link to="/" className="btn btn-ghost text-xl md:text-2xl font-thin italic ">WatchStore</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -158,10 +158,10 @@ export const Navbar = () => {
                 className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 glass "
               >
                 <li>
-                  <Link to='profile'>Profile</Link>
+                  <Link to='/profile'>Profile</Link>
                 </li>
                 <li>
-                  <Link to='myorders'>My Orders</Link>
+                  <Link to='/myorders'>My Orders</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>

@@ -78,13 +78,15 @@ export const AddCartItem = async (productId: string, cartId: string) => {
       productId: productId,
       cartId: cartId,
       quantity: 1,
-    });
+    });    
     return res.data;
+
   } catch (err) {
     console.log(err);
     return err;
   }
 };
+
 
 export const deleteCartItem = async (id: string) => {
   try {

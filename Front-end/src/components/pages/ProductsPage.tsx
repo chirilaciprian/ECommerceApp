@@ -27,6 +27,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../state/store";
 import { getProducts } from "../../state/slices/productsSlice";
 import { useLocation, useNavigate } from "react-router-dom";
+import Alert from "../general/Alert";
 
 const sortOptions = [
   { name: "Most Popular", key: "popular" },  // You need a 'key' for sorting logic
@@ -50,6 +51,7 @@ const ProductsPage: React.FC = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [onSaleFilter, setOnSaleFilter] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState(sortOptions[0]);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
@@ -78,10 +80,12 @@ const ProductsPage: React.FC = () => {
     const categories = params.get("category")?.split(",") || [];
     const genres = params.get("genre")?.split(",") || [];
     const brands = params.get("brand")?.split(",") || [];
+    const onSale = params.get("onSale") === "true";
     
     setSelectedCategories(categories);
     setSelectedGenres(genres);
     setSelectedBrands(brands);
+    setOnSaleFilter(onSale);
   }, [location.search]);
 
   const handleSortChange = (option: { name: string, key: string }) => {
@@ -92,9 +96,9 @@ const ProductsPage: React.FC = () => {
   const sortedProducts = [...products].sort((a, b) => {
     switch (selectedSortOption.key) {
       case "priceLowToHigh":
-        return a.price - b.price;
+        return (a.salePrice??a.price) - (b.salePrice??b.price);
       case "priceHighToLow":
-        return b.price - a.price;
+        return (b.salePrice??b.price) - (a.salePrice??a.price);
       case "newest":
         return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       case "rating":
@@ -144,7 +148,8 @@ const ProductsPage: React.FC = () => {
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.categoryId);
     const matchesGenre = selectedGenres.length === 0 || selectedGenres.includes(product.genre);
     const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.manufacturer);
-    return matchesCategory && matchesGenre && matchesBrand;
+    const matchesOnSale = !onSaleFilter || product.salePrice !== null;
+    return matchesCategory && matchesGenre && matchesBrand && matchesOnSale;
   });
 
   const filters = [
@@ -181,6 +186,8 @@ const ProductsPage: React.FC = () => {
   return (
     <>
       <Navbar />
+      <Alert type={"success"} message={"Added to cart!"} isVisible={false}      
+        />
       <div className="bg-base-200">
         <div>
           {/* Mobile filter dialog */}

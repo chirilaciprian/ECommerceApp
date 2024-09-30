@@ -69,14 +69,14 @@ const OrderPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="h-screen bg-gray-100 pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-100 pt-20 flex items-center justify-center">
         <p className="text-2xl font-bold">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="h-full bg-gray-100 pb-10 pt-10">
+    <div className="h-full min-h-screen bg-gray-100 pb-10 pt-10">
       <h1 className="mb-10 text-center text-2xl font-bold">Order Summary</h1>
       <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
         <div className="rounded-lg md:w-2/3">
@@ -90,7 +90,7 @@ const OrderPage: React.FC = () => {
             }
 
             return (
-              <div key={cartItem.id} className="mb-4 flex justify-between">
+              <div key={cartItem.id} className="mb-4 flex justify-between gap-4 roboto shadow-md bg-white rounderd-xl p-4">
                 <div className="flex items-center">
                   <img
                     src={product.images[0]}
@@ -99,14 +99,14 @@ const OrderPage: React.FC = () => {
                   />
                   <div className="ml-4">
                     <p className="text-lg font-bold">{product.name}</p>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-gray-700 line-clamp-2">
                       {product.description}
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center gap-2">
                   <p className="text-lg font-bold">{cartItem.price}$</p>
-                  <p className="ml-4 text-lg">{cartItem.quantity}x</p>
+                  <p className="ml-4 text-lg text-primary font-bold">Qt:{cartItem.quantity}</p>
                 </div>
               </div>
             );

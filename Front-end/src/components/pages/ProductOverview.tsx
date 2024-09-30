@@ -1,5 +1,5 @@
 // src/components/ProductPage.jsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProductById } from "../../services/productService";
 import { isAuthenticated } from "../../services/authService";
@@ -8,13 +8,12 @@ import { RootState, AppDispatch } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../state/slices/cartSlice";
 import {
-  FaHeart,
-  FaRegHeart,
   FaRegStar,
   FaStar,
   FaStarHalfAlt,
 } from "react-icons/fa";
 import Carousel from "../general/Carousel";
+import Alert from "../general/Alert";
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -35,6 +34,7 @@ const ProductPage = () => {
   const [authenticated, setAuthenticated] = useState<boolean>(false);
   const [loading, setLoading] = useState(true);
   const cart = useSelector(selectCart);
+  const [showAlert, setShowAlert] = useState<boolean>(false);
   const dispatch: AppDispatch = useDispatch();
 
   const fetchProduct = async () => {
@@ -63,7 +63,12 @@ const ProductPage = () => {
           price: 0,
           id: "",
         })
-      );
+      );      
+      setShowAlert(true);
+      // Hide the alert after 3 seconds
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 2000);
     } else {
       navigate("/login");
     }
@@ -92,7 +97,12 @@ const ProductPage = () => {
 
   return (
     <>
-      <div className="grid grid:cols-1 lg:grid-cols-2 lg:p-10 sm:p-5 p-2 m-0 w-screen h-screen gap-5 overflow-x-hidden bg-base-200">
+      <Alert
+        type="success"
+        message="Added to Cart!"
+        isVisible={showAlert}      
+      />
+      <div className="grid grid:cols-1 lg:grid-cols-2 lg:p-10 sm:p-5 p-2 m-0 w-screen h-screen gap-5 overflow-x-hidden">
         <Carousel images={product.images} />
 
         <div className="roboto flex flex-col gap-5 lg:mt-24 lg:p-10  p-3">
@@ -105,25 +115,25 @@ const ProductPage = () => {
             <div>
               <span className="text-xl text-primary cursor-pointer">
                 {" "}
-                {product.rating} (13 reviews)
+                {product.rating} (6 reviews)
               </span>
             </div>
           </div>
           <span className="md:text-lg sm:text-md">{product.description}</span>
-          <div className="gap-5 flex flex-row w-full md:mt-5">
+          <div className="flex flex-row w-full md:mt-5">
             <button
-              className="btn btn-primary text-xl w-3/4 "
+              className="btn btn-block btn-primary text-xl  "
               onClick={() => {
                 handleAddToCart();
               }}
             >
               Add to cart
             </button>
-            <label className="swap swap-flip m-0 p-0">
+            {/* <label className="swap swap-flip m-0 p-0">
               <input type="checkbox" />
               <FaHeart className=" swap-on text-error text-3xl" />
               <FaRegHeart className="swap-off text-error text-3xl" />
-            </label>
+            </label> */}
           </div>
         </div>
       </div>
