@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { getMyOrdersAndProducts } from "../../services/orderService";
 import OrderItemCard from "../general/OrderItemCard";
+import { Link } from "react-router-dom";
 
 const MyOrdersPage = () => {
   const [orders, setOrders] = useState<any>([]);
@@ -21,8 +22,9 @@ const MyOrdersPage = () => {
   return (
     <>
       <div className="py-24 relative bg-base-200 min-h-screen">
+        {orders.length !== 0 ? (
         <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto flex flex-col gap-10">
-          <h2 className="font-manrope font-bold text-4xl leading-10 text-black text-center mb-10">
+          <h2 className="merriweather font-light md:text-5xl text-4xl leading-10 text-black text-center mb-10">
             My orders
           </h2>
           {orders.map((order: any) => (
@@ -94,6 +96,24 @@ const MyOrdersPage = () => {
             </div>
           ))}
         </div>
+        ):(
+          <div className="flex flex-col items-center  playfair">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/4076/4076507.png"
+                alt="No Orders"
+                className="w-48 h-48 mb-6"
+              />
+              <h2 className="md:text-3xl text-xl font-semibold text-gray-700">
+                No Orders Yet
+              </h2>
+              <p className="mt-2 text-gray-500 md:text-xl text-md">
+                You haven’t placed any orders yet.
+              </p>
+              <Link to="/products" className="mt-6 btn btn-primary px-6 md:text-xl text-md">
+                Start Shopping
+              </Link>
+            </div>
+        )}
       </div>
     </>
   );

@@ -6,6 +6,8 @@ import {
   UserProps,
 } from "../../services/authService";
 import { useEffect, useState } from "react";
+import { changePassword } from "../../services/userService";
+import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
   const { user, setUser } = ProfileHook();
@@ -33,17 +35,18 @@ const ProfilePage = () => {
     }
   };
 
-  const handleChangePassword = async (user: UserProps) => {
-    if(passwordInput !== user.password) {
-      alert("Password is incorrect");
-      return;
-    }
-    if(passwordInput !== newPasswordInput) {
-      alert("Passwords do not match");
-      return;
-    }
-    setUser({...user, password: newPasswordInput});
-    const res = await updateUser(user);
+  const handleChangePassword = async (
+    id: string,
+    password: string,
+    newPassword: string,
+    confirmNewPassword: string
+  ) => {
+    const res = await changePassword(
+      id,
+      password,
+      newPassword,
+      confirmNewPassword
+    );
     console.log("Updated user:", res);
   };
 
@@ -150,21 +153,21 @@ const ProfilePage = () => {
                   </div>
                   <div className="flex flex-col items-center gap-2 w-full py-10">
                     <input
-                      type="text"
+                      type="password"
                       placeholder="Current Password"
                       className="input input-bordered w-full"
                       value={passwordInput}
                       onChange={(e) => setPasswordInput(e.target.value)}
                     />
                     <input
-                      type="text"
+                      type="password"
                       placeholder="New Password"
                       className="input input-bordered w-full"
                       value={newPasswordInput}
                       onChange={(e) => setNewPasswordInput(e.target.value)}
                     />
                     <input
-                      type="text"
+                      type="password"
                       placeholder="Confirm Password"
                       className="input input-bordered w-full"
                       value={confirmPasswordInput}
@@ -173,13 +176,26 @@ const ProfilePage = () => {
                   </div>
                   <button
                     className="btn btn-warning btn-block md:text-xl text-lg"
-                    onClick={() => handleChangePassword({...user, password: newPasswordInput})}
+                    onClick={() =>
+                      handleChangePassword(
+                        user.id,
+                        passwordInput,
+                        newPasswordInput,
+                        confirmPasswordInput
+                      )
+                    }
                   >
                     Save
                   </button>
                 </div>
               </dialog>
             </div>
+            <Link
+              to="/"
+              className="text-indigo-600 hover:text-indigo-800 font-semibold text-lg text-center w-full"
+            >
+              ← Back to Home
+            </Link>
           </div>
         </div>
       ) : (

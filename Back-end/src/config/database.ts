@@ -1,9 +1,10 @@
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
+import { DATABASE_URL, TEST_DATABASE_URL } from './env';
 
 dotenv.config();
 
-const databaseUrl = process.env.NODE_ENV === 'test' ? process.env.TEST_DATABASE_URL : process.env.DATABASE_URL;
+const databaseUrl = process.env.NODE_ENV === 'test' ? TEST_DATABASE_URL : DATABASE_URL;
 
 const prisma = new PrismaClient({
   datasources: {

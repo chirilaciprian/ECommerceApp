@@ -5,6 +5,7 @@ import { userValidator } from "../validators/userValidator";
 import * as userServices from "../services/userService";
 import { IUser } from "../models/IUser";
 import logger from "../utils/logger";
+import bcrypt from "bcrypt";
 
 export const getAllUsers = async (
   req: Request,
@@ -61,8 +62,8 @@ export const createUser = async (
       username: username,
       email: email,
       password: password,
-      phone:"",
-      address:"",
+      phone: "",
+      address: "",
     };
     const user = await userServices.createUser(newIUser);
     logger.info(`User with email ${email} created`);
@@ -113,6 +114,45 @@ export const deleteUser = async (
     logger.error(`Failed to delete user: ${error}`);
     next(
       new AppError("Failed to delete user", errorCodes.INTERNAL_SERVER_ERROR)
+    );
+  }
+};
+
+export const changePassword = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const { id, password, newPassword, confirmNewPassword } = req.body;
+    if (newPassword !== confirmNewPassword)
+      next(
+        new AppError(
+          "New password and confirm password does not match",
+          errorCodes.VALIDATION_ERROR
+        )
+      );
+    const user = await userServices.getUserById(id);
+    if (!user) {
+      next(new AppError("User not found", errorCodes.NOT_FOUND));
+      return;
+    }
+    if (!(await bcrypt.compare(password, user.password))) {
+      next(new AppError("Invalid password", errorCodes.VALIDATION_ERROR));
+      return;
+    }
+    const passwordChange = await userServices.changePasswordService(
+      id,
+      newPassword
+    );
+    res.status(200).json(passwordChange);
+  } catch (error) {
+    logger.error(`Failed to change password: ${error}`);
+    next(
+      new AppError(
+        "Failed to change password",
+        errorCodes.INTERNAL_SERVER_ERROR
+      )
     );
   }
 };
