@@ -4,29 +4,19 @@ import { useState, useEffect } from "react";
 import "../../index.css";
 import { isAuthenticated } from "../../services/authService";
 import { ProductProps } from "../../services/productService";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../../state/store";
-import { createSelector } from "@reduxjs/toolkit";
-import { addToCart, getCart } from "../../state/slices/cartSlice";
 import Alert from "./Alert";
 
-const selectCart = createSelector(
-  [(state: RootState) => state.cart],
-  (cart) => ({
-    id: cart.id,
-    userId: cart.userId,
-    cartItems: cart.cartItems,
-    totalPrice: cart.totalPrice,
-    status: cart.status,
-  })
-);
 
-export const Product: React.FC<ProductProps> = (product) => {
+interface ProductPropsWithMethods extends ProductProps {
+  addToCart: (id: string) => void;
+}
+
+export const Product = (product:ProductPropsWithMethods) => {
   const navigate = useNavigate();
   const [authenticated, setAuthenticated] = useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<boolean>(false);
-  const cart = useSelector(selectCart);
-  const dispatch: AppDispatch = useDispatch();
+  
+  
 
 
   useEffect(() => {
@@ -34,21 +24,12 @@ export const Product: React.FC<ProductProps> = (product) => {
       const authStatus = await isAuthenticated();
       setAuthenticated(!!authStatus); // Set authenticated to true if authStatus is not null
     };
-    checkAuth();
-    dispatch(getCart());
-  }, [dispatch]);
+    checkAuth();    
+  }, []);
 
   const handleAddToCart = async () => {
     if (authenticated) {
-      dispatch(
-        addToCart({
-          productId: product.id,
-          cartId: cart.id,
-          quantity: 1,
-          price: 0,
-          id: "",
-        })
-      );
+      product.addToCart(product.id);
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
