@@ -113,9 +113,9 @@ const ProductPage = () => {
           <div className=" flex flex-row gap-10">
             <div className="flex">{stars}</div>
             <div>
-              <span className="text-xl text-primary cursor-pointer">
+              <span className="text-xl font-extrabold p-1 px-2 rounded-lg cursor-pointer bg-neutral text-yellow-400">
                 {" "}
-                {product.rating} (6 reviews)
+                {product.rating}
               </span>
             </div>
           </div>
