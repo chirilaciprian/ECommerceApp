@@ -1,5 +1,5 @@
 import React from "react";
-import { UserProps } from "../services/authService";
+import { registerValues, UserProps } from "../services/authService";
 
 export const PasswordHook = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -29,8 +29,8 @@ export const ConfirmPasswordHook = () => {
   };
 };
 
-export const UserValuesHook = () => {
-  const [userValues, setUserValues] = React.useState<UserProps|null>(null);
+export const SignUpHook = () => {
+  const [userValues, setUserValues] = React.useState<registerValues | null >(null);
   return { userValues, setUserValues };
 };
 

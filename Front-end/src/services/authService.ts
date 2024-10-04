@@ -4,7 +4,7 @@ import Cookies from "universal-cookie";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-interface registerValues {
+export interface registerValues {
   email: string;
   confirm_password: string;
   password: string;
@@ -27,9 +27,9 @@ interface loginValues {
   password: string;
 }
 
-export async function Register(userValues: registerValues): Promise<boolean> {
+export async function Register(registerValues: registerValues): Promise<boolean> {
   try {
-    const response = await axios.post(`${API_BASE_URL}/api/signup`, userValues);
+    const response = await axios.post(`${API_BASE_URL}/api/signup`, registerValues);
     console.log(response);
     alert("User registered successfully");
     return true;

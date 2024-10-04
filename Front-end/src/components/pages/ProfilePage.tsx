@@ -133,9 +133,14 @@ const ProfilePage = () => {
             <div>
               <button
                 className="btn btn-ghost md:text-lg text-md"
-                onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
-                }
+                onClick={() => {
+                  const modal = document.getElementById(
+                    "my_modal_5"
+                  ) as HTMLDialogElement | null;
+                  if (modal) {
+                    modal.showModal();
+                  }
+                }}
               >
                 Change Password
               </button>

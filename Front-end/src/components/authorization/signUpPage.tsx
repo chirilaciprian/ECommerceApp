@@ -3,7 +3,11 @@ import "../../index.css";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { IoMdMail } from "react-icons/io";
-import { PasswordHook, ConfirmPasswordHook, UserValuesHook } from "../../hooks/authHooks";
+import {
+  PasswordHook,
+  ConfirmPasswordHook,
+  SignUpHook,
+} from "../../hooks/authHooks";
 import { Register } from "../../services/authService";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -12,15 +16,25 @@ const SignUpPage: React.FC = () => {
 
   const toogleConfirmPass = ConfirmPasswordHook();
 
-  const userHooks = UserValuesHook();
+  const [confirmPassword, setConfirmPassword] = React.useState<string>("");
+  const userHooks = SignUpHook();
 
   const navigate = useNavigate();
 
-  const handleRegister = async () =>{
-    const res = await Register(userHooks.userValues);
-    if (res) navigate("/login");
-  }
-
+  const handleRegister = async () => {
+    if (userHooks.userValues) {
+      const res = await Register({
+        email: userHooks.userValues.email,
+        username: userHooks.userValues.username,
+        password: userHooks.userValues.password,
+        confirm_password: confirmPassword,
+      });
+      if (res) navigate("/login");
+    } else {
+      // Handle the case where userValues is null (optional)
+      console.log("User values are incomplete");
+    }
+  };
 
   return (
     <>
@@ -44,7 +58,14 @@ const SignUpPage: React.FC = () => {
                   type="email"
                   placeholder="Email"
                   className="bg-inherit ml-5 focus:outline-none text-black w-full"
-                  onChange={(e) => userHooks.setUserValues({...userHooks.userValues, email: e.target.value})}
+                  onChange={(e) =>
+                    userHooks.setUserValues({                      
+                      email: e.target.value,
+                      username: userHooks.userValues?.username || "",
+                      password: userHooks.userValues?.password || "",
+                      confirm_password: confirmPassword || "",
+                    })
+                  }
                 ></input>
               </div>
               <div className="flex flex-row bg-gray-200 p-2  rounded-sm text-authgray">
@@ -53,7 +74,14 @@ const SignUpPage: React.FC = () => {
                   type="text"
                   placeholder="Username"
                   className="bg-inherit ml-5 focus:outline-none text-black w-full"
-                 onChange={(e) => userHooks.setUserValues({...userHooks.userValues, username: e.target.value})}
+                  onChange={(e) =>
+                    userHooks.setUserValues({                      
+                      email: userHooks.userValues?.email || "",
+                      username: e.target.value,
+                      password: userHooks.userValues?.password || "",
+                      confirm_password: confirmPassword || "",
+                    })
+                  }
                 ></input>
               </div>
               <div className="flex flex-row bg-gray-200 p-2  rounded-sm text-authgray">
@@ -62,7 +90,14 @@ const SignUpPage: React.FC = () => {
                   type={tooglePass.passwordInputType}
                   placeholder="Password"
                   className="bg-inherit ml-5  focus:outline-none text-black w-full"
-                  onChange={(e) => userHooks.setUserValues({...userHooks.userValues, password: e.target.value})}
+                  onChange={(e) =>
+                    userHooks.setUserValues({
+                      email: userHooks.userValues?.email || "",
+                      username: userHooks.userValues?.username || "",
+                      password: e.target.value,
+                      confirm_password: confirmPassword || "",
+                    })
+                  }
                 ></input>
                 <button
                   type="button"
@@ -78,7 +113,7 @@ const SignUpPage: React.FC = () => {
                   type={toogleConfirmPass.confirmPasswordInputType}
                   placeholder="Confirm Password"
                   className="bg-inherit ml-5  focus:outline-none text-black w-full"
-                  onChange={(e) => userHooks.setUserValues({...userHooks.userValues, confirm_password: e.target.value})}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 ></input>
                 <button
                   type="button"
