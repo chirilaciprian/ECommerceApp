@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "./index.css";
-import LoginPage from "./components/authorization/loginPage";
-import SignUpPage from "./components/authorization/signUpPage";
+import LoginPage from "./components/authorization/LoginPage";
+import SignUpPage from "./components/authorization/SignUpPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./components/pages/HomePage";
 import ProfilePage from "./components/pages/ProfilePage";
