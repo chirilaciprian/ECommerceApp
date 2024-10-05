@@ -1,6 +1,6 @@
 # ECommerce Website
 
-This is an ECommerce website that sells watches.
+This is a full-stack ECommerceApp featuring a wide selection of handwatches. It offers seamless browsing, secure checkout, and a user-friendly interface to shop for premium watches. 
 
 ## Live Demo
 

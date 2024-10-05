@@ -25,11 +25,11 @@ const LoginPage: React.FC = () => {
       <div className="playfair w-screen h-screen flex items-center justify-center">
         <div className="absolute bg-black overflow-hidden flex w-screen h-screen z-10 opacity-50"></div>
 
-        <div className="bg-authbg bg-cover bg-center w-screen h-screen absolute blur-none"></div>
+        <div className="bg-authbg bg-cover bg-center w-screen h-screen absolute blur-sm"></div>
 
         <div className="flex items-center justify-center w-screen h-screen z-20 m-0">
-          <div className="bg-gray-100 flex flex-col  items-center pt-10 pb-10  md:w-1/4 w-3/4 rounded-sm gap-10 shadow-sm opacity-90">
-            <h1 className="merriweather lg:text-5xl md:text-4xl text-3xl font-bold text-gray-600">
+          <div className="glass flex flex-col  items-center pt-10 pb-10  md:w-1/4 w-3/4 rounded-sm gap-10 shadow-xl opacity-90">
+            <h1 className="merriweather lg:text-5xl md:text-4xl text-3xl font-bold text-neutral-content">
               Login
             </h1>
             <form
@@ -72,7 +72,7 @@ const LoginPage: React.FC = () => {
                 </button>
               </div>
               <div className="mt-5">
-                <span>Don't have an account?</span>
+                <span className="text-neutral-content">Don't have an account?</span>
                 <Link to="/signup" className="text-blue-400 cursor-pointer">
                   Click Here!
                 </Link>
