@@ -3,7 +3,7 @@ import "./index.css";
 import LoginPage from "./components/authorization/loginPage";
 import SignUpPage from "./components/authorization/signUpPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomePage } from "./components/pages/HomePage";
+import HomePage from "./components/pages/HomePage";
 import ProfilePage from "./components/pages/ProfilePage";
 import CartPage from "./components/pages/CartPage";
 import OrderPage from "./components/pages/OrderPage";
