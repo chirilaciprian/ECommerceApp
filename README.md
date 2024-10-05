@@ -1,5 +1,12 @@
-This is an Ecommerce website that sells watches.Demo on this link
-[Live Demo]("https://ciprianecommerce-ggs5.onrender.com")
+# ECommerce Website
+
+This is an ECommerce website that sells watches.
+
+## Live Demo
+
+Check out the demo on this link:  
+[Live Demo](https://ciprianecommerce-ggs5.onrender.com)
+
 ## Features
 - **Product Catalog**: Browse and search through various electronics categories including smart TVs, smartphones, smartwatches, laptops, and gaming consoles.
 - **Product Details**: View detailed information about each product, including images, descriptions, ratings, and prices.
