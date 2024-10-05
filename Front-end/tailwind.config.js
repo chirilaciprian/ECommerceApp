@@ -18,4 +18,7 @@ export default {
     daisyui,
     typography,
   ],
+  daisyui:{
+    themes:["light"],
+  }
 };
