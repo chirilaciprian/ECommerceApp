@@ -4,7 +4,7 @@ import HomeExploreCard from "../general/HomeExploreCard";
 import { getCategoryByName } from "../../services/categoryService";
 import { useEffect, useState } from "react";
 
-export const HomePage = () => {
+const HomePage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [casual, setCasual] = useState<string>("");
   const [smartWatch, setSmartWatch] = useState<string>("");
@@ -86,3 +86,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+export default HomePage;
