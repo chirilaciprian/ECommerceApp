@@ -5,8 +5,10 @@ This is a full-stack ECommerceApp featuring a wide selection of handwatches. It 
 ## Live Demo
 
 Database hosted on AWS RDS.  
-Frontend and Backend hosted on render.com.
+Frontend and Backend hosted on render.com.  
+
 ⚠️ **Warning**: At first use, it could take 1-2 minutes to load because of cold start.  
+
 Check out the demo on this link:  
 [Live Demo](https://ciprianecommerce-ggs5.onrender.com)
 
