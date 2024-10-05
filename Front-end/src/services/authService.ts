@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { jwtDecode } from "jwt-decode";
-import Cookies from "universal-cookie";
+// import Cookies from "universal-cookie";
+import Cookies from "js-cookie";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -41,18 +42,37 @@ export async function Register(registerValues: registerValues): Promise<boolean>
 }
 
 function tokenService(token: string) {
-  const cookie = new Cookies();
+  
   const decoded = jwtDecode(token);
   console.log(decoded);
   if (decoded.exp === undefined) return;
-  cookie.set("jwt_auth", token, { expires: new Date(decoded.exp * 1000) });
+  Cookies.set("jwt_auth", token, { expires: new Date(decoded.exp * 1000) });
 }
 
 export const logout = () => {
-  const cookie = new Cookies();
-  cookie.remove("jwt_auth");
+  
+  Cookies.remove("jwt_auth");
   return false;
 };
+
+export const isAuthenticated = async () => {  
+  const token = Cookies.get("jwt_auth");
+  if (token) {
+    try {
+      const res = await axios.get(`${API_BASE_URL}/api/me`, {
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
+
+      return res.data;
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  }
+};
+
 
 export async function Login(userValues: loginValues): Promise<boolean> {
   try {
@@ -74,24 +94,6 @@ export async function Login(userValues: loginValues): Promise<boolean> {
   }
 }
 
-export const isAuthenticated = async () => {
-  const cookie = new Cookies();
-  const token = cookie.get("jwt_auth");
-  if (token) {
-    try {
-      const res = await axios.get(`${API_BASE_URL}/api/me`, {
-        headers: {
-          Authorization: `${token}`,
-        },
-      });
-
-      return res.data;
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
-  }
-};
 
 export const updateUser = async (userValues: UserProps) => {
   try {
