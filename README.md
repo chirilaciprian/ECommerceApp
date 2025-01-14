@@ -3,7 +3,7 @@
 This is a full-stack ECommerceApp featuring a wide selection of handwatches. It offers seamless browsing, secure checkout, and a user-friendly interface to shop for premium watches. 
 
 ## Live Demo
-🚨 **Currently Unavailable**  
+🚨 **Currently Unavailable**
 The live demo is no longer accessible due to expired hosting. Please refer to the screenshots and setup instructions to run it locally.
 
 Database hosted on AWS RDS.  
