@@ -54,6 +54,14 @@ export const getProductById = async (id: string): Promise<IProduct | null> => {
   });
 }
 
+export const getProductBySku = async (sku: string): Promise<IProduct | null> => {
+  return await prisma.product.findFirst({
+    where: {
+      sku
+    }
+  });
+}
+
 export const createProduct = async (product: Omit<IProduct,"id"|"createdAt"|"updatedAt">): Promise<IProduct> => {
     
   const category = await prisma.category.findUnique({

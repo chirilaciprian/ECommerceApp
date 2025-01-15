@@ -49,7 +49,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({ products }) => {
   return (
     <>                  
       <div className="bg-base-200 h-auto w-auto">          
-        <div className="grid md:grid-cols-3 grid-cols-2 gap-4">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">
           {products.map((product) => (
             <Product
               key={product.id}

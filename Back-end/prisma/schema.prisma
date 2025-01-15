@@ -35,22 +35,22 @@ model Category {
 }
 
 model Product {
-  id           String      @id @default(cuid())
-  name         String      @unique
-  price        Float
-  images       String[]
-  genre        String?
-  category     Category    @relation(fields: [categoryId], references: [id])
-  categoryId   String
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
-  rating       Float?
-  manufacturer String
-  description  String?
-  onSale       Boolean
-  salePrice    Float?
-  cartItems    CartItem[]
-  orderItems   OrderItem[]
+  id          String      @id @default(cuid())
+  name        String      
+  description String?
+  sku         String      @unique
+  price       Float
+  images      String[]
+  genre       String?
+  category    Category    @relation(fields: [categoryId], references: [id])
+  categoryId  String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  rating      Float?
+  onSale      Boolean
+  salePrice   Float?
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
 }
 
 model Order {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthHook } from "../../hooks/authHooks";
 import { isAuthenticated, logout } from "../../services/authService";
 import { createSelector } from "@reduxjs/toolkit";
-import { RootState,AppDispatch } from "../../state/store";
+import { RootState, AppDispatch } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../state/slices/cartSlice";
 
@@ -73,14 +73,20 @@ export const Navbar = () => {
                 <Link to='/'>Home</Link>
               </li>
               <li>
-                <Link to='/products'>Watches</Link>
+                <Link to='/products'>Products</Link>
+              </li>
+              <li>
+                <Link to='/products'>MAN</Link>
+              </li>
+              <li>
+                <Link to='/products'>WOMAN</Link>
               </li>
               <li>
                 <Link to='/about'>About Us</Link>
               </li>
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost text-xl md:text-2xl font-thin italic ">WatchStore</Link>
+          {/* <Link to="/" className="btn btn-ghost text-xl md:text-2xl font-thin italic ">WatchStore</Link> */}
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -88,7 +94,13 @@ export const Navbar = () => {
               <Link to='/' className="btn btn-ghost">Home</Link>
             </li>
             <li>
-              <Link to='/products' className="btn btn-ghost">Watches</Link>
+              <Link to='/products' className="btn btn-ghost">Products</Link>
+            </li>
+            <li>
+              <Link to='/products/?genre=MAN' className="btn btn-ghost">MAN</Link>
+            </li>
+            <li>
+              <Link to='/products?genre=WOMAN' className="btn btn-ghost">WOMAN</Link>
             </li>
             <li>
               <Link to='/about' className="btn btn-ghost">About Us</Link>
@@ -120,9 +132,9 @@ export const Navbar = () => {
                     />
                   </svg>
                   {cart.cartItems.length > 0 && (
-                  <span className="badge badge-sm indicator-item bg-info text-neutral-content">
-                    {cart.cartItems.length}
-                  </span>)}
+                    <span className="badge badge-sm indicator-item bg-info text-neutral-content">
+                      {cart.cartItems.length}
+                    </span>)}
                 </div>
               </div>
               <div

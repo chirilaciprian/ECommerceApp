@@ -31,6 +31,21 @@ export const getProductById = async (req: Request, res: Response, next: NextFunc
     }
 }
 
+export const getProductBySku = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+        const product = await productService.getProductBySku(req.params.sku);
+        if (!product) {
+            next(new AppError("Product not found", errorCodes.NOT_FOUND));
+            return;
+        }
+        logger.info(`Product with sku ${req.params.sku} retrieved`);
+        res.status(200).json(product);
+    } catch (error) {
+        logger.error(`Failed to get product: ${error}`);
+        next(new AppError("Failed to get product", errorCodes.INTERNAL_SERVER_ERROR));
+    }
+}
+
 export const createProduct = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const product = await productService.createProduct(req.body);

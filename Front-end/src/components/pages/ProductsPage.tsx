@@ -55,15 +55,16 @@ const ProductsPage: React.FC = () => {
   const [selectedSortOption, setSelectedSortOption] = useState(sortOptions[0]);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
+
   useEffect(() => {
     const fetchFilters = async () => {
       try {
         const fetchedCategories = await getAllCategories();
-        await dispatch(getProducts());        
+        await dispatch(getProducts());
         setCategories(fetchedCategories);
       } catch (error) {
         console.error("Error fetching filters", error);
-      }           
+      }
     };
     fetchFilters();
   }, [dispatch]);
@@ -81,7 +82,7 @@ const ProductsPage: React.FC = () => {
     const genres = params.get("genre")?.split(",") || [];
     const brands = params.get("brand")?.split(",") || [];
     const onSale = params.get("onSale") === "true";
-    
+
     setSelectedCategories(categories);
     setSelectedGenres(genres);
     setSelectedBrands(brands);
@@ -96,15 +97,15 @@ const ProductsPage: React.FC = () => {
   const sortedProducts = [...products].sort((a, b) => {
     switch (selectedSortOption.key) {
       case "priceLowToHigh":
-        return (a.salePrice??a.price) - (b.salePrice??b.price);
+        return (a.salePrice ?? a.price) - (b.salePrice ?? b.price);
       case "priceHighToLow":
-        return (b.salePrice??b.price) - (a.salePrice??a.price);
+        return (b.salePrice ?? b.price) - (a.salePrice ?? a.price);
       case "newest":
         return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       case "rating":
         return b.rating - a.rating;
       case "popular":
-        return a.rating - b.rating; 
+        return a.rating - b.rating;
       default:
         return 0;
     }
@@ -157,8 +158,8 @@ const ProductsPage: React.FC = () => {
       id: "genre",
       name: "Genre",
       options: [
-        { value: "Men", label: "Men" },
-        { value: "Women", label: "Women" },
+        { value: "MAN", label: "MAN" },
+        { value: "WOMAN", label: "WOMAN" },
       ],
     },
     {
@@ -166,9 +167,9 @@ const ProductsPage: React.FC = () => {
       name: "Category",
       options: Array.isArray(categories)
         ? categories.map((category: { id: string; name: string }) => ({
-            value: category.id,
-            label: category.name,
-          }))
+          value: category.id,
+          label: category.name,
+        }))
         : [],
     },
     {
@@ -176,18 +177,34 @@ const ProductsPage: React.FC = () => {
       name: "Brand",
       options: Array.isArray(brands)
         ? brands.map((brand: string) => ({
-            value: brand,
-            label: brand,
-          }))
+          value: brand,
+          label: brand,
+        }))
         : [],
     },
   ];
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 24; // You can adjust this value based on your needs
+
+  // Calculate the number of pages needed
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  // Get the products to display on the current page
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * productsPerPage,
+    currentPage * productsPerPage
+  );
+
+  // Update the current page
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
   return (
     <>
       <Navbar />
-      <Alert type={"success"} message={"Added to cart!"} isVisible={false}      
-        />
+      <Alert type={"success"} message={"Added to cart!"} isVisible={false}
+      />
       <div className="bg-base-200">
         <div>
           {/* Mobile filter dialog */}
@@ -226,8 +243,8 @@ const ProductsPage: React.FC = () => {
                                   section.id === "category"
                                     ? selectedCategories.includes(option.value)
                                     : section.id === "genre"
-                                    ? selectedGenres.includes(option.value)
-                                    : selectedBrands.includes(option.value)
+                                      ? selectedGenres.includes(option.value)
+                                      : selectedBrands.includes(option.value)
                                 }
                                 onChange={() => {
                                   if (section.id === "category") {
@@ -254,9 +271,9 @@ const ProductsPage: React.FC = () => {
             </div>
           </Dialog>
 
-          <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <main className="mx-auto w-full px-4 sm:px-6 lg:px-8 md:mx-5">
             <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-10">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900">Watches</h1>
+              <h1 className="md:text-4xl text-2xl font-thin tracking-tight text-gray-900 playfair">Products</h1>
               <div className="flex items-center">
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
@@ -269,7 +286,7 @@ const ProductsPage: React.FC = () => {
                     className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-base-200 shadow-2xl ring-1 ring-black ring-opacity-5 transition focus:outline-none"
                   >
                     <div className="py-1">
-                    {sortOptions.map(option => (
+                      {sortOptions.map(option => (
                         <MenuItem key={option.name}>
                           <button
                             onClick={() => handleSortChange(option)}
@@ -326,8 +343,8 @@ const ProductsPage: React.FC = () => {
                                   section.id === "category"
                                     ? selectedCategories.includes(option.value)
                                     : section.id === "genre"
-                                    ? selectedGenres.includes(option.value)
-                                    : selectedBrands.includes(option.value)
+                                      ? selectedGenres.includes(option.value)
+                                      : selectedBrands.includes(option.value)
                                 }
                                 onChange={() => {
                                   if (section.id === "category") {
@@ -353,7 +370,74 @@ const ProductsPage: React.FC = () => {
 
                 {/* Product grid */}
                 <div className="lg:col-span-3">
-                  <ProductsList products={filteredProducts} />
+                  <ProductsList products={paginatedProducts} />
+
+
+                  <div className="mt-8 flex justify-center items-center w-full">
+                    <div className="btn-group flex justify-center items-center gap-3">
+                      {/* Prev Button */}
+                      <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        className="btn btn-sm"
+                        disabled={currentPage === 1}
+                      >
+                        Prev
+                      </button>
+
+                      {/* Pages with Ellipses */}
+                      {currentPage > 3 && (
+                        <>
+                          <button
+                            onClick={() => handlePageChange(1)}
+                            className="btn btn-sm"
+                          >
+                            1
+                          </button>
+                          <span className="btn btn-sm disabled">...</span>
+                        </>
+                      )}
+
+                      {/* Dynamic Page Numbers */}
+                      {[...Array(totalPages).keys()].map(pageNumber => {
+                        const page = pageNumber + 1;
+                        // Show pages within range of 5 to 10
+                        if (page >= currentPage - 2 && page <= currentPage + 2) {
+                          return (
+                            <button
+                              key={pageNumber}
+                              onClick={() => handlePageChange(page)}
+                              className={`btn btn-sm ${currentPage === page ? 'btn-active' : ''}`}
+                            >
+                              {page}
+                            </button>
+                          );
+                        }
+                        return null;
+                      })}
+
+                      {/* Ellipses and Last Page */}
+                      {currentPage < totalPages - 2 && (
+                        <>
+                          <span className="btn btn-sm disabled">...</span>
+                          <button
+                            onClick={() => handlePageChange(totalPages)}
+                            className="btn btn-sm"
+                          >
+                            {totalPages}
+                          </button>
+                        </>
+                      )}
+
+                      {/* Next Button */}
+                      <button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        className="btn btn-sm"
+                        disabled={currentPage === totalPages}
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>

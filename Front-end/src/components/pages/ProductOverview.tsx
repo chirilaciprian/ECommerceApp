@@ -1,7 +1,7 @@
 // src/components/ProductPage.jsx
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProductById } from "../../services/productService";
+import { getProductById , getRecommendedProducts, ProductProps} from "../../services/productService";
 import { isAuthenticated } from "../../services/authService";
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState, AppDispatch } from "../../state/store";
@@ -36,11 +36,13 @@ const ProductPage = () => {
   const cart = useSelector(selectCart);
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const dispatch: AppDispatch = useDispatch();
+  const [recommendedProducts, setRecommendedProducts] = useState<ProductProps[]>([]);
 
   const fetchProduct = async () => {
     const res = await getProductById(productId || "");
-    setProduct(res);
-    console.log("Response:", res);
+    const recommended = await getRecommendedProducts(res.sku, 10);
+    setRecommendedProducts(recommended);
+    setProduct(res);            
   };
 
   useEffect(() => {
@@ -50,7 +52,7 @@ const ProductPage = () => {
     };
     checkAuth();
     fetchProduct();
-    setLoading(false);
+    setLoading(false);    
   }, [dispatch]);
 
   const handleAddToCart = async () => {
@@ -95,6 +97,13 @@ const ProductPage = () => {
     }
   }
 
+  const getLocalImageUrl = (imageId: string) => {
+    return `/images/${imageId}.jpg`;  // Images stored in public/images
+  };
+    // Map images to local URLs
+  const imageUrls = product.images.map((imageId: string) => getLocalImageUrl(imageId));
+
+  console.log(recommendedProducts);
   return (
     <>
       <Alert
@@ -103,7 +112,7 @@ const ProductPage = () => {
         isVisible={showAlert}      
       />
       <div className="grid grid:cols-1 lg:grid-cols-2 lg:p-10 sm:p-5 p-2 m-0 w-screen h-screen gap-5 overflow-x-hidden">
-        <Carousel images={product.images} />
+        <Carousel images={imageUrls} />
 
         <div className="roboto flex flex-col gap-5 lg:mt-24 lg:p-10  p-3">
           <h1 className="md:text-4xl text-2xl font-bold playfair">

@@ -5,6 +5,10 @@ import OrderItemCard from "../general/OrderItemCard";
 import { Link } from "react-router-dom";
 
 const MyOrdersPage = () => {
+  const getLocalImageUrl = (imageId: string) => {
+    return `/images/${imageId}.jpg`;  // Images stored in public/images
+  };
+
   const [orders, setOrders] = useState<any>([]);
 
   useEffect(() => {
@@ -60,7 +64,7 @@ const MyOrdersPage = () => {
                       key={orderItem.id}                      
                       orderItemId={orderItem.id}
                       name={product.name}
-                      image={product.images[0]}
+                      image={getLocalImageUrl(product.images[0])}
                       price={product.price}
                       description={""}
                       quantity={orderItem.quantity}

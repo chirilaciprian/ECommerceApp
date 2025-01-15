@@ -3,13 +3,13 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export interface ProductProps {
   id: string;
+  sku: string;
   categoryId: string;
   name: string;
   price: number;
   description: string;
   images: string[];
   rating: number;
-  manufacturer: string;
   onSale: boolean;
   salePrice: number;
   genre:string;
@@ -26,7 +26,6 @@ export const fetchProducts = async () => {
         return err;
     }
 }
-
 export const addProduct = async (product: ProductProps) => {
     try {
         const res = await axios.post(`${API_BASE_URL}/api/products`, product);
@@ -40,6 +39,16 @@ export const addProduct = async (product: ProductProps) => {
 export const getProductById = async (productId: string) => {
     try {
         const res = await axios.get(`${API_BASE_URL}/api/products/${productId}`);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}
+
+export const getRecommendedProducts = async (sku : string, productsNumber : number) => {
+    try {
+        const res = await axios.get(`http://127.0.0.1:5001/recommend?sku=${sku}&top_n=${productsNumber}`);    
         return res.data;
     } catch (err) {
         console.log(err);
