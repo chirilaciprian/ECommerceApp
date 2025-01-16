@@ -14,16 +14,18 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  username  String   @unique
+  id        String      @id @default(cuid())
+  email     String      @unique
+  username  String      @unique
   password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
   phone     String?
   address   String?
   Order     Order[]
   cart      Cart?
+  Rating    Rating[]
+  Whishlist Whishlist[]
 }
 
 model Category {
@@ -35,22 +37,24 @@ model Category {
 }
 
 model Product {
-  id          String      @id @default(cuid())
-  name        String      
-  description String?
-  sku         String      @unique
-  price       Float
-  images      String[]
-  genre       String?
-  category    Category    @relation(fields: [categoryId], references: [id])
-  categoryId  String
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  rating      Float?
-  onSale      Boolean
-  salePrice   Float?
-  cartItems   CartItem[]
-  orderItems  OrderItem[]
+  id            String          @id @default(cuid())
+  name          String
+  description   String?
+  sku           String          @unique
+  price         Float
+  images        String[]
+  genre         String?
+  category      Category        @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  rating        Float?
+  onSale        Boolean
+  salePrice     Float?
+  cartItems     CartItem[]
+  orderItems    OrderItem[]
+  Rating        Rating[]
+  WhishlistItem WhishlistItem[]
 }
 
 model Order {
@@ -103,4 +107,39 @@ model Cart {
   cartItems  CartItem[]
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
+}
+
+model Rating {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+  rating    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  message   String?
+
+  @@unique([userId, productId])
+}
+
+model Whishlist {
+  id             String          @id @default(cuid())
+  user           User            @relation(fields: [userId], references: [id])
+  userId         String
+  whishlistItems WhishlistItem[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+}
+
+model WhishlistItem {
+  id         String    @id @default(cuid())
+  whishlist  Whishlist @relation(fields: [wishlistId], references: [id])
+  wishlistId String
+  product    Product   @relation(fields: [productId], references: [id])
+  productId  String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@unique([wishlistId, productId])
 }

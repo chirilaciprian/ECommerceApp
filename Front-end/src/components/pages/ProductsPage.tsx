@@ -271,7 +271,7 @@ const ProductsPage: React.FC = () => {
             </div>
           </Dialog>
 
-          <main className="mx-auto w-full px-4 sm:px-6 lg:px-8 md:mx-5">
+          <main className="mx-auto w-auto px-4 sm:px-6 lg:px-8 md:mx-5">
             <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-10">
               <h1 className="md:text-4xl text-2xl font-thin tracking-tight text-gray-900 playfair">Products</h1>
               <div className="flex items-center">
