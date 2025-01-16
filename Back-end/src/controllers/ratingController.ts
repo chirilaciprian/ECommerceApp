@@ -32,6 +32,20 @@ export const getRatingById = async (req: Request, res: Response, next: NextFunct
     }
 }
 
+export const getRatingsByProductId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+        const ratings = await ratingServices.getRatingsByProductId(req.params.productId);
+        logger.info(`Ratings with product id ${req.params.productId} retrieved`);
+        res.status(200).json(ratings);
+    }
+    catch (error) {
+        logger.error(`Failed to get ratings: ${error}`);
+        next(
+            new AppError("Failed to get ratings", errorCodes.INTERNAL_SERVER_ERROR)
+        );
+    }
+}
+
 export const createRating = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const rating = await ratingServices.createRating(req.body);

@@ -14,6 +14,14 @@ export const getRatingById = async (id: string): Promise<IRating | null> => {
     });
 }
 
+export const getRatingsByProductId = async (productId: string): Promise<IRating[]> => {
+    return await prisma.rating.findMany({
+        where: {
+            productId
+        }
+    });
+}
+
 export const createRating = async (rating: Omit<IRating, "id" | "createdAt" | "updatedAt">): Promise<IRating> => {
     const newRating = {
         ...rating,
