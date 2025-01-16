@@ -28,7 +28,8 @@ function App() {
             <Route path="/order" element={<OrderPage/>}></Route>
             <Route path="/product/:productId" element={<ProductPage/>}></Route>
             <Route path="/about" element={<AboutPage/>}></Route>
-            <Route path="/myorders" element={<MyOrdersPage/>}></Route>      
+            <Route path="/myorders" element={<MyOrdersPage/>}></Route>    
+              
                
           </Routes>
         </BrowserRouter>

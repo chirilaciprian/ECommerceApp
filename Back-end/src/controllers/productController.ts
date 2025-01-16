@@ -31,20 +31,28 @@ export const getProductById = async (req: Request, res: Response, next: NextFunc
     }
 }
 
-export const getProductBySku = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getProductsBySkus = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const product = await productService.getProductBySku(req.params.sku);
-        if (!product) {
-            next(new AppError("Product not found", errorCodes.NOT_FOUND));
-            return;
-        }
-        logger.info(`Product with sku ${req.params.sku} retrieved`);
-        res.status(200).json(product);
+      const { skus } = req.body;  // Assuming SKUs are sent as an array in the request body
+  
+      if (!Array.isArray(skus) || skus.length === 0) {
+        return next(new AppError("Invalid or empty SKUs array", errorCodes.BAD_REQUEST));
+      }
+  
+      const products = await productService.getProductsBySkus(skus);
+  
+      if (products.length === 0) {
+        return next(new AppError("Products not found for the given SKUs", errorCodes.NOT_FOUND));
+      }
+  
+      logger.info(`Products with SKUs ${skus.join(', ')} retrieved`);
+      res.status(200).json(products);
     } catch (error) {
-        logger.error(`Failed to get product: ${error}`);
-        next(new AppError("Failed to get product", errorCodes.INTERNAL_SERVER_ERROR));
+      logger.error(`Failed to get products: ${error}`);
+      next(new AppError("Failed to get products", errorCodes.INTERNAL_SERVER_ERROR));
     }
-}
+  };
+  
 
 export const createProduct = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {

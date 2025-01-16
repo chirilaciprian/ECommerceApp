@@ -7,14 +7,14 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
-  getProductBySku,
+  getProductsBySkus,
 } from "../controllers/productController";
 
 const productRouter = Router();
 
 productRouter.get("/", getAllProducts);
 productRouter.get("/:id", getProductById);
-productRouter.get("/sku/:sku", getProductBySku);
+productRouter.post('/get-products-by-skus', getProductsBySkus);
 productRouter.post("/", validate(productValidator), createProduct);
 productRouter.put("/:id", validate(productValidator), updateProduct);
 productRouter.delete("/:id", deleteProduct);

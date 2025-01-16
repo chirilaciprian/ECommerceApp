@@ -1,7 +1,7 @@
 // src/components/ProductPage.jsx
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProductById , getRecommendedProducts, ProductProps} from "../../services/productService";
+import { getProductById, getRecommendedProducts, ProductProps } from "../../services/productService";
 import { isAuthenticated } from "../../services/authService";
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState, AppDispatch } from "../../state/store";
@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import Carousel from "../general/Carousel";
 import Alert from "../general/Alert";
+import RecommendedProducts from "../general/RecommendedProducts";
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -42,7 +43,7 @@ const ProductPage = () => {
     const res = await getProductById(productId || "");
     const recommended = await getRecommendedProducts(res.sku, 10);
     setRecommendedProducts(recommended);
-    setProduct(res);            
+    setProduct(res);
   };
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const ProductPage = () => {
     };
     checkAuth();
     fetchProduct();
-    setLoading(false);    
+    setLoading(false);
   }, [dispatch]);
 
   const handleAddToCart = async () => {
@@ -65,7 +66,7 @@ const ProductPage = () => {
           price: 0,
           id: "",
         })
-      );      
+      );
       setShowAlert(true);
       // Hide the alert after 3 seconds
       setTimeout(() => {
@@ -100,7 +101,7 @@ const ProductPage = () => {
   const getLocalImageUrl = (imageId: string) => {
     return `/images/${imageId}.jpg`;  // Images stored in public/images
   };
-    // Map images to local URLs
+  // Map images to local URLs
   const imageUrls = product.images.map((imageId: string) => getLocalImageUrl(imageId));
 
   console.log(recommendedProducts);
@@ -109,7 +110,7 @@ const ProductPage = () => {
       <Alert
         type="success"
         message="Added to Cart!"
-        isVisible={showAlert}      
+        isVisible={showAlert}
       />
       <div className="grid grid:cols-1 lg:grid-cols-2 lg:p-10 sm:p-5 p-2 m-0 w-screen h-screen gap-5 overflow-x-hidden">
         <Carousel images={imageUrls} />
@@ -146,6 +147,7 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
+      <RecommendedProducts products={recommendedProducts} />
     </>
   );
 };
