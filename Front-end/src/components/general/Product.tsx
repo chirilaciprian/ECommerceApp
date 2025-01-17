@@ -55,7 +55,7 @@ export const Product = (product:ProductPropsWithMethods) => {
           <img
             src={getLocalImageUrl(product.images[0])}
             alt="product"
-            className="w-auto h-auto object-cover"
+            className="w-auto h-auto object-cover"            
             onClick={handleClick}
           />
         </figure>

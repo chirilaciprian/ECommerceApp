@@ -196,6 +196,7 @@ const ProductsPage: React.FC = () => {
     currentPage * productsPerPage
   );
 
+  console.log(paginatedProducts);
   // Update the current page
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

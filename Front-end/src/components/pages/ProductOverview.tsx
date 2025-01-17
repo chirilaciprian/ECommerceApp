@@ -1,155 +1,207 @@
-// src/components/ProductPage.jsx
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getProductById, getRecommendedProducts, ProductProps } from "../../services/productService";
-import { isAuthenticated } from "../../services/authService";
-import { createSelector } from "@reduxjs/toolkit";
-import { RootState, AppDispatch } from "../../state/store";
-import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../state/slices/cartSlice";
-import {
-  FaRegStar,
-  FaStar,
-  FaStarHalfAlt,
-} from "react-icons/fa";
-import Carousel from "../general/Carousel";
-import Alert from "../general/Alert";
+import { useEffect, useState } from 'react';
+import { FaCartPlus } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { getProductById, getRecommendedProducts, ProductProps } from '../../services/productService';
+import { useNavigate, useParams } from 'react-router-dom';
+import Alert from '../general/Alert';
 import RecommendedProducts from "../general/RecommendedProducts";
+import { createSelector } from '@reduxjs/toolkit';
+import { AppDispatch, RootState } from '../../state/store';
+import { isAuthenticated } from '../../services/authService';
+import { addToCart } from '../../state/slices/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const selectCart = createSelector(
-  [(state: RootState) => state.cart],
-  (cart) => ({
-    id: cart.id,
-    userId: cart.userId,
-    cartItems: cart.cartItems,
-    totalPrice: cart.totalPrice,
-    status: cart.status,
-  })
+    [(state: RootState) => state.cart],
+    (cart) => ({
+        id: cart.id,
+        userId: cart.userId,
+        cartItems: cart.cartItems,
+        totalPrice: cart.totalPrice,
+        status: cart.status,
+    })
 );
 
-const ProductPage = () => {
-  const navigate = useNavigate();
-  const { productId } = useParams();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [product, setProduct] = useState<any>(null);
-  const [authenticated, setAuthenticated] = useState<boolean>(false);
-  const [loading, setLoading] = useState(true);
-  const cart = useSelector(selectCart);
-  const [showAlert, setShowAlert] = useState<boolean>(false);
-  const dispatch: AppDispatch = useDispatch();
-  const [recommendedProducts, setRecommendedProducts] = useState<ProductProps[]>([]);
 
-  const fetchProduct = async () => {
-    const res = await getProductById(productId || "");
-    const recommended = await getRecommendedProducts(res.sku, 10);
-    setRecommendedProducts(recommended);
-    setProduct(res);
-  };
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const authStatus = await isAuthenticated();
-      setAuthenticated(!!authStatus); // Set authenticated to true if authStatus is not null
-    };
-    checkAuth();
-    fetchProduct();
-    setLoading(false);
-  }, [dispatch]);
-
-  const handleAddToCart = async () => {
-    if (authenticated) {
-      dispatch(
-        addToCart({
-          productId: product.id,
-          cartId: cart.id,
-          quantity: 1,
-          price: 0,
-          id: "",
-        })
-      );
-      setShowAlert(true);
-      // Hide the alert after 3 seconds
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 2000);
-    } else {
-      navigate("/login");
-    }
-  };
-
-  if (loading) {
-    return <div className="text-center mt-20">Loading product...</div>;
-  }
-
-  if (!product) {
-    return <div className="text-center mt-20">Product not found.</div>;
-  }
-
-  const stars = [];
-  const fullStars = Math.floor(product.rating);
-  const hasHalfStar = product.rating % 1 !== 0;
-  for (let i = 1; i <= 5; i++) {
-    if (i <= fullStars) {
-      stars.push(<FaStar key={i} className="text-yellow-300 text-xl" />);
-    } else if (i === fullStars + 1 && hasHalfStar) {
-      stars.push(<FaStarHalfAlt key={i} className="text-yellow-300 text-xl" />);
-    } else {
-      stars.push(<FaRegStar key={i} className="text-yellow-300 text-xl" />);
-    }
-  }
-
-  const getLocalImageUrl = (imageId: string) => {
+const getLocalImageUrl = (imageId: string) => {
     return `/images/${imageId}.jpg`;  // Images stored in public/images
-  };
-  // Map images to local URLs
-  const imageUrls = product.images.map((imageId: string) => getLocalImageUrl(imageId));
-
-  console.log(recommendedProducts);
-  return (
-    <>
-      <Alert
-        type="success"
-        message="Added to Cart!"
-        isVisible={showAlert}
-      />
-      <div className="grid grid:cols-1 lg:grid-cols-2 lg:p-10 sm:p-5 p-2 m-0 w-screen h-screen gap-5 overflow-x-hidden">
-        <Carousel images={imageUrls} />
-
-        <div className="roboto flex flex-col gap-5 lg:mt-24 lg:p-10  p-3">
-          <h1 className="md:text-4xl text-2xl font-bold playfair">
-            {product.name}
-          </h1>
-          <h2 className="md:text-3xl text-xl font-light">${product.price}</h2>
-          <div className=" flex flex-row gap-10">
-            <div className="flex">{stars}</div>
-            <div>
-              <span className="text-xl font-extrabold p-1 px-2 rounded-lg cursor-pointer bg-neutral text-yellow-400">
-                {" "}
-                {product.rating}
-              </span>
-            </div>
-          </div>
-          <span className="md:text-lg sm:text-md">{product.description}</span>
-          <div className="flex flex-row w-full md:mt-5">
-            <button
-              className="btn btn-block btn-primary text-xl  "
-              onClick={() => {
-                handleAddToCart();
-              }}
-            >
-              Add to cart
-            </button>
-            {/* <label className="swap swap-flip m-0 p-0">
-              <input type="checkbox" />
-              <FaHeart className=" swap-on text-error text-3xl" />
-              <FaRegHeart className="swap-off text-error text-3xl" />
-            </label> */}
-          </div>
-        </div>
-      </div>
-      <RecommendedProducts products={recommendedProducts} />
-    </>
-  );
 };
 
-export default ProductPage;
+const ProductDetail = () => {
+    const navigate = useNavigate();
+    const { productId } = useParams();
+    const [mainImage, setMainImage] = useState("");
+    const [recommendedProducts, setRecommendedProducts] = useState<ProductProps[]>([]);
+    const [product, setProduct] = useState<any>(null);
+    const [authenticated, setAuthenticated] = useState<boolean>(false);
+    const [loading, setLoading] = useState(true);
+    const cart = useSelector(selectCart);
+    const [showAlert, setShowAlert] = useState<boolean>(false);
+    const dispatch: AppDispatch = useDispatch();
+
+    const changeImage = (src: string) => {
+        console.log(src);
+        setMainImage((src));
+    };
+    const checkAuth = async () => {
+        const authStatus = await isAuthenticated();
+        setAuthenticated(!!authStatus); // Set authenticated to true if authStatus is not null
+    };
+    
+
+
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any    
+
+    const fetchProduct = async () => {
+        const res = await getProductById(productId || "");
+        res.images = res.images.map((image: string) => getLocalImageUrl(image));
+        const recommended = await getRecommendedProducts(res.sku, 12);
+        setRecommendedProducts(recommended);
+        changeImage(res.images[0])        
+        setProduct(res);
+        setLoading(false);
+    };
+
+    useEffect(() => {
+        checkAuth();
+        fetchProduct();        
+    }, [dispatch]);
+
+    const handleAddToCart = async () => {
+        console.log("Cart:")
+        console.log(cart)
+        if (authenticated) {
+            dispatch(
+                addToCart({
+                    productId: product.id,
+                    cartId: cart.id,
+                    quantity: 1,
+                    price: 0,
+                    id: "",
+                })
+            );
+            setShowAlert(true);
+            // Hide the alert after 3 seconds
+            setTimeout(() => {
+                setShowAlert(false);
+            }, 2000);
+        } else {
+            navigate("/login");
+        }
+    };
+
+    if (loading) {
+        return <div className="text-center flex items-center justify-center gap-5 mt-20">
+            <span className='text-lg font-bold merriweather'>Loading product...</span>
+            <span className="loading loading-spinner loading-lg"></span>
+        </div>;
+    }
+
+    if (!product) {
+        return <div className="text-center mt-20">Product not found.</div>;
+    }
+
+    return (
+
+
+        <div className='bg-base-200 h-full w-full max-w-screen'>
+            <Alert
+                type="success"
+                message="Added to Cart!"
+                isVisible={showAlert}
+            />
+            <div className="merriweather w-full h-full">
+                <div className="container mx-auto px-4 py-8">
+                    <div className="flex flex-wrap -mx-4">
+                        {/* Product Images */}
+                        <div className="w-full md:w-1/2 px-4 mb-8">
+                            <img
+                                src={mainImage || "/placeholder-image.jpg"} // Fallback to a placeholder image
+                                alt={product?.name || "Product Image"}
+                                className="w-full h-full md:w-3/4 md:h-3/4 rounded-lg shadow-md mb-4"
+                                id="mainImage"
+                            />
+                            <div className="flex gap-4 py-4 justify-center overflow-x-auto">
+                                {product?.images?.map((src : string, index : number) => (
+                                    <img
+                                        key={index}
+                                        src={(src)}
+                                        alt={`Thumbnail ${index + 1}`}
+                                        className="w-16 sm:w-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                                        onClick={() => changeImage(src)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Product Details */}
+                        <div className="w-full md:w-1/2 px-4 flex flex-col gap-4 md:mt-24">
+                            <h2 className="text-3xl font-bold mb-2">{product?.name || "Product Name"}</h2>
+                            <p className="text-primary font-bold">{product?.genre || "Genre"}</p>
+                            <div className="mb-4">
+                                {product?.onSale ? (
+                                    <>
+                                        <span className="text-2xl font-bold mr-2">
+                                            ${product?.salePrice?.toFixed(2) || "0.00"}
+                                        </span>
+                                        <span className="text-gray-500 line-through">
+                                            ${product?.price?.toFixed(2) || "0.00"}
+                                        </span>
+                                    </>
+                                ) : (
+                                    <span className="text-2xl font-bold">
+                                        ${product?.price?.toFixed(2) || "0.00"}
+                                    </span>
+                                )}
+                            </div>
+                            <div className="flex items-center">
+                                <div className="rating">
+                                    {Array.from({ length: 5 }, (_, i) => (
+                                        <input
+                                            key={i}
+                                            type="radio"
+                                            name="rating"
+                                            className={`mask mask-star-2 ${product && i < product.rating ? "bg-orange-400" : ""
+                                                }`}
+                                            defaultChecked={product && i < product.rating}
+                                        />
+                                    ))}
+                                </div>
+                                <span className="ml-2 text-primary">
+                                    {product?.rating?.toFixed(1) || "0.0"} (120 reviews)
+                                </span>
+                            </div>
+                            <p className="text-gray-700">{product?.description || "No description available."}</p>
+
+                            {/* Size Options */}
+                            <div className="playfair flex flex-col gap-4">
+                                <div className="flex flex-row justify-between w-full">
+                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">XS</button>
+                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">S</button>
+                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">M</button>
+                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">L</button>
+                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">XL</button>
+                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">XXL</button>
+                                </div>
+                            </div>
+
+                            {/* Action Buttons */}
+                            <div className="flex flex-row gap-4">
+                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-info text-neutral" onClick={()=>{handleAddToCart()}}>
+                                    <FaCartPlus /> Add To Cart
+                                </button>
+                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-error text-neutral">
+                                    <FaHeart /> Add To Wishlist
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <RecommendedProducts products={recommendedProducts} />
+        </div>
+    );
+};
+
+export default ProductDetail;

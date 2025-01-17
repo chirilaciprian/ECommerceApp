@@ -12,7 +12,7 @@ const Carousel: React.FC<{ images: string[] }> = ({ images }) => {
   };
 
   return (
-    <div className="relative carousel w-full h-full lg:h-5/6">
+    <div className="relative carousel w-full h-full lg:h-3/4">
       {images.map((image, index) => (
         <div
           key={index}
