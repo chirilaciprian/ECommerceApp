@@ -30,7 +30,7 @@ async function main() {
   }> = [];
 
   // Read and parse the CSV file
-  const filePath = 'D:\\Documents\\ProductRecommendation\\data\\dbdata.csv'; // Adjust the path to your CSV file
+  const filePath = "../../../MachineLearning/data/dbdata.csv"
 
   // Parse the CSV asynchronously
   await new Promise<void>((resolve, reject) => {
