@@ -28,3 +28,12 @@ D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22
      })
 
 Argument `whishlist` is missing.
+2025-01-17T14:47:33.167Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Unique constraint failed on the fields: (`cartId`,`productId`)
