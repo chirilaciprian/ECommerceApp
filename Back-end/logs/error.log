@@ -1,34 +1,4 @@
-2025-01-16T08:39:14.975Z [[31merror[39m]: Failed to create rating: PrismaClientKnownRequestError: 
-Invalid `prisma.rating.create()` invocation in
-D:\Documents\GitHub\ECommerceApp\Back-end\src\services\ratingService.ts:22:32
-
-  19     ...rating,
-  20     id: cuid()
-  21 };
-→ 22 return await prisma.rating.create(
-Unique constraint failed on the fields: (`userId`,`productId`)
-2025-01-16T09:36:35.731Z [[31merror[39m]: Failed to create wishlist item: PrismaClientValidationError: 
-Invalid `prisma.whishlistItem.create()` invocation in
-D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:39
-
-  19     ...whishlistItem,
-  20     id: cuid(),
-  21 };
-→ 22 return await prisma.whishlistItem.create({
-       data: {
-         wishlistId: "cm5z3vc54000108zrgxnw8imc",
-         productId: "cm5xrrap80001cbiwofad606v",
-         id: "cm5z4z4w80000gwzr84af7o5i",
-     +   whishlist: {
-     +     create: WhishlistCreateWithoutWhishlistItemsInput | WhishlistUncheckedCreateWithoutWhishlistItemsInput,
-     +     connectOrCreate: WhishlistCreateOrConnectWithoutWhishlistItemsInput,
-     +     connect: WhishlistWhereUniqueInput
-     +   }
-       }
-     })
-
-Argument `whishlist` is missing.
-2025-01-17T14:47:33.167Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+2025-01-20T13:07:17.866Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
 Invalid `prisma.cartItem.create()` invocation in
 D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
 

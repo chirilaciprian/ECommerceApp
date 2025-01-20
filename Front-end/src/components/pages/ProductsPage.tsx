@@ -23,11 +23,9 @@ import {
 import { Navbar } from "../general/Navbar";
 import { ProductsList } from "../general/ProductsList";
 import { getAllCategories } from "../../services/categoryService";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../../state/store";
-import { getProducts } from "../../state/slices/productsSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import Alert from "../general/Alert";
+import { fetchProducts, ProductProps } from "../../services/productService";
 
 const sortOptions = [
   { name: "Most Popular", key: "popular" },  // You need a 'key' for sorting logic
@@ -44,10 +42,8 @@ function classNames(...classes: unknown[]) {
 const ProductsPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { products } = useSelector((state: RootState) => state.products);
-  const dispatch: AppDispatch = useDispatch();
+  const [products,setProducts] = useState<ProductProps[]>([]);
   const [categories, setCategories] = useState<any>();
-  const [brands, setBrands] = useState<any>();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -60,21 +56,16 @@ const ProductsPage: React.FC = () => {
     const fetchFilters = async () => {
       try {
         const fetchedCategories = await getAllCategories();
-        await dispatch(getProducts());
+        const fetchedProducts = await fetchProducts();
+        setProducts(fetchedProducts);
         setCategories(fetchedCategories);
       } catch (error) {
         console.error("Error fetching filters", error);
       }
     };
     fetchFilters();
-  }, [dispatch]);
+  }, []);
 
-  useEffect(() => {
-    if (products.length > 0) {
-      const manufacturers = new Set(products.map((product: any) => product.manufacturer));
-      setBrands(Array.from(manufacturers)); // Only set brands when products are available
-    }
-  }, [products]);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -147,10 +138,9 @@ const ProductsPage: React.FC = () => {
 
   const filteredProducts = sortedProducts.filter(product => {
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.categoryId);
-    const matchesGenre = selectedGenres.length === 0 || selectedGenres.includes(product.genre);
-    const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.manufacturer);
+    const matchesGenre = selectedGenres.length === 0 || selectedGenres.includes(product.genre);    
     const matchesOnSale = !onSaleFilter || product.salePrice !== null;
-    return matchesCategory && matchesGenre && matchesBrand && matchesOnSale;
+    return matchesCategory && matchesGenre && matchesOnSale;
   });
 
   const filters = [
@@ -172,16 +162,7 @@ const ProductsPage: React.FC = () => {
         }))
         : [],
     },
-    {
-      id: "brand",
-      name: "Brand",
-      options: Array.isArray(brands)
-        ? brands.map((brand: string) => ({
-          value: brand,
-          label: brand,
-        }))
-        : [],
-    },
+    
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -194,9 +175,7 @@ const ProductsPage: React.FC = () => {
   const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * productsPerPage,
     currentPage * productsPerPage
-  );
-
-  console.log(paginatedProducts);
+  );  
   // Update the current page
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

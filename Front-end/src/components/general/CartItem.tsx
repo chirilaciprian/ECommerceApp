@@ -17,6 +17,7 @@ interface CartItemProps {
   name: string;
   description: string;
   price: number;
+  size?: string;
 }
 
 const selectCart = createSelector(
@@ -37,6 +38,7 @@ const CartItem: React.FC<CartItemProps> = ({
   name,
   description,
   price,
+  size
 }) => {
   const cart = useSelector(selectCart);
   const dispatch: AppDispatch = useDispatch();
@@ -58,7 +60,7 @@ const CartItem: React.FC<CartItemProps> = ({
         <div className="flex items-center justify-between w-full mb-4">
           <h5 className="font-manrope font-bold text-2xl leading-9 text-gray-900">
             {name}
-          </h5>
+          </h5>          
           <button
             className="rounded-full group flex items-center justify-center focus-within:outline-red-500"
             onClick={() => dispatch(removeFromCart(cartItemId))}
@@ -87,6 +89,7 @@ const CartItem: React.FC<CartItemProps> = ({
             </svg>
           </button>
         </div>
+        <span className="roboto flex">Size: <p className="ml-1 text-info font-bold">{size}</p></span>
         <p className="font-normal text-base leading-7 text-gray-500 mb-6 line-clamp-3">
           {description}
         </p>
@@ -159,7 +162,7 @@ const CartItem: React.FC<CartItemProps> = ({
                 />
               </svg>
             </button>
-          </div>
+          </div>          
           <h6 className="text-indigo-600 font-manrope font-bold text-2xl leading-9 text-right">
             ${price}
           </h6>

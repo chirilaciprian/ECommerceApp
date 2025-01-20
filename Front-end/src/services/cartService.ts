@@ -9,6 +9,7 @@ export interface CartItemProps {
   productId: string;
   quantity: number;
   price: number;
+  size?: string;
 }
 
 export interface CartProps {
@@ -66,11 +67,12 @@ export const fetchCartItems = async () => {
   }
 };
 
-export const AddCartItem = async (productId: string, cartId: string) => {
+export const AddCartItem = async (productId: string, cartId: string, size?: string) => {
   try {
     const res = await axios.post(`${API_BASE_URL}/api/cartItems`, {
       productId: productId,
       cartId: cartId,
+      size: size || "",
       quantity: 1,
     });
     return res.data;

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { FaCartPlus } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { getProductById, getRecommendedProducts, ProductProps } from '../../services/productService';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Alert from '../general/Alert';
 import RecommendedProducts from "../general/RecommendedProducts";
 import { createSelector } from '@reduxjs/toolkit';
@@ -10,6 +10,7 @@ import { AppDispatch, RootState } from '../../state/store';
 import { isAuthenticated } from '../../services/authService';
 import { addToCart } from '../../state/slices/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { CategoryProps, getCategoryById } from '../../services/categoryService';
 
 const selectCart = createSelector(
     [(state: RootState) => state.cart],
@@ -28,53 +29,70 @@ const getLocalImageUrl = (imageId: string) => {
 };
 
 const ProductDetail = () => {
+
+    const location = useLocation();
     const navigate = useNavigate();
     const { productId } = useParams();
     const [mainImage, setMainImage] = useState("");
+    const [selectedSize, setSelectedSize] = useState("");
+    const [sizesArray, setSizesArray] = useState<string[]>([]); // State for sizes array
     const [recommendedProducts, setRecommendedProducts] = useState<ProductProps[]>([]);
-    const [product, setProduct] = useState<any>(null);
+    const [product, setProduct] = useState<ProductProps>();
     const [authenticated, setAuthenticated] = useState<boolean>(false);
     const [loading, setLoading] = useState(true);
+    const [category, setCategory] = useState<CategoryProps>();
     const cart = useSelector(selectCart);
     const [showAlert, setShowAlert] = useState<boolean>(false);
     const dispatch: AppDispatch = useDispatch();
 
     const changeImage = (src: string) => {
-        console.log(src);
         setMainImage((src));
     };
     const checkAuth = async () => {
         const authStatus = await isAuthenticated();
         setAuthenticated(!!authStatus); // Set authenticated to true if authStatus is not null
     };
-    
-
-
+    const handleSizeClick = (size: string) => {
+        setSelectedSize(size);
+    }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any    
 
     const fetchProduct = async () => {
         const res = await getProductById(productId || "");
+        fetchCategory(res.categoryId);
         res.images = res.images.map((image: string) => getLocalImageUrl(image));
         const recommended = await getRecommendedProducts(res.sku, 12);
         setRecommendedProducts(recommended);
-        changeImage(res.images[0])        
+        changeImage(res.images[0])
         setProduct(res);
         setLoading(false);
     };
 
-    useEffect(() => {
-        checkAuth();
-        fetchProduct();        
-    }, [dispatch]);
+    const fetchCategory = async (categoryId: string) => {
+        const res = await getCategoryById(categoryId);
+        if (res.name === 'shoes')
+            setSizesArray(['36', '37', '38', '39', '40', '41', '42', '43', '44', '45']);
+        else
+            setSizesArray(['XS', 'S', 'M', 'L', 'XL', 'XXL']);
+        setCategory(res);
+    }
 
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+        });
+        checkAuth();
+        fetchProduct();
+    }, [dispatch, productId]);
+
+    useEffect(() => { }, [location]);
     const handleAddToCart = async () => {
-        console.log("Cart:")
-        console.log(cart)
-        if (authenticated) {
+        if (authenticated && product) {
             dispatch(
                 addToCart({
                     productId: product.id,
+                    size: selectedSize,
                     cartId: cart.id,
                     quantity: 1,
                     price: 0,
@@ -123,7 +141,7 @@ const ProductDetail = () => {
                                 id="mainImage"
                             />
                             <div className="flex gap-4 py-4 justify-center overflow-x-auto">
-                                {product?.images?.map((src : string, index : number) => (
+                                {product?.images?.map((src: string, index: number) => (
                                     <img
                                         key={index}
                                         src={(src)}
@@ -138,7 +156,10 @@ const ProductDetail = () => {
                         {/* Product Details */}
                         <div className="w-full md:w-1/2 px-4 flex flex-col gap-4 md:mt-24">
                             <h2 className="text-3xl font-bold mb-2">{product?.name || "Product Name"}</h2>
-                            <p className="text-primary font-bold">{product?.genre || "Genre"}</p>
+                            <div>
+                                <p className={`font-bold ${product?.genre === 'MAN' ? 'text-info' : 'text-secondary'}`}>{product?.genre || "Genre"}</p>
+                                <p className='font-bold uppercase text-success'>{category?.name}</p>
+                            </div>
                             <div className="mb-4">
                                 {product?.onSale ? (
                                     <>
@@ -177,18 +198,21 @@ const ProductDetail = () => {
                             {/* Size Options */}
                             <div className="playfair flex flex-col gap-4">
                                 <div className="flex flex-row justify-between w-full">
-                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">XS</button>
-                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">S</button>
-                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">M</button>
-                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">L</button>
-                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">XL</button>
-                                    <button className="btn btn-outline btn-neutral flex-1 mx-1">XXL</button>
+                                    {sizesArray.map((size) => (
+                                        <button
+                                            key={size}
+                                            className={`btn btn-neutral flex-1 mx-1 ${selectedSize === size ? "" : "btn-outline"}`}
+                                            onClick={() => handleSizeClick(size)}
+                                        >
+                                            {size}
+                                        </button>
+                                    ))}
                                 </div>
                             </div>
 
                             {/* Action Buttons */}
                             <div className="flex flex-row gap-4">
-                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-info text-neutral" onClick={()=>{handleAddToCart()}}>
+                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-info text-neutral" onClick={() => { handleAddToCart() }}>
                                     <FaCartPlus /> Add To Cart
                                 </button>
                                 <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-error text-neutral">

@@ -108,3 +108,30 @@ export const updateProduct = async (id: string, product: Omit<IProduct,"id"|"cre
     await updateCartItemAndOrderItemPrice(id, product.price);
     return updatedProduct;
 }
+
+export const getPaginatedProducts = async (page: number, limit: number, filters:{categoryId?:string; genre?:string}): Promise<IProduct[]> => {
+    return await prisma.product.findMany({
+        skip: (page - 1) * limit,
+        take: limit,
+        where:  {
+          ...(filters.categoryId && {categoryId: filters.categoryId}),
+          ...(filters.genre && {genre: filters.genre})
+        }
+    });
+}
+
+export const getProductsByCartId = async (cartId: string): Promise<IProduct[]> => {
+  const cartItems = await prisma.cartItem.findMany({
+    where: {
+      cartId
+    }
+  });
+  const productIds = cartItems.map(cartItem => cartItem.productId);
+  return await prisma.product.findMany({
+    where: {
+      id: {
+        in: productIds
+      }
+    }
+  });
+}

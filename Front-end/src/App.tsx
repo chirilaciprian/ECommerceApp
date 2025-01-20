@@ -26,11 +26,9 @@ function App() {
             <Route path="/profile" element={<ProfilePage />}></Route>
             <Route path="/cart" element={<CartPage />}></Route>
             <Route path="/order" element={<OrderPage />}></Route>
-            <Route path="/product/:productId" element={<ProductDetail />}></Route>
+            <Route path="/product/:productId" element={<ProductDetail />} key={window.location.pathname}></Route>
             <Route path="/about" element={<AboutPage />}></Route>
-            <Route path="/myorders" element={<MyOrdersPage />}></Route>            
-
-
+            <Route path="/myorders" element={<MyOrdersPage />}></Route>
           </Routes>
         </BrowserRouter>
       </div>

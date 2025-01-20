@@ -94,3 +94,36 @@ export const deleteProduct = async (req: Request, res: Response, next: NextFunct
         next(new AppError("Failed to delete product", errorCodes.INTERNAL_SERVER_ERROR));
     }
 }
+
+export const getPaginatedProducts = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+        const page = parseInt(req.query.page as string) || 1;
+        const limit = parseInt(req.query.limit as string) || 24;
+        const categoryId = req.query.category as string;
+        const genre = req.query.genre as string;
+        const filters : {categoryId?:string; genre?:string} = {};
+        if (categoryId) {
+            filters.categoryId = categoryId;
+        }
+        if (genre) {
+            filters.genre = genre;
+        }        
+        const products = await productService.getPaginatedProducts(page, limit,filters);
+        logger.info(`Products retrieved`);
+        res.status(200).json(products);
+    } catch (error) {
+        logger.error(`Failed to get products: ${error}`);
+        next(new AppError("Failed to get products", errorCodes.INTERNAL_SERVER_ERROR));
+    }
+}
+
+export const getProductsByCartId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+        const products = await productService.getProductsByCartId(req.params.cartId);
+        logger.info(`Products retrieved`);
+        res.status(200).json(products);
+    } catch (error) {
+        logger.error(`Failed to get products: ${error}`);
+        next(new AppError("Failed to get products", errorCodes.INTERNAL_SERVER_ERROR));
+    }
+}

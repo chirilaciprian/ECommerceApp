@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../state/store";
 import { getCart } from "../../state/slices/cartSlice";
-import { getProducts } from "../../state/slices/productsSlice";
 import { createSelector } from "@reduxjs/toolkit";
+import { getProductsByCartId, ProductProps } from "../../services/productService";
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -24,13 +24,17 @@ const getLocalImageUrl = (imageId: string) => {
 const CartPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true); // To manage loading state
   const cart = useSelector(selectCart);
-  const { products } = useSelector((state: RootState) => state.products);
+  const [products, setProducts] = useState<ProductProps[]>([]);
   const dispatch: AppDispatch = useDispatch();
 
+  const fetchProducts = async (cartId: string) => {
+    const res = await getProductsByCartId(cartId);
+    setProducts(res);
+  }
   useEffect(() => {
     try {
       dispatch(getCart());
-      dispatch(getProducts());
+      fetchProducts(cart.id);
     } finally {
       setLoading(false);
     }
@@ -70,6 +74,7 @@ const CartPage: React.FC = () => {
                     quantity={cartItem.quantity}
                     image={getLocalImageUrl(product.images[0])}
                     name={product.name}
+                    size={cartItem.size}
                     description={product.description || ""}
                     price={parseFloat(cartItem.price)}
                   />

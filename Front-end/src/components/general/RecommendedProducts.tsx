@@ -1,23 +1,19 @@
-import { useNavigate } from "react-router-dom";
 import { ProductProps } from "../../services/productService"
 import { CategoryProps, getAllCategories } from "../../services/categoryService";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface RecommendedProductsProps {
-  products: ProductProps[];
+  products: ProductProps[];  
 }
 
 export default function RecommendedProducts({ products }: RecommendedProductsProps) {
 
-  const [categories, setCategories] = useState<CategoryProps[]>([]);
-  const navigate = useNavigate();
+  const [categories, setCategories] = useState<CategoryProps[]>([]);  
   const getLocalImageUrl = (imageId: string) => {
     return `/images/${imageId}.jpg`;  // Images stored in public/images
   };
-  const handleClick = (id: string) => {
-    console.log(id);
-    navigate(`/product/${id}`);
-  }
+  
 
   const fetchCategories = async () => {
     const data = await getAllCategories();
@@ -29,8 +25,7 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
         name: category.name,
         id: category.id,
       });
-    });
-    console.log(categories)
+    });    
     setCategories(categories)
   };
 
@@ -39,8 +34,8 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
     return category?.name || "";
   }
 
-  useEffect(() => {
-    const categoryIds = products.map((product) => product.categoryId);
+  
+  useEffect(() => {    
     fetchCategories();
   }, []);
 
@@ -51,20 +46,19 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
-            <div key={product.id} className="group relative">
+            <Link to={`/product/${product.id}`} key={product.id} className="group relative" >
               <img
                 alt={product.name}
                 src={getLocalImageUrl(product.images[product.images.length - 3])} // Assuming the first image is the primary image
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
-                onClick={() => handleClick(product.id)}
+                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"                
               />
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-gray-700">
-                    <a onClick={() => handleClick(product.id)}>
+                    
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.name}
-                    </a>
+                    
                   </h3>                  
                 </div>
                 <p className="text-sm font-medium text-gray-900 roboto">
@@ -86,7 +80,7 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
                       {getCategoryName(product.categoryId).toUpperCase()}
                     </p>
                   </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -45,7 +45,7 @@ export const addToCart = createAsyncThunk(
   "cart/addToCart",
   async (cartItem: CartItemProps) => {
     try {
-      const res = await AddCartItem(cartItem.productId, cartItem.cartId);
+      const res = await AddCartItem(cartItem.productId, cartItem.cartId, cartItem.size);
       return res;
     } catch (err) {
       console.log(err);

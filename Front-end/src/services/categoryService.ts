@@ -27,3 +27,14 @@ export const getCategoryByName = async (categoryName: string) => {
     return err;
   }
 }
+
+export const getCategoryById = async (categoryId: string) =>{
+  try{
+    const res = await axios.get(`${API_BASE_URL}/api/categories/${categoryId}`);
+    return res.data;
+  }
+  catch(err){
+    console.log(err);
+    return err;
+  }
+}

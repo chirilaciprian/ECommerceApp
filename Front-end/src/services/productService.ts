@@ -59,3 +59,13 @@ export const getRecommendedProducts = async (sku : string, productsNumber : numb
         return err;
     }
 }
+
+export const getProductsByCartId = async (cartId: string) => {
+    try {
+        const res = await axios.get(`${API_BASE_URL}/api/products/cartId/${cartId}`);
+        return res.data;
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+}

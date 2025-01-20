@@ -8,11 +8,15 @@ import {
   updateProduct,
   deleteProduct,
   getProductsBySkus,
+  getPaginatedProducts,
+  getProductsByCartId
 } from "../controllers/productController";
 
 const productRouter = Router();
 
 productRouter.get("/", getAllProducts);
+productRouter.get("/paginated",getPaginatedProducts);
+productRouter.get("/cartId/:cartId",getProductsByCartId);
 productRouter.get("/:id", getProductById);
 productRouter.post('/get-products-by-skus', getProductsBySkus);
 productRouter.post("/", validate(productValidator), createProduct);
