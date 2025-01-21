@@ -119,7 +119,18 @@ export const getPaginatedProducts = async (req: Request, res: Response, next: Ne
 
 export const getProductsByCartId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const products = await productService.getProductsByCartId(req.params.cartId);
+        const products = await productService.getProductsByCartId(req.params.id);
+        logger.info(`Products retrieved`);
+        res.status(200).json(products);
+    } catch (error) {
+        logger.error(`Failed to get products: ${error}`);
+        next(new AppError("Failed to get products", errorCodes.INTERNAL_SERVER_ERROR));
+    }
+}
+
+export const getProductsByWishlistId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+        const products = await productService.getProductsByWishlistId(req.params.id);
         logger.info(`Products retrieved`);
         res.status(200).json(products);
     } catch (error) {

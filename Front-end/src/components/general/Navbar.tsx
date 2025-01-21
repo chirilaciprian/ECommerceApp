@@ -176,6 +176,9 @@ export const Navbar = () => {
                   <Link to='/myorders'>My Orders</Link>
                 </li>
                 <li>
+                  <Link to='/wishlist'>My Wishlist</Link>
+                </li>
+                <li>
                   <a onClick={handleLogout}>Logout</a>
                 </li>
               </ul>

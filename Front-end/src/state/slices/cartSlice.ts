@@ -6,8 +6,6 @@ import {
   increaseCartItemQuantity,
   decreaseCartItemQuantity,
   ClearCart,
-} from "../../services/cartService";
-import {
   fetchCartItems,
   fetchCart,
   deleteCartItem,

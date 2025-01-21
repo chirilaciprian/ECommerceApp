@@ -1,42 +1,50 @@
 import prisma from "../config/database";
-import { IWhishlistItem } from "../models/IWhishlistItem";
 import cuid from "cuid";
+import { IWishlistItem } from "../models/IWishlistItem";
 
-export const getAllWishlistItems = async (): Promise<IWhishlistItem[]> => {
-    return await prisma.whishlistItem.findMany();
+export const getAllWishlistItems = async (): Promise<IWishlistItem[]> => {
+    return await prisma.wishlistItem.findMany();
 }
 
-export const getWishlistItemById = async (id: string): Promise<IWhishlistItem | null> => {
-    return await prisma.whishlistItem.findUnique({
+export const getWishlistItemById = async (id: string): Promise<IWishlistItem | null> => {
+    return await prisma.wishlistItem.findUnique({
         where: {
             id,
         },
     });
 }
 
-export const createWishlistItem = async (whishlistItem: Omit<IWhishlistItem, "id" | "createdAt" | "updatedAt">): Promise<IWhishlistItem> => {
-    const newWhishlistItem = {
-        ...whishlistItem,
+export const createWishlistItem = async (wishlistItem: Omit<IWishlistItem, "id" | "createdAt" | "updatedAt">): Promise<IWishlistItem> => {
+    const newWishlistItem = {
+        ...wishlistItem,
         id: cuid(),
     };
-    return await prisma.whishlistItem.create({
-        data: newWhishlistItem,
+    return await prisma.wishlistItem.create({
+        data: newWishlistItem,
     });
 }
 
-export const deleteWhishlistItem = async (id: string): Promise<IWhishlistItem | null> => {
-    return await prisma.whishlistItem.delete({
+export const deleteWishlistItem = async (id: string): Promise<IWishlistItem | null> => {
+    return await prisma.wishlistItem.delete({
         where: {
             id,
         },
     });
 }
 
-export const updateWishlistItem = async (id: string, whishlistItem: IWhishlistItem): Promise<IWhishlistItem | null> => {
-    return await prisma.whishlistItem.update({
+export const updateWishlistItem = async (id: string, wishlistItem: IWishlistItem): Promise<IWishlistItem | null> => {
+    return await prisma.wishlistItem.update({
         where: {
             id,
         },
-        data: whishlistItem,
+        data: wishlistItem,
+    });
+}
+
+export const getWishlistItemsByWishlistId = async (wishlistId: string): Promise<IWishlistItem[]> => {
+    return await prisma.wishlistItem.findMany({
+        where: {
+            wishlistId,
+        },
     });
 }

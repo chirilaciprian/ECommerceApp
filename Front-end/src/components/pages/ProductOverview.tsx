@@ -8,7 +8,8 @@ import RecommendedProducts from "../general/RecommendedProducts";
 import { createSelector } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from '../../state/store';
 import { isAuthenticated } from '../../services/authService';
-import { addToCart } from '../../state/slices/cartSlice';
+import { addToCart, getCart } from '../../state/slices/cartSlice';
+import { addToWishlist, getWishlist } from '../../state/slices/wishlistSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { CategoryProps, getCategoryById } from '../../services/categoryService';
 
@@ -42,7 +43,8 @@ const ProductDetail = () => {
     const [loading, setLoading] = useState(true);
     const [category, setCategory] = useState<CategoryProps>();
     const cart = useSelector(selectCart);
-    const [showAlert, setShowAlert] = useState<boolean>(false);
+    const wishlist = useSelector((state: RootState) => state.wishlist);
+    const [showAlert, setShowAlert] = useState<boolean>(false);    
     const dispatch: AppDispatch = useDispatch();
 
     const changeImage = (src: string) => {
@@ -54,7 +56,8 @@ const ProductDetail = () => {
     };
     const handleSizeClick = (size: string) => {
         setSelectedSize(size);
-    }
+    }    
+    
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any    
 
@@ -79,15 +82,17 @@ const ProductDetail = () => {
     }
 
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-        });
+        // window.scrollTo({
+        //     top: 0,
+        // });
         checkAuth();
-        fetchProduct();
+        fetchProduct();    
+        dispatch(getCart());
+        dispatch(getWishlist());
     }, [dispatch, productId]);
 
     useEffect(() => { }, [location]);
-    const handleAddToCart = async () => {
+    const handleAddToCart = async () => {        
         if (authenticated && product) {
             dispatch(
                 addToCart({
@@ -108,6 +113,21 @@ const ProductDetail = () => {
             navigate("/login");
         }
     };
+
+    const handleAddToWishlist = async () => {
+        console.log(wishlist);
+        if (authenticated && product) {
+            dispatch(
+                addToWishlist({
+                    productId: product.id,
+                    wishlistId: wishlist.id,
+                    id: "",                    
+                })
+            );
+        } else {
+            navigate("/login");
+        }
+    }
 
     if (loading) {
         return <div className="text-center flex items-center justify-center gap-5 mt-20">
@@ -158,7 +178,7 @@ const ProductDetail = () => {
                             <h2 className="text-3xl font-bold mb-2">{product?.name || "Product Name"}</h2>
                             <div>
                                 <p className={`font-bold ${product?.genre === 'MAN' ? 'text-info' : 'text-secondary'}`}>{product?.genre || "Genre"}</p>
-                                <p className='font-bold uppercase text-success'>{category?.name}</p>
+                                <p className='font-bold uppercase text-warning'>{category?.name}</p>
                             </div>
                             <div className="mb-4">
                                 {product?.onSale ? (
@@ -212,10 +232,10 @@ const ProductDetail = () => {
 
                             {/* Action Buttons */}
                             <div className="flex flex-row gap-4">
-                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-info text-neutral" onClick={() => { handleAddToCart() }}>
+                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-info text-info-content" onClick={() => { handleAddToCart() }}>
                                     <FaCartPlus /> Add To Cart
                                 </button>
-                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-error text-neutral">
+                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-error text-error-content" onClick={() => { handleAddToWishlist() }}>
                                     <FaHeart /> Add To Wishlist
                                 </button>
                             </div>
@@ -223,6 +243,7 @@ const ProductDetail = () => {
                     </div>
                 </div>
             </div>
+            <h2 className="text-4xl font-bold tracking-wider text-neutral mb-10 text-center playfair">Customers also purchased</h2>
             <RecommendedProducts products={recommendedProducts} />
         </div>
     );

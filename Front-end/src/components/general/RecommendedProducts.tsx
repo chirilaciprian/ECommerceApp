@@ -42,7 +42,7 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
   return (
     <div className="bg-base-200 merriweather">
       <div className="md:mx-10 mx-5 pb-20">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+        
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
@@ -76,7 +76,7 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
                     </p>
                     )}
                     
-                    <p className="mt-1 text-sm text-success font-bold ">
+                    <p className="mt-1 text-sm text-warning font-bold ">
                       {getCategoryName(product.categoryId).toUpperCase()}
                     </p>
                   </div>

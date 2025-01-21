@@ -135,3 +135,20 @@ export const getProductsByCartId = async (cartId: string): Promise<IProduct[]> =
     }
   });
 }
+
+export const getProductsByWishlistId = async (wishlistId: string): Promise<IProduct[]> => {
+  const wishlistItems = await prisma.wishlistItem.findMany({
+    where: {
+      wishlistId
+    }
+  });
+  const productIds = wishlistItems.map(wishlistItem => wishlistItem.productId);
+  return await prisma.product.findMany({
+    where: {
+      id: {
+        in: productIds
+      }
+    }
+  });
+}
+

@@ -22,7 +22,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { Navbar } from "../general/Navbar";
 import { ProductsList } from "../general/ProductsList";
-import { getAllCategories } from "../../services/categoryService";
+import { CategoryProps, getAllCategories } from "../../services/categoryService";
 import { useLocation, useNavigate } from "react-router-dom";
 import Alert from "../general/Alert";
 import { fetchProducts, ProductProps } from "../../services/productService";
@@ -42,11 +42,12 @@ function classNames(...classes: unknown[]) {
 const ProductsPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [products,setProducts] = useState<ProductProps[]>([]);
-  const [categories, setCategories] = useState<any>();
+  const [products, setProducts] = useState<ProductProps[]>([]);
+  // const [page,setPage] = useState(1);
+  // const [limit] = useState(24);
+  const [categories, setCategories] = useState<CategoryProps[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [onSaleFilter, setOnSaleFilter] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState(sortOptions[0]);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
@@ -71,12 +72,10 @@ const ProductsPage: React.FC = () => {
     const params = new URLSearchParams(location.search);
     const categories = params.get("category")?.split(",") || [];
     const genres = params.get("genre")?.split(",") || [];
-    const brands = params.get("brand")?.split(",") || [];
     const onSale = params.get("onSale") === "true";
 
     setSelectedCategories(categories);
     setSelectedGenres(genres);
-    setSelectedBrands(brands);
     setOnSaleFilter(onSale);
   }, [location.search]);
 
@@ -91,8 +90,6 @@ const ProductsPage: React.FC = () => {
         return (a.salePrice ?? a.price) - (b.salePrice ?? b.price);
       case "priceHighToLow":
         return (b.salePrice ?? b.price) - (a.salePrice ?? a.price);
-      case "newest":
-        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       case "rating":
         return b.rating - a.rating;
       case "popular":
@@ -118,14 +115,6 @@ const ProductsPage: React.FC = () => {
     });
   };
 
-  const handleBrandChange = (value: string) => {
-    setSelectedBrands((prev) => {
-      const newBrands = prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value];
-      updateURL("brand", newBrands);
-      return newBrands;
-    });
-  };
-
   const updateURL = (filterType: string, values: string[]) => {
     const params = new URLSearchParams(location.search);
     if (values.length > 0) {
@@ -138,7 +127,7 @@ const ProductsPage: React.FC = () => {
 
   const filteredProducts = sortedProducts.filter(product => {
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.categoryId);
-    const matchesGenre = selectedGenres.length === 0 || selectedGenres.includes(product.genre);    
+    const matchesGenre = selectedGenres.length === 0 || selectedGenres.includes(product.genre);
     const matchesOnSale = !onSaleFilter || product.salePrice !== null;
     return matchesCategory && matchesGenre && matchesOnSale;
   });
@@ -162,7 +151,7 @@ const ProductsPage: React.FC = () => {
         }))
         : [],
     },
-    
+
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -175,7 +164,7 @@ const ProductsPage: React.FC = () => {
   const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * productsPerPage,
     currentPage * productsPerPage
-  );  
+  );
   // Update the current page
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -223,16 +212,13 @@ const ProductsPage: React.FC = () => {
                                   section.id === "category"
                                     ? selectedCategories.includes(option.value)
                                     : section.id === "genre"
-                                      ? selectedGenres.includes(option.value)
-                                      : selectedBrands.includes(option.value)
+                                      ? selectedGenres.includes(option.value) : false
                                 }
                                 onChange={() => {
                                   if (section.id === "category") {
                                     handleCategoryChange(option.value);
                                   } else if (section.id === "genre") {
                                     handleGenreChange(option.value);
-                                  } else if (section.id === "brand") {
-                                    handleBrandChange(option.value);
                                   }
                                 }}
                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
@@ -253,7 +239,7 @@ const ProductsPage: React.FC = () => {
 
           <main className="mx-auto w-auto px-4 sm:px-6 lg:px-8 md:mx-5">
             <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-10">
-              <h1 className="md:text-4xl text-2xl font-thin tracking-tight text-gray-900 playfair">Products</h1>
+              <h1 className="md:text-4xl text-2xl font-thin tracking-tight text-gray-900 playfair tracking-wider">Products</h1>
               <div className="flex items-center">
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
@@ -323,16 +309,13 @@ const ProductsPage: React.FC = () => {
                                   section.id === "category"
                                     ? selectedCategories.includes(option.value)
                                     : section.id === "genre"
-                                      ? selectedGenres.includes(option.value)
-                                      : selectedBrands.includes(option.value)
+                                      ? selectedGenres.includes(option.value) : false
                                 }
                                 onChange={() => {
                                   if (section.id === "category") {
                                     handleCategoryChange(option.value);
                                   } else if (section.id === "genre") {
                                     handleGenreChange(option.value);
-                                  } else if (section.id === "brand") {
-                                    handleBrandChange(option.value);
                                   }
                                 }}
                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"

@@ -1,9 +1,127 @@
-2025-01-20T13:07:17.866Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
-Invalid `prisma.cartItem.create()` invocation in
-D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+2025-01-21T11:05:55.191Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
 
-  55   price: price,
-  56   id: cuid(),
-  57 };
-→ 58 const createdCartItem = await prisma.cartItem.create(
-Unique constraint failed on the fields: (`cartId`,`productId`)
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T11:07:06.746Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T11:10:14.222Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T11:13:00.279Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T12:03:32.203Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T12:04:18.226Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T12:05:17.223Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T12:06:43.936Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T12:09:20.087Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T12:09:29.125Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T12:09:32.573Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T12:18:08.411Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Foreign key constraint violated: `WishlistItem_wishlistId_fkey (index)`
+2025-01-21T12:27:34.489Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Unique constraint failed on the fields: (`wishlistId`,`productId`)
+2025-01-21T13:02:05.215Z [[31merror[39m]: Failed to login: Error: User not found
+2025-01-21T13:02:28.454Z [[31merror[39m]: Failed to create cart: PrismaClientKnownRequestError: 
+Invalid `prisma.cart.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartService.ts:41:41
+
+  38   ...cart,
+  39   id: cuid(),
+  40 };
+→ 41 const createdCart = await prisma.cart.create(
+Unique constraint failed on the fields: (`userId`)

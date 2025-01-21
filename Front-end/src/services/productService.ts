@@ -69,3 +69,32 @@ export const getProductsByCartId = async (cartId: string) => {
         return err;
     }
 }
+
+export const getProductsByWishlistId = async (wishlistId: string) => {
+    try{
+        const res = await axios.get(`${API_BASE_URL}/api/products/wishlist/${wishlistId}`);
+        return res.data;
+    }
+    catch(err){
+        console.log(err);
+        return err;
+    }
+}
+
+export const fetchPaginatedProducts = async (page:number, limit:number, categoryId:string, genre:string) => {
+    try {
+        const params = {
+            page,
+            limit,
+            categoryId,
+            genre
+        };
+        if (categoryId) params.categoryId = categoryId;
+        if (genre) params.genre = genre;
+        const response = await axios.get('/api/products/paginated', { params });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching paginated products:', error);
+        throw error;
+    }
+  };

@@ -11,6 +11,7 @@ import AboutPage from "./components/pages/AboutPage";
 import MyOrdersPage from "./components/pages/MyOrdersPage";
 import ProductsPage from "./components/pages/ProductsPage";
 import ProductDetail from "./components/pages/ProductOverview";
+import WishlistPage from "./components/pages/WishlistPage";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/product/:productId" element={<ProductDetail />} key={window.location.pathname}></Route>
             <Route path="/about" element={<AboutPage />}></Route>
             <Route path="/myorders" element={<MyOrdersPage />}></Route>
+            <Route path="/wishlist" element={<WishlistPage />}></Route>
           </Routes>
         </BrowserRouter>
       </div>

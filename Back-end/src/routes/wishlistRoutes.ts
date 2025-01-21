@@ -6,10 +6,11 @@ import { wishlistValidator } from "../validators/wishlistValidator";
 const whishlistRouter = Router();
 
 whishlistRouter.get("/", getAllWhishlists);
+whishlistRouter.get("/user/:id", getWhishlistByUserId);
 whishlistRouter.get("/:id", getWhishlistById);
 whishlistRouter.post("/", validate(wishlistValidator), createWihslist);
 whishlistRouter.delete("/:id", deleteWhishlist);
 whishlistRouter.put("/:id", validate(wishlistValidator), updateWishlist);
-whishlistRouter.get("/user/:userId", getWhishlistByUserId);
+
 
 export default whishlistRouter;

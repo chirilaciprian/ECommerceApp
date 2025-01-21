@@ -4,7 +4,8 @@ import{
     getWishlistItemById,
     createWishlistItem,
     deleteWishlistItem,
-    updateWishlistItem
+    updateWishlistItem,
+    getWishlistItemsByWishlistId
 } from "../controllers/wishlistItemController";
 import { validate } from "../middlewares/validateMiddleware";
 import { wishlistItemValidator } from "../validators/wishlistItemValidator";
@@ -12,6 +13,7 @@ import { wishlistItemValidator } from "../validators/wishlistItemValidator";
 const wishlistItemRouter = Router();
 
 wishlistItemRouter.get("/", getAllWishlistItems);
+wishlistItemRouter.get("/wishlist/:id", getWishlistItemsByWishlistId);
 wishlistItemRouter.get("/:id", getWishlistItemById);
 wishlistItemRouter.post("/", validate(wishlistItemValidator), createWishlistItem);
 wishlistItemRouter.delete("/:id", deleteWishlistItem);

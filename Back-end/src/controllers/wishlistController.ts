@@ -6,7 +6,7 @@ import logger from "../utils/logger";
 
 export const getAllWhishlists = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const whishlists = await whishlistServices.getAllWhishlists();
+        const whishlists = await whishlistServices.getAllWishlists();
         logger.info(`Whishlists retrieved`);
         res.status(200).json(whishlists);
     } catch (error) {
@@ -19,7 +19,7 @@ export const getAllWhishlists = async (req: Request, res: Response, next: NextFu
 
 export const getWhishlistById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const whishlist = await whishlistServices.getWhishlistById(req.params.id);
+        const whishlist = await whishlistServices.getWishlistById(req.params.id);
         if (!whishlist) {
             next(new AppError("Whishlist not found", errorCodes.NOT_FOUND));
             return;
@@ -47,7 +47,7 @@ export const createWihslist = async (req: Request, res: Response, next: NextFunc
 
 export const deleteWhishlist = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const whishlist = await whishlistServices.deleteWhishlist(req.params.id);
+        const whishlist = await whishlistServices.deleteWishlist(req.params.id);
         if (!whishlist) {
             next(new AppError("Whishlist not found", errorCodes.NOT_FOUND));
             return;
@@ -77,12 +77,12 @@ export const updateWishlist = async (req: Request, res: Response, next: NextFunc
 
 export const getWhishlistByUserId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const whishlist = await whishlistServices.getWhishlistByUserId(req.params.userId);
+        const whishlist = await whishlistServices.getWishlistByUserId(req.params.id);
         if (!whishlist) {
             next(new AppError("Whishlist not found", errorCodes.NOT_FOUND));
             return;
         }
-        logger.info(`Whishlist with userId ${req.params.userId} retrieved`);
+        logger.info(`Whishlist with userId ${req.params.id} retrieved`);
         res.status(200).json(whishlist);
     } catch (error) {
         logger.error(`Failed to get whishlist: ${error}`);

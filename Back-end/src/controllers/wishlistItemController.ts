@@ -47,7 +47,7 @@ export const createWishlistItem = async (req: Request, res: Response, next: Next
 
 export const deleteWishlistItem = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const wishlistItem = await wishlistItemServices.deleteWhishlistItem(req.params.id);
+        const wishlistItem = await wishlistItemServices.deleteWishlistItem(req.params.id);
         if (!wishlistItem) {
             next(new AppError("Wishlist item not found", errorCodes.NOT_FOUND));
             return;
@@ -75,3 +75,16 @@ export const updateWishlistItem = async (req: Request, res: Response, next: Next
         next(new AppError("Failed to update wishlist item", errorCodes.INTERNAL_SERVER_ERROR));
     }
 };
+
+export const getWishlistItemsByWishlistId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+        const wishlistItems = await wishlistItemServices.getWishlistItemsByWishlistId(req.params.id);
+        logger.info(`Wishlist items with wishlistId ${req.params.id} retrieved`);
+        res.status(200).json(wishlistItems);
+    } catch (error) {
+        logger.error(`Failed to get wishlist items: ${error}`);
+        next(
+            new AppError("Failed to get wishlist items", errorCodes.INTERNAL_SERVER_ERROR)
+        );
+    }
+}
