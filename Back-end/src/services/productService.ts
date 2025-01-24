@@ -5,6 +5,8 @@ import { IProduct } from "../models/IProduct";
 import cuid from "cuid";
 import { updateCartPrice } from "./cartService";
 import { updateOrderPrice } from "./orderItemService";
+import { IWishlistItem } from "../models/IWishlistItem";
+import { Logger } from "winston";
 
 const updateCartItemAndOrderItemPrice = async (productId: string, newPrice: number) => {
   const cartItem = await prisma.cartItem.findFirst({
@@ -137,11 +139,13 @@ export const getProductsByCartId = async (cartId: string): Promise<IProduct[]> =
 }
 
 export const getProductsByWishlistId = async (wishlistId: string): Promise<IProduct[]> => {
+
   const wishlistItems = await prisma.wishlistItem.findMany({
     where: {
       wishlistId
     }
   });
+
   const productIds = wishlistItems.map(wishlistItem => wishlistItem.productId);
   return await prisma.product.findMany({
     where: {

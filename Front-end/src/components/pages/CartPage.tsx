@@ -31,14 +31,16 @@ const CartPage: React.FC = () => {
     const res = await getProductsByCartId(cartId);
     setProducts(res);
   }
-  useEffect(() => {
-    try {
-      dispatch(getCart());
-      fetchProducts(cart.id);
-    } finally {
-      setLoading(false);
-    }
+  useEffect(() => {    
+      dispatch(getCart());          
   }, [dispatch]);
+
+  useEffect(()=>{
+    if(cart.id){
+      fetchProducts(cart.id);
+      setLoading(false);
+    }    
+  },[cart.id]);
 
   if (loading) {
     return (

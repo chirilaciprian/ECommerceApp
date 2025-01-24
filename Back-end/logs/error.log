@@ -125,3 +125,129 @@ D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartService.ts:41:41
   40 };
 → 41 const createdCart = await prisma.cart.create(
 Unique constraint failed on the fields: (`userId`)
+2025-01-22T09:39:23.162Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Unique constraint failed on the fields: (`cartId`,`productId`)
+2025-01-22T11:56:42.146Z [[31merror[39m]: Failed to delete wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.delete()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:28:44
+
+  25 }
+  26 
+  27 export const deleteWishlistItem = async (id: string): Promise<IWishlistItem | null> => {
+→ 28     return await prisma.wishlistItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2025-01-22T11:56:47.706Z [[31merror[39m]: Failed to delete wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.delete()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:28:44
+
+  25 }
+  26 
+  27 export const deleteWishlistItem = async (id: string): Promise<IWishlistItem | null> => {
+→ 28     return await prisma.wishlistItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2025-01-22T11:59:08.386Z [[31merror[39m]: Failed to delete wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.delete()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:28:44
+
+  25 }
+  26 
+  27 export const deleteWishlistItem = async (id: string): Promise<IWishlistItem | null> => {
+→ 28     return await prisma.wishlistItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2025-01-22T12:05:00.021Z [[31merror[39m]: Failed to delete wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.delete()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:28:44
+
+  25 }
+  26 
+  27 export const deleteWishlistItem = async (id: string): Promise<IWishlistItem | null> => {
+→ 28     return await prisma.wishlistItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2025-01-22T12:13:24.324Z [[31merror[39m]: Failed to delete wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.delete()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:28:44
+
+  25 }
+  26 
+  27 export const deleteWishlistItem = async (id: string): Promise<IWishlistItem | null> => {
+→ 28     return await prisma.wishlistItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2025-01-22T12:13:27.702Z [[31merror[39m]: Failed to delete wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.delete()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:28:44
+
+  25 }
+  26 
+  27 export const deleteWishlistItem = async (id: string): Promise<IWishlistItem | null> => {
+→ 28     return await prisma.wishlistItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2025-01-22T12:13:45.691Z [[31merror[39m]: Failed to delete wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.delete()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:28:44
+
+  25 }
+  26 
+  27 export const deleteWishlistItem = async (id: string): Promise<IWishlistItem | null> => {
+→ 28     return await prisma.wishlistItem.delete(
+An operation failed because it depends on one or more records that were required but not found. Record to delete does not exist.
+2025-01-22T12:25:36.626Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Unique constraint failed on the fields: (`wishlistId`,`productId`)
+2025-01-22T12:30:43.854Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Unique constraint failed on the fields: (`wishlistId`,`productId`)
+2025-01-22T12:53:15.009Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Unique constraint failed on the fields: (`wishlistId`,`productId`)
+2025-01-22T12:53:24.400Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Unique constraint failed on the fields: (`wishlistId`,`productId`)
+2025-01-22T13:02:50.665Z [[31merror[39m]: Failed to create wishlist item: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlistItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistItemService.ts:22:38
+
+  19     ...wishlistItem,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlistItem.create(
+Unique constraint failed on the fields: (`wishlistId`,`productId`)
+2025-01-22T13:02:51.197Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Unique constraint failed on the fields: (`cartId`,`productId`)

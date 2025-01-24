@@ -9,9 +9,9 @@ import {
   deleteProduct,
   getProductsBySkus,
   getPaginatedProducts,
-  getProductsByCartId
+  getProductsByCartId,
+  getProductsByWishlistId
 } from "../controllers/productController";
-import { getProductsByWishlistId } from "../services/productService";
 
 const productRouter = Router();
 

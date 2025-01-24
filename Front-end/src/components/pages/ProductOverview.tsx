@@ -44,7 +44,9 @@ const ProductDetail = () => {
     const [category, setCategory] = useState<CategoryProps>();
     const cart = useSelector(selectCart);
     const wishlist = useSelector((state: RootState) => state.wishlist);
-    const [showAlert, setShowAlert] = useState<boolean>(false);    
+    const [showAlert, setShowAlert] = useState<boolean>(false);
+    const [alertMessage, setAlertMessage] = useState<string>("");
+    const [alertType, setAlertType] = useState<"success" | "error" | "warning">("success");
     const dispatch: AppDispatch = useDispatch();
 
     const changeImage = (src: string) => {
@@ -56,8 +58,8 @@ const ProductDetail = () => {
     };
     const handleSizeClick = (size: string) => {
         setSelectedSize(size);
-    }    
-    
+    }
+
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any    
 
@@ -86,48 +88,94 @@ const ProductDetail = () => {
         //     top: 0,
         // });
         checkAuth();
-        fetchProduct();    
+        fetchProduct();
         dispatch(getCart());
         dispatch(getWishlist());
     }, [dispatch, productId]);
 
     useEffect(() => { }, [location]);
-    const handleAddToCart = async () => {        
+    const handleAddToCart = async () => {
         if (authenticated && product) {
-            dispatch(
-                addToCart({
-                    productId: product.id,
-                    size: selectedSize,
-                    cartId: cart.id,
-                    quantity: 1,
-                    price: 0,
-                    id: "",
-                })
-            );
-            setShowAlert(true);
-            // Hide the alert after 3 seconds
-            setTimeout(() => {
-                setShowAlert(false);
-            }, 2000);
+            // Check if the product is already in the cart
+            const existingCartItem = cart.cartItems.find((item) => item.productId === product.id);
+
+            if (existingCartItem) {
+                // If already in cart, show "Already in Cart" alert
+                setAlertMessage("Already in Cart");
+                setAlertType("warning");
+                setShowAlert(true);
+
+                // Hide the alert after 3 seconds
+                setTimeout(() => {
+                    setShowAlert(false);
+                }, 3000);
+            } else {
+                // If not in the cart, dispatch the action to add the product to the cart
+                dispatch(
+                    addToCart({
+                        productId: product.id,
+                        size: selectedSize,
+                        cartId: cart.id,
+                        quantity: 1,
+                        price: 0,
+                        id: "",
+                    })
+                );
+
+                // Show success alert
+                setAlertMessage("Added to Cart!");
+                setAlertType("success");
+                setShowAlert(true);
+
+                // Hide the alert after 3 seconds
+                setTimeout(() => {
+                    setShowAlert(false);
+                }, 3000);
+            }
         } else {
             navigate("/login");
         }
     };
 
     const handleAddToWishlist = async () => {
-        console.log(wishlist);
         if (authenticated && product) {
-            dispatch(
-                addToWishlist({
-                    productId: product.id,
-                    wishlistId: wishlist.id,
-                    id: "",                    
-                })
-            );
+            // Check if the product is already in the wishlist
+            const existingWishlistItem = wishlist.wishlistItems.find((item) => item.productId === product.id);
+
+            if (existingWishlistItem) {
+                // If already in wishlist, show "Already in Wishlist" alert
+                setAlertMessage("Already in Wishlist");
+                setAlertType("warning");
+                setShowAlert(true);
+
+                // Hide the alert after 3 seconds
+                setTimeout(() => {
+                    setShowAlert(false);
+                }, 3000);
+            } else {
+                // If not in wishlist, dispatch the action to add the product to the wishlist
+                dispatch(
+                    addToWishlist({
+                        productId: product.id,
+                        wishlistId: wishlist.id,
+                        id: "",
+                    })
+                );
+
+                // Show success alert
+                setAlertMessage("Added to Wishlist!");
+                setAlertType("success");
+                setShowAlert(true);
+
+                // Hide the alert after 3 seconds
+                setTimeout(() => {
+                    setShowAlert(false);
+                }, 3000);
+            }
         } else {
             navigate("/login");
         }
-    }
+    };
 
     if (loading) {
         return <div className="text-center flex items-center justify-center gap-5 mt-20">
@@ -143,19 +191,19 @@ const ProductDetail = () => {
     return (
 
 
-        <div className='bg-base-200 h-full w-full max-w-screen'>
+        <div className="bg-base-200 h-full w-full min-w-screen">
             <Alert
-                type="success"
-                message="Added to Cart!"
+                type={alertType}
+                message={alertMessage}
                 isVisible={showAlert}
             />
             <div className="merriweather w-full h-full">
                 <div className="container mx-auto px-4 py-8">
-                    <div className="flex flex-wrap -mx-4">
+                    <div className="flex flex-col md:flex-row -mx-4">
                         {/* Product Images */}
                         <div className="w-full md:w-1/2 px-4 mb-8">
                             <img
-                                src={mainImage || "/placeholder-image.jpg"} // Fallback to a placeholder image
+                                src={mainImage || "/placeholder-image.jpg"}
                                 alt={product?.name || "Product Image"}
                                 className="w-full h-full md:w-3/4 md:h-3/4 rounded-lg shadow-md mb-4"
                                 id="mainImage"
@@ -164,7 +212,7 @@ const ProductDetail = () => {
                                 {product?.images?.map((src: string, index: number) => (
                                     <img
                                         key={index}
-                                        src={(src)}
+                                        src={src}
                                         alt={`Thumbnail ${index + 1}`}
                                         className="w-16 sm:w-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
                                         onClick={() => changeImage(src)}
@@ -175,10 +223,12 @@ const ProductDetail = () => {
 
                         {/* Product Details */}
                         <div className="w-full md:w-1/2 px-4 flex flex-col gap-4 md:mt-24">
-                            <h2 className="text-3xl font-bold mb-2">{product?.name || "Product Name"}</h2>
+                            <h2 className="text-2xl sm:text-3xl font-bold mb-2">{product?.name || "Product Name"}</h2>
                             <div>
-                                <p className={`font-bold ${product?.genre === 'MAN' ? 'text-info' : 'text-secondary'}`}>{product?.genre || "Genre"}</p>
-                                <p className='font-bold uppercase text-warning'>{category?.name}</p>
+                                <p className={`font-bold ${product?.genre === 'MAN' ? 'text-info' : 'text-secondary'}`}>
+                                    {product?.genre || "Genre"}
+                                </p>
+                                <p className="font-bold uppercase text-warning">{category?.name}</p>
                             </div>
                             <div className="mb-4">
                                 {product?.onSale ? (
@@ -203,8 +253,7 @@ const ProductDetail = () => {
                                             key={i}
                                             type="radio"
                                             name="rating"
-                                            className={`mask mask-star-2 ${product && i < product.rating ? "bg-orange-400" : ""
-                                                }`}
+                                            className={`mask mask-star-2 ${product && i < product.rating ? "bg-orange-400" : ""}`}
                                             defaultChecked={product && i < product.rating}
                                         />
                                     ))}
@@ -217,11 +266,11 @@ const ProductDetail = () => {
 
                             {/* Size Options */}
                             <div className="playfair flex flex-col gap-4">
-                                <div className="flex flex-row justify-between w-full">
+                                <div className="flex flex-wrap gap-2 justify-start w-full">
                                     {sizesArray.map((size) => (
                                         <button
                                             key={size}
-                                            className={`btn btn-neutral flex-1 mx-1 ${selectedSize === size ? "" : "btn-outline"}`}
+                                            className={`btn btn-neutral  ${selectedSize === size ? "" : "btn-outline"}`}
                                             onClick={() => handleSizeClick(size)}
                                         >
                                             {size}
@@ -231,11 +280,17 @@ const ProductDetail = () => {
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="flex flex-row gap-4">
-                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-info text-info-content" onClick={() => { handleAddToCart() }}>
+                            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                                <button
+                                    className="btn btn-info text-info-content"
+                                    onClick={() => { handleAddToCart() }}>
                                     <FaCartPlus /> Add To Cart
                                 </button>
-                                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-wide btn-error text-error-content" onClick={() => { handleAddToWishlist() }}>
+
+                                {/* wishlist.wishlistItems.find((item) => item.productId === product.id) */}
+                                <button
+                                    className="btn btn-error text-error-content "
+                                    onClick={() => { handleAddToWishlist() }}>
                                     <FaHeart /> Add To Wishlist
                                 </button>
                             </div>
@@ -243,9 +298,12 @@ const ProductDetail = () => {
                     </div>
                 </div>
             </div>
-            <h2 className="text-4xl font-bold tracking-wider text-neutral mb-10 text-center playfair">Customers also purchased</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-wider text-neutral mb-10 text-center playfair">
+                Customers also purchased
+            </h2>
             <RecommendedProducts products={recommendedProducts} />
         </div>
+
     );
 };
 
