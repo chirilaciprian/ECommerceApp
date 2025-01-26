@@ -18039,3 +18039,75 @@ Unique constraint failed on the fields: (`cartId`,`productId`)
 2025-01-26T20:45:24.793Z [[32minfo[39m]: Products retrieved
 2025-01-26T20:45:24.824Z [[32minfo[39m]: Products retrieved
 2025-01-26T20:45:24.833Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.382Z [[32minfo[39m]: Categories retrieved
+2025-01-26T20:58:56.386Z [[32minfo[39m]: Categories retrieved
+2025-01-26T20:58:56.389Z [[32minfo[39m]: Categories retrieved
+2025-01-26T20:58:56.402Z [[32minfo[39m]: Categories retrieved
+2025-01-26T20:58:56.417Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.429Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.439Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.442Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.456Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.459Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.467Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.475Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.484Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.493Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.502Z [[32minfo[39m]: Products retrieved
+2025-01-26T20:58:56.513Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:00:36.232Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:00:36.241Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:00:36.261Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:00:40.624Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:00:40.633Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:00:40.647Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:02.380Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:02.400Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:02.419Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:18.544Z [[32minfo[39m]: User with email ciprian@gmail.com logged in
+2025-01-26T21:01:20.142Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:01:20.150Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:01:20.173Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:01:20.202Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:01:20.228Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:20.238Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:20.244Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:01:20.274Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:01:20.282Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:20.286Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:23.902Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:01:23.912Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:01:23.917Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:23.920Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:23.926Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:23.928Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:23.932Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:23.938Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:23.944Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:23.978Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:24.010Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:01:24.011Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:24.019Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:24.023Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:01:24.032Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:01:24.318Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:24.322Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:24.326Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:24.361Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:24.362Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:01:24.385Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:27.714Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:27.728Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:27.746Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:31.052Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:31.068Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:31.080Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:50.230Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:01:50.232Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:50.238Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:50.263Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:50.270Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:50.291Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:01:50.298Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:01:50.320Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:01:50.437Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
