@@ -91,7 +91,8 @@ const ProductDetail = () => {
         fetchProduct();
         dispatch(getCart());
         dispatch(getWishlist());
-    }, [dispatch, productId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dispatch]);
 
     useEffect(() => { }, [location]);
     const handleAddToCart = async () => {

@@ -99,23 +99,32 @@ export const getPaginatedProducts = async (req: Request, res: Response, next: Ne
     try {
         const page = parseInt(req.query.page as string) || 1;
         const limit = parseInt(req.query.limit as string) || 24;
-        const categoryId = req.query.category as string;
+        const categoryIds = (req.query.category as string)?.split(","); // Parse category IDs as an array
         const genre = req.query.genre as string;
-        const filters : {categoryId?:string; genre?:string} = {};
-        if (categoryId) {
-            filters.categoryId = categoryId;
+        const sortBy = req.query.sortBy as "priceAsc" | "priceDesc";
+
+        const filters: { categoryIds?: string[]; genre?: string } = {};
+
+        if (categoryIds && categoryIds.length > 0) {
+            filters.categoryIds = categoryIds;
         }
         if (genre) {
             filters.genre = genre;
-        }        
-        const products = await productService.getPaginatedProducts(page, limit,filters);
+        }
+
+        const paginationDetails = await productService.getPaginationDetails(page, limit, filters);
+        const products = await productService.getPaginatedProducts(page, limit, filters, sortBy);
+
         logger.info(`Products retrieved`);
-        res.status(200).json(products);
+        res.status(200).json({
+            products,
+            paginationDetails,
+        });
     } catch (error) {
         logger.error(`Failed to get products: ${error}`);
         next(new AppError("Failed to get products", errorCodes.INTERNAL_SERVER_ERROR));
     }
-}
+};
 
 export const getProductsByCartId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {

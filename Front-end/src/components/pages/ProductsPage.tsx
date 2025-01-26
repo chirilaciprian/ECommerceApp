@@ -22,17 +22,23 @@ import {
 } from "@heroicons/react/20/solid";
 import { Navbar } from "../general/Navbar";
 import { ProductsList } from "../general/ProductsList";
-import { CategoryProps, getAllCategories } from "../../services/categoryService";
+import {
+  CategoryProps,
+  getAllCategories,
+} from "../../services/categoryService";
 import { useLocation, useNavigate } from "react-router-dom";
 import Alert from "../general/Alert";
-import { fetchProducts, ProductProps } from "../../services/productService";
+import {
+  fetchPaginatedProducts,
+  ProductProps,
+} from "../../services/productService";
 
 const sortOptions = [
-  { name: "Most Popular", key: "popular" },  // You need a 'key' for sorting logic
-  { name: "Best Rating", key: "rating" },
-  { name: "Newest", key: "newest" },
-  { name: "Price: Low to High", key: "priceLowToHigh" },
-  { name: "Price: High to Low", key: "priceHighToLow" },
+  { name: "Most Popular", key: "popular" }, // You need a 'key' for sorting logic
+  // { name: "Best Rating", key: "rating" },
+  // { name: "Newest", key: "newest" },
+  { name: "Price: Low to High", key: "priceAsc" },
+  { name: "Price: High to Low", key: "priceDesc" },
 ];
 
 function classNames(...classes: unknown[]) {
@@ -43,94 +49,114 @@ const ProductsPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [products, setProducts] = useState<ProductProps[]>([]);
-  // const [page,setPage] = useState(1);
-  // const [limit] = useState(24);
   const [categories, setCategories] = useState<CategoryProps[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-  const [onSaleFilter, setOnSaleFilter] = useState(false);
+  // const [onSaleFilter, setOnSaleFilter] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState(sortOptions[0]);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
 
+  const productsPerPage = 24;
+
+  const fetchProducts = async (page: number, sortKey: string) => {
+    try {
+      const params: Record<string, string | number> = {
+        page,
+        limit: productsPerPage,
+        sortBy: sortKey,
+      };
+
+      if (selectedCategories.length > 0) {
+        params.categories = selectedCategories.join(",");
+      }
+
+      if (selectedGenres.length > 0) {
+        params.genres = selectedGenres.join(",");
+      }
+
+      // Update the URL with filters
+      const searchParams = new URLSearchParams(
+        params as Record<string, string>
+      );
+      navigate(`${location.pathname}?${searchParams.toString()}`, {
+        replace: true,
+      });
+
+      // Fetch products
+      const res = await fetchPaginatedProducts(
+        page,
+        productsPerPage,
+        selectedCategories.length > 0 ? selectedCategories : undefined,
+        selectedGenres.length > 0 ? selectedGenres.join(",") : undefined,
+        sortKey
+      );
+
+      setProducts(res.products || []);
+      setTotalPages(res.paginationDetails.totalPages || 1);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchFilters = async () => {
+    const fetchCategories = async () => {
       try {
         const fetchedCategories = await getAllCategories();
-        const fetchedProducts = await fetchProducts();
-        setProducts(fetchedProducts);
         setCategories(fetchedCategories);
       } catch (error) {
         console.error("Error fetching filters", error);
       }
     };
-    fetchFilters();
+    fetchCategories();
   }, []);
 
-
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const categories = params.get("category")?.split(",") || [];
-    const genres = params.get("genre")?.split(",") || [];
-    const onSale = params.get("onSale") === "true";
-
+    const searchParams = new URLSearchParams(location.search);
+    const categories = searchParams.get("categories")?.split(",") || [];
+    const genres = searchParams.get("genres")?.split(",") || [];
+    const page = parseInt(searchParams.get("page") || "1", 10);
+    const sortBy = searchParams.get("sortBy") || "priceAsc";
+  
     setSelectedCategories(categories);
     setSelectedGenres(genres);
-    setOnSaleFilter(onSale);
+    fetchProducts(page, sortBy);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search]);
 
-  const handleSortChange = (option: { name: string, key: string }) => {
-    setSelectedSortOption(option);
+  useEffect(() => {
+    fetchProducts(currentPage, selectedSortOption.key);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage, selectedSortOption, selectedCategories, selectedGenres]);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
   };
 
-  // Sort products based on selected sorting option
-  const sortedProducts = [...products].sort((a, b) => {
-    switch (selectedSortOption.key) {
-      case "priceLowToHigh":
-        return (a.salePrice ?? a.price) - (b.salePrice ?? b.price);
-      case "priceHighToLow":
-        return (b.salePrice ?? b.price) - (a.salePrice ?? a.price);
-      case "rating":
-        return b.rating - a.rating;
-      case "popular":
-        return a.rating - b.rating;
-      default:
-        return 0;
-    }
-  });
+  const handleSortChange = (option: { name: string; key: string }) => {
+    setSelectedSortOption(option);
+    setCurrentPage(1); // Reset to the first page on sort change
+  };
 
   const handleCategoryChange = (value: string) => {
-    setSelectedCategories((prev) => {
-      const newCategories = prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value];
-      updateURL("category", newCategories);
-      return newCategories;
-    });
+    setSelectedCategories((prev) =>
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
+    );
+    setCurrentPage(1);
   };
 
   const handleGenreChange = (value: string) => {
-    setSelectedGenres((prev) => {
-      const newGenres = prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value];
-      updateURL("genre", newGenres);
-      return newGenres;
-    });
+    setSelectedGenres((prev) =>
+      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
+    );
+    setCurrentPage(1);
   };
-
-  const updateURL = (filterType: string, values: string[]) => {
-    const params = new URLSearchParams(location.search);
-    if (values.length > 0) {
-      params.set(filterType, values.join(","));
-    } else {
-      params.delete(filterType);
-    }
-    navigate({ search: params.toString() });
-  };
-
-  const filteredProducts = sortedProducts.filter(product => {
-    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.categoryId);
-    const matchesGenre = selectedGenres.length === 0 || selectedGenres.includes(product.genre);
-    const matchesOnSale = !onSaleFilter || product.salePrice !== null;
-    return matchesCategory && matchesGenre && matchesOnSale;
-  });
 
   const filters = [
     {
@@ -146,64 +172,81 @@ const ProductsPage: React.FC = () => {
       name: "Category",
       options: Array.isArray(categories)
         ? categories.map((category: { id: string; name: string }) => ({
-          value: category.id,
-          label: category.name,
-        }))
+            value: category.id,
+            label: category.name,
+          }))
         : [],
     },
-
   ];
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 24; // You can adjust this value based on your needs
+  if (loading) {
+    return (
+      <div className="text-center flex items-center justify-center gap-5 mt-20">
+        <span className="text-lg font-bold merriweather">
+          Loading products...
+        </span>
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
 
-  // Calculate the number of pages needed
-  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-
-  // Get the products to display on the current page
-  const paginatedProducts = filteredProducts.slice(
-    (currentPage - 1) * productsPerPage,
-    currentPage * productsPerPage
-  );
-  // Update the current page
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
   return (
     <>
       <Navbar />
-      <Alert type={"success"} message={"Added to cart!"} isVisible={false}
-      />
+      <Alert type={"success"} message={"Added to cart!"} isVisible={false} />
       <div className="bg-base-200">
         <div>
           {/* Mobile filter dialog */}
-          <Dialog open={mobileFiltersOpen} onClose={setMobileFiltersOpen} className="relative z-40 lg:hidden">
+          <Dialog
+            open={mobileFiltersOpen}
+            onClose={setMobileFiltersOpen}
+            className="relative z-40 lg:hidden"
+          >
             <DialogBackdrop className="fixed inset-0 bg-black bg-opacity-25 transition-opacity duration-300 ease-linear" />
             <div className="fixed inset-0 z-40 flex">
               <DialogPanel className="relative ml-auto flex h-full w-full max-w-xs transform flex-col overflow-y-auto bg-base-200 py-4 pb-12 shadow-xl transition duration-300 ease-in-out">
                 <div className="flex items-center justify-between px-4">
                   <h2 className="text-lg font-medium text-gray-900">Filters</h2>
-                  <button type="button" onClick={() => setMobileFiltersOpen(false)} className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-base-200 p-2 text-gray-400">
+                  <button
+                    type="button"
+                    onClick={() => setMobileFiltersOpen(false)}
+                    className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-base-200 p-2 text-gray-400"
+                  >
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon aria-hidden="true" className="h-6 w-6" />
                   </button>
                 </div>
                 <form className="mt-4 border-t border-gray-200">
-                  {filters.map(section => (
-                    <Disclosure key={section.id} as="div" className="border-t border-gray-200 px-4 py-6">
+                  {filters.map((section) => (
+                    <Disclosure
+                      key={section.id}
+                      as="div"
+                      className="border-t border-gray-200 px-4 py-6"
+                    >
                       <h3 className="-mx-2 -my-3 flow-root">
                         <DisclosureButton className="group flex w-full items-center justify-between bg-base-200 px-2 py-3 text-gray-400 hover:text-gray-500">
-                          <span className="font-medium text-gray-900">{section.name}</span>
+                          <span className="font-medium text-gray-900">
+                            {section.name}
+                          </span>
                           <span className="ml-6 flex items-center">
-                            <PlusIcon aria-hidden="true" className="h-5 w-5 group-data-[open]:hidden" />
-                            <MinusIcon aria-hidden="true" className="h-5 w-5 group-data-[open]:block hidden" />
+                            <PlusIcon
+                              aria-hidden="true"
+                              className="h-5 w-5 group-data-[open]:hidden"
+                            />
+                            <MinusIcon
+                              aria-hidden="true"
+                              className="h-5 w-5 group-data-[open]:block hidden"
+                            />
                           </span>
                         </DisclosureButton>
                       </h3>
                       <DisclosurePanel className="pt-6">
                         <div className="space-y-6">
                           {section.options.map((option, optionIdx) => (
-                            <div key={option.value} className="flex items-center">
+                            <div
+                              key={option.value}
+                              className="flex items-center"
+                            >
                               <input
                                 id={`filter-mobile-${section.id}-${optionIdx}`}
                                 name={`${section.id}[]`}
@@ -212,7 +255,8 @@ const ProductsPage: React.FC = () => {
                                   section.id === "category"
                                     ? selectedCategories.includes(option.value)
                                     : section.id === "genre"
-                                      ? selectedGenres.includes(option.value) : false
+                                    ? selectedGenres.includes(option.value)
+                                    : false
                                 }
                                 onChange={() => {
                                   if (section.id === "category") {
@@ -223,7 +267,10 @@ const ProductsPage: React.FC = () => {
                                 }}
                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                               />
-                              <label htmlFor={`filter-mobile-${section.id}-${optionIdx}`} className="ml-3 min-w-0 flex-1 text-gray-500">
+                              <label
+                                htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
+                                className="ml-3 min-w-0 flex-1 text-gray-500"
+                              >
                                 {option.label}
                               </label>
                             </div>
@@ -239,20 +286,23 @@ const ProductsPage: React.FC = () => {
 
           <main className="mx-auto w-auto px-4 sm:px-6 lg:px-8 md:mx-5">
             <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-10">
-              <h1 className="md:text-4xl text-2xl font-thin tracking-tight text-gray-900 playfair tracking-wider">Products</h1>
+              <h1 className="md:text-4xl text-2xl font-thin text-gray-900 playfair tracking-wider">
+                Products
+              </h1>
               <div className="flex items-center">
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
                     <MenuButton className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
                       Sort
-                      <ChevronDownIcon aria-hidden="true" className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500" />
+                      <ChevronDownIcon
+                        aria-hidden="true"
+                        className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      />
                     </MenuButton>
                   </div>
-                  <MenuItems
-                    className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-base-200 shadow-2xl ring-1 ring-black ring-opacity-5 transition focus:outline-none"
-                  >
+                  <MenuItems className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-base-200 shadow-2xl ring-1 ring-black ring-opacity-5 transition focus:outline-none">
                     <div className="py-1">
-                      {sortOptions.map(option => (
+                      {sortOptions.map((option) => (
                         <MenuItem key={option.name}>
                           <button
                             onClick={() => handleSortChange(option)}
@@ -270,11 +320,18 @@ const ProductsPage: React.FC = () => {
                     </div>
                   </MenuItems>
                 </Menu>
-                <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
+                <button
+                  type="button"
+                  className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
+                >
                   <span className="sr-only">View grid</span>
                   <Squares2X2Icon aria-hidden="true" className="h-5 w-5" />
                 </button>
-                <button type="button" onClick={() => setMobileFiltersOpen(true)} className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden">
+                <button
+                  type="button"
+                  onClick={() => setMobileFiltersOpen(true)}
+                  className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+                >
                   <span className="sr-only">Filters</span>
                   <FunnelIcon aria-hidden="true" className="h-5 w-5" />
                 </button>
@@ -282,25 +339,42 @@ const ProductsPage: React.FC = () => {
             </div>
 
             <section aria-labelledby="products-heading" className="pb-24 pt-6">
-              <h2 id="products-heading" className="sr-only">Products</h2>
+              <h2 id="products-heading" className="sr-only">
+                Products
+              </h2>
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                 {/* Filters */}
                 <form className="hidden lg:block">
-                  {filters.map(section => (
-                    <Disclosure key={section.id} as="div" className="border-b border-gray-200 py-6">
+                  {filters.map((section) => (
+                    <Disclosure
+                      key={section.id}
+                      as="div"
+                      className="border-b border-gray-200 py-6"
+                    >
                       <h3 className="-my-3 flow-root">
                         <DisclosureButton className="group flex w-full items-center justify-between bg-base-200 py-3 text-sm text-gray-400 hover:text-gray-500">
-                          <span className="font-medium text-gray-900">{section.name}</span>
+                          <span className="font-medium text-gray-900">
+                            {section.name}
+                          </span>
                           <span className="ml-6 flex items-center">
-                            <PlusIcon aria-hidden="true" className="h-5 w-5 group-data-[open]:hidden" />
-                            <MinusIcon aria-hidden="true" className="h-5 w-5 group-data-[open]:block hidden" />
+                            <PlusIcon
+                              aria-hidden="true"
+                              className="h-5 w-5 group-data-[open]:hidden"
+                            />
+                            <MinusIcon
+                              aria-hidden="true"
+                              className="h-5 w-5 group-data-[open]:block hidden"
+                            />
                           </span>
                         </DisclosureButton>
                       </h3>
                       <DisclosurePanel className="pt-6">
                         <div className="space-y-4">
                           {section.options.map((option, optionIdx) => (
-                            <div key={option.value} className="flex items-center">
+                            <div
+                              key={option.value}
+                              className="flex items-center"
+                            >
                               <input
                                 id={`filter-desktop-${section.id}-${optionIdx}`}
                                 name={`${section.id}[]`}
@@ -309,7 +383,8 @@ const ProductsPage: React.FC = () => {
                                   section.id === "category"
                                     ? selectedCategories.includes(option.value)
                                     : section.id === "genre"
-                                      ? selectedGenres.includes(option.value) : false
+                                    ? selectedGenres.includes(option.value)
+                                    : false
                                 }
                                 onChange={() => {
                                   if (section.id === "category") {
@@ -320,7 +395,10 @@ const ProductsPage: React.FC = () => {
                                 }}
                                 className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                               />
-                              <label htmlFor={`filter-desktop-${section.id}-${optionIdx}`} className="ml-3 min-w-0 flex-1 text-gray-500">
+                              <label
+                                htmlFor={`filter-desktop-${section.id}-${optionIdx}`}
+                                className="ml-3 min-w-0 flex-1 text-gray-500"
+                              >
                                 {option.label}
                               </label>
                             </div>
@@ -333,8 +411,7 @@ const ProductsPage: React.FC = () => {
 
                 {/* Product grid */}
                 <div className="lg:col-span-3">
-                  <ProductsList products={paginatedProducts} />
-
+                  <ProductsList products={products} />
 
                   <div className="mt-8 flex justify-center items-center w-full">
                     <div className="btn-group flex justify-center items-center gap-3">
@@ -361,15 +438,20 @@ const ProductsPage: React.FC = () => {
                       )}
 
                       {/* Dynamic Page Numbers */}
-                      {[...Array(totalPages).keys()].map(pageNumber => {
+                      {[...Array(totalPages).keys()].map((pageNumber) => {
                         const page = pageNumber + 1;
                         // Show pages within range of 5 to 10
-                        if (page >= currentPage - 2 && page <= currentPage + 2) {
+                        if (
+                          page >= currentPage - 2 &&
+                          page <= currentPage + 2
+                        ) {
                           return (
                             <button
                               key={pageNumber}
                               onClick={() => handlePageChange(page)}
-                              className={`btn btn-sm ${currentPage === page ? 'btn-active' : ''}`}
+                              className={`btn btn-sm ${
+                                currentPage === page ? "btn-active" : ""
+                              }`}
                             >
                               {page}
                             </button>

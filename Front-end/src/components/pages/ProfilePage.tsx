@@ -57,6 +57,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     handleGetUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
