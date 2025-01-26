@@ -12,7 +12,7 @@ interface ProductCSV {
   price: string;
   terms: string;
   section: string;
-  image_downloads: string;
+  images: string;
 }
 
 async function main() {
@@ -30,7 +30,7 @@ async function main() {
   }> = [];
 
   // Read and parse the CSV file
-  const filePath = "../../../MachineLearning/data/dbdata.csv"
+  const filePath = "../../../MachineLearning/data/formatted_zara.csv"
 
   // Parse the CSV asynchronously
   await new Promise<void>((resolve, reject) => {
@@ -43,7 +43,7 @@ async function main() {
           name: row.name,
           description: row.description,
           price: parseFloat(row.price),
-          images: row.image_downloads
+          images: row.images
             .split(',') // Split images by commas
             .map(image => image.replace(/['"\[\]\s]/g, '').trim()), // Remove extra quotes, brackets, and spaces
           genre: row.section, // Map 'section' to 'genre'

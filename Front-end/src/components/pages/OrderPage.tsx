@@ -61,10 +61,6 @@ const OrderPage: React.FC = () => {
     navigate("/products");
   };
 
-  const getLocalImageUrl = (imageId: string) => {
-    return `/images/${imageId}.jpg`;  // Images stored in public/images
-  };
-
   useEffect(() => {
     try {
       dispatch(getCart());
@@ -102,7 +98,7 @@ const OrderPage: React.FC = () => {
               <div key={cartItem.id} className="mb-4 flex justify-between gap-4 roboto shadow-md bg-white rounderd-xl p-4">
                 <div className="flex items-center">
                   <img
-                    src={getLocalImageUrl(product.images[0])}
+                    src={product.images[0]}
                     alt={product.name}
                     className="w-16 h-16 rounded-lg"
                   />

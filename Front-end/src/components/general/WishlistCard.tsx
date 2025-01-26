@@ -3,10 +3,6 @@ import { ProductProps } from '../../services/productService';
 import { IoClose } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
-const getLocalImageUrl = (imageId: string) => {
-    return `/images/${imageId}.jpg`;  // Images stored in public/images
-};
-
 interface WishlistItemCardProps {
     product: ProductProps;  // Add product property
     wishlistItemId:string;
@@ -22,7 +18,7 @@ const WishlistCard: React.FC<WishlistItemCardProps> = ({ product, wishlistItemId
             <Link to={`/product/${product.id}`}>
             <img
                 alt={product.name}
-                src={getLocalImageUrl(product.images[product.images.length - 3])} // Assuming the first image is the primary image
+                src={product.images[product.images.length - 3]} // Assuming the first image is the primary image
                 className="aspect-square w-full rounded-md bg-gray-200 object-cover lg:aspect-auto lg:h-80"
             />
             </Link>         

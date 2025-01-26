@@ -18,9 +18,6 @@ const selectCart = createSelector(
     status: cart.status,
   })
 );
-const getLocalImageUrl = (imageId: string) => {
-  return `/images/${imageId}.jpg`;  // Images stored in public/images
-};
 const CartPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true); // To manage loading state
   const cart = useSelector(selectCart);
@@ -74,7 +71,7 @@ const CartPage: React.FC = () => {
                     key={cartItem.id}
                     cartItemId={cartItem.id}
                     quantity={cartItem.quantity}
-                    image={getLocalImageUrl(product.images[0])}
+                    image={product.images[0]}
                     name={product.name}
                     size={cartItem.size}
                     description={product.description || ""}

@@ -9,16 +9,13 @@ interface RecommendedProductsProps {
 
 export default function RecommendedProducts({ products }: RecommendedProductsProps) {
 
-  const [categories, setCategories] = useState<CategoryProps[]>([]);  
-  const getLocalImageUrl = (imageId: string) => {
-    return `/images/${imageId}.jpg`;  // Images stored in public/images
-  };
+  const [categories, setCategories] = useState<CategoryProps[]>([]);    
   
 
   const fetchCategories = async () => {
     const data = await getAllCategories();
     // Initialize categories as an array of objects with 'name' and 'id'
-    let categories: { name: string; id: string }[] = [];
+    const categories: { name: string; id: string }[] = [];
     // Use forEach to populate the categories array
     data.forEach((category: CategoryProps) => {
       categories.push({
@@ -49,7 +46,7 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
             <Link to={`/product/${product.id}`} key={product.id} className="group relative" >
               <img
                 alt={product.name}
-                src={getLocalImageUrl(product.images[product.images.length - 3])} // Assuming the first image is the primary image
+                src={product.images[product.images.length - 3]} // Assuming the first image is the primary image
                 className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"                
               />
               <div className="mt-4 flex justify-between">

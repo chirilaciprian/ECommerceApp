@@ -43,18 +43,16 @@ export const Product = (product:ProductPropsWithMethods) => {
     navigate(`/product/${product.id}`);
   };
 
-  const getLocalImageUrl = (imageId: string) => {
-    // Use relative path to images in the public folder
-    return `/images/${imageId}.jpg`;  // This assumes the images are in public/images/
-  };
+  
   return (
     <>
       <Alert type={"success"} message={"Added to cart"} isVisible={showAlert} />
       <div className="card w-auto cursor-pointer shadow-sm">
         <figure>
           <img
-            src={getLocalImageUrl(product.images[0])}
+            src={product.images[0]}
             alt="product"
+            loading="lazy"
             className="w-auto w-max-200px h-auto h-max-400px object-cover"            
             onClick={handleClick}
           />

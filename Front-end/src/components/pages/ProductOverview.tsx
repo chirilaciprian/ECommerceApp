@@ -25,10 +25,6 @@ const selectCart = createSelector(
 );
 
 
-const getLocalImageUrl = (imageId: string) => {
-    return `/images/${imageId}.jpg`;  // Images stored in public/images
-};
-
 const ProductDetail = () => {
 
     const location = useLocation();
@@ -66,7 +62,7 @@ const ProductDetail = () => {
     const fetchProduct = async () => {
         const res = await getProductById(productId || "");
         fetchCategory(res.categoryId);
-        res.images = res.images.map((image: string) => getLocalImageUrl(image));
+        res.images = res.images.map((image: string) => image);
         const recommended = await getRecommendedProducts(res.sku, 12);
         setRecommendedProducts(recommended);
         changeImage(res.images[0])

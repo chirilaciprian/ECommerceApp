@@ -18111,3 +18111,425 @@ Unique constraint failed on the fields: (`cartId`,`productId`)
 2025-01-26T21:01:50.298Z [[32minfo[39m]: Products retrieved
 2025-01-26T21:01:50.320Z [[32minfo[39m]: Cart items retrieved
 2025-01-26T21:01:50.437Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:04:53.780Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:04:53.787Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:04:53.794Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:06:03.653Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:06:03.675Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:06:03.683Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:06:03.735Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:06:03.738Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:06:03.750Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:06:03.758Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:06:03.765Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:06:03.829Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:06:03.933Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:06:04.053Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:06:04.055Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:06:04.060Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:06:04.128Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:06:04.134Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:06:04.137Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:06:04.151Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:06:04.352Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:06:04.357Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:06:04.372Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:06:04.382Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:22:34.862Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:22:34.891Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:22:35.039Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:22:45.475Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:22:45.481Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:22:45.555Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:22:45.563Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:22:45.583Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:22:45.626Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:22:45.630Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:22:45.633Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:22:45.644Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:22:45.649Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:27.735Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:23:27.738Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:23:27.794Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:23:27.804Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:23:27.814Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:27.838Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:27.841Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:23:27.852Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:23:27.864Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:27.870Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:58.080Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:23:58.113Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:23:58.116Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:23:58.118Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:23:58.126Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:23:58.128Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:23:58.136Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:23:58.144Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:23:58.152Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:23:58.318Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:58.450Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:58.453Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:23:58.459Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:58.531Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:23:58.539Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:23:58.554Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:58.576Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:23:58.883Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:58.892Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:58.911Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:23:58.930Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:11.997Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:12.008Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:12.032Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:12.040Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:12.046Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:12.053Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:12.061Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:12.214Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:12.218Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:12.225Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:12.227Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:12.232Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:12.236Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:12.352Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:12.358Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:12.362Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:12.364Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:12.382Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:12.403Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:13.462Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:49:13.464Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:49:13.476Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:13.482Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:13.488Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:13.516Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:13.519Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:13.522Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:13.551Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:13.555Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:15.022Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:49:15.023Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:49:15.061Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:15.062Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:15.087Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:15.095Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:15.101Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:15.102Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:15.120Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:15.128Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:21.957Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:21.965Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:21.969Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:21.975Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:21.977Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:21.983Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:21.985Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:21.992Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:21.998Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:49:22.075Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:22.107Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:22.112Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:22.124Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:22.125Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:22.132Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:22.218Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:22.226Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:22.264Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:22.267Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:22.277Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:22.292Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:24.346Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:49:24.348Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:49:24.370Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:24.374Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:49:24.386Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:24.401Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:24.403Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:24.410Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:49:24.417Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:49:24.424Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:50:45.198Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:51:35.202Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:51:46.602Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:51:46.621Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:51:46.627Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:51:46.630Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:51:46.636Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:51:46.642Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:51:46.647Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:51:46.651Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:51:46.659Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:51:46.758Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:51:46.863Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:51:46.890Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:51:46.896Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:51:46.924Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:51:46.930Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:51:47.001Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:51:47.007Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:51:47.240Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:51:47.248Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:51:47.259Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:51:47.272Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:06.181Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:53:06.184Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:53:06.212Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:53:06.223Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:53:06.242Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:06.247Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:06.250Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:53:06.254Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:53:06.267Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:06.273Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:13.285Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:53:13.304Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:53:13.309Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:53:13.313Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:53:13.321Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:53:13.325Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:53:13.330Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:53:13.337Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:53:13.347Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:53:13.439Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:13.476Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:53:13.538Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:13.546Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:13.557Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:53:13.561Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:53:13.661Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:13.671Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:13.672Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:53:13.675Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:13.678Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:53:13.707Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:04.855Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:55:04.858Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:55:04.879Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:55:04.889Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:55:04.907Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:04.911Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:04.918Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:04.922Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:04.935Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:04.942Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:09.966Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:55:09.991Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:09.998Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:10.006Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:10.009Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:10.018Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:10.030Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:10.043Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:10.074Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:55:10.143Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:10.244Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:10.247Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:10.315Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:10.327Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:10.350Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:10.389Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:10.396Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:10.720Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:10.728Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:10.746Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:10.754Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:13.019Z [[32minfo[39m]: Product with id cm6e5ikh00001vdit3570gc7m retrieved
+2025-01-26T21:55:13.027Z [[32minfo[39m]: Product with id cm6e5ikh00001vdit3570gc7m retrieved
+2025-01-26T21:55:13.044Z [[32minfo[39m]: Category with id cm61y0u0e000011aki18ei9zv retrieved
+2025-01-26T21:55:13.055Z [[32minfo[39m]: Category with id cm61y0u0e000011aki18ei9zv retrieved
+2025-01-26T21:55:13.057Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:13.063Z [[32minfo[39m]: Whishlist with userId cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:13.070Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:13.073Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:13.080Z [[32minfo[39m]: Products with SKUs 278112470-800-2, 311309598-711-2, 312372602-800-2, 311292309-800-2, 311287634-819-2, 322865193-800-2, 320060891-800-2, 267133943-711-2, 316132266-800-2, 315641560-800-2, 327116625-505-2, 311287226-472-2 retrieved
+2025-01-26T21:55:13.085Z [[32minfo[39m]: Products with SKUs 278112470-800-2, 311309598-711-2, 312372602-800-2, 311292309-800-2, 311287634-819-2, 322865193-800-2, 320060891-800-2, 267133943-711-2, 316132266-800-2, 315641560-800-2, 327116625-505-2, 311287226-472-2 retrieved
+2025-01-26T21:55:13.089Z [[32minfo[39m]: Wishlist items with wishlistId cm6at0x1u0000j8kxf6je9qxb retrieved
+2025-01-26T21:55:13.091Z [[32minfo[39m]: Whishlist with userId cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:13.094Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:13.109Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:55:13.111Z [[32minfo[39m]: Wishlist items with wishlistId cm6at0x1u0000j8kxf6je9qxb retrieved
+2025-01-26T21:55:13.112Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:13.116Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:55:13.135Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:20.000Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:55:20.005Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:55:20.009Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:20.018Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:20.027Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:20.036Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:20.045Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:55:20.165Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:20.173Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:20.215Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:20.222Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:20.234Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:20.247Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:20.355Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:20.362Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:55:20.434Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:20.441Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:20.459Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:55:20.469Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:36.776Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:36.819Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:36.876Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:41.902Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:56:41.905Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:56:41.953Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:56:41.959Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:56:41.972Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:41.989Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:41.991Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:56:41.997Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:56:42.007Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:42.012Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:46.188Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:56:46.202Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:56:46.204Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:46.210Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:46.214Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:46.221Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:46.226Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:46.234Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:46.241Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:56:46.335Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:46.390Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:56:46.425Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:46.929Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:46.930Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:56:46.934Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:46.938Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:56:46.940Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:46.955Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:56:46.968Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:46.972Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:46.983Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:49.295Z [[32minfo[39m]: Product with id cm6e5iki7000rvditsih5f7ee retrieved
+2025-01-26T21:56:49.306Z [[32minfo[39m]: Product with id cm6e5iki7000rvditsih5f7ee retrieved
+2025-01-26T21:56:49.313Z [[32minfo[39m]: Category with id cm61y0u0e000011aki18ei9zv retrieved
+2025-01-26T21:56:49.315Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:49.323Z [[32minfo[39m]: Category with id cm61y0u0e000011aki18ei9zv retrieved
+2025-01-26T21:56:49.330Z [[32minfo[39m]: Whishlist with userId cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:49.332Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:56:49.339Z [[32minfo[39m]: Products with SKUs 323134415-700-3, 329804963-716-3, 334296214-805-1, 320220949-507-2, 320449880-442-2, 315529534-705-3, 317331027-093-1, 312664937-514-2, 311297791-800-2, 311309526-800-2, 317012940-800-2, 319205114-807-2 retrieved
+2025-01-26T21:56:49.349Z [[32minfo[39m]: Products with SKUs 323134415-700-3, 329804963-716-3, 334296214-805-1, 320220949-507-2, 320449880-442-2, 315529534-705-3, 317331027-093-1, 312664937-514-2, 311297791-800-2, 311309526-800-2, 317012940-800-2, 319205114-807-2 retrieved
+2025-01-26T21:56:49.353Z [[32minfo[39m]: Wishlist items with wishlistId cm6at0x1u0000j8kxf6je9qxb retrieved
+2025-01-26T21:56:49.354Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:49.364Z [[32minfo[39m]: Whishlist with userId cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:49.367Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:56:49.371Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:56:49.373Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:56:49.374Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:56:49.378Z [[32minfo[39m]: Wishlist items with wishlistId cm6at0x1u0000j8kxf6je9qxb retrieved
+2025-01-26T21:56:49.398Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:02.704Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:02.721Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:02.723Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:02.731Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:02.738Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:02.746Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:02.753Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:02.821Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:03.371Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:03.372Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:03.377Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:03.385Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:03.400Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:03.404Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:03.408Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:03.413Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:03.428Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:03.432Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:03.437Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:07.301Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:07.341Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:07.354Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:10.647Z [[32minfo[39m]: Product with id cm6e5iq1i04ppvditos5j8vld retrieved
+2025-01-26T21:57:10.656Z [[32minfo[39m]: Product with id cm6e5iq1i04ppvditos5j8vld retrieved
+2025-01-26T21:57:10.665Z [[32minfo[39m]: Category with id cm61y0u17000h11akam031fyu retrieved
+2025-01-26T21:57:10.683Z [[32minfo[39m]: Category with id cm61y0u17000h11akam031fyu retrieved
+2025-01-26T21:57:10.690Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:10.692Z [[32minfo[39m]: Whishlist with userId cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:10.694Z [[32minfo[39m]: Products with SKUs 315241749-802-2, 313890645-330-2, 313890654-712-2, 313890650-712-2, 313890685-300-97, 313890707-712-2, 311287165-712-3, 311302993-712-3, 341483635-712-2, 313890667-500-2, 313890680-450-2, 323746052-676-1 retrieved
+2025-01-26T21:57:10.700Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:10.702Z [[32minfo[39m]: Products with SKUs 315241749-802-2, 313890645-330-2, 313890654-712-2, 313890650-712-2, 313890685-300-97, 313890707-712-2, 311287165-712-3, 311302993-712-3, 341483635-712-2, 313890667-500-2, 313890680-450-2, 323746052-676-1 retrieved
+2025-01-26T21:57:10.703Z [[32minfo[39m]: Whishlist with userId cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:10.707Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:10.709Z [[32minfo[39m]: Wishlist items with wishlistId cm6at0x1u0000j8kxf6je9qxb retrieved
+2025-01-26T21:57:10.725Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:10.726Z [[32minfo[39m]: Wishlist items with wishlistId cm6at0x1u0000j8kxf6je9qxb retrieved
+2025-01-26T21:57:10.727Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:10.732Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:10.737Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:10.745Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:15.364Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:15.380Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:15.383Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:15.390Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:15.395Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:15.404Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:15.413Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:15.419Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:15.427Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:15.518Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:15.579Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:15.699Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:15.704Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:15.710Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:15.717Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:15.718Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:15.723Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:15.820Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:15.825Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:15.834Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:15.844Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:16.165Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:57:16.168Z [[32minfo[39m]: Products with SKUs 311309598-711-2, 312596416-800-2, 323672371-507-2, 311287634-819-2, 322865193-800-2, 316683359-818-2, 267186163-643-2, 311307584-518-2, 311297745-800-2, 311282778-800-2, 311302996-800-2, 312664937-514-2, 321143723-401-2, 323675323-700-2, 324149982-982-2, 322410604-401-2, 312372602-800-2, 316207898-712-2, 313002435-472-2, 323212374-510-2, 329158644-605-2, 317129004-500-97, 315641560-800-2, 315758723-401-2 retrieved
+2025-01-26T21:57:16.199Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:16.214Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:16.234Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:16.240Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:16.243Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:16.246Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:16.281Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:16.288Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:27.624Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:27.640Z [[32minfo[39m]: Categories retrieved
+2025-01-26T21:57:27.645Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:27.648Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:27.655Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:27.659Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:27.665Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:27.672Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:27.679Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:28.839Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:28.843Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:28.847Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:28.851Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:28.865Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:28.871Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:28.877Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:28.902Z [[32minfo[39m]: Cart items retrieved
+2025-01-26T21:57:28.914Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:28.926Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:28.935Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:28.968Z [[32minfo[39m]: Cart with user id cm63q7v8u0000o8kx1qe67szw retrieved
+2025-01-26T21:57:33.895Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:33.942Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:33.951Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:37.589Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:37.603Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:37.624Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:48.864Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:48.897Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:48.904Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:48.935Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:48.942Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:48.952Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:56.138Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:56.167Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:56.182Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:56.194Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:56.204Z [[32minfo[39m]: Products retrieved
+2025-01-26T21:57:56.212Z [[32minfo[39m]: Products retrieved
