@@ -54,6 +54,7 @@ const CartItem: React.FC<CartItemProps> = ({
           src={image}
           alt="product-image"
           className="max-lg:w-full lg:w-[180px] rounded-lg object-cover"
+          loading="lazy"
         />
       </div>
       <div className="col-span-12 lg:col-span-10 w-full lg:pl-3">

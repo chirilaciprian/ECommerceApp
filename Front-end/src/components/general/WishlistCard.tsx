@@ -20,6 +20,7 @@ const WishlistCard: React.FC<WishlistItemCardProps> = ({ product, wishlistItemId
                 alt={product.name}
                 src={product.images[product.images.length - 3]} // Assuming the first image is the primary image
                 className="aspect-square w-full rounded-md bg-gray-200 object-cover lg:aspect-auto lg:h-80"
+                loading='lazy'
             />
             </Link>         
             <div className="mt-4 flex justify-between">

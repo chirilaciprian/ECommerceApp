@@ -47,7 +47,8 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
               <img
                 alt={product.name}
                 src={product.images[product.images.length - 3]} // Assuming the first image is the primary image
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"                
+                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" 
+                loading="lazy"               
               />
               <div className="mt-4 flex justify-between">
                 <div>

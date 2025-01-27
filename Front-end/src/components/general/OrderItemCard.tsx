@@ -17,6 +17,7 @@ const OrderItemCard = (props:OrderItemProps) => {
           src={props.image}
           alt="Premium Watch image"
           className="aspect-square w-full lg:max-w-[140px] rounded-xl object-cover"
+          loading="lazy"
         />
       </div>
       <div className="flex flex-row items-center w-full ">
