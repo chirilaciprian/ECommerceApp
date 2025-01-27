@@ -122,9 +122,10 @@ const ProductsPage: React.FC = () => {
     const page = parseInt(searchParams.get("page") || "1", 10);
     const sortBy = searchParams.get("sortBy") || "priceAsc";
   
+    setCurrentPage(page);
+    setSelectedSortOption(sortOptions.find((option) => option.key === sortBy) || sortOptions[0]);
     setSelectedCategories(categories);
-    setSelectedGenres(genres);
-    fetchProducts(page, sortBy);
+    setSelectedGenres(genres);    
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search]);
 
