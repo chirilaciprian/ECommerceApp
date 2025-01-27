@@ -131,7 +131,6 @@ const ProductsPage: React.FC = () => {
 
   useEffect(() => {
     fetchProducts(currentPage, selectedSortOption.key);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, selectedSortOption, selectedCategories, selectedGenres]);
 
   const handlePageChange = (page: number) => {

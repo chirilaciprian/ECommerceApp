@@ -251,3 +251,226 @@ D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
   57 };
 → 58 const createdCartItem = await prisma.cartItem.create(
 Unique constraint failed on the fields: (`cartId`,`productId`)
+2025-01-27T09:43:34.354Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:34.372Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:34.377Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.703Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.720Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.728Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.733Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.772Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.776Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.782Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.788Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.794Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.799Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.804Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.809Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.812Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.818Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.822Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.826Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.952Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.956Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.961Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.964Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.967Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.970Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.973Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.976Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.982Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.984Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.988Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.990Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.993Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.997Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:43.999Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.002Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.005Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.007Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.010Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.014Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.018Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.021Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.025Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.027Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.031Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.035Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.038Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.044Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.047Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.051Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.054Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.058Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.062Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.065Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.070Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.075Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.080Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.086Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.090Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.097Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.101Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.105Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.110Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.114Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.119Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.126Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.130Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.134Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.137Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.139Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.143Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.146Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.149Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.153Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.155Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.159Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.162Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.165Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.171Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.175Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.181Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.184Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.188Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.196Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.200Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.206Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.210Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.219Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.223Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.228Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.233Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.238Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.243Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.253Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.259Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.263Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.267Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.272Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.276Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.278Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.284Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.293Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.300Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.304Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.309Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.314Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.319Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.323Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.329Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.334Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.338Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.344Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.350Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.354Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.368Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.374Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.396Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.400Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.424Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.428Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.450Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.455Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.469Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.476Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.490Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.494Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.510Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.515Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.531Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.534Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.564Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.569Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.579Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.583Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.598Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.601Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.618Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.621Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.635Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.639Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.657Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.661Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.680Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.683Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.700Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.706Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.721Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.724Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.743Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.746Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.764Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.768Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.786Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.788Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.805Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.809Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.828Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.833Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.850Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.855Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.869Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.874Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.892Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.899Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.908Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.914Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.929Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.934Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.946Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.952Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.964Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.968Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.983Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:44.986Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.000Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.004Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.022Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.024Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.043Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.050Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.062Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.067Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.079Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:45.083Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:46.150Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:47.122Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:43:49.903Z [[31merror[39m]: Failed to get products: TypeError: req.query.genre?.split is not a function
+2025-01-27T09:55:28.318Z [[31merror[39m]: Failed to login: Error: Invalid password
+2025-01-27T10:53:02.330Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Unique constraint failed on the fields: (`cartId`,`productId`)
+2025-01-27T10:53:04.428Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Unique constraint failed on the fields: (`cartId`,`productId`)
+2025-01-27T10:53:06.068Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Unique constraint failed on the fields: (`cartId`,`productId`)
+2025-01-27T10:53:24.214Z [[31merror[39m]: Failed to create cart item: PrismaClientKnownRequestError: 
+Invalid `prisma.cartItem.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
+
+  55   price: price,
+  56   id: cuid(),
+  57 };
+→ 58 const createdCartItem = await prisma.cartItem.create(
+Unique constraint failed on the fields: (`cartId`,`productId`)
