@@ -120,15 +120,16 @@ export const updateProduct = async (
 export const getPaginatedProducts = async (
   page: number,
   limit: number,
-  filters: { categoryIds?: string[]; genre?: string },
+  filters: { categoryIds?: string[]; genres?: string[] },
   sortBy?: "priceAsc" | "priceDesc"
 ): Promise<IProduct[]> => {
   const sortOption =
     sortBy === "priceAsc"
       ? { price: "asc" as const }
       : sortBy === "priceDesc"
-      ? { price: "desc" as const }
-      : undefined;
+        ? { price: "desc" as const }
+        : undefined;
+
   return await prisma.product.findMany({
     skip: (page - 1) * limit,
     take: limit,
@@ -136,7 +137,9 @@ export const getPaginatedProducts = async (
       ...(filters.categoryIds && {
         categoryId: { in: filters.categoryIds },
       }),
-      ...(filters.genre && { genre: filters.genre }),
+      ...(filters.genres && {
+        genre: { in: filters.genres },
+      }),
     },
     orderBy: sortOption,
   });
@@ -145,7 +148,7 @@ export const getPaginatedProducts = async (
 export const getPaginationDetails = async (
   page: number,
   limit: number,
-  filters: { categoryIds?: string[]; genre?: string }
+  filters: { categoryIds?: string[]; genres?: string[] }
 ): Promise<{
   totalItems: number;
   totalPages: number;
@@ -157,7 +160,9 @@ export const getPaginationDetails = async (
       ...(filters.categoryIds && {
         categoryId: { in: filters.categoryIds },
       }),
-      ...(filters.genre && { genre: filters.genre }),
+      ...(filters.genres && {
+        genre: { in: filters.genres },
+      }),
     },
   });
 

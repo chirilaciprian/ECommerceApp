@@ -100,16 +100,16 @@ export const getPaginatedProducts = async (req: Request, res: Response, next: Ne
         const page = parseInt(req.query.page as string) || 1;
         const limit = parseInt(req.query.limit as string) || 24;
         const categoryIds = (req.query.category as string)?.split(","); // Parse category IDs as an array
-        const genre = req.query.genre as string;
+        const genres = (req.query.genre as string)?.split(","); // Parse genres as an array
         const sortBy = req.query.sortBy as "priceAsc" | "priceDesc";
 
-        const filters: { categoryIds?: string[]; genre?: string } = {};
+        const filters: { categoryIds?: string[]; genres?: string[] } = {};
 
         if (categoryIds && categoryIds.length > 0) {
             filters.categoryIds = categoryIds;
         }
-        if (genre) {
-            filters.genre = genre;
+        if (genres && genres.length > 0) {
+            filters.genres = genres;
         }
 
         const paginationDetails = await productService.getPaginationDetails(page, limit, filters);
@@ -125,6 +125,7 @@ export const getPaginatedProducts = async (req: Request, res: Response, next: Ne
         next(new AppError("Failed to get products", errorCodes.INTERNAL_SERVER_ERROR));
     }
 };
+
 
 export const getProductsByCartId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
