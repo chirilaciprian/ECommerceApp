@@ -121,7 +121,7 @@ export const getPaginatedProducts = async (
   page: number,
   limit: number,
   filters: { categoryIds?: string[]; genres?: string[] },
-  sortBy?: "priceAsc" | "priceDesc"
+  sortBy?: "priceAsc" | "priceDesc" | "popular"
 ): Promise<IProduct[]> => {
   const sortOption =
     sortBy === "priceAsc"
@@ -141,7 +141,7 @@ export const getPaginatedProducts = async (
         genre: { in: filters.genres },
       }),
     },
-    orderBy: sortOption,
+    ...(sortOption && { orderBy: sortOption }),
   });
 };
 

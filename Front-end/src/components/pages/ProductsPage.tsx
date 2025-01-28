@@ -120,7 +120,7 @@ const ProductsPage: React.FC = () => {
     const categories = searchParams.get("categories")?.split(",") || [];
     const genres = searchParams.get("genres")?.split(",") || [];
     const page = parseInt(searchParams.get("page") || "1", 10);
-    const sortBy = searchParams.get("sortBy") || "priceAsc";
+    const sortBy = searchParams.get("sortBy") || "popular";
   
     setCurrentPage(page);
     setSelectedSortOption(sortOptions.find((option) => option.key === sortBy) || sortOptions[0]);

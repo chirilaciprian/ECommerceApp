@@ -106,10 +106,8 @@ export const fetchPaginatedProducts = async (
       ...(categoryIds && { category: categoryIds.join(",") }), // Join category IDs with commas
       ...(genre && { genre }),
       ...(sortBy && { sortBy }),
-    };
-    console.log(params);
-    const response = await axios.get(`${API_BASE_URL}/api/products/paginated`, { params });
-    console.log(response.data);
+    };    
+    const response = await axios.get(`${API_BASE_URL}/api/products/paginated`, { params });    
     return response.data;
   } catch (error) {
     console.error("Error fetching paginated products:", error);
