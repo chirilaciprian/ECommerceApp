@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { FaCartPlus } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { getProductById, getRecommendedProducts, ProductProps } from '../../services/productService';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Alert from '../general/Alert';
 import RecommendedProducts from "../general/RecommendedProducts";
 import { createSelector } from '@reduxjs/toolkit';
@@ -12,6 +12,8 @@ import { addToCart, getCart } from '../../state/slices/cartSlice';
 import { addToWishlist, getWishlist } from '../../state/slices/wishlistSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { CategoryProps, getCategoryById } from '../../services/categoryService';
+import Rating from '../general/Rating';
+import { getRatingsByProductId } from '../../services/ratingService';
 
 const selectCart = createSelector(
     [(state: RootState) => state.cart],
@@ -31,7 +33,7 @@ const ProductDetail = () => {
     const navigate = useNavigate();
     const { productId } = useParams();
     const [mainImage, setMainImage] = useState("");
-    const [selectedSize, setSelectedSize] = useState("");
+    const [selectedSize, setSelectedSize] = useState("M");
     const [sizesArray, setSizesArray] = useState<string[]>([]); // State for sizes array
     const [recommendedProducts, setRecommendedProducts] = useState<ProductProps[]>([]);
     const [product, setProduct] = useState<ProductProps>();
@@ -43,6 +45,8 @@ const ProductDetail = () => {
     const [showAlert, setShowAlert] = useState<boolean>(false);
     const [alertMessage, setAlertMessage] = useState<string>("");
     const [alertType, setAlertType] = useState<"success" | "error" | "warning">("success");
+    const [averageRating, setAverageRating] = useState<number>(0);
+    const [numberOfRatings, setNumberOfRatings] = useState<number>(0);
     const dispatch: AppDispatch = useDispatch();
 
     const changeImage = (src: string) => {
@@ -77,6 +81,10 @@ const ProductDetail = () => {
         else
             setSizesArray(['XS', 'S', 'M', 'L', 'XL', 'XXL']);
         setCategory(res);
+        const ratings = await getRatingsByProductId(productId || "");
+        setNumberOfRatings(ratings.length);
+        const averageRating = ratings.reduce((sum: number, review: { rating: number; }) => sum + review.rating, 0) / ratings.length;
+        setAverageRating(averageRating);
     }
 
     useEffect(() => {
@@ -87,7 +95,7 @@ const ProductDetail = () => {
         fetchProduct();
         dispatch(getCart());
         dispatch(getWishlist());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch]);
 
     useEffect(() => { }, [location]);
@@ -243,22 +251,10 @@ const ProductDetail = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className="flex items-center">
-                                <div className="rating">
-                                    {Array.from({ length: 5 }, (_, i) => (
-                                        <input
-                                            key={i}
-                                            type="radio"
-                                            name="rating"
-                                            className={`mask mask-star-2 ${product && i < product.rating ? "bg-orange-400" : ""}`}
-                                            defaultChecked={product && i < product.rating}
-                                        />
-                                    ))}
-                                </div>
-                                <span className="ml-2 text-primary">
-                                    {product?.rating?.toFixed(1) || "0.0"} (120 reviews)
-                                </span>
-                            </div>
+                            <Link to={`/ratings/${productId}`} className='flex flex-row gap-2 items-center m-0 pointer w-72'>
+                                <Rating ratingValue={averageRating || 0} />
+                                <span className='text-gray-500 m-0'>{averageRating} ({numberOfRatings} reviews)</span>
+                            </Link>
                             <p className="text-gray-700">{product?.description || "No description available."}</p>
 
                             {/* Size Options */}

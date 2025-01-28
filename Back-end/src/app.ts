@@ -3,7 +3,7 @@ import categoryRouter from "./routes/categoryRoutes";
 import { errorHandler } from "./errors/errorHandler";
 import authRouter from "./routes/authRoutes";
 import productRouter from "./routes/productRoutes";
-import userRouter from "./routes/useRoutes";
+import userRouter from "./routes/userRoutes";
 import orderRouter from "./routes/orderRoutes";
 import orderItemRouter from "./routes/orderItemRoutes";
 import cartRouter from "./routes/cartRoutes";

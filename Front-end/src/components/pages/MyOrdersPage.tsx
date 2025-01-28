@@ -66,6 +66,7 @@ const MyOrdersPage = () => {
                       description={""}
                       quantity={orderItem.quantity}
                       brand={product.manufacturer}
+                      size={orderItem.size}
                     />
                   );
                 })}

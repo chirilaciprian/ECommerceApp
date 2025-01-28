@@ -12,6 +12,7 @@ import MyOrdersPage from "./components/pages/MyOrdersPage";
 import ProductsPage from "./components/pages/ProductsPage";
 import ProductDetail from "./components/pages/ProductOverview";
 import WishlistPage from "./components/pages/WishlistPage";
+import ReviewSection from "./components/pages/RatingsPage";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/about" element={<AboutPage />}></Route>
             <Route path="/myorders" element={<MyOrdersPage />}></Route>
             <Route path="/wishlist" element={<WishlistPage />}></Route>
+            <Route path="/ratings/:productId" element={<ReviewSection/>}></Route>
           </Routes>
         </BrowserRouter>
       </div>

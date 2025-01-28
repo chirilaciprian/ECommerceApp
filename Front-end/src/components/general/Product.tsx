@@ -13,29 +13,6 @@ interface ProductPropsWithMethods extends ProductProps {
 
 export const Product = (product:ProductPropsWithMethods) => {
   const navigate = useNavigate();  
-  
-  
-
-
-  // useEffect(() => {
-  //   const checkAuth = async () => {
-  //     const authStatus = await isAuthenticated();
-  //     setAuthenticated(!!authStatus); // Set authenticated to true if authStatus is not null
-  //   };
-  //   checkAuth();    
-  // }, []);
-
-  // const handleAddToCart = async () => {
-  //   if (authenticated) {
-  //     product.addToCart(product.id);
-  //     setShowAlert(true);
-  //     setTimeout(() => {
-  //       setShowAlert(false);
-  //     }, 1000);
-  //   } else {
-  //     navigate("/login");
-  //   }
-  // };
 
   const handleClick = () => {
     navigate(`/product/${product.id}`);
@@ -71,19 +48,7 @@ export const Product = (product:ProductPropsWithMethods) => {
               ) : (
                 `$${product.price}`
               )}
-            </span>
-            {/* <div className="rating">
-              {[...Array(5)].map((_, i) => (
-                <input
-                  key={i}
-                  type="radio"
-                  name={`rating-${product.id}`}
-                  className={`mask mask-star w-4 h-4 md:w-6 md:h-6 bg-yellow-400`}
-                  defaultChecked={i + 1 === Math.round(product.rating)}
-                  disabled
-                />
-              ))}
-            </div> */}
+            </span>            
           </div>          
         </div>
       </div>

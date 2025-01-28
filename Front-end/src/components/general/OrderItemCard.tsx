@@ -7,6 +7,7 @@ interface OrderItemProps {
     description:string;
     quantity:number;
     brand:string;
+    size:string
 }
 
 const OrderItemCard = (props:OrderItemProps) => {
@@ -32,7 +33,7 @@ const OrderItemCard = (props:OrderItemProps) => {
               </p>
               <div className="flex items-center ">
                 <p className="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
-                  Size: <span className="text-gray-500">100 ml</span>
+                  Size: <span className="text-gray-500">{props.size}</span>
                 </p>
                 <p className="font-medium text-base leading-7 text-black ">
                   Qty: <span className="text-gray-500 roboto">{props.quantity}</span>
