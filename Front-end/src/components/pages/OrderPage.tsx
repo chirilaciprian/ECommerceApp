@@ -52,7 +52,8 @@ const OrderPage: React.FC = () => {
       userId: cart.userId,
       totalPrice: cart.totalPrice,
       status: "Pending",
-    });
+    },
+  );
     cart.cartItems.map(async (cartItem: any) => {
       createOrderItem(res.id, cartItem.productId, cartItem.quantity);
     });

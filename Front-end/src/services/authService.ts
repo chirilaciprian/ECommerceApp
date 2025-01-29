@@ -2,6 +2,7 @@ import axios, { AxiosError } from "axios";
 import { jwtDecode } from "jwt-decode";
 // import Cookies from "universal-cookie";
 import Cookies from "js-cookie";
+import { sendWelcomeEmail } from "./emailService";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -33,6 +34,7 @@ export async function Register(registerValues: registerValues): Promise<boolean>
     const response = await axios.post(`${API_BASE_URL}/api/signup`, registerValues);
     console.log(response);
     alert("User registered successfully");
+    await sendWelcomeEmail(registerValues.email, registerValues.username);
     return true;
   } catch (err) {
     console.log(err);

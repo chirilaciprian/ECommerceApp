@@ -1,34 +1,86 @@
-import nodemailer from "nodemailer";
+import nodemailer from 'nodemailer';
+import * as env from '../config/env';
 
-// Create a transporter object
+interface EmailOptions {
+  to: string;
+  subject: string;
+  text: string;
+  html?: string;
+}
 
+class EmailService {
+  private transporter: nodemailer.Transporter;
 
-// Function to send an email
-const sendEmail = async (to: string, subject: string, text: string, html: string) => {
-    const transporter = nodemailer.createTransport({
-        service: "gmail", // Use your email provider (e.g., Gmail, Outlook, etc.)
-        auth: {
-            user: process.env.EMAIL_USER, // Your email address (from .env)
-            pass: process.env.EMAIL_PASS, // Your email password or app-specific password
-        },
+  constructor() {
+    // Configure the transporter (example using Gmail)
+    this.transporter = nodemailer.createTransport({
+      service: 'gmail', // or use any other service
+      auth: {
+        user: env.EMAIL_USER, // Your email
+        pass: env.EMAIL_PASSWORD, // Your email password or app-specific password
+      },
     });
+  }
 
+  // Send an email
+  private async sendEmail(options: EmailOptions) {
     try {
-        const mailOptions = {
-            from: `${process.env.EMAIL_USER}`, // Sender address
-            to, // Recipient email
-            subject, // Email subject
-            text, // Plain text content
-            html, // HTML content (optional)
-        };
-
-        // Send the email
-        const info = await transporter.sendMail(mailOptions);
-        console.log(`Email sent: ${info.messageId}`);
+      const info = await this.transporter.sendMail({
+        from: `"ECommerceApp Team" <${env.EMAIL_USER}>`, // sender address with a name
+        to: options.to, // recipient address
+        subject: options.subject,
+        text: options.text,
+        html: options.html, // optional, for HTML formatted emails
+      });
+      console.log('Email sent: ', info.response);
     } catch (error) {
-        console.error("Error sending email:", error);
-        throw error;
+      console.error('Error sending email: ', error);
     }
-};
+  }
 
-export default sendEmail;
+  // Send a welcome email after account creation
+  public sendWelcomeEmail(userEmail: string, userName: string) {
+    const subject = `Welcome to ECommerceApp, ${userName}!`;
+    const text = `Hello ${userName},\n\nThank you for creating an account with us. We're excited to have you!`;
+    const html = `
+      <p style="font-family: Arial, sans-serif; color: #333;">
+        <strong>Hello ${userName},</strong><br><br>
+        Thank you for creating an account with us. We're excited to have you on board!<br><br>
+        Feel free to explore our wide range of products and enjoy shopping.<br><br>
+        Best regards,<br>
+        <span style="font-weight: bold;">ECommerceApp Team</span>
+      </p>
+    `;
+    
+    this.sendEmail({
+      to: userEmail,
+      subject,
+      text,
+      html,
+    });    
+  }
+
+  // Send an email after an order is placed
+  public sendOrderConfirmation(userEmail: string, orderId: string) {
+    const subject = `Order Confirmation - ${orderId}`;
+    const text = `Your order ${orderId} has been successfully placed. We'll notify you once it's shipped.`;
+    const html = `
+      <p style="font-family: Arial, sans-serif; color: #333;">
+        <strong>Your order ${orderId}</strong> has been successfully placed. We're preparing it for shipment.<br><br>
+        We'll notify you as soon as it's on the way!<br><br>
+        If you have any questions, feel free to contact our customer support.<br><br>
+        Best regards,<br>
+        <span style="font-weight: bold;">ECommerceApp Team</span>
+      </p>
+    `;
+    
+    this.sendEmail({
+      to: userEmail,
+      subject,
+      text,
+      html,
+    });
+  }
+}
+
+export default new EmailService();

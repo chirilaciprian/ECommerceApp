@@ -474,3 +474,21 @@ D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartItemService.ts:58:49
   57 };
 → 58 const createdCartItem = await prisma.cartItem.create(
 Unique constraint failed on the fields: (`cartId`,`productId`)
+2025-01-29T11:42:22.421Z [[31merror[39m]: Failed to create cart: PrismaClientKnownRequestError: 
+Invalid `prisma.cart.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartService.ts:41:41
+
+  38   ...cart,
+  39   id: cuid(),
+  40 };
+→ 41 const createdCart = await prisma.cart.create(
+Unique constraint failed on the fields: (`userId`)
+2025-01-29T12:31:15.907Z [[31merror[39m]: Failed to create cart: PrismaClientKnownRequestError: 
+Invalid `prisma.cart.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartService.ts:41:41
+
+  38   ...cart,
+  39   id: cuid(),
+  40 };
+→ 41 const createdCart = await prisma.cart.create(
+Unique constraint failed on the fields: (`userId`)

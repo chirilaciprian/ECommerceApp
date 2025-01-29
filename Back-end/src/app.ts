@@ -11,7 +11,7 @@ import cartItemRouter from "./routes/cartItemRoutes";
 import ratingRouter from "./routes/ratingRoutes";
 import wishlistRouter from "./routes/wishlistRoutes";
 import wishlistItemRouter from "./routes/wishlistItemRoutes";
-import sendEmail from "./services/emailService";
+import emailRouter from "./routes/emailRoutes";
 
 const cors = require("cors");
 
@@ -35,23 +35,7 @@ app.use("/api/cartItems", cartItemRouter);
 app.use("/api/ratings", ratingRouter);
 app.use("/api/wishlists", wishlistRouter);
 app.use("/api/wishlistItems", wishlistItemRouter);
-
-app.post("/email_test", (req, res) => {
-  console.log(req.body);
-  try {
-    const to = req.body.to;
-    const subject = req.body.subject;
-    const text = req.body.text;
-    const html = req.body.html;
-
-    sendEmail(to, subject, text, html);
-    res.status(200).send("Email sent successfully");
-  }
-  catch (error) {
-    res.status(500).send("Error sending email");
-  }
-  
-})
+app.use("/api/emails", emailRouter);
 
 app.use(errorHandler);
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { Register } from "../../services/authService";
+import { sendWelcomeEmail } from "../../services/emailService";
 
 const SignUpPage = () => {
 
@@ -49,7 +50,7 @@ const SignUpPage = () => {
         username: formData.username,
         password: formData.password,
         confirm_password: formData.confirm_password,
-      });
+      });      
       if (res) navigate("/login");
     } else {      
       console.log("User values are incomplete");

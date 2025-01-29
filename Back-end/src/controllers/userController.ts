@@ -6,6 +6,7 @@ import * as userServices from "../services/userService";
 import { IUser } from "../models/IUser";
 import logger from "../utils/logger";
 import bcrypt from "bcrypt";
+import emailService from "../services/emailService";
 
 export const getAllUsers = async (
   req: Request,

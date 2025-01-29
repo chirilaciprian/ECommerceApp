@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import { isAuthenticated } from "./authService";
+import { sendOrderConfirmationEmail } from "./emailService";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-interface OrderProps {
+interface OrderProps {    
     userId: string;
     totalPrice: number;
     status: string;
@@ -19,7 +20,9 @@ interface OrderProps {
       const res = await axios.post(`${API_BASE_URL}/api/orders`, {
         ...order,
         status: "pending",
-      });
+      });      
+      const user = await isAuthenticated(); 
+      await sendOrderConfirmationEmail(user.email, res.data.id);
       return res.data;
     } catch (err) {
       console.log(err);
