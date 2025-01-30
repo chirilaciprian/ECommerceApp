@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { FaCartPlus } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-import { getProductById, getRecommendedProducts, ProductProps } from '../../services/productService';
+import { getProductById, ProductProps } from '../../services/productService';
+import { getRecommendedProducts } from "../../services/recommendationService";
+
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Alert from '../general/Alert';
 import RecommendedProducts from "../general/RecommendedProducts";

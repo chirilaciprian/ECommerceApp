@@ -2,7 +2,8 @@ import { Navbar } from "../general/Navbar";
 import Hero from "../general/Hero";
 import { useEffect, useState } from "react";
 import RecommendedProducts from "../general/RecommendedProducts";
-import { getRecommendedProducts, ProductProps } from "../../services/productService";
+import { ProductProps } from "../../services/productService";
+import { getRecommendedProducts } from "../../services/recommendationService";
 
 const HomePage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars  
