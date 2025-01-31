@@ -26,7 +26,7 @@ import {
   CategoryProps,
   getAllCategories,
 } from "../../services/categoryService";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Alert from "../general/Alert";
 import {
   fetchPaginatedProducts,
@@ -45,53 +45,40 @@ function classNames(...classes: unknown[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const ProductsPage: React.FC = () => {
-  const navigate = useNavigate();
+interface FiltersProps{
+  categories:string[],
+  genres:string[],
+  sortBy:{name:string,key:string},
+  currentPage:number,
+}
+
+const ProductsPage: React.FC = () => {  
   const location = useLocation();
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [categories, setCategories] = useState<CategoryProps[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-  // const [onSaleFilter, setOnSaleFilter] = useState(false);
-  const [selectedSortOption, setSelectedSortOption] = useState(sortOptions[0]);
+
+  const [urlFilters,setUrlFilters] = useState<FiltersProps>({
+    categories:[],
+    genres:[],
+    sortBy:sortOptions[0],
+    currentPage:1
+  })
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
+  // const [onSaleFilter, setOnSaleFilter] = useState(false);
 
   const productsPerPage = 24;
 
-  const fetchProducts = async (page: number, sortKey: string) => {
-    try {
-      const params: Record<string, string | number> = {
-        page,
-        limit: productsPerPage,
-        sortBy: sortKey,
-      };
-
-      if (selectedCategories.length > 0) {
-        params.categories = selectedCategories.join(",");
-      }
-
-      if (selectedGenres.length > 0) {
-        params.genres = selectedGenres.join(",");
-      }
-
-      // Update the URL with filters
-      const searchParams = new URLSearchParams(
-        params as Record<string, string>
-      );
-      navigate(`${location.pathname}?${searchParams.toString()}`, {
-        replace: true,
-      });
-
-      // Fetch products
+  const fetchProducts = async () => {
+    try {      
       const res = await fetchPaginatedProducts(
-        page,
+        urlFilters.currentPage,
         productsPerPage,
-        selectedCategories.length > 0 ? selectedCategories : undefined,
-        selectedGenres.length > 0 ? selectedGenres.join(",") : undefined,
-        sortKey
+        urlFilters.categories.length > 0 ? urlFilters.categories : undefined,
+        urlFilters.genres.length > 0 ? urlFilters.genres.join(",") : undefined,
+        urlFilters.sortBy.key
       );
 
       setProducts(res.products || []);
@@ -120,42 +107,56 @@ const ProductsPage: React.FC = () => {
     const categories = searchParams.get("categories")?.split(",") || [];
     const genres = searchParams.get("genres")?.split(",") || [];
     const page = parseInt(searchParams.get("page") || "1", 10);
-    const sortBy = searchParams.get("sortBy") || "popular";
-  
-    setCurrentPage(page);
-    setSelectedSortOption(sortOptions.find((option) => option.key === sortBy) || sortOptions[0]);
-    setSelectedCategories(categories);
-    setSelectedGenres(genres);    
+    const sortBy = searchParams.get("sortBy") || "popular";      
+    
+    setUrlFilters({
+      categories,
+      genres,
+      sortBy:sortOptions.find((option) => option.key === sortBy) || sortOptions[0],
+      currentPage:page
+    })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.search]);
 
   useEffect(() => {
-    fetchProducts(currentPage, selectedSortOption.key);
-  }, [currentPage, selectedSortOption, selectedCategories, selectedGenres]);
-
-  const handlePageChange = (page: number) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
-    }
-  };
-
-  const handleSortChange = (option: { name: string; key: string }) => {
-    setSelectedSortOption(option);
-    setCurrentPage(1); // Reset to the first page on sort change
-  };
+    fetchProducts();
+  }, [urlFilters]);
 
   const handleCategoryChange = (value: string) => {
-    setSelectedCategories((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
-    );
-    setCurrentPage(1);
+    setUrlFilters((prev) => ({
+      ...prev,
+      categories: prev.categories.includes(value)
+        ? prev.categories.filter((v) => v !== value)
+        : [...prev.categories, value],
+      currentPage: 1, // Reset page to 1 when filter changes
+    }));
   };
-
+  
   const handleGenreChange = (value: string) => {
-    setSelectedGenres((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value]
-    );
-    setCurrentPage(1);
+    setUrlFilters((prev) => ({
+      ...prev,
+      genres: prev.genres.includes(value)
+        ? prev.genres.filter((v) => v !== value)
+        : [...prev.genres, value],
+      currentPage: 1, // Reset page to 1 when filter changes
+    }));
+  };
+  
+  const handleSortChange = (option: { name: string; key: string }) => {
+    setUrlFilters((prev) => ({
+      ...prev,
+      sortBy: option,
+      currentPage: 1, // Reset page to 1 when sorting changes
+    }));
+  };
+  
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setUrlFilters((prev) => ({
+        ...prev,
+        currentPage: page,
+      }));
+    }
   };
 
   const filters = [
@@ -253,9 +254,9 @@ const ProductsPage: React.FC = () => {
                                 type="checkbox"
                                 checked={
                                   section.id === "category"
-                                    ? selectedCategories.includes(option.value)
+                                    ? urlFilters.categories.includes(option.value)
                                     : section.id === "genre"
-                                    ? selectedGenres.includes(option.value)
+                                    ? urlFilters.genres.includes(option.value)
                                     : false
                                 }
                                 onChange={() => {
@@ -307,7 +308,7 @@ const ProductsPage: React.FC = () => {
                           <button
                             onClick={() => handleSortChange(option)}
                             className={classNames(
-                              selectedSortOption.key === option.key
+                              urlFilters.sortBy.key === option.key
                                 ? "font-medium text-gray-900"
                                 : "text-gray-500",
                               "block px-4 py-2 text-sm"
@@ -381,9 +382,9 @@ const ProductsPage: React.FC = () => {
                                 type="checkbox"
                                 checked={
                                   section.id === "category"
-                                    ? selectedCategories.includes(option.value)
+                                    ? urlFilters.categories.includes(option.value)
                                     : section.id === "genre"
-                                    ? selectedGenres.includes(option.value)
+                                    ? urlFilters.genres.includes(option.value)
                                     : false
                                 }
                                 onChange={() => {
@@ -417,15 +418,15 @@ const ProductsPage: React.FC = () => {
                     <div className="btn-group flex justify-center items-center gap-3">
                       {/* Prev Button */}
                       <button
-                        onClick={() => handlePageChange(currentPage - 1)}
+                        onClick={() => handlePageChange(urlFilters.currentPage - 1)}
                         className="btn btn-sm"
-                        disabled={currentPage === 1}
+                        disabled={urlFilters.currentPage === 1}
                       >
                         Prev
                       </button>
 
                       {/* Pages with Ellipses */}
-                      {currentPage > 3 && (
+                      {urlFilters.currentPage > 3 && (
                         <>
                           <button
                             onClick={() => handlePageChange(1)}
@@ -442,15 +443,15 @@ const ProductsPage: React.FC = () => {
                         const page = pageNumber + 1;
                         // Show pages within range of 5 to 10
                         if (
-                          page >= currentPage - 2 &&
-                          page <= currentPage + 2
+                          page >= urlFilters.currentPage - 2 &&
+                          page <= urlFilters.currentPage + 2
                         ) {
                           return (
                             <button
                               key={pageNumber}
                               onClick={() => handlePageChange(page)}
                               className={`btn btn-sm ${
-                                currentPage === page ? "btn-active" : ""
+                                urlFilters.currentPage === page ? "btn-active" : ""
                               }`}
                             >
                               {page}
@@ -461,7 +462,7 @@ const ProductsPage: React.FC = () => {
                       })}
 
                       {/* Ellipses and Last Page */}
-                      {currentPage < totalPages - 2 && (
+                      {urlFilters.currentPage < totalPages - 2 && (
                         <>
                           <span className="btn btn-sm disabled">...</span>
                           <button
@@ -475,9 +476,9 @@ const ProductsPage: React.FC = () => {
 
                       {/* Next Button */}
                       <button
-                        onClick={() => handlePageChange(currentPage + 1)}
+                        onClick={() => handlePageChange(urlFilters.currentPage + 1)}
                         className="btn btn-sm"
-                        disabled={currentPage === totalPages}
+                        disabled={urlFilters.currentPage === totalPages}
                       >
                         Next
                       </button>
