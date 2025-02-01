@@ -492,3 +492,12 @@ D:\Documents\GitHub\ECommerceApp\Back-end\src\services\cartService.ts:41:41
   40 };
 → 41 const createdCart = await prisma.cart.create(
 Unique constraint failed on the fields: (`userId`)
+2025-02-01T13:18:48.248Z [[31merror[39m]: Failed to create cart: PrismaClientKnownRequestError: 
+Invalid `prisma.cart.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\cartService.ts:41:41
+
+  38   ...cart,
+  39   id: cuid(),
+  40 };
+→ 41 const createdCart = await prisma.cart.create(
+Unique constraint failed on the fields: (`userId`)

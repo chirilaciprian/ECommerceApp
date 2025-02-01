@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState,AppDispatch } from "../../state/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { addToCart, getCart } from "../../state/slices/cartSlice";
+import { isAuthenticated } from "../../services/authService";
 
 interface ProductsListProps {
   products: ProductProps[]; // Define props interface
@@ -28,7 +29,15 @@ const selectCart = createSelector(
 export const ProductsList: React.FC<ProductsListProps> = ({ products }) => {  
 
   const cart = useSelector(selectCart);
+  const [isAuth, setIsAuth] = useState<boolean>(false);
   const dispatch: AppDispatch = useDispatch();
+
+  const checkAuth = async () => {
+    const res = await isAuthenticated();
+    if (res) {
+      setIsAuth(true);
+    }
+  }
 
   const AddToCart = (productId:string) => {
     dispatch(addToCart(
@@ -41,10 +50,14 @@ export const ProductsList: React.FC<ProductsListProps> = ({ products }) => {
       }
     ))
   }
-
   useEffect(() => {
-    dispatch(getCart());
-  },[dispatch]);
+    checkAuth();
+  },[]);
+  useEffect(() => {
+    if(isAuth){
+      dispatch(getCart());
+    }    
+  },[dispatch,isAuth]);
 
   return (
     <>                  

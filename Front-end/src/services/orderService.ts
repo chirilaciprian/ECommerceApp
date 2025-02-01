@@ -51,6 +51,10 @@ interface OrderProps {
   export const getMyOrdersAndProducts = async () => {
     try {
       const user = await isAuthenticated();
+      if (!user) {
+        throw new Error("User not authenticated");
+      }
+  
       const userId = user.id;
       const res = await axios.get(`${API_BASE_URL}/api/orders`);
       const orders = res.data.filter((order: any) => order.userId === userId);
@@ -77,7 +81,7 @@ interface OrderProps {
   
       return [orders, products, orderItems];
     } catch (err) {
-      console.log(err);
+      console.log("Error in getMyOrdersAndProducts:", err);
       return false;
     }
   };

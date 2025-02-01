@@ -34,8 +34,15 @@ export const Navbar = () => {
       }
     };
     isAuth();
-    dispatch(getCart());
-  }, [dispatch]);
+    
+  }, []);
+
+  useEffect(() => {
+    if(authHook.isAuthenticated){
+      dispatch(getCart());
+    }    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[authHook.isAuthenticated]);
   // Handle logout
   const handleLogout = () => {
     authHook.setIsAuthenticated(false);

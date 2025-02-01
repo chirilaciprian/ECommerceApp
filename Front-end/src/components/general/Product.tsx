@@ -1,10 +1,6 @@
-// import { FaCartPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-// import { useState, useEffect } from "react";
 import "../../index.css";
-// import { isAuthenticated } from "../../services/authService";
 import { ProductProps } from "../../services/productService";
-// import Alert from "./Alert";
 
 
 interface ProductPropsWithMethods extends ProductProps {

@@ -53,7 +53,7 @@ interface FiltersProps{
 }
 
 const ProductsPage: React.FC = () => {  
-  const location = useLocation();
+  const location = useLocation();  
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [categories, setCategories] = useState<CategoryProps[]>([]);
 
@@ -70,6 +70,8 @@ const ProductsPage: React.FC = () => {
   // const [onSaleFilter, setOnSaleFilter] = useState(false);
 
   const productsPerPage = 24;
+  
+
 
   const fetchProducts = async () => {
     try {      
@@ -119,7 +121,8 @@ const ProductsPage: React.FC = () => {
   }, [location.search]);
 
   useEffect(() => {
-    fetchProducts();
+    fetchProducts();    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [urlFilters]);
 
   const handleCategoryChange = (value: string) => {
