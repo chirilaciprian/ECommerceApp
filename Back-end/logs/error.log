@@ -591,3 +591,38 @@ Invalid `prisma.$queryRaw()` invocation:
 
 
 Raw query failed. Code: `42703`. Message: `column "categoryid" does not exist`
+2025-02-02T19:28:46.459Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `ERROR: syntax error at or near "OFFSET"`
+2025-02-02T19:28:49.769Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `ERROR: syntax error at or near "OFFSET"`
+2025-02-02T19:28:51.564Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `ERROR: syntax error at or near "OFFSET"`
+2025-02-02T19:28:51.575Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `ERROR: syntax error at or near "OFFSET"`
+2025-02-02T19:33:27.141Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `ERROR: syntax error at or near "OFFSET"`
+2025-02-02T19:33:27.156Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `ERROR: syntax error at or near "OFFSET"`
+2025-02-02T19:33:29.803Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRawUnsafe()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `ERROR: syntax error at or near "OFFSET"`
