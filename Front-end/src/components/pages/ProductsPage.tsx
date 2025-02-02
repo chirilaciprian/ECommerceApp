@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Dialog,
   DialogBackdrop,
@@ -26,7 +26,7 @@ import {
   CategoryProps,
   getAllCategories,
 } from "../../services/categoryService";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Alert from "../general/Alert";
 import {
   fetchPaginatedProducts,
@@ -39,49 +39,51 @@ const sortOptions = [
   // { name: "Newest", key: "newest" },
   { name: "Price: Low to High", key: "priceAsc" },
   { name: "Price: High to Low", key: "priceDesc" },
+  // { name: "Biggest Discounts" , key: "discount" },
 ];
 
 function classNames(...classes: unknown[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-interface FiltersProps{
-  categories:string[],
-  genres:string[],
-  sortBy:{name:string,key:string},
-  currentPage:number,
+interface FiltersProps {
+  categories: string[];
+  genres: string[];
+  sortBy: { name: string; key: string };
+  currentPage: number;
 }
 
-const ProductsPage: React.FC = () => {  
+const ProductsPage: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();  
+  const [searchParams] = useSearchParams();
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [categories, setCategories] = useState<CategoryProps[]>([]);
-
-  const [urlFilters,setUrlFilters] = useState<FiltersProps>({
-    categories:[],
-    genres:[],
-    sortBy:sortOptions[0],
-    currentPage:1
-  })
-
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
-  // const [onSaleFilter, setOnSaleFilter] = useState(false);
+
+  const urlFilters = useMemo(() => {
+    return {
+      categories: searchParams.get("categories")?.split(",") || [],
+      genres: searchParams.get("genres")?.split(",") || [],
+      sortBy:
+        sortOptions.find(
+          (option) => option.key === searchParams.get("sortBy")
+        ) || sortOptions[0],
+      currentPage: parseInt(searchParams.get("page") || "1", 10),      
+    };
+  }, [searchParams]);
 
   const productsPerPage = 24;
-  
-
 
   const fetchProducts = async () => {
-    try {      
+    try {
       const res = await fetchPaginatedProducts(
         urlFilters.currentPage,
         productsPerPage,
         urlFilters.categories.length > 0 ? urlFilters.categories : undefined,
         urlFilters.genres.length > 0 ? urlFilters.genres.join(",") : undefined,
-        urlFilters.sortBy.key
+        urlFilters.sortBy.key,        
       );
 
       setProducts(res.products || []);
@@ -99,80 +101,59 @@ const ProductsPage: React.FC = () => {
         const fetchedCategories = await getAllCategories();
         setCategories(fetchedCategories);
       } catch (error) {
-        console.error("Error fetching filters", error);
+        console.error("Error fetching categories", error);
       }
     };
     fetchCategories();
   }, []);
 
-  // const updateUrl = async () =>{
-  //   const queryParams = new URLSearchParams();
-  //   if (urlFilters.categories.length > 0) queryParams.set("categories", urlFilters.categories.join(","));
-  //   if (urlFilters.genres.length > 0) queryParams.set("genres", urlFilters.genres.join(","));
-  //   queryParams.set("page", String(urlFilters.currentPage));
-  //   queryParams.set("sortBy", urlFilters.sortBy.key);
-  //   navigate(`/products?${queryParams.toString()}`);
-  // }
-
-  // useEffect(() => {
-  //   updateUrl();
-  // }, [urlFilters]);
-
   useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const categories = searchParams.get("categories")?.split(",") || [];
-    const genres = searchParams.get("genres")?.split(",") || [];
-    const page = parseInt(searchParams.get("page") || "1", 10);
-    const sortBy = searchParams.get("sortBy") || "popular";      
-    
-    setUrlFilters({
-      categories,
-      genres,
-      sortBy:sortOptions.find((option) => option.key === sortBy) || sortOptions[0],
-      currentPage:page
-    })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.search]);
-
-  useEffect(() => {
-    fetchProducts();    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [urlFilters]);
 
+  const updateFilters = (filters: Partial<FiltersProps>) => {
+    const params = new URLSearchParams();
+
+    const newFilters = { ...urlFilters, ...filters };
+
+    if (newFilters.categories.length > 0) {
+      params.set("categories", newFilters.categories.join(","));
+    }
+
+    if (newFilters.genres.length > 0) {
+      params.set("genres", newFilters.genres.join(","));
+    }    
+
+    params.set("sortBy", newFilters.sortBy.key);
+    params.set("page", newFilters.currentPage.toString());
+
+    navigate(`/products?${params.toString()}`, { replace: true });
+  };
+
   const handleCategoryChange = (value: string) => {
-    setUrlFilters((prev) => ({
-      ...prev,
-      categories: prev.categories.includes(value)
-        ? prev.categories.filter((v) => v !== value)
-        : [...prev.categories, value],
-      currentPage: 1, // Reset page to 1 when filter changes
-    }));
+    const newCategories = urlFilters.categories.includes(value)
+      ? urlFilters.categories.filter((v) => v !== value)
+      : [...urlFilters.categories, value];
+
+    updateFilters({ categories: newCategories, currentPage: 1 });
   };
-  
+
   const handleGenreChange = (value: string) => {
-    setUrlFilters((prev) => ({
-      ...prev,
-      genres: prev.genres.includes(value)
-        ? prev.genres.filter((v) => v !== value)
-        : [...prev.genres, value],
-      currentPage: 1, // Reset page to 1 when filter changes
-    }));
+    const newGenres = urlFilters.genres.includes(value)
+      ? urlFilters.genres.filter((v) => v !== value)
+      : [...urlFilters.genres, value];
+
+    updateFilters({ genres: newGenres, currentPage: 1 });
   };
-  
+
   const handleSortChange = (option: { name: string; key: string }) => {
-    setUrlFilters((prev) => ({
-      ...prev,
-      sortBy: option,
-      currentPage: 1, // Reset page to 1 when sorting changes
-    }));
+    updateFilters({ sortBy: option, currentPage: 1 });
   };
-  
+
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
-      setUrlFilters((prev) => ({
-        ...prev,
-        currentPage: page,
-      }));
+      updateFilters({ currentPage: page });
     }
   };
 
@@ -271,7 +252,9 @@ const ProductsPage: React.FC = () => {
                                 type="checkbox"
                                 checked={
                                   section.id === "category"
-                                    ? urlFilters.categories.includes(option.value)
+                                    ? urlFilters.categories.includes(
+                                        option.value
+                                      )
                                     : section.id === "genre"
                                     ? urlFilters.genres.includes(option.value)
                                     : false
@@ -399,7 +382,9 @@ const ProductsPage: React.FC = () => {
                                 type="checkbox"
                                 checked={
                                   section.id === "category"
-                                    ? urlFilters.categories.includes(option.value)
+                                    ? urlFilters.categories.includes(
+                                        option.value
+                                      )
                                     : section.id === "genre"
                                     ? urlFilters.genres.includes(option.value)
                                     : false
@@ -435,7 +420,9 @@ const ProductsPage: React.FC = () => {
                     <div className="btn-group flex justify-center items-center gap-3">
                       {/* Prev Button */}
                       <button
-                        onClick={() => handlePageChange(urlFilters.currentPage - 1)}
+                        onClick={() =>
+                          handlePageChange(urlFilters.currentPage - 1)
+                        }
                         className="btn btn-sm"
                         disabled={urlFilters.currentPage === 1}
                       >
@@ -468,7 +455,9 @@ const ProductsPage: React.FC = () => {
                               key={pageNumber}
                               onClick={() => handlePageChange(page)}
                               className={`btn btn-sm ${
-                                urlFilters.currentPage === page ? "btn-active" : ""
+                                urlFilters.currentPage === page
+                                  ? "btn-active"
+                                  : ""
                               }`}
                             >
                               {page}
@@ -493,7 +482,9 @@ const ProductsPage: React.FC = () => {
 
                       {/* Next Button */}
                       <button
-                        onClick={() => handlePageChange(urlFilters.currentPage + 1)}
+                        onClick={() =>
+                          handlePageChange(urlFilters.currentPage + 1)
+                        }
                         className="btn btn-sm"
                         disabled={urlFilters.currentPage === totalPages}
                       >

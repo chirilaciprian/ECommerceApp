@@ -81,7 +81,7 @@ export const Navbar = () => {
                 <Link to='/'>Home</Link>
               </li>
               <li>
-                <Link to='/products'>Products</Link>
+                <Link to='/products?page=1&limite=24&sortBy=popular'>Products</Link>
               </li>
               <li>
                 <Link to='/products/?page=1&limit=24&sortBy=popular&genres=MAN'>MAN</Link>
@@ -102,7 +102,7 @@ export const Navbar = () => {
               <Link to='/' className="btn btn-ghost">Home</Link>
             </li>
             <li>
-              <Link to='/products' className="btn btn-ghost">Products</Link>
+              <Link to='/products?page=1&limite=24&sortBy=popular' className="btn btn-ghost">Products</Link>
             </li>
             <li>
               <Link to='/products/?page=1&limit=24&sortBy=popular&genres=MAN' className="btn btn-ghost">MAN</Link>
