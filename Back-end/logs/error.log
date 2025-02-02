@@ -501,3 +501,93 @@ C:\Projects\ECommerceApp\Back-end\src\services\cartService.ts:41:41
   40 };
 → 41 const createdCart = await prisma.cart.create(
 Unique constraint failed on the fields: (`userId`)
+2025-02-02T15:10:58.908Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42P01`. Message: `relation "product" does not exist`
+2025-02-02T15:11:09.410Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42P01`. Message: `relation "product" does not exist`
+2025-02-02T15:11:37.233Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42P01`. Message: `relation "product" does not exist`
+2025-02-02T15:12:52.939Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42P01`. Message: `relation "product" does not exist`
+2025-02-02T15:22:12.964Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42P01`. Message: `relation "products" does not exist`
+2025-02-02T15:22:35.011Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42P01`. Message: `relation "products" does not exist`
+2025-02-02T15:22:51.680Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42601`. Message: `ERROR: syntax error at or near "'Products'"`
+2025-02-02T15:23:50.633Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42P01`. Message: `relation "Products" does not exist`
+2025-02-02T15:25:05.529Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42P01`. Message: `relation "products" does not exist`
+2025-02-02T15:25:06.165Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42P01`. Message: `relation "products" does not exist`
+2025-02-02T15:59:09.188Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42703`. Message: `column "saleprice" does not exist`
+2025-02-02T15:59:10.482Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42703`. Message: `column "saleprice" does not exist`
+2025-02-02T15:59:27.071Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42703`. Message: `column "saleprice" does not exist`
+2025-02-02T15:59:27.085Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42703`. Message: `column "saleprice" does not exist`
+2025-02-02T16:03:57.197Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42703`. Message: `column "dateCreated" does not exist`
+2025-02-02T16:03:57.211Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42703`. Message: `column "dateCreated" does not exist`
+2025-02-02T16:04:41.940Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42703`. Message: `column "onsale" does not exist`
+2025-02-02T16:05:16.319Z [[31merror[39m]: Failed to get products: PrismaClientKnownRequestError: 
+Invalid `prisma.$queryRaw()` invocation:
+
+
+Raw query failed. Code: `42703`. Message: `column "categoryid" does not exist`
