@@ -51,6 +51,7 @@ interface FiltersProps {
   genres: string[];
   sortBy: { name: string; key: string };
   currentPage: number;
+  onSale: boolean;
 }
 
 const ProductsPage: React.FC = () => {
@@ -70,7 +71,8 @@ const ProductsPage: React.FC = () => {
         sortOptions.find(
           (option) => option.key === searchParams.get("sortBy")
         ) || sortOptions[0],
-      currentPage: parseInt(searchParams.get("page") || "1", 10),      
+      currentPage: parseInt(searchParams.get("page") || "1", 10),   
+      onSale: searchParams.get("onSale") === "true", // Convert string to boolean  
     };
   }, [searchParams]);
 
@@ -83,7 +85,8 @@ const ProductsPage: React.FC = () => {
         productsPerPage,
         urlFilters.categories.length > 0 ? urlFilters.categories : undefined,
         urlFilters.genres.length > 0 ? urlFilters.genres.join(",") : undefined,
-        urlFilters.sortBy.key,        
+        urlFilters.sortBy.key,      
+        urlFilters.onSale  
       );
 
       setProducts(res.products || []);
@@ -124,6 +127,9 @@ const ProductsPage: React.FC = () => {
     if (newFilters.genres.length > 0) {
       params.set("genres", newFilters.genres.join(","));
     }    
+    if (newFilters.onSale !== undefined) {
+      params.set("onSale", newFilters.onSale.toString()); // Convert boolean to string ("true" or "false")
+    }
 
     params.set("sortBy", newFilters.sortBy.key);
     params.set("page", newFilters.currentPage.toString());

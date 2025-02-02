@@ -73,7 +73,8 @@ export const fetchPaginatedProducts = async (
   limit: number,
   categoryIds?: string[], // Accept an array of category IDs
   genre?: string,
-  sortBy?: string
+  sortBy?: string,
+  onSale?: boolean
 ) => {
   try {
     const params = {
@@ -82,6 +83,7 @@ export const fetchPaginatedProducts = async (
       ...(categoryIds && { category: categoryIds.join(",") }), // Join category IDs with commas
       ...(genre && { genre }),
       ...(sortBy && { sortBy }),
+      ...(onSale && { onSale }),
     };    
     const response = await axios.get(`${API_BASE_URL}/api/products/paginated`, { params });    
     return response.data;

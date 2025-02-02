@@ -90,6 +90,9 @@ export const Navbar = () => {
                 <Link to='/products/?page=1&limit=24&sortBy=popular&genres=WOMAN'>WOMAN</Link>
               </li>
               <li>
+                <Link to='/products/?page=1&limit=24&sortBy=popular&onSale=true' className="text-error">DISCOUNTS</Link>
+              </li>
+              <li>
                 <Link to='/about'>About Us</Link>
               </li>
             </ul>
@@ -109,6 +112,9 @@ export const Navbar = () => {
             </li>
             <li>
               <Link to='/products/?page=1&limit=24&sortBy=popular&genres=WOMAN' className="btn btn-ghost">WOMAN</Link>
+            </li>
+            <li>
+              <Link to='/products/?page=1&limit=24&sortBy=popular&onSale=true' className="btn btn-ghost text-error">DISCOUNTS</Link>
             </li>
             <li>
               <Link to='/about' className="btn btn-ghost">About Us</Link>

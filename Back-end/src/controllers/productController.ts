@@ -95,36 +95,45 @@ export const deleteProduct = async (req: Request, res: Response, next: NextFunct
     }
 }
 
-export const getPaginatedProducts = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getPaginatedProducts = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<void> => {
     try {
-        const page = parseInt(req.query.page as string) || 1;
-        const limit = parseInt(req.query.limit as string) || 24;
-        const categoryIds = (req.query.category as string)?.split(","); // Parse category IDs as an array
-        const genres = (req.query.genre as string)?.split(","); // Parse genres as an array
-        const sortBy = req.query.sortBy as "priceAsc" | "priceDesc";
-
-        const filters: { categoryIds?: string[]; genres?: string[] } = {};
-
-        if (categoryIds && categoryIds.length > 0) {
-            filters.categoryIds = categoryIds;
-        }
-        if (genres && genres.length > 0) {
-            filters.genres = genres;
-        }
-
-        const paginationDetails = await productService.getPaginationDetails(page, limit, filters);
-        const products = await productService.getPaginatedProducts(page, limit, filters, sortBy);
-
-        logger.info(`Products retrieved`);
-        res.status(200).json({
-            products,
-            paginationDetails,
-        });
+      const page = parseInt(req.query.page as string) || 1;
+      const limit = parseInt(req.query.limit as string) || 24;
+      const categoryIds = req.query.category ? (req.query.category as string).split(",") : undefined; // Parse category IDs as an array
+      const genres = req.query.genre ? (req.query.genre as string).split(",") : undefined; // Parse genres as an array
+      const sortBy = req.query.sortBy as "priceAsc" | "priceDesc" | "popular";
+      const onSale = req.query.onSale !== undefined ? req.query.onSale === "true" : undefined; // Parse onSale as a boolean if provided
+  
+      const filters: { categoryIds?: string[]; genres?: string[]; onSale?: boolean } = {};
+  
+      if (categoryIds && categoryIds.length > 0) {
+        filters.categoryIds = categoryIds;
+      }
+      if (genres && genres.length > 0) {
+        filters.genres = genres;
+      }
+      if (onSale !== undefined) {
+        filters.onSale = onSale;
+      }
+  
+      const paginationDetails = await productService.getPaginationDetails(page, limit, filters);
+      const products = await productService.getPaginatedProducts(page, limit, filters, sortBy);
+  
+      logger.info(`Products retrieved`);
+      res.status(200).json({
+        products,
+        paginationDetails,
+      });
     } catch (error) {
-        logger.error(`Failed to get products: ${error}`);
-        next(new AppError("Failed to get products", errorCodes.INTERNAL_SERVER_ERROR));
+      logger.error(`Failed to get products: ${error}`);
+      next(new AppError("Failed to get products", errorCodes.INTERNAL_SERVER_ERROR));
     }
-};
+  };
+  
 
 
 export const getProductsByCartId = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

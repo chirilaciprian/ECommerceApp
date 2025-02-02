@@ -47323,3 +47323,15 @@ Unique constraint failed on the fields: (`userId`)
 2025-02-02T12:50:20.062Z [[32minfo[39m]: Products retrieved
 2025-02-02T12:50:20.552Z [[32minfo[39m]: Products retrieved
 2025-02-02T12:50:23.740Z [[32minfo[39m]: Products retrieved
+2025-02-02T12:51:03.060Z [[32minfo[39m]: Categories retrieved
+2025-02-02T12:51:03.064Z [[32minfo[39m]: Categories retrieved
+2025-02-02T12:51:03.065Z [[32minfo[39m]: Products retrieved
+2025-02-02T12:51:03.071Z [[32minfo[39m]: Products retrieved
+2025-02-02T12:51:05.812Z [[32minfo[39m]: Categories retrieved
+2025-02-02T12:51:05.816Z [[32minfo[39m]: Categories retrieved
+2025-02-02T12:51:05.817Z [[32minfo[39m]: Products retrieved
+2025-02-02T12:51:05.823Z [[32minfo[39m]: Products retrieved
+2025-02-02T12:51:25.403Z [[32minfo[39m]: Products retrieved
+2025-02-02T12:51:26.284Z [[32minfo[39m]: Products retrieved
+2025-02-02T12:51:26.984Z [[32minfo[39m]: Products retrieved
+2025-02-02T12:53:52.605Z [[32minfo[39m]: Products retrieved

@@ -7,6 +7,7 @@ import { updateCartPrice } from "./cartService";
 import { updateOrderPrice } from "./orderItemService";
 import { IWishlistItem } from "../models/IWishlistItem";
 import { Logger } from "winston";
+import { on } from "events";
 
 const updateCartItemAndOrderItemPrice = async (
   productId: string,
@@ -120,15 +121,15 @@ export const updateProduct = async (
 export const getPaginatedProducts = async (
   page: number,
   limit: number,
-  filters: { categoryIds?: string[]; genres?: string[] },
+  filters: { categoryIds?: string[]; genres?: string[]; onSale?: boolean },
   sortBy?: "priceAsc" | "priceDesc" | "popular"
 ): Promise<IProduct[]> => {
   const sortOption =
     sortBy === "priceAsc"
       ? { price: "asc" as const }
       : sortBy === "priceDesc"
-        ? { price: "desc" as const }
-        : undefined;
+      ? { price: "desc" as const }
+      : undefined;
 
   return await prisma.product.findMany({
     skip: (page - 1) * limit,
@@ -140,10 +141,14 @@ export const getPaginatedProducts = async (
       ...(filters.genres && {
         genre: { in: filters.genres },
       }),
+      ...(filters.onSale !== undefined && {
+        onSale: filters.onSale,  // Add the onSale filter here
+      }),
     },
     ...(sortOption && { orderBy: sortOption }),
   });
 };
+
 
 export const getPaginationDetails = async (
   page: number,
