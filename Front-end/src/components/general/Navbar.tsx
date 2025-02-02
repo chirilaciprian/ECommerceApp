@@ -35,6 +35,7 @@ export const Navbar = () => {
     };
     isAuth();
     
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -83,10 +84,10 @@ export const Navbar = () => {
                 <Link to='/products'>Products</Link>
               </li>
               <li>
-                <Link to='/products'>MAN</Link>
+                <Link to='/products/?page=1&limit=24&sortBy=popular&genres=MAN'>MAN</Link>
               </li>
               <li>
-                <Link to='/products'>WOMAN</Link>
+                <Link to='/products/?page=1&limit=24&sortBy=popular&genres=WOMAN'>WOMAN</Link>
               </li>
               <li>
                 <Link to='/about'>About Us</Link>

@@ -26,7 +26,7 @@ import {
   CategoryProps,
   getAllCategories,
 } from "../../services/categoryService";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Alert from "../general/Alert";
 import {
   fetchPaginatedProducts,
@@ -53,6 +53,7 @@ interface FiltersProps{
 }
 
 const ProductsPage: React.FC = () => {  
+  const navigate = useNavigate();
   const location = useLocation();  
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [categories, setCategories] = useState<CategoryProps[]>([]);
@@ -103,6 +104,19 @@ const ProductsPage: React.FC = () => {
     };
     fetchCategories();
   }, []);
+
+  // const updateUrl = async () =>{
+  //   const queryParams = new URLSearchParams();
+  //   if (urlFilters.categories.length > 0) queryParams.set("categories", urlFilters.categories.join(","));
+  //   if (urlFilters.genres.length > 0) queryParams.set("genres", urlFilters.genres.join(","));
+  //   queryParams.set("page", String(urlFilters.currentPage));
+  //   queryParams.set("sortBy", urlFilters.sortBy.key);
+  //   navigate(`/products?${queryParams.toString()}`);
+  // }
+
+  // useEffect(() => {
+  //   updateUrl();
+  // }, [urlFilters]);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);

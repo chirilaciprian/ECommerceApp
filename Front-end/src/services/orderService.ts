@@ -33,13 +33,15 @@ interface OrderProps {
   export const createOrderItem = async (
     orderId: string,
     productId: string,
-    quantity: number
+    quantity: number,
+    size: string
   ) => {
     try {
       const res = await axios.post(`${API_BASE_URL}/api/orderItems`, {
         orderId,
         productId,
         quantity,
+        size,
       });
       return res.data;
     } catch (err) {

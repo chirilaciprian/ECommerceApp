@@ -46,7 +46,7 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
             <Link to={`/product/${product.id}`} key={product.id} className="group relative" >
               <img
                 alt={product.name}
-                src={product.images[product.images.length - 3]} // Assuming the first image is the primary image
+                src={product.images[0]} // Assuming the first image is the primary image
                 className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" 
                 loading="lazy"               
               />

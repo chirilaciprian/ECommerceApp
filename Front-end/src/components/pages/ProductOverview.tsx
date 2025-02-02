@@ -4,7 +4,7 @@ import { FaHeart } from "react-icons/fa";
 import { getProductById, ProductProps } from "../../services/productService";
 import { getRecommendedProducts } from "../../services/recommendationService";
 
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Alert from "../general/Alert";
 import RecommendedProducts from "../general/RecommendedProducts";
 import { createSelector } from "@reduxjs/toolkit";
@@ -29,7 +29,7 @@ const selectCart = createSelector(
 );
 
 const ProductDetail = () => {
-  const location = useLocation();
+  
   const navigate = useNavigate();
   const { productId } = useParams();
   const [mainImage, setMainImage] = useState("");
@@ -105,10 +105,13 @@ const ProductDetail = () => {
       ) / ratings.length;
     setAverageRating(averageRating);
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[productId]);
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [productId]);
   useEffect(() => {
     if (authenticated) {
       dispatch(getCart());
@@ -119,9 +122,9 @@ const ProductDetail = () => {
     fetchProduct();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, [dispatch,productId]);
 
-  useEffect(() => {}, [location]);
+//   useEffect(() => {}, [location]);
   const handleAddToCart = async () => {
     if (authenticated && product) {
       // Check if the product is already in the cart

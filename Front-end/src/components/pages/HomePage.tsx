@@ -24,7 +24,6 @@ const HomePage = () => {
   const checkAuth = async () => {
     const res = await isAuthenticated();
     if (res) {
-      console.log("Auth ", res);
       setIsAuth(true);
     }
   };

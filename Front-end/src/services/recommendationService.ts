@@ -87,6 +87,7 @@ export const getRecommendedProductsHomePage = async () => {
       })
     );
     return recommendedProducts.flat();
+    
 
   } catch (err) {
     console.log(err);

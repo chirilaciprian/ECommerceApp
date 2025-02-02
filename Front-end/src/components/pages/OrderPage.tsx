@@ -7,7 +7,10 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState, AppDispatch } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart } from "../../state/slices/cartSlice";
-import { getProductsByCartId, ProductProps } from "../../services/productService";
+import {
+  getProductsByCartId,
+  ProductProps,
+} from "../../services/productService";
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -38,7 +41,7 @@ const OrderPage: React.FC = () => {
   const fetchProducts = async (cartId: string) => {
     const res = await getProductsByCartId(cartId);
     setProducts(res);
-  }
+  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -52,10 +55,14 @@ const OrderPage: React.FC = () => {
       userId: cart.userId,
       totalPrice: cart.totalPrice,
       status: "Pending",
-    },
-  );
+    });
     cart.cartItems.map(async (cartItem: any) => {
-      createOrderItem(res.id, cartItem.productId, cartItem.quantity);
+      createOrderItem(
+        res.id,
+        cartItem.productId,
+        cartItem.quantity,
+        cartItem.size
+      );
     });
     alert("Order placed successfully!");
     dispatch(clearCart(cart));
@@ -63,15 +70,16 @@ const OrderPage: React.FC = () => {
   };
 
   useEffect(() => {
-    try {
-      dispatch(getCart());
-      fetchProducts(cart.id);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false); // Set loading to false once data fetching is complete
-    }
+    dispatch(getCart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
+
+  useEffect(() => {
+    if (cart.id) {
+      fetchProducts(cart.id);
+    }
+    setLoading(false);
+  }, [cart.id]);
 
   if (loading) {
     return (
@@ -96,7 +104,10 @@ const OrderPage: React.FC = () => {
             }
 
             return (
-              <div key={cartItem.id} className="mb-4 flex justify-between gap-4 roboto shadow-md bg-white rounderd-xl p-4">
+              <div
+                key={cartItem.id}
+                className="mb-4 flex justify-between gap-4 roboto shadow-md bg-white rounderd-xl p-4"
+              >
                 <div className="flex items-center">
                   <img
                     src={product.images[0]}
@@ -112,7 +123,10 @@ const OrderPage: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <p className="text-lg font-bold">{cartItem.price}$</p>
-                  <p className="ml-4 text-lg text-primary font-bold">Qt:{cartItem.quantity}</p>
+                  <div className="flex flex-col">
+                  <p className="ml-4 text-lg text-gray-400 font-bold">Qt: {cartItem.quantity}</p>
+                  <p className="ml-4 text-lg text-gray-500 font-bold">Size:{cartItem.size}</p>
+                  </div>
                 </div>
               </div>
             );
@@ -132,8 +146,7 @@ const OrderPage: React.FC = () => {
           <div className="flex justify-between">
             <p className="text-lg font-bold">Total</p>
             <div className="">
-              <p className="mb-1 text-lg font-bold">${cart.totalPrice}</p>
-              <p className="text-sm text-gray-700">including VAT</p>
+              <p className="mb-1 text-lg font-bold">${cart.totalPrice}</p>              
             </div>
           </div>
 
