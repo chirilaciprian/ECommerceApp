@@ -37,8 +37,45 @@ df = df.dropna()
 
 """### Images Preprocessing
 
+# """## Image Processing (OPTIONAL)"""
+
+from tensorflow.keras.applications import ResNet50 # type: ignore
+from tensorflow.keras.applications.resnet50 import preprocess_input # type: ignore
+from tensorflow.keras.preprocessing.image import load_img, img_to_array # type: ignore
+import ast
+model = ResNet50(weights='imagenet', include_top=False, pooling='avg')
+def extract_features(image_url):    
+    # Extract features from a single image using a pre-trained CNN.    
+    try:
+        # Load and preprocess the image
+        image_url = "../data/images/" + image_url + ".jpg"
+        img = load_img(image_url, target_size=(224, 224))
+        img_array = img_to_array(img)
+        img_array = np.expand_dims(img_array, axis=0)
+        img_array = preprocess_input(img_array)
+        # Extract features
+        features = model.predict(img_array)
+        return features.flatten()
+    except Exception as e:
+        print(f"Error processing image {image_url}: {e}")
+        return np.zeros(2048)  # Return a zero vector if there's an issue
+    
+def aggregate_features(image_urls):
+    features_list = [extract_features(url) for url in image_urls]
+    return np.mean(features_list, axis=0)
+
+image_features = []
+
+df['image_downloads'] = df['image_downloads'].apply(ast.literal_eval)
+
+for image_urls in df['image_downloads']:
+    aggregated_feature = aggregate_features(image_urls)
+    image_features.append(aggregated_feature)
+# Convert the list of image features into a NumPy array
+image_features = np.array(image_features)
+
 ### Combining features and creating the matrix
-"""
+
 
 tfidf = TfidfVectorizer(stop_words='english')
 combined_text = df['name'] + ' ' + df['description'] + df['terms']
@@ -46,13 +83,15 @@ text_vectors = tfidf.fit_transform(combined_text)
 scaler = MinMaxScaler()
 df['price_normalized'] = scaler.fit_transform(df[['price']])
 section_dummies = pd.get_dummies(df['section'])
-weight_text = 0.5
-weight_price = 0.3
+weight_text = 0.45
+weight_price = 0.1
 weight_section = 0.2
+weight_image = 0.25
 final_features = np.hstack([
     text_vectors.toarray() * weight_text,
     df['price_normalized'].values.reshape(-1, 1) * weight_price,
-    section_dummies.values * weight_section
+    section_dummies.values * weight_section,
+    image_features * weight_image
 ])
 
 """## Compute Cosine Similarity"""
@@ -68,39 +107,3 @@ with open("similarity_map.pkl", "wb") as file:
 print("Model components have been loaded successfully!")
 
 # Function to find top similar products for a given SKU
-
-
-# """## Image Processing (OPTIONAL)"""
-
-# from tensorflow.keras.applications import ResNet50
-# from tensorflow.keras.applications.resnet50 import preprocess_input
-# from tensorflow.keras.preprocessing.image import load_img, img_to_array
-# model = ResNet50(weights='imagenet', include_top=False, pooling='avg')
-# def extract_features(image_url):
-#     """
-#     Extract features from a single image using a pre-trained CNN.
-#     """
-#     try:
-#         # Load and preprocess the image
-#         image_url = "data/images/" + image_url + ".jpg"
-#         img = load_img(image_url, target_size=(224, 224))
-#         img_array = img_to_array(img)
-#         img_array = np.expand_dims(img_array, axis=0)
-#         img_array = preprocess_input(img_array)
-
-#         # Extract features
-#         features = model.predict(img_array)
-#         return features.flatten()
-#     except Exception as e:
-#         print(f"Error processing image {image_url}: {e}")
-#         return np.zeros(2048)  # Return a zero vector if there's an issue
-# def aggregate_features(image_urls):
-#     features_list = [extract_features(url) for url in image_urls]
-#     return np.mean(features_list, axis=0)
-# image_features = []
-# df['image_downloads'] = df['image_downloads'].apply(ast.literal_eval)
-# for image_urls in df['image_downloads']:
-#     aggregated_feature = aggregate_features(image_urls)
-#     image_features.append(aggregated_feature)
-# # Convert the list of image features into a NumPy array
-# image_features = np.array(image_features)
