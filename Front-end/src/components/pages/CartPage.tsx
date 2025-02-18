@@ -51,9 +51,9 @@ const CartPage: React.FC = () => {
     <>
       {Array.isArray(cart.cartItems) && cart.cartItems.length > 0 ? (
         <div className="h-full bg-gray-100 pt-20 min-h-screen">
-          <h1 className="mb-10 text-center text-3xl font-bold merriweather">
-            CART ITEMS
-          </h1>
+          {/* <h1 className="mb-10 text-center text-3xl font-bold merriweather">
+            CART
+          </h1> */}
           <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
             <div className="rounded-lg md:w-2/3">
               {cart.cartItems.map((cartItem: any) => {

@@ -22,19 +22,12 @@ from sklearn.metrics.pairwise import cosine_similarity
 """## Prepare The Data"""
 
 # prompt: import from google drive zara_data.csv
-
 df = pd.read_csv("../data/store_zara.csv")
-
 """### Remove unnecesary columns
-
 """
-
 df = df.drop(columns=['error','currency','url','brand','scraped_at','images'])
-
 """### Remove null values"""
-
 df = df.dropna()
-
 """### Images Preprocessing
 
 # """## Image Processing (OPTIONAL)"""
@@ -43,6 +36,7 @@ from tensorflow.keras.applications import ResNet50 # type: ignore
 from tensorflow.keras.applications.resnet50 import preprocess_input # type: ignore
 from tensorflow.keras.preprocessing.image import load_img, img_to_array # type: ignore
 import ast
+
 model = ResNet50(weights='imagenet', include_top=False, pooling='avg')
 def extract_features(image_url):    
     # Extract features from a single image using a pre-trained CNN.    
@@ -80,13 +74,19 @@ image_features = np.array(image_features)
 tfidf = TfidfVectorizer(stop_words='english')
 combined_text = df['name'] + ' ' + df['description'] + df['terms']
 text_vectors = tfidf.fit_transform(combined_text)
+
+# Normalizarea pretului
 scaler = MinMaxScaler()
 df['price_normalized'] = scaler.fit_transform(df[['price']])
+# Codificarea sectiunilor
 section_dummies = pd.get_dummies(df['section'])
+
+
 weight_text = 0.45
 weight_price = 0.1
 weight_section = 0.2
 weight_image = 0.25
+
 final_features = np.hstack([
     text_vectors.toarray() * weight_text,
     df['price_normalized'].values.reshape(-1, 1) * weight_price,
@@ -96,14 +96,16 @@ final_features = np.hstack([
 
 """## Compute Cosine Similarity"""
 
+# Compute the cosine similarity matrix
 similarity_matrix = cosine_similarity(final_features)
-# print(similarity_matrix)
 
+# Save the similarity matrix to a file using pickle
 sku_list = df['sku'].tolist()
 similarity_map = {sku: similarity_matrix[i] for i, sku in enumerate(sku_list)}
-# print(similarity_map)
+
 with open("similarity_map.pkl", "wb") as file:
     pickle.dump(similarity_map, file)
+
 print("Model components have been loaded successfully!")
 
 # Function to find top similar products for a given SKU

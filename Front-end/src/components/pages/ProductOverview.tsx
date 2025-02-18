@@ -293,7 +293,7 @@ const ProductDetail = () => {
               >
                 <Rating ratingValue={averageRating || 0} />
                 <span className="text-gray-500 m-0">
-                  {averageRating || ''} ({numberOfRatings} reviews)
+                  {averageRating?.toFixed(1) || ''} ({numberOfRatings} reviews)
                 </span>
               </Link>
               <p className="text-gray-700">
@@ -343,7 +343,7 @@ const ProductDetail = () => {
         </div>
       </div>
       <h2 className="text-3xl sm:text-4xl font-bold tracking-wider text-neutral mb-10 text-center playfair">
-        Customers also purchased
+        Similar Products
       </h2>
       <RecommendedProducts products={recommendedProducts} />
     </div>

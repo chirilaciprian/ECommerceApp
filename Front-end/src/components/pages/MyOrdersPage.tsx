@@ -27,9 +27,9 @@ const MyOrdersPage = () => {
       <div className="py-24 relative bg-base-200 min-h-screen">
         {orders.length !== 0 ? (
         <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto flex flex-col gap-10">
-          <h2 className="merriweather font-light md:text-5xl text-4xl leading-10 text-black text-center mb-10">
+          {/* <h2 className="merriweather font-light md:text-5xl text-4xl leading-10 text-black text-center mb-10">
             My orders
-          </h2>
+          </h2> */}
           {orders.map((order: any) => (
             <div key={order.id} className="main-box border border-gray-300 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
