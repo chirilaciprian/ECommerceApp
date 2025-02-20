@@ -12,8 +12,10 @@ export const changePassword = async (id:string,password:string,newPassword:strin
             confirmNewPassword:confirmNewPassword
         });
         console.log(res);
+        return res;
     }
     catch(err){
         console.log(err);
+        return err;
     }
 } 

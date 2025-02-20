@@ -626,3 +626,32 @@ Invalid `prisma.$queryRawUnsafe()` invocation:
 
 
 Raw query failed. Code: `42601`. Message: `ERROR: syntax error at or near "OFFSET"`
+2025-02-18T19:56:10.841Z [[31merror[39m]: Failed to login: Error: User not found
+2025-02-18T19:56:36.472Z [[31merror[39m]: Failed to login: Error: User not found
+2025-02-18T19:56:53.659Z [[31merror[39m]: Failed to login: Error: User not found
+2025-02-18T19:57:00.513Z [[31merror[39m]: Failed to login: Error: User not found
+2025-02-18T19:57:07.343Z [[31merror[39m]: Failed to login: Error: User not found
+2025-02-18T19:57:12.328Z [[31merror[39m]: Failed to login: Error: User not found
+2025-02-18T19:58:07.003Z [[31merror[39m]: Failed to login: Error: User not found
+2025-02-18T19:59:06.442Z [[31merror[39m]: Failed to login: Error: User not found
+2025-02-18T19:59:11.147Z [[31merror[39m]: Failed to login: Error: User not found
+2025-02-18T20:02:33.144Z [[31merror[39m]: Failed to login: Error: Invalid password
+2025-02-18T20:32:18.412Z [[31merror[39m]: Failed to create user: PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\userService.ts:26:28
+
+  23   password: await bcrypt.hash(user.password, 10),
+  24   id: cuid(),
+  25 };
+→ 26 return await prisma.user.create(
+Unique constraint failed on the fields: (`username`)
+2025-02-18T20:50:31.973Z [[31merror[39m]: Failed to create whishlist: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlist.create()` invocation in
+C:\Projects\ECommerceApp\Back-end\src\services\wishlistService.ts:22:34
+
+  19     ...wishlist,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlist.create(
+Unique constraint failed on the fields: (`userId`)
+2025-02-19T15:49:49.230Z [[31merror[39m]: Failed to login: Error: User not found

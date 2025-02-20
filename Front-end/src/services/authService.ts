@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 // import Cookies from "universal-cookie";
 import Cookies from "js-cookie";
 import { sendWelcomeEmail } from "./emailService";
+import { toast } from "react-toastify";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -33,12 +34,12 @@ export async function Register(registerValues: registerValues): Promise<boolean>
   try {
     const response = await axios.post(`${API_BASE_URL}/api/signup`, registerValues);
     console.log(response);
-    alert("User registered successfully");
+    toast.success("User registered successfully");
     await sendWelcomeEmail(registerValues.email, registerValues.username);
     return true;
   } catch (err) {
     console.log(err);
-    alert("User registration failed");
+    toast.error("User registration failed");
     return false;
   }
 }
@@ -80,7 +81,7 @@ export async function Login(userValues: loginValues): Promise<boolean> {
     const response = await axios.post(`${API_BASE_URL}/api/login`, userValues);
     console.log(response);
     tokenService(response.data.token);
-    alert("User logged in successfully");
+    toast.success("Logged in successfully");
 
     return true;
   } catch (err) {
@@ -89,8 +90,8 @@ export async function Login(userValues: loginValues): Promise<boolean> {
       (err as AxiosError).response?.status === 404 ||
       (err as AxiosError).response?.status === 401
     )
-      alert("Invalid credentials");
-    else alert("User login failed");
+      toast.error("Invalid credentials");
+    else toast.error("User login failed");
     return false;
   }
 }

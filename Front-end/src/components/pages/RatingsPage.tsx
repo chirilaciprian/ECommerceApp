@@ -3,9 +3,10 @@ import Rating from '../general/Rating';
 import { createRating, getRatingsByProductId, RatingProps } from '../../services/ratingService';
 import { useParams } from 'react-router-dom';
 import { isAuthenticated } from '../../services/authService';
+import { toast } from 'react-toastify';
 
 // Define types for reviews
-const ReviewSection: React.FC<{}> = () => {
+const ReviewSection: React.FC = () => {
 
     const { productId } = useParams<{ productId: string }>();
     const [rating, setRating] = useState<number>(0);
@@ -15,11 +16,11 @@ const ReviewSection: React.FC<{}> = () => {
     const handleCreateRating = async () => {
 
         if (rating === 0) {
-            alert('Please select a rating');
+            toast.warning('Please select a rating');
             return;
         }
         if (message === '') {
-            alert('Please enter a message');
+            toast.warning('Please enter a message');
             return;
         }
 
@@ -43,6 +44,7 @@ const ReviewSection: React.FC<{}> = () => {
         const data = await getRatingsByProductId(productId as string);
         const user = await isAuthenticated();
         if (user) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             setHasReviewed(data.find((r: { userId: any; }) => r.userId === user.id) ? true : false);
         }
         console.log(data);
@@ -52,6 +54,7 @@ const ReviewSection: React.FC<{}> = () => {
 
     useEffect(() => {
         fetchReviews();        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const averageRating = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;

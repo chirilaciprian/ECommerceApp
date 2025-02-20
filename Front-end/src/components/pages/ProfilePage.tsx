@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import { changePassword } from "../../services/userService";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
   const { user, setUser } = ProfileHook();
@@ -47,17 +48,24 @@ const ProfilePage = () => {
       newPassword,
       confirmNewPassword
     );
-    console.log("Updated user:", res);
+    if(res){
+      toast.success("Password changed successfully");
+    }
+    else{
+      toast.error("Password change failed");
+    }
+   
   };
 
   const handleSubmit = async (user: UserProps) => {
     const res = await updateUser(user);
     console.log("Updated user:", res);
+    toast.success("Updated successfully");
   };
 
   useEffect(() => {
     handleGetUser();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

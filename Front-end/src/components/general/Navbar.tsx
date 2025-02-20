@@ -6,6 +6,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState, AppDispatch } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../state/slices/cartSlice";
+import { toast } from "react-toastify";
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -48,6 +49,7 @@ export const Navbar = () => {
   const handleLogout = () => {
     authHook.setIsAuthenticated(false);
     logout();
+    toast.warning("Logged out successfully");
   };
 
   // Update cart item quantity

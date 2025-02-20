@@ -17,8 +17,6 @@ const LoginPage: React.FC = () => {
     const res = await Login(loginHook.loginValues);
     if (res) {
       navigate("/"); // Redirect to home on successful login
-    } else {
-      alert("Login failed. Please check your credentials.");
     }
   };
 

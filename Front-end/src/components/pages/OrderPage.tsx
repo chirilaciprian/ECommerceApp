@@ -11,6 +11,7 @@ import {
   getProductsByCartId,
   ProductProps,
 } from "../../services/productService";
+import { toast } from "react-toastify";
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -64,7 +65,7 @@ const OrderPage: React.FC = () => {
         cartItem.size
       );
     });
-    alert("Order placed successfully!");
+    toast.success("Order placed successfully!");
     dispatch(clearCart(cart));
     navigate("/products");
   };

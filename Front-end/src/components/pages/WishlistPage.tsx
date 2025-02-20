@@ -6,6 +6,7 @@ import { getProductsByWishlistId, ProductProps } from '../../services/productSer
 import WishlistCard from '../general/WishlistCard';
 import { Link } from 'react-router-dom';
 import { Navbar } from '../general/Navbar';
+import { toast } from 'react-toastify';
 
 
 
@@ -28,6 +29,7 @@ const WishlistPage: React.FC = () => {
         if (wishlist.id) {
             fetchProducts(wishlist.id);
         }
+        toast.warning('Item removed from wishlist');
     }
     useEffect(() => {
         dispatch(getWishlist());

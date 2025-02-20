@@ -13,11 +13,13 @@ import ProductsPage from "./components/pages/ProductsPage";
 import ProductDetail from "./components/pages/ProductOverview";
 import WishlistPage from "./components/pages/WishlistPage";
 import ReviewSection from "./components/pages/RatingsPage";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
+      <ToastContainer />
       <div>
         <BrowserRouter>
           <Routes>
@@ -28,11 +30,18 @@ function App() {
             <Route path="/profile" element={<ProfilePage />}></Route>
             <Route path="/cart" element={<CartPage />}></Route>
             <Route path="/order" element={<OrderPage />}></Route>
-            <Route path="/product/:productId" element={<ProductDetail />} key={window.location.pathname}></Route>
+            <Route
+              path="/product/:productId"
+              element={<ProductDetail />}
+              key={window.location.pathname}
+            ></Route>
             <Route path="/about" element={<AboutPage />}></Route>
             <Route path="/myorders" element={<MyOrdersPage />}></Route>
             <Route path="/wishlist" element={<WishlistPage />}></Route>
-            <Route path="/ratings/:productId" element={<ReviewSection/>}></Route>
+            <Route
+              path="/ratings/:productId"
+              element={<ReviewSection />}
+            ></Route>
           </Routes>
         </BrowserRouter>
       </div>
