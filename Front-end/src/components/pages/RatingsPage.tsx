@@ -27,6 +27,7 @@ const ReviewSection: React.FC = () => {
         if (productId) {
             await createRating(rating, message, productId);
             fetchReviews();
+            toast.success('Review submitted successfully');
         } else {
             console.error("Product ID is undefined");
         }

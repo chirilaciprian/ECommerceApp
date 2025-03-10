@@ -2,6 +2,7 @@ import { ProductProps } from "../../services/productService"
 import { CategoryProps, getAllCategories } from "../../services/categoryService";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ImageComponent from "./ImageComponent";
 
 interface RecommendedProductsProps {
   products: ProductProps[];  
@@ -44,12 +45,13 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-6 md:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <Link to={`/product/${product.id}`} key={product.id} className="group relative" >
-              <img
+              <ImageComponent image={{ alt: product.name, src: product.images[0], caption: product.name }} />
+              {/* <img
                 alt={product.name}
                 src={product.images[0]} // Assuming the first image is the primary image
                 className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80" 
                 loading="lazy"               
-              />
+              /> */}
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-gray-700">

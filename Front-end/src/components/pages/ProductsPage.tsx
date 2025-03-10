@@ -71,7 +71,7 @@ const ProductsPage: React.FC = () => {
         sortOptions.find(
           (option) => option.key === searchParams.get("sortBy")
         ) || sortOptions[0],
-      currentPage: parseInt(searchParams.get("page") || "1", 10),   
+      currentPage: parseInt(searchParams.get("page") || "1", 10),
       onSale: searchParams.get("onSale") === "true", // Convert string to boolean  
     };
   }, [searchParams]);
@@ -85,8 +85,8 @@ const ProductsPage: React.FC = () => {
         productsPerPage,
         urlFilters.categories.length > 0 ? urlFilters.categories : undefined,
         urlFilters.genres.length > 0 ? urlFilters.genres.join(",") : undefined,
-        urlFilters.sortBy.key,      
-        urlFilters.onSale  
+        urlFilters.sortBy.key,
+        urlFilters.onSale
       );
 
       setProducts(res.products || []);
@@ -126,7 +126,7 @@ const ProductsPage: React.FC = () => {
 
     if (newFilters.genres.length > 0) {
       params.set("genres", newFilters.genres.join(","));
-    }    
+    }
     if (newFilters.onSale !== undefined) {
       params.set("onSale", newFilters.onSale.toString()); // Convert boolean to string ("true" or "false")
     }
@@ -177,9 +177,9 @@ const ProductsPage: React.FC = () => {
       name: "Category",
       options: Array.isArray(categories)
         ? categories.map((category: { id: string; name: string }) => ({
-            value: category.id,
-            label: category.name,
-          }))
+          value: category.id,
+          label: category.name,
+        }))
         : [],
     },
   ];
@@ -259,11 +259,11 @@ const ProductsPage: React.FC = () => {
                                 checked={
                                   section.id === "category"
                                     ? urlFilters.categories.includes(
-                                        option.value
-                                      )
+                                      option.value
+                                    )
                                     : section.id === "genre"
-                                    ? urlFilters.genres.includes(option.value)
-                                    : false
+                                      ? urlFilters.genres.includes(option.value)
+                                      : false
                                 }
                                 onChange={() => {
                                   if (section.id === "category") {
@@ -389,11 +389,11 @@ const ProductsPage: React.FC = () => {
                                 checked={
                                   section.id === "category"
                                     ? urlFilters.categories.includes(
-                                        option.value
-                                      )
+                                      option.value
+                                    )
                                     : section.id === "genre"
-                                    ? urlFilters.genres.includes(option.value)
-                                    : false
+                                      ? urlFilters.genres.includes(option.value)
+                                      : false
                                 }
                                 onChange={() => {
                                   if (section.id === "category") {
@@ -426,9 +426,10 @@ const ProductsPage: React.FC = () => {
                     <div className="btn-group flex justify-center items-center gap-3">
                       {/* Prev Button */}
                       <button
-                        onClick={() =>
+                        onClick={() => {
+                          window.scrollTo(0, 0);
                           handlePageChange(urlFilters.currentPage - 1)
-                        }
+                        }}
                         className="btn btn-sm"
                         disabled={urlFilters.currentPage === 1}
                       >
@@ -439,7 +440,10 @@ const ProductsPage: React.FC = () => {
                       {urlFilters.currentPage > 3 && (
                         <>
                           <button
-                            onClick={() => handlePageChange(1)}
+                            onClick={() => {
+                              window.scrollTo(0, 0)
+                              handlePageChange(1)
+                            }}
                             className="btn btn-sm"
                           >
                             1
@@ -459,12 +463,14 @@ const ProductsPage: React.FC = () => {
                           return (
                             <button
                               key={pageNumber}
-                              onClick={() => handlePageChange(page)}
-                              className={`btn btn-sm ${
-                                urlFilters.currentPage === page
-                                  ? "btn-active"
-                                  : ""
-                              }`}
+                              onClick={() => {
+                                handlePageChange(page)
+                                window.scrollTo(0, 0);
+                              }}
+                              className={`btn btn-sm ${urlFilters.currentPage === page
+                                ? "btn-active"
+                                : ""
+                                }`}
                             >
                               {page}
                             </button>
@@ -478,7 +484,10 @@ const ProductsPage: React.FC = () => {
                         <>
                           <span className="btn btn-sm disabled">...</span>
                           <button
-                            onClick={() => handlePageChange(totalPages)}
+                            onClick={() => {
+                              handlePageChange(totalPages)
+                              window.scrollTo(0, 0);
+                            }}
                             className="btn btn-sm"
                           >
                             {totalPages}
@@ -488,8 +497,12 @@ const ProductsPage: React.FC = () => {
 
                       {/* Next Button */}
                       <button
-                        onClick={() =>
+                        onClick={() => {
                           handlePageChange(urlFilters.currentPage + 1)
+                          window.scrollTo(0, 0);
+                        }
+
+
                         }
                         className="btn btn-sm"
                         disabled={urlFilters.currentPage === totalPages}
