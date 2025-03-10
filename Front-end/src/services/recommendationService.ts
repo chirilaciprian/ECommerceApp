@@ -2,6 +2,7 @@ import axios from "axios";
 import { getMyOrdersAndProducts } from "./orderService";
 import { isAuthenticated } from "./authService";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_RECOMMENDATION_URL = import.meta.env.VITE_API_RECOMMENDATION_URL;
 
 export const getRecommendedProducts = async (
   sku: string,
@@ -9,7 +10,7 @@ export const getRecommendedProducts = async (
 ) => {
   try {
     let res = await axios.get(
-      `http://127.0.0.1:5001/recommend?sku=${sku}&top_n=${productsNumber}`
+      `${API_RECOMMENDATION_URL}/recommend?sku=${sku}&top_n=${productsNumber}`
     );
     const recommendedSkus = res.data.recommendations.map(
       (product: { sku: string }) => product.sku
