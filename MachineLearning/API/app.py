@@ -3,7 +3,7 @@ from flask_cors import CORS
 from .recommendation import get_similar_products_by_sku  # Import the function from recommendation.py
 
 app = Flask(__name__)
-CORS(app, origins=["https://ecommercecipui.onrender.com"])  # This enables CORS for all routes
+CORS(app, origins=["https://fashionappcip.onrender.com"])  # This enables CORS for all routes
 
 @app.route('/recommend', methods=['GET'])
 def recommend():

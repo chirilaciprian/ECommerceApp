@@ -19,7 +19,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://ecommercecipui.onrender.com',
+    origin: 'https://fashionappcip.onrender.com',
   })
 );
 
