@@ -655,3 +655,13 @@ C:\Projects\ECommerceApp\Back-end\src\services\wishlistService.ts:22:34
 → 22 return await prisma.wishlist.create(
 Unique constraint failed on the fields: (`userId`)
 2025-02-19T15:49:49.230Z [[31merror[39m]: Failed to login: Error: User not found
+2025-03-10T11:28:23.432Z [[31merror[39m]: Failed to login: Error: User not found
+2025-03-10T11:29:56.095Z [[31merror[39m]: Failed to create whishlist: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlist.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistService.ts:22:34
+
+  19     ...wishlist,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlist.create(
+Unique constraint failed on the fields: (`userId`)

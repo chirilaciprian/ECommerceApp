@@ -51119,3 +51119,124 @@ Unique constraint failed on the fields: (`userId`)
 2025-03-10T11:07:47.301Z [[32minfo[39m]: Cart with user id cm66hiyh70000zczrf0tcbp5w retrieved
 2025-03-10T11:07:47.306Z [[32minfo[39m]: Cart items retrieved
 2025-03-10T11:07:47.316Z [[32minfo[39m]: Cart with user id cm66hiyh70000zczrf0tcbp5w retrieved
+2025-03-10T11:08:57.930Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:08:57.932Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:08:57.932Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:08:57.937Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:08:58.002Z [[32minfo[39m]: Cart with user id cm66hiyh70000zczrf0tcbp5w retrieved
+2025-03-10T11:08:58.014Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:08:58.093Z [[32minfo[39m]: Cart with user id cm66hiyh70000zczrf0tcbp5w retrieved
+2025-03-10T11:08:58.172Z [[32minfo[39m]: Cart with user id cm66hiyh70000zczrf0tcbp5w retrieved
+2025-03-10T11:08:58.173Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:08:58.184Z [[32minfo[39m]: Cart with user id cm66hiyh70000zczrf0tcbp5w retrieved
+2025-03-10T11:09:01.164Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:09:02.214Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:07.685Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:07.741Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:07.850Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:07.966Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:11.588Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:11.644Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:11.754Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:11.923Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:12.789Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:12.845Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:12.934Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:13.115Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:23.432Z [[31merror[39m]: Failed to login: Error: User not found
+2025-03-10T11:28:25.094Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:25.129Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:25.158Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:25.234Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:27.088Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:27.138Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:27.150Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:27.268Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:29.882Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:33.445Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:37.051Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:37.105Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:28:37.153Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:28:37.264Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:29:02.348Z [[32minfo[39m]: User with email ciprian182001@gmail.com created
+2025-03-10T11:29:02.357Z [[32minfo[39m]: Email sent to ciprian182001@gmail.com
+2025-03-10T11:29:08.887Z [[32minfo[39m]: User with email ciprian182001@gmail.com logged in
+2025-03-10T11:29:09.000Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:29:09.050Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:29:09.058Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:29:09.216Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:29:09.570Z [[32minfo[39m]: Orders retrieved
+2025-03-10T11:29:09.705Z [[32minfo[39m]: OrderItems retrieved
+2025-03-10T11:29:09.901Z [[32minfo[39m]: Cart with id cm82zc1hf00015czr1te5fz15 created
+2025-03-10T11:29:10.020Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:29:10.491Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:29:12.193Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:29:56.034Z [[32minfo[39m]: Whishlist with id cm82zd1ax00025czrhgpn6p3i created
+2025-03-10T11:29:56.095Z [[31merror[39m]: Failed to create whishlist: PrismaClientKnownRequestError: 
+Invalid `prisma.wishlist.create()` invocation in
+D:\Documents\GitHub\ECommerceApp\Back-end\src\services\wishlistService.ts:22:34
+
+  19     ...wishlist,
+  20     id: cuid(),
+  21 };
+→ 22 return await prisma.wishlist.create(
+Unique constraint failed on the fields: (`userId`)
+2025-03-10T11:29:56.144Z [[32minfo[39m]: Wishlist items with wishlistId cm82zd1ax00025czrhgpn6p3i retrieved
+2025-03-10T11:29:56.313Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:29:56.371Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:29:56.426Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:29:56.537Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:29:59.204Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:29:59.262Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:29:59.422Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:29:59.586Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:29:59.818Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:29:59.873Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:29:59.875Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:29:59.929Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:29:59.985Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:00.042Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:00.300Z [[32minfo[39m]: Product with id cm82z2zwt000312b95g946mdc retrieved
+2025-03-10T11:30:00.357Z [[32minfo[39m]: Product with id cm82z2zwt000312b95g946mdc retrieved
+2025-03-10T11:30:00.411Z [[32minfo[39m]: Category with id cm82z2k3n000010z1ad5qnylc retrieved
+2025-03-10T11:30:00.466Z [[32minfo[39m]: Category with id cm82z2k3n000010z1ad5qnylc retrieved
+2025-03-10T11:30:00.471Z [[32minfo[39m]: Products with SKUs 322901350-800-46, 328594167-800-46, 328303236-420-44, 329801179-807-48, 324138443-800-97, 324138442-800-46, 329186122-800-2, 313854165-401-46, 329706743-401-46, 335342680-800-44, 322664629-800-2, 322579550-800-2 retrieved
+2025-03-10T11:30:00.513Z [[32minfo[39m]: Ratings with product id cm82z2zwt000312b95g946mdc retrieved
+2025-03-10T11:30:00.542Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:30:00.576Z [[32minfo[39m]: Ratings with product id cm82z2zwt000312b95g946mdc retrieved
+2025-03-10T11:30:00.621Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:30:00.684Z [[32minfo[39m]: Users retrieved
+2025-03-10T11:30:00.740Z [[32minfo[39m]: Users retrieved
+2025-03-10T11:30:00.911Z [[32minfo[39m]: Products with SKUs 322901350-800-46, 328594167-800-46, 328303236-420-44, 329801179-807-48, 324138443-800-97, 324138442-800-46, 329186122-800-2, 313854165-401-46, 329706743-401-46, 335342680-800-44, 322664629-800-2, 322579550-800-2 retrieved
+2025-03-10T11:30:00.987Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:01.050Z [[32minfo[39m]: Whishlist with userId cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:01.095Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:30:01.150Z [[32minfo[39m]: Wishlist items with wishlistId cm82zd1ax00025czrhgpn6p3i retrieved
+2025-03-10T11:30:01.259Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:03.339Z [[32minfo[39m]: Wishlist item with id cm82zd6xq00045czr1o1g6roc created
+2025-03-10T11:30:04.794Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:30:04.848Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:30:04.935Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:30:05.038Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:30:05.320Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:05.371Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:05.375Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:30:05.429Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:30:05.482Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:05.537Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:07.911Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:30:11.402Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:30:11.464Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:30:11.503Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:30:11.573Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:30:11.715Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:11.769Z [[32minfo[39m]: Cart items retrieved
+2025-03-10T11:30:11.810Z [[32minfo[39m]: Orders retrieved
+2025-03-10T11:30:11.879Z [[32minfo[39m]: Cart with user id cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:11.947Z [[32minfo[39m]: OrderItems retrieved
+2025-03-10T11:30:13.827Z [[32minfo[39m]: Products retrieved
+2025-03-10T11:30:13.943Z [[32minfo[39m]: Whishlist with userId cm82zbvu700005czr64842rgy retrieved
+2025-03-10T11:30:13.995Z [[32minfo[39m]: Wishlist items with wishlistId cm82zd1ax00025czrhgpn6p3i retrieved
+2025-03-10T11:30:14.106Z [[32minfo[39m]: Products with SKUs 322901350-800-46, 328594167-800-46, 328303236-420-44, 329801179-807-48, 324138443-800-97, 324138442-800-46, 329186122-800-2, 313854165-401-46, 329706743-401-46, 335342680-800-44, 322664629-800-2, 322579550-800-2, 321712483-707-2, 324048217-400-2, 322972485-431-46, 281432155-401-2, 329282612-401-2, 320428773-800-2, 327117248-400-3, 328558744-800-97, 311309668-801-48, 313027279-800-2, 320104221-711-2, 315241758-800-1 retrieved
+2025-03-10T11:30:14.168Z [[32minfo[39m]: Categories retrieved
+2025-03-10T11:30:14.226Z [[32minfo[39m]: Categories retrieved
