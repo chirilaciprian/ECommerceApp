@@ -1,13 +1,17 @@
+import os
 import pickle
 import numpy as np
 import pandas as pd
 
-# Load the similarity map
-with open("../model/similarity_map.pkl", "rb") as file:
+# Define the base directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load the similarity map (adjusted for the correct path)
+with open(os.path.join(BASE_DIR, "../model/similarity_map.pkl"), "rb") as file:
     similarity_map = pickle.load(file)
 
 # Load the dataset
-df = pd.read_csv("../data/store_zara.csv")
+df = pd.read_csv(os.path.join(BASE_DIR, "../data/store_zara.csv"))
 df = df.drop(columns=["error", "currency", "url", "brand", "scraped_at", "images"])
 df = df.dropna()
 
