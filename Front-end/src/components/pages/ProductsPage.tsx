@@ -18,7 +18,6 @@ import {
   FunnelIcon,
   MinusIcon,
   PlusIcon,
-  Squares2X2Icon,
 } from "@heroicons/react/20/solid";
 import { Navbar } from "../general/Navbar";
 import { ProductsList } from "../general/ProductsList";
@@ -327,13 +326,13 @@ const ProductsPage: React.FC = () => {
                     </div>
                   </MenuItems>
                 </Menu>
-                <button
+                {/* <button
                   type="button"
                   className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
                 >
                   <span className="sr-only">View grid</span>
                   <Squares2X2Icon aria-hidden="true" className="h-5 w-5" />
-                </button>
+                </button> */}
                 <button
                   type="button"
                   onClick={() => setMobileFiltersOpen(true)}
@@ -430,7 +429,7 @@ const ProductsPage: React.FC = () => {
                           window.scrollTo(0, 0);
                           handlePageChange(urlFilters.currentPage - 1)
                         }}
-                        className="btn btn-sm"
+                        className="btn md:btn-sm btn-xs"
                         disabled={urlFilters.currentPage === 1}
                       >
                         Prev
@@ -444,11 +443,11 @@ const ProductsPage: React.FC = () => {
                               window.scrollTo(0, 0)
                               handlePageChange(1)
                             }}
-                            className="btn btn-sm"
+                            className="btn md:btn-sm btn-xs"
                           >
                             1
                           </button>
-                          <span className="btn btn-sm disabled">...</span>
+                          <span className="btn md:btn-sm btn-xs disabled">...</span>
                         </>
                       )}
 
@@ -457,8 +456,8 @@ const ProductsPage: React.FC = () => {
                         const page = pageNumber + 1;
                         // Show pages within range of 5 to 10
                         if (
-                          page >= urlFilters.currentPage - 2 &&
-                          page <= urlFilters.currentPage + 2
+                          page >= urlFilters.currentPage - 1 &&
+                          page <= urlFilters.currentPage + 1
                         ) {
                           return (
                             <button
@@ -467,7 +466,7 @@ const ProductsPage: React.FC = () => {
                                 handlePageChange(page)
                                 window.scrollTo(0, 0);
                               }}
-                              className={`btn btn-sm ${urlFilters.currentPage === page
+                              className={`btn md:btn-sm btn-xs ${urlFilters.currentPage === page
                                 ? "btn-active"
                                 : ""
                                 }`}
@@ -482,13 +481,13 @@ const ProductsPage: React.FC = () => {
                       {/* Ellipses and Last Page */}
                       {urlFilters.currentPage < totalPages - 2 && (
                         <>
-                          <span className="btn btn-sm disabled">...</span>
+                          <span className="btn md:btn-sm btn-xs disabled">...</span>
                           <button
                             onClick={() => {
                               handlePageChange(totalPages)
                               window.scrollTo(0, 0);
                             }}
-                            className="btn btn-sm"
+                            className="btn md:btn-sm btn-xs"
                           >
                             {totalPages}
                           </button>
@@ -504,7 +503,7 @@ const ProductsPage: React.FC = () => {
 
 
                         }
-                        className="btn btn-sm"
+                        className="btn md:btn-sm btn-xs"
                         disabled={urlFilters.currentPage === totalPages}
                       >
                         Next

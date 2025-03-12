@@ -50,7 +50,7 @@ const CartPage: React.FC = () => {
   return (
     <>
       {Array.isArray(cart.cartItems) && cart.cartItems.length > 0 ? (
-        <div className="h-full bg-gray-100 pt-20 min-h-screen">
+        <div className="h-full bg-gray-100 md:py-20 py-10 min-h-screen">
           {/* <h1 className="mb-10 text-center text-3xl font-bold merriweather">
             CART
           </h1> */}

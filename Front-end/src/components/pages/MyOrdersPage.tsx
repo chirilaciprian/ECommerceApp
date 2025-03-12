@@ -24,17 +24,17 @@ const MyOrdersPage = () => {
 
   return (
     <>
-      <div className="py-24 relative bg-base-200 min-h-screen">
+      <div className="md:py-20 py-10 relative bg-base-200 min-h-screen">
         {orders.length !== 0 ? (
         <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto flex flex-col gap-10">
           {/* <h2 className="merriweather font-light md:text-5xl text-4xl leading-10 text-black text-center mb-10">
             My orders
           </h2> */}
           {orders.map((order: any) => (
-            <div key={order.id} className="main-box border border-gray-300 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
+            <div key={order.id} className="main-box rounded-xl md:pt-5 pt-2 max-w-xl max-lg:mx-auto lg:max-w-full bg-white">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between px-6">
                 <div className="data">
-                  <p className="font-semibold text-base leading-7 text-black">
+                  <p className="font-semibold text-base text-black">
                     Order Id:{" "}
                     <span className="text-indigo-600 font-medium roboto">
                       #{order.id}
@@ -73,24 +73,24 @@ const MyOrdersPage = () => {
                   );
                 })}
               </div>
-              <div className="grid grid-cols-2 text-lg playfair m-5 md:mx-10">
+              <div className="grid grid-cols-2 playfair m-5 md:mx-10 md:text-md text-sm">
                 <div className="flex flex-row items-center gap-2">
                   <span className="">Status:</span>
                   {order.status === "pending" ? (
-                    <div className="badge badge-warning p-3 text-lg uppercase">
+                    <div className="badge badge-warning p-3 uppercase">
                       {order.status}
                     </div>
                   ) : order.status === "delivered" ? (
-                    <div className="badge badge-success p-3 text-lg uppercase">
+                    <div className="badge badge-success uppercase">
                       {order.status}
                     </div>
                   ) : (
-                    <div className="badge badge-error p-3 text-lg uppercase">
+                    <div className="badge badge-error uppercase">
                       {order.status}
                     </div>
                   )}
                 </div>
-                <span className="text-xl font-bold text-end">
+                <span className="font-bold text-end">
                   Total Price:
                   <span className="ml-1 text-primary roboto">
                     ${order.totalPrice}
