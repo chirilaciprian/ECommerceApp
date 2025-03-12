@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from recommendation import (
+from .recommendation import (
     get_similar_products_by_sku,
 )  # Import the function from recommendation.py
 from dotenv import load_dotenv
