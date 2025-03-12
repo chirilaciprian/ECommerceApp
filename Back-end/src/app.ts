@@ -12,6 +12,7 @@ import ratingRouter from "./routes/ratingRoutes";
 import wishlistRouter from "./routes/wishlistRoutes";
 import wishlistItemRouter from "./routes/wishlistItemRoutes";
 import emailRouter from "./routes/emailRoutes";
+import { CORS_ORIGIN } from './config/env';
 
 const cors = require("cors");
 
@@ -19,7 +20,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'https://ecommercecipui.onrender.com',
+    origin: CORS_ORIGIN,
   })
 );
 
