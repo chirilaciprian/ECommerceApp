@@ -39,7 +39,7 @@ export default function RecommendedProducts({ products }: RecommendedProductsPro
 
   return (
     <div className="bg-base-200 merriweather">
-      <div className="md:mx-10 mx-5 pb-20">
+      <div className="md:mx-10 mx-5">
         
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-6 md:grid-cols-4 xl:gap-x-8">

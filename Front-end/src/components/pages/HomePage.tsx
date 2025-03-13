@@ -26,9 +26,9 @@ const HomePage = () => {
     }
     setLoading(false);
   };
-  
+
   const fetchProducts = async () => {
-    const data = await fetchPaginatedProducts(25, 12);    
+    const data = await fetchPaginatedProducts(25, 12);
     setProducts(data.products);
   };
 
@@ -45,7 +45,7 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    
+
     if (isAuth) fetchRecommended();
     else {
       setLoading(false);
@@ -68,13 +68,17 @@ const HomePage = () => {
 
       {/* Category Section */}
 
-      <div className="lg:p-10 md:p-7 sm:p-5 p-3">
-        <RecommendedProducts products={products} />
+      <div className="text-center py-5 roboto font-thin">
+        <h2 className="text-xl md:text-3xl playfair uppercase ">
+          Best Sellers
+        </h2>
+        <div className="lg:px-10 md:p-7 sm:p-5 p-3">
+          <RecommendedProducts products={products} />
+        </div>
       </div>
-
       {recommendedProducts.length != 0 ? (
         <div className="text-center py-8 roboto font-thin">
-          <h2 className="text-xl md:text-3xl lg:text-4xl playfair uppercase ">
+          <h2 className="text-xl md:text-3xl playfair uppercase ">
             Recommended Products For You
           </h2>
           <div className="lg:p-10 md:p-7 sm:p-5 p-3">

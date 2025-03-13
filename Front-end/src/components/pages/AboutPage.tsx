@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
-  return (
+  return (    
     <div className="sm:flex justify-center items-center w-screen h-screen bg-base-200">
       <div className="sm:w-1/2 p-10">
         <div className="image object-center text-center">

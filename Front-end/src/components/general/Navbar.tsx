@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthHook } from "../../hooks/authHooks";
 import { isAuthenticated, logout } from "../../services/authService";
@@ -7,6 +7,7 @@ import { RootState, AppDispatch } from "../../state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../state/slices/cartSlice";
 import { toast } from "react-toastify";
+import { FiMenu, FiX } from "react-icons/fi"; // Import menu and close icons
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -35,69 +36,56 @@ export const Navbar = () => {
       }
     };
     isAuth();
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if(authHook.isAuthenticated){
+    if (authHook.isAuthenticated) {
       dispatch(getCart());
-    }    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[authHook.isAuthenticated]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authHook.isAuthenticated]);
   // Handle logout
   const handleLogout = () => {
     authHook.setIsAuthenticated(false);
     logout();
     toast.warning("Logged out successfully");
   };
-
+  const [isOpen, setIsOpen] = useState(false);
   // Update cart item quantity
 
   return (
     <>
-      <div className="navbar text-neutral bg-base-200 merriweather ">
+      <div className="navbar text-neutral bg-base-200 merriweather p-0 ">
         <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+          <div className="relative">
+            {/* Swap Button */}
+            <label className="swap swap-rotate lg:hidden pl-2">
+              {/* Hidden Checkbox to Track State */}
+              <input type="checkbox" checked={isOpen} onChange={() => setIsOpen(!isOpen)} />
+
+              {/* Menu Icon */}
+              <FiMenu className="swap-off h-6 w-6" />
+
+              {/* Close (X) Icon */}
+              <FiX className="swap-on h-6 w-6" />
+            </label>
+
+            {/* Dropdown Menu */}
+            {isOpen && (
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-200 z-50 absolute left-0 top-12 w-screen h-96 shadow-md"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content glass rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <Link to='/products?page=1&limite=24&sortBy=popular'>Products</Link>
-              </li>
-              <li>
-                <Link to='/products/?page=1&limit=24&sortBy=popular&genres=MAN'>MAN</Link>
-              </li>
-              <li>
-                <Link to='/products/?page=1&limit=24&sortBy=popular&genres=WOMAN'>WOMAN</Link>
-              </li>
-              <li>
-                <Link to='/products/?page=1&limit=24&sortBy=popular&onSale=true' className="text-error">DISCOUNTS</Link>
-              </li>
-              <li>
-                <Link to='/about'>About Us</Link>
-              </li>
-            </ul>
+                <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+                <li><Link to="/products?page=1&limite=24&sortBy=popular" onClick={() => setIsOpen(false)}>Products</Link></li>
+                <li><Link to="/products/?page=1&limit=24&sortBy=popular&genres=MAN" onClick={() => setIsOpen(false)}>MAN</Link></li>
+                <li><Link to="/products/?page=1&limit=24&sortBy=popular&genres=WOMAN" onClick={() => setIsOpen(false)}>WOMAN</Link></li>
+                <li><Link to="/products/?page=1&limit=24&sortBy=popular&onSale=true" className="text-error" onClick={() => setIsOpen(false)}>DISCOUNTS</Link></li>
+                <li><Link to="/about" onClick={() => setIsOpen(false)}>About Us</Link></li>
+              </ul>
+            )}
           </div>
           {/* <Link to="/" className="btn btn-ghost text-xl md:text-2xl font-thin italic ">WatchStore</Link> */}
         </div>
@@ -155,7 +143,7 @@ export const Navbar = () => {
               </div>
               <div
                 tabIndex={0}
-                className="card card-compact dropdown-content glass z-[1] mt-3 w-52 shadow"
+                className="card card-compact dropdown-content bg-base-200 z-[1] w-52"
               >
                 <div className="card-body">
                   <span className="text-lg font-bold">{cart.cartItems.length} Items</span>
@@ -172,7 +160,7 @@ export const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar"
+                className="btn btn-ghost btn-circle avatar mr-4"
               >
                 <div className="w-10 rounded-full">
                   <img
@@ -183,7 +171,7 @@ export const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 glass "
+                className="menu menu-sm dropdown-content z-[1] w-52 p-2 bg-base-200 rounded-sm"
               >
                 <li>
                   <Link to='/profile'>Account</Link>
@@ -202,7 +190,7 @@ export const Navbar = () => {
           </div>
         ) : (
           <div className="navbar-end">
-            <div className="join  glass bg-primary">
+            <div className="join  glass bg-primary mr-4">
               <Link to='/login' className="btn btn-ghost join-item text-neutral-content md:text-lg font-bold">
                 Log In
               </Link>

@@ -7,6 +7,7 @@ import { RootState, AppDispatch } from "../../state/store";
 import { getCart } from "../../state/slices/cartSlice";
 import { createSelector } from "@reduxjs/toolkit";
 import { getProductsByCartId, ProductProps } from "../../services/productService";
+import { Navbar } from "../general/Navbar";
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -41,7 +42,7 @@ const CartPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="h-screen bg-gray-100 pt-20 flex items-center justify-center min-h-screen">
+      <div className="h-screen bg-base-200 pt-20 flex items-center justify-center min-h-screen">
         <p className="text-2xl font-bold">Loading...</p>
       </div>
     );
@@ -49,8 +50,9 @@ const CartPage: React.FC = () => {
 
   return (
     <>
+    <Navbar />
       {Array.isArray(cart.cartItems) && cart.cartItems.length > 0 ? (
-        <div className="h-full bg-gray-100 md:py-20 py-10 min-h-screen">
+        <div className="h-full bg-base-200 md:py-20 py-10 min-h-screen">
           {/* <h1 className="mb-10 text-center text-3xl font-bold merriweather">
             CART
           </h1> */}

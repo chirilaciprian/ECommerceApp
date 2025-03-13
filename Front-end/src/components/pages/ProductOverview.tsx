@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CategoryProps, getCategoryById } from "../../services/categoryService";
 import Rating from "../general/Rating";
 import { getRatingsByProductId } from "../../services/ratingService";
+import { Navbar } from "../general/Navbar";
 
 const selectCart = createSelector(
   [(state: RootState) => state.cart],
@@ -29,7 +30,7 @@ const selectCart = createSelector(
 );
 
 const ProductDetail = () => {
-  
+
   const navigate = useNavigate();
   const { productId } = useParams();
   const [mainImage, setMainImage] = useState("");
@@ -107,7 +108,7 @@ const ProductDetail = () => {
   };
   useEffect(() => {
     window.scrollTo(0, 0);
-  },[productId]);
+  }, [productId]);
 
   useEffect(() => {
     checkAuth();
@@ -122,9 +123,9 @@ const ProductDetail = () => {
     fetchProduct();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch,productId]);
+  }, [dispatch, productId]);
 
-//   useEffect(() => {}, [location]);
+  //   useEffect(() => {}, [location]);
   const handleAddToCart = async () => {
     if (authenticated && product) {
       // Check if the product is already in the cart
@@ -228,125 +229,126 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="bg-base-200 h-full w-full min-w-screen">
-      <Alert type={alertType} message={alertMessage} isVisible={showAlert} />
-      <div className="merriweather w-full h-full">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex flex-col md:flex-row -mx-4">
-            {/* Product Images */}
-            <div className="w-full md:w-1/2 px-4 mb-8">
-              <img
-                src={mainImage || "/placeholder-image.jpg"}
-                alt={product?.name || "Product Image"}
-                className="w-full h-full md:w-3/4 md:h-3/4 rounded-lg shadow-md mb-4"
-                id="mainImage"
-              />
-              <div className="flex gap-4 py-4 justify-center overflow-x-auto">
-                {product?.images?.map((src: string, index: number) => (
-                  <img
-                    key={index}
-                    src={src}
-                    alt={`Thumbnail ${index + 1}`}
-                    className="w-16 sm:w-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
-                    onClick={() => changeImage(src)}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Product Details */}
-            <div className="w-full md:w-1/2 px-4 flex flex-col gap-4 md:mt-24">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-2">
-                {product?.name || "Product Name"}
-              </h2>
-              <div>
-                <p
-                  className={`font-bold ${
-                    product?.genre === "MAN" ? "text-info" : "text-secondary"
-                  }`}
-                >
-                  {product?.genre || "Genre"}
-                </p>
-                <p className="font-bold uppercase text-warning">
-                  {category?.name}
-                </p>
-              </div>
-              <div className="mb-4">
-                {product?.onSale ? (
-                  <>
-                    <span className="text-2xl font-bold mr-2">
-                      ${product?.salePrice?.toFixed(2) || "0.00"}
-                    </span>
-                    <span className="text-gray-500 line-through">
-                      ${product?.price?.toFixed(2) || "0.00"}
-                    </span>
-                  </>
-                ) : (
-                  <span className="text-2xl font-bold">
-                    ${product?.price?.toFixed(2) || "0.00"}
-                  </span>
-                )}
-              </div>
-              <Link
-                to={`/ratings/${productId}`}
-                className="flex flex-row gap-2 items-center m-0 pointer w-72"
-              >
-                <Rating ratingValue={averageRating || 0} />
-                <span className="text-gray-500 m-0">
-                  {averageRating?.toFixed(1) || ''} ({numberOfRatings} reviews)
-                </span>
-              </Link>
-              <p className="text-gray-700">
-                {product?.description || "No description available."}
-              </p>
-
-              {/* Size Options */}
-              <div className="playfair flex flex-col gap-4">
-                <div className="flex flex-wrap gap-2 justify-start w-full">
-                  {sizesArray.map((size) => (
-                    <button
-                      key={size}
-                      className={`btn btn-neutral  ${
-                        selectedSize === size ? "" : "btn-outline"
-                      }`}
-                      onClick={() => handleSizeClick(size)}
-                    >
-                      {size}
-                    </button>
+    <>
+    <Navbar />
+      <div className="bg-base-200 h-full w-full min-w-screen">
+        <Alert type={alertType} message={alertMessage} isVisible={showAlert} />
+        <div className="merriweather w-full h-full">
+          <div className="container mx-auto px-4 py-8">
+            <div className="flex flex-col md:flex-row -mx-4">
+              {/* Product Images */}
+              <div className="w-full md:w-1/2 px-4 mb-8">
+                <img
+                  src={mainImage || "/placeholder-image.jpg"}
+                  alt={product?.name || "Product Image"}
+                  className="w-full h-full md:w-3/4 md:h-3/4 rounded-lg shadow-md mb-4"
+                  id="mainImage"
+                />
+                <div className="flex gap-4 py-4 justify-center overflow-x-auto">
+                  {product?.images?.map((src: string, index: number) => (
+                    <img
+                      key={index}
+                      src={src}
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-16 sm:w-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                      onClick={() => changeImage(src)}
+                    />
                   ))}
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                <button
-                  className="btn btn-info text-info-content"
-                  onClick={() => {
-                    handleAddToCart();
-                  }}
+              {/* Product Details */}
+              <div className="w-full md:w-1/2 px-4 flex flex-col gap-4 md:mt-24">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+                  {product?.name || "Product Name"}
+                </h2>
+                <div>
+                  <p
+                    className={`font-bold ${product?.genre === "MAN" ? "text-info" : "text-secondary"
+                      }`}
+                  >
+                    {product?.genre || "Genre"}
+                  </p>
+                  <p className="font-bold uppercase text-warning">
+                    {category?.name}
+                  </p>
+                </div>
+                <div className="mb-4">
+                  {product?.onSale ? (
+                    <>
+                      <span className="text-2xl font-bold mr-2">
+                        ${product?.salePrice?.toFixed(2) || "0.00"}
+                      </span>
+                      <span className="text-gray-500 line-through">
+                        ${product?.price?.toFixed(2) || "0.00"}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="text-2xl font-bold">
+                      ${product?.price?.toFixed(2) || "0.00"}
+                    </span>
+                  )}
+                </div>
+                <Link
+                  to={`/ratings/${productId}`}
+                  className="flex flex-row gap-2 items-center m-0 pointer w-72"
                 >
-                  <FaCartPlus /> Add To Cart
-                </button>
+                  <Rating ratingValue={averageRating || 0} />
+                  <span className="text-gray-500 m-0">
+                    {averageRating?.toFixed(1) || ''} ({numberOfRatings} reviews)
+                  </span>
+                </Link>
+                <p className="text-gray-700">
+                  {product?.description || "No description available."}
+                </p>
 
-                {/* wishlist.wishlistItems.find((item) => item.productId === product.id) */}
-                <button
-                  className="btn btn-error text-error-content "
-                  onClick={() => {
-                    handleAddToWishlist();
-                  }}
-                >
-                  <FaHeart /> Add To Wishlist
-                </button>
+                {/* Size Options */}
+                <div className="playfair flex flex-col gap-4">
+                  <div className="flex flex-wrap gap-2 justify-start w-full">
+                    {sizesArray.map((size) => (
+                      <button
+                        key={size}
+                        className={`btn btn-neutral  ${selectedSize === size ? "" : "btn-outline"
+                          }`}
+                        onClick={() => handleSizeClick(size)}
+                      >
+                        {size}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                  <button
+                    className="btn btn-info text-info-content"
+                    onClick={() => {
+                      handleAddToCart();
+                    }}
+                  >
+                    <FaCartPlus /> Add To Cart
+                  </button>
+
+                  {/* wishlist.wishlistItems.find((item) => item.productId === product.id) */}
+                  <button
+                    className="btn btn-error text-error-content "
+                    onClick={() => {
+                      handleAddToWishlist();
+                    }}
+                  >
+                    <FaHeart /> Add To Wishlist
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-wider text-neutral mb-10 text-center playfair">
+          Similar Products
+        </h2>
+        <RecommendedProducts products={recommendedProducts} />
       </div>
-      <h2 className="text-3xl sm:text-4xl font-bold tracking-wider text-neutral mb-10 text-center playfair">
-        Similar Products
-      </h2>
-      <RecommendedProducts products={recommendedProducts} />
-    </div>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getMyOrdersAndProducts } from "../../services/orderService";
 import OrderItemCard from "../general/OrderItemCard";
 import { Link } from "react-router-dom";
+import { Navbar } from "../general/Navbar";
 
 const MyOrdersPage = () => {  
 
@@ -24,6 +25,7 @@ const MyOrdersPage = () => {
 
   return (
     <>
+      <Navbar />
       <div className="md:py-20 py-10 relative bg-base-200 min-h-screen">
         {orders.length !== 0 ? (
         <div className="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto flex flex-col gap-10">
